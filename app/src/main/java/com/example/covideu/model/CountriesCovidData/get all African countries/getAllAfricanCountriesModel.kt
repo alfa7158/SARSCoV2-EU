@@ -1,9 +1,9 @@
-package com.example.covideu.model.get all Australian and Oceanian counties
+package com.example.covideu.model.getAllAfricanCountries
 
 
 import com.google.gson.annotations.SerializedName
 
-data class getAllAustralianAndOceanianCountries(
+data class getAllAfricanCountriesModel(
     @SerializedName("ActiveCases")
     val activeCases: Int,
     @SerializedName("Case_Fatality_Rate")

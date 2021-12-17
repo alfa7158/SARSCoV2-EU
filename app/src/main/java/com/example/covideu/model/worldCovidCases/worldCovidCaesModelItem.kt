@@ -1,9 +1,9 @@
-package com.example.covideu.model.get all Southern American countries
+package com.example.covideu.model.worldCovidCases
 
 
 import com.google.gson.annotations.SerializedName
 
-data class getAllSouthernAmericanCountries(
+data class worldCovidCaesModelItem(
     @SerializedName("ActiveCases")
     val activeCases: Int,
     @SerializedName("Case_Fatality_Rate")
@@ -13,11 +13,11 @@ data class getAllSouthernAmericanCountries(
     @SerializedName("Country")
     val country: String,
     @SerializedName("Deaths_1M_pop")
-    val deaths1MPop: Int,
+    val deaths1MPop: Double,
     @SerializedName("id")
     val id: String,
     @SerializedName("Infection_Risk")
-    val infectionRisk: Double,
+    val infectionRisk: Int,
     @SerializedName("NewCases")
     val newCases: Int,
     @SerializedName("NewDeaths")
@@ -39,11 +39,11 @@ data class getAllSouthernAmericanCountries(
     @SerializedName("Serious_Critical")
     val seriousCritical: Int,
     @SerializedName("Test_Percentage")
-    val testPercentage: Double,
+    val testPercentage: Int,
     @SerializedName("Tests_1M_Pop")
     val tests1MPop: Int,
     @SerializedName("ThreeLetterSymbol")
-    val threeLetterSymbol: String,
+    val threeLetterSymbol: Any,
     @SerializedName("TotCases_1M_Pop")
     val totCases1MPop: Int,
     @SerializedName("TotalCases")
@@ -55,5 +55,5 @@ data class getAllSouthernAmericanCountries(
     @SerializedName("TotalTests")
     val totalTests: String,
     @SerializedName("TwoLetterSymbol")
-    val twoLetterSymbol: String
+    val twoLetterSymbol: Any
 )

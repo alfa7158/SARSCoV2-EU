@@ -1,9 +1,9 @@
-package com.example.covideu.model.getAllAsianCountries
+package com.example.covideu.model.get all Southern American countries
 
 
 import com.google.gson.annotations.SerializedName
 
-data class getAll_AsianCountries(
+data class getAllSouthernAmericanCountriesModel(
     @SerializedName("ActiveCases")
     val activeCases: Int,
     @SerializedName("Case_Fatality_Rate")
