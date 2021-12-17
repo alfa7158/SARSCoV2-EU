@@ -1,4 +1,4 @@
-package com.example.covideu.model.get all Australian and Oceanian counties
+package com.example.covideu.model.getAllAustralianAndOceaniancounties
 
 
 import com.google.gson.annotations.SerializedName

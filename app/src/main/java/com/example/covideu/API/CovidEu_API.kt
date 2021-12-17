@@ -8,12 +8,12 @@ import com.example.covideu.model.covidNews.allCovidNews.NewModel
 import com.example.covideu.model.covidNews.allHealthNews.getAllHealthNewsModel
 import com.example.covideu.model.covidNews.allVaccineNews.getAllVaccineNewsModel
 import com.example.covideu.model.get.all.covid.Countries.Statistical.getAllCovid19CountriesStatisticalDataItemModel
-import com.example.covideu.model.get.getAllAustralianAndOceanianCountriesModel
-import com.example.covideu.model.get.getAllSouthernAmericanCountriesModel
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
+import com.example.covideu.model.getAllAustralianAndOceaniancounties.getAllAustralianAndOceanianCountriesModel
 import com.example.covideu.model.getAllEuropeanCountries.getAllEuropeanCountriesModel
 import com.example.covideu.model.getAllNorthernAmericanCountries.getAllNorthernAmericanCountriesModel
+import com.example.covideu.model.getAllSouthernAmericanCountries.getAllSouthernAmericanCountriesModel
 import com.example.covideu.model.getCountriesCovid.getOnlyCountriesCovid19DataModel
 import com.example.covideu.model.worldCovidCases.worldCovidCaesModelItem
 import retrofit2.Response
@@ -90,7 +90,7 @@ interface CovidEu_API {
 
     @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
     @GET("/api/vaccines/get-all-vaccines-phase-ii")
-    suspend fun getPhaseTow(): Response<List<getPhase_two_vaccines>>
+    suspend fun getPhaseTwo(): Response<List<getPhase_two_vaccines>>
 
     @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
     @GET("/api/vaccines/get-all-vaccines-phase-iii")

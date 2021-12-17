@@ -1,4 +1,4 @@
-package com.example.covideu.model.get all Southern American countries
+package com.example.covideu.model.getAllSouthernAmericanCountries
 
 
 import com.google.gson.annotations.SerializedName
