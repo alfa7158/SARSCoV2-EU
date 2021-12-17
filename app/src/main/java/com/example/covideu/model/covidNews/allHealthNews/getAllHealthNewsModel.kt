@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class getAllHealthNewsModel(
     @SerializedName("news")
-    val news: List<New>
+    val news: List<AllHeathNewsModel>
 )

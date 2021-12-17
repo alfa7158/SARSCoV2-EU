@@ -1,9 +1,9 @@
-package com.example.covideu.model.covidNews.allHealthNews
+package com.example.covideu.model.covidNews.allVaccineNews
 
 
 import com.google.gson.annotations.SerializedName
 
-data class New(
+data class allVaccineNews(
     @SerializedName("content")
     val content: String,
     @SerializedName("imageFileName")

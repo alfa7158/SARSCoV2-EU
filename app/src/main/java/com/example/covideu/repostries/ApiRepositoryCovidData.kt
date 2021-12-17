@@ -1,6 +1,8 @@
+import android.annotation.SuppressLint
 import com.example.covideu.API.CovidEu_API
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Exception
 
 private val BASE_URL = "https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
 
@@ -56,6 +58,24 @@ class ApiRepositoryCovidData {
     suspend fun getAllHealthNews() = retrofitApi.getAllHealthNews()
 
     suspend fun getAllVaccineNews() = retrofitApi.getAllVaccineNews()
+
+
+    companion object{
+        @SuppressLint("StaticFieldLeak")
+        private var instance:ApiRepositoryCovidData?=null
+
+        fun init(){
+            if(instance==null){
+                instance = ApiRepositoryCovidData()
+            }
+
+        }
+
+        fun get():ApiRepositoryCovidData{
+            return instance?:throw Exception("Api must be initialized")
+
+        }
+    }
 
 
 }
