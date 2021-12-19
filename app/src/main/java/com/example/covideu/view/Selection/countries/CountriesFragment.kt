@@ -1,4 +1,4 @@
-package com.example.covideu.view.Selection
+package com.example.covideu.view.Selection.countries
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

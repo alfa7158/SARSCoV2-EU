@@ -3,7 +3,7 @@ package com.example.covideu.model.covidNews.allCovidNews
 
 import com.google.gson.annotations.SerializedName
 
-data class NewModel(
+data class newsModel(
     @SerializedName("content")
     val content: String,
     @SerializedName("imageFileName")

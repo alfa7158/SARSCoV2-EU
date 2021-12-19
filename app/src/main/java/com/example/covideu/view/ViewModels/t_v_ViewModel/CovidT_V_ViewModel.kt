@@ -1,9 +1,13 @@
-package com.example.covideu.view.ViewModels
+package com.example.covideu.view.ViewModels.t_v_ViewModel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatmentsData
+import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
+import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
+import com.example.covideu.model.VaccineAndTreatments.Vaccines.*
 import com.example.covideu.model.get.all.covid.Countries.Statistical.getAllCovid19CountriesStatisticalDataItemModel
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
@@ -17,90 +21,32 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-private const val TAG = "CovidD_ViewModel"
-class CovidD_ViewModel:ViewModel() {
+private const val TAG = "CovidT_V_ViewModel"
+class CovidT_V_ViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
-    val covidAllStatisticalLiveData = MutableLiveData<List<getAllCovid19CountriesStatisticalDataItemModel>>()
-    val covidAllCountriesWithCovidOnlyLiveData = MutableLiveData<List<getOnlyCountriesCovid19DataModel>>()
-    val covid19AsiaLiveData = MutableLiveData<List<getAll_AsianCountriesModel>>()
-    val covid19AfricaLiveData = MutableLiveData<List<getAllAfricanCountriesModel>>()
-    val covid19EuropeLiveData = MutableLiveData<List<getAllEuropeanCountriesModel>>()
-    val covid19NorthAmericaLiveData = MutableLiveData<List<getAllNorthernAmericanCountriesModel>>()
-    val covid19SouthAmericaLiveData = MutableLiveData<List<getAllSouthernAmericanCountriesModel>>()
-    val covid19AustralianAndOceaniaLiveData = MutableLiveData<List<getAllAustralianAndOceanianCountriesModel>>()
-    val covidWorldData = MutableLiveData<worldCovidCaesModelItem>()
-
     val CovidLiveDataError = MutableLiveData<String?>()
 
-    fun callCovidStatisticalData(){
+    val covidAllTreatmentsLiveData = MutableLiveData<List<getAllTreatmentsData>>()
+    val covidAllVaccinesLiveData = MutableLiveData<List<getAllVaccinesDataItem>>()
+    val covid19ApprovedTreatmentsLiveData = MutableLiveData<List<getFDA_Approvedtreatments>>()
+    val covid19ClinicalLiveData = MutableLiveData<List<getClinicalTreatments>>()
+    val covid19PhaseOneLiveData = MutableLiveData<List<getPhase_one_vaccines>>()
+    val covid19PhaseTwoLiveData  = MutableLiveData<List<getPhase_two_vaccines>>()
+    val covid19PhaseThreeLiveData  = MutableLiveData<List<getPhase_three_vaccines>>()
+    val covid19PhaseFourLiveData = MutableLiveData<List<getPhase_four_vaccines>>()
+
+
+    fun callAllCovidTreatment(){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getStatisticalData()
+            val response = apiRepo.getAllTreatmentData()
             try {
                 if(response.isSuccessful){
 
                     response.body()?.run{
                         Log.d(TAG,this.toString())
 
-                        covidAllStatisticalLiveData.postValue(this)
-
-                    }
-
-
-                }else{
-                    CovidLiveDataError.postValue(response.message())
-
-                }
-
-            }catch (e:Exception){
-                CovidLiveDataError.postValue(e.toString())
-
-
-
-            }
-        }
-    }
-
-    fun callCovidCountriesWithCovidOnly(){
-
-        viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getDataForCountriesWithCovid19()
-            try {
-                if(response.isSuccessful){
-
-                    response.body()?.run{
-                        Log.d(TAG,this.toString())
-
-                        covidAllCountriesWithCovidOnlyLiveData.postValue(this)
-
-                    }
-
-
-                }else{
-                    CovidLiveDataError.postValue(response.message())
-
-                }
-
-            }catch (e:Exception){
-                CovidLiveDataError.postValue(e.toString())
-
-
-
-            }
-        }
-    }
-
-    fun callCovidDataForAsia(){
-
-        viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getCovidDataForAsia()
-            try {
-                if(response.isSuccessful){
-
-                    response.body()?.run{
-                        Log.d(TAG,this.toString())
-
-                        covid19AsiaLiveData.postValue(this)
+                        covidAllTreatmentsLiveData.postValue(this)
 
                     }
 
@@ -111,36 +57,7 @@ class CovidD_ViewModel:ViewModel() {
 
                 }
 
-            }catch (e:Exception){
-                CovidLiveDataError.postValue(e.toString())
-
-
-
-            }
-        }
-    }
-    fun callCovidDataForAfrica(){
-
-        viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getCovidDataForAfrica()
-            try {
-                if(response.isSuccessful){
-
-                    response.body()?.run{
-                        Log.d(TAG,this.toString())
-
-                        covid19AfricaLiveData.postValue(this)
-
-                    }
-
-
-                }else{
-
-                    CovidLiveDataError.postValue(response.message())
-
-                }
-
-            }catch (e:Exception){
+            }catch (e: Exception){
                 CovidLiveDataError.postValue(e.toString())
 
 
@@ -149,17 +66,18 @@ class CovidD_ViewModel:ViewModel() {
         }
     }
 
-    fun callCovidDataForEurope(){
+
+    fun callAllVaccinesTreatment(){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getCovidDataForEurope()
+            val response = apiRepo.getAllVaccinesData()
             try {
                 if(response.isSuccessful){
 
                     response.body()?.run{
                         Log.d(TAG,this.toString())
 
-                        covid19EuropeLiveData.postValue(this)
+                        covidAllVaccinesLiveData.postValue(this)
 
                     }
 
@@ -170,7 +88,7 @@ class CovidD_ViewModel:ViewModel() {
 
                 }
 
-            }catch (e:Exception){
+            }catch (e: Exception){
                 CovidLiveDataError.postValue(e.toString())
 
 
@@ -179,17 +97,77 @@ class CovidD_ViewModel:ViewModel() {
         }
     }
 
-    fun callCovidDataForNorthAmerican(){
+    fun callApprovedTreatmentsLiveData(){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getCovidDataForNorthAmerican()
+            val response = apiRepo.getAllApprovedFDATreatmentData()
             try {
                 if(response.isSuccessful){
 
                     response.body()?.run{
                         Log.d(TAG,this.toString())
 
-                        covid19NorthAmericaLiveData.postValue(this)
+                        covid19ApprovedTreatmentsLiveData.postValue(this)
+
+                    }
+
+
+                }else{
+
+                    CovidLiveDataError.postValue(response.message())
+
+                }
+
+            }catch (e: Exception){
+                CovidLiveDataError.postValue(e.toString())
+
+
+
+            }
+        }
+    }
+
+    fun callClinicalLiveData(){
+
+        viewModelScope.launch(Dispatchers.IO){
+            val response = apiRepo.getAllClinicalTreatment()
+            try {
+                if(response.isSuccessful){
+
+                    response.body()?.run{
+                        Log.d(TAG,this.toString())
+
+                        covid19ClinicalLiveData.postValue(this)
+
+                    }
+
+
+                }else{
+
+                    CovidLiveDataError.postValue(response.message())
+
+                }
+
+            }catch (e: Exception){
+                CovidLiveDataError.postValue(e.toString())
+
+
+
+            }
+        }
+    }
+
+    fun callPhaseOneLiveData(){
+
+        viewModelScope.launch(Dispatchers.IO){
+            val response = apiRepo.getPhaseOne()
+            try {
+                if(response.isSuccessful){
+
+                    response.body()?.run{
+                        Log.d(TAG,this.toString())
+
+                        covid19PhaseOneLiveData.postValue(this)
 
                     }
 
@@ -200,7 +178,7 @@ class CovidD_ViewModel:ViewModel() {
 
                 }
 
-            }catch (e:Exception){
+            }catch (e: Exception){
                 CovidLiveDataError.postValue(e.toString())
 
 
@@ -208,17 +186,17 @@ class CovidD_ViewModel:ViewModel() {
             }
         }
     }
-    fun callCovidDataForSouthAmerican(){
+    fun callPhaseTwoLiveData(){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getCovidDataForSouthAmerican()
+            val response = apiRepo.getPhaseTwo()
             try {
                 if(response.isSuccessful){
 
                     response.body()?.run{
                         Log.d(TAG,this.toString())
 
-                        covid19SouthAmericaLiveData.postValue(this)
+                        covid19PhaseTwoLiveData.postValue(this)
 
                     }
 
@@ -226,10 +204,9 @@ class CovidD_ViewModel:ViewModel() {
                 }else{
                     CovidLiveDataError.postValue(response.message())
 
-
                 }
 
-            }catch (e:Exception){
+            }catch (e: Exception){
                 CovidLiveDataError.postValue(e.toString())
 
 
@@ -238,18 +215,17 @@ class CovidD_ViewModel:ViewModel() {
         }
     }
 
-
-    fun callCovidDataForAustralianAndOcean(){
+    fun callPhaseThreeLiveData(){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getCovidDataForAustraliaAndOceania()
+            val response = apiRepo.getPhaseThree()
             try {
                 if(response.isSuccessful){
 
                     response.body()?.run{
                         Log.d(TAG,this.toString())
 
-                        covid19AustralianAndOceaniaLiveData.postValue(this)
+                        covid19PhaseThreeLiveData.postValue(this)
 
                     }
 
@@ -257,10 +233,9 @@ class CovidD_ViewModel:ViewModel() {
                 }else{
                     CovidLiveDataError.postValue(response.message())
 
-
                 }
 
-            }catch (e:Exception){
+            }catch (e: Exception){
                 CovidLiveDataError.postValue(e.toString())
 
 
@@ -269,17 +244,17 @@ class CovidD_ViewModel:ViewModel() {
         }
     }
 
-    fun callCovidWorldData(){
+    fun callPhaseFourLiveData(){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getWorldData()
+            val response = apiRepo.getPhaseFour()
             try {
                 if(response.isSuccessful){
 
                     response.body()?.run{
                         Log.d(TAG,this.toString())
 
-                        covidWorldData.postValue(this[0])
+                        covid19PhaseFourLiveData.postValue(this)
 
                     }
 
@@ -287,10 +262,9 @@ class CovidD_ViewModel:ViewModel() {
                 }else{
                     CovidLiveDataError.postValue(response.message())
 
-
                 }
 
-            }catch (e:Exception){
+            }catch (e: Exception){
                 CovidLiveDataError.postValue(e.toString())
 
 
@@ -298,6 +272,8 @@ class CovidD_ViewModel:ViewModel() {
             }
         }
     }
+
+
 
 
 }

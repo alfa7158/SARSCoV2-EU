@@ -5,8 +5,31 @@
       <map>
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/activity_splash.xml" value="0.12" />
-        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_countries.xml" value="0.1" />
-        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_covid_data_layout.xml" value="0.22" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/all_coviid_satatstical_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_countries.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_a_u__data_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_africa_data_fagment.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_asia_data.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_countries_data_fagment.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_countries_with_covid_only.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_countries_with_covid_statistical.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_covid_news.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_europ_data.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_n__u_s_a__data.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_s__u_s_a__data.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_africa_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_all_covid_satatstical_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_asia_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_au_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_countreis__with_covid_data__only_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_covid_data_layout.xml" value="0.25" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_europ_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_heath_news_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_n_usa_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_news_layout.xml" value="0.190625" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_s_usa_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_vaccine_treatment_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_world_covid_data_layout.xml" value="0.1" />
       </map>
     </option>
   </component>

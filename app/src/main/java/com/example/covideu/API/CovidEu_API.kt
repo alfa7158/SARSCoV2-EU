@@ -1,14 +1,14 @@
 package com.example.covideu.API
 
+import android.net.LinkAddress
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatmentsData
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.*
-import com.example.covideu.model.covidNews.allCovidNews.NewModel
+import com.example.covideu.model.covidNews.allCovidNews.getAllCoronaVirusNews
+import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
-import com.example.covideu.model.covidNews.allHealthNews.getAllHealthNewsModel
 import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
-import com.example.covideu.model.covidNews.allVaccineNews.getAllVaccineNewsModel
 import com.example.covideu.model.get.all.covid.Countries.Statistical.getAllCovid19CountriesStatisticalDataItemModel
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
@@ -21,11 +21,12 @@ import com.example.covideu.model.worldCovidCases.worldCovidCaesModelItem
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Query
 
 interface CovidEu_API {
 
     /**The function below are for countries and world covid Data*/
-    @Headers("x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c","x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com")
+    @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
     @GET("/api/npm-covid-data/")
     suspend fun getCovid19StatisticalData(): Response<List<getAllCovid19CountriesStatisticalDataItemModel>>
 
@@ -109,17 +110,17 @@ interface CovidEu_API {
     /**The function below are for Covid and public health news*/
 
     @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
-    @GET("/api/news/get-coronavirus-news/0")
-    suspend fun getAllCovid19News(): Response<List<NewModel>>
+    @GET("/api/news/get-coronavirus-news/1")
+    suspend fun getAllCovid19News(@Query("page")page:String): Response<getAllCoronaVirusNews>
 
 
     @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
     @GET("/api/news/get-health-news/1")
-    suspend fun getAllHealthNews(): Response<List<AllHeathNewsModel>>
+    suspend fun getAllHealthNews(@Query("page")page:String): Response<List<AllHeathNewsModel>>
 
     @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
     @GET("/api/news/get-health-news/1")
-    suspend fun getAllVaccineNews(): Response<List<allVaccineNews>>
+    suspend fun getAllVaccineNews(@Query("page")page:String): Response<List<allVaccineNews>>
 
 
 

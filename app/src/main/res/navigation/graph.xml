@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph"
+    app:startDestination="@id/showN_USA_DataFragment">
 
+    <fragment
+        android:id="@+id/countriesFragment"
+        android:name="com.example.covideu.view.Selection.countries.CountriesFragment"
+        android:label="fragment_countries"
+        tools:layout="@layout/fragment_countries" />
+    <fragment
+        android:id="@+id/showCountriesDataFagment"
+        android:name="com.example.covideu.view.Selection.countries.ShowCountriesDataFagment"
+        android:label="fragment_show_countries_data_fagment"
+        tools:layout="@layout/fragment_show_africa_data_fagment" />
+    <fragment
+        android:id="@+id/showCovidNewsFragment"
+        android:name="com.example.covideu.view.Selection.news.showCovidNewsFragment"
+        android:label="fragment_show_covid_news"
+        tools:layout="@layout/fragment_show_covid_news" />
+    <fragment
+        android:id="@+id/showAsiaDataFragment"
+        android:name="com.example.covideu.view.Selection.countries.ShowAsiaDataFragment"
+        android:label="fragment_show_asia_data"
+        tools:layout="@layout/fragment_show_asia_data" />
+    <fragment
+        android:id="@+id/showAU_DataFragmentFragment"
+        android:name="com.example.covideu.view.Selection.countries.ShowAU_DataFragmentFragment"
+        android:label="fragment_show_a_u__data_fragment"
+        tools:layout="@layout/fragment_show_a_u__data_fragment" />
+    <fragment
+        android:id="@+id/showEuropDataFragment"
+        android:name="com.example.covideu.view.Selection.countries.ShowEuropDataFragment"
+        android:label="fragment_show_europ_data"
+        tools:layout="@layout/fragment_show_europ_data" />
+    <fragment
+        android:id="@+id/showN_USA_DataFragment"
+        android:name="com.example.covideu.view.Selection.countries.ShowN_USA_DataFragment"
+        android:label="fragment_show_n__u_s_a__data"
+        tools:layout="@layout/fragment_show_n__u_s_a__data" />
+    <fragment
+        android:id="@+id/showS_USA_DataFragment"
+        android:name="com.example.covideu.view.Selection.countries.ShowS_USA_DataFragment"
+        android:label="fragment_show_s__u_s_a__data"
+        tools:layout="@layout/fragment_show_s__u_s_a__data" />
+    <fragment
+        android:id="@+id/showCountriesWithCovidStatisticalFragment"
+        android:name="com.example.covideu.view.Selection.countries.showCountriesWithCovidStatisticalFragment"
+        android:label="fragment_show_countries_with_covid_statistical"
+        tools:layout="@layout/fragment_show_countries_with_covid_statistical" />
 </navigation>
