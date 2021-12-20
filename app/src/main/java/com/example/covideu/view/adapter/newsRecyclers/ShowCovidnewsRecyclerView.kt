@@ -20,7 +20,7 @@ class showCovidnewsRecyclerView(private val list: MutableList<newsModel>) :
 
         return showCovidNewsViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_news_layout,
+                R.layout.item__covid_news_layout,
                 parent,
                 false
             )

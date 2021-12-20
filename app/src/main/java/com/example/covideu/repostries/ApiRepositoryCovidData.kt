@@ -42,6 +42,8 @@ class ApiRepositoryCovidData {
 
     suspend fun getAllApprovedFDATreatmentData() = retrofitApi.getAllApprovedFDATreatmentData()
 
+    suspend fun getAll_FDA_VaccinesApproved() = retrofitApi.getAllApprovedFDAVaccinesData()
+
     suspend fun getPhaseOne() = retrofitApi.getPhaseOne()
 
     suspend fun getPhaseTwo() = retrofitApi.getPhaseTwo()

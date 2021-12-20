@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class getAllCovid19CountriesStatisticalDataItemModel(
     @SerializedName("ActiveCases")
-    val activeCases: Int,
+    val activeCases: Double,
     @SerializedName("Case_Fatality_Rate")
     val caseFatalityRate: Double,
     @SerializedName("Continent")
@@ -17,7 +17,7 @@ data class getAllCovid19CountriesStatisticalDataItemModel(
     @SerializedName("id")
     val id: String,
     @SerializedName("Infection_Risk")
-    val infectionRisk: Int,
+    val infectionRisk: Double,
     @SerializedName("NewCases")
     val newCases: Int,
     @SerializedName("NewDeaths")
@@ -39,7 +39,7 @@ data class getAllCovid19CountriesStatisticalDataItemModel(
     @SerializedName("Serious_Critical")
     val seriousCritical: Int,
     @SerializedName("Test_Percentage")
-    val testPercentage: Int,
+    val testPercentage: Double,
     @SerializedName("Tests_1M_Pop")
     val tests1MPop: Int,
     @SerializedName("ThreeLetterSymbol")

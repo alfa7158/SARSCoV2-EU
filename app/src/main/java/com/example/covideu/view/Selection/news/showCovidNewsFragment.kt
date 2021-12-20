@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.covideu.databinding.FragmentShowCovidNewsBinding
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.view.ViewModels.newsViewModels.CovidNewsViewModel
+import com.example.covideu.view.ViewModels.newsViewModels.covidNewsViewMode
 import com.example.covideu.view.adapter.newsRecyclers.showCovidnewsRecyclerView
 
 private const val TAG = "showCovidNewsFragment"
@@ -18,7 +19,7 @@ class showCovidNewsFragment : Fragment() {
     private lateinit var binding: FragmentShowCovidNewsBinding
     private lateinit var showCovidNewsAdapter: showCovidnewsRecyclerView
     private val covidNewsList = mutableListOf<newsModel>()
-    private val covidNewsViewModel: CovidNewsViewModel by activityViewModels()
+    private val covidNewsViewModel: covidNewsViewMode by activityViewModels()
 
 
     override fun onCreateView(

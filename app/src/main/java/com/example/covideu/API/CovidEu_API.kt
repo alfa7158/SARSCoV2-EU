@@ -8,7 +8,9 @@ import com.example.covideu.model.VaccineAndTreatments.Vaccines.*
 import com.example.covideu.model.covidNews.allCovidNews.getAllCoronaVirusNews
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
+import com.example.covideu.model.covidNews.allHealthNews.getAllHealthNewsModel
 import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
+import com.example.covideu.model.covidNews.allVaccineNews.getAllVaccineNewsModel
 import com.example.covideu.model.get.all.covid.Countries.Statistical.getAllCovid19CountriesStatisticalDataItemModel
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
@@ -116,11 +118,11 @@ interface CovidEu_API {
 
     @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
     @GET("/api/news/get-health-news/1")
-    suspend fun getAllHealthNews(@Query("page")page:String): Response<List<AllHeathNewsModel>>
+    suspend fun getAllHealthNews(@Query("page")page:String): Response<getAllHealthNewsModel>
 
     @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
     @GET("/api/news/get-health-news/1")
-    suspend fun getAllVaccineNews(@Query("page")page:String): Response<List<allVaccineNews>>
+    suspend fun getAllVaccineNews(@Query("page")page:String): Response<getAllVaccineNewsModel>
 
 
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graph"
-    app:startDestination="@id/showN_USA_DataFragment">
+    app:startDestination="@id/showAllVaccineFragment2">
 
     <fragment
         android:id="@+id/countriesFragment"
@@ -50,4 +50,57 @@
         android:name="com.example.covideu.view.Selection.countries.showCountriesWithCovidStatisticalFragment"
         android:label="fragment_show_countries_with_covid_statistical"
         tools:layout="@layout/fragment_show_countries_with_covid_statistical" />
+    <fragment
+        android:id="@+id/showPhaseOneFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showPhaseOneFragment"
+        android:label="fragment_show_phase_one"
+        tools:layout="@layout/fragment_show_phase_one" />
+    <fragment
+        android:id="@+id/showPhaseTwoFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showPhaseTwoFragment"
+        android:label="fragment_show_phase_two"
+        tools:layout="@layout/fragment_show_phase_two" />
+    <fragment
+        android:id="@+id/showPhaseThreeFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showPhaseThreeFragment"
+        android:label="fragment_show_phase_three"
+        tools:layout="@layout/fragment_show_phase_three" />
+    <fragment
+        android:id="@+id/phaseFourFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.PhaseFourFragment"
+        android:label="fragment_phase_four"
+        tools:layout="@layout/fragment_phase_four" />
+    <fragment
+        android:id="@+id/showFDA_approved_vaccineFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showFDA_approved_vaccineFragment"
+        android:label="fragment_show_f_d_a_approved_vaccine"
+        tools:layout="@layout/fragment_show_f_d_a_approved_vaccine" />
+    <fragment
+        android:id="@+id/showAllVaccineFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showAllVaccineFragment"
+        android:label="showAllVaccineFragment" />
+    <fragment
+        android:id="@+id/allHealthFragment"
+        android:name="com.example.covideu.view.Selection.news.AllHealthFragment"
+        android:label="AllHealthFragment" />
+    <fragment
+        android:id="@+id/allTreatmentFragment"
+        android:name="com.example.covideu.view.Selection.treatment.allTreatmentFragment"
+        android:label="fragment_all_health_news"
+        tools:layout="@layout/fragment_all_health_news" />
+    <fragment
+        android:id="@+id/clinicalTreatmentFragment"
+        android:name="com.example.covideu.view.Selection.treatment.ClinicalTreatmentFragment"
+        android:label="fragment_clinical_treatment"
+        tools:layout="@layout/fragment_clinical_treatment" />
+    <fragment
+        android:id="@+id/FDA_approved_treatmentFragment"
+        android:name="com.example.covideu.view.Selection.treatment.FDA_approved_treatmentFragment"
+        android:label="fragment_f_d_a_approved_treatment"
+        tools:layout="@layout/fragment_f_d_a_approved_treatment" />
+    <fragment
+        android:id="@+id/showAllVaccineFragment2"
+        android:name="com.example.covideu.view.Selection.news.showAllVaccineFragment"
+        android:label="fragment_show_all_vaccine_news"
+        tools:layout="@layout/fragment_show_all_vaccine_news" />
 </navigation>

@@ -157,7 +157,7 @@ class CovidT_V_ViewModel:ViewModel() {
         }
     }
 
-    fun callPhaseOneLiveData(){
+    fun callPhaseOne(){
 
         viewModelScope.launch(Dispatchers.IO){
             val response = apiRepo.getPhaseOne()
@@ -186,7 +186,7 @@ class CovidT_V_ViewModel:ViewModel() {
             }
         }
     }
-    fun callPhaseTwoLiveData(){
+    fun callPhaseTwo(){
 
         viewModelScope.launch(Dispatchers.IO){
             val response = apiRepo.getPhaseTwo()
@@ -215,7 +215,7 @@ class CovidT_V_ViewModel:ViewModel() {
         }
     }
 
-    fun callPhaseThreeLiveData(){
+    fun callPhaseThree(){
 
         viewModelScope.launch(Dispatchers.IO){
             val response = apiRepo.getPhaseThree()
@@ -244,7 +244,7 @@ class CovidT_V_ViewModel:ViewModel() {
         }
     }
 
-    fun callPhaseFourLiveData(){
+    fun callPhaseFour(){
 
         viewModelScope.launch(Dispatchers.IO){
             val response = apiRepo.getPhaseFour()
