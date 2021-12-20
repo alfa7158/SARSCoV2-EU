@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/drawable/shape.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/activity_splash.xml" value="0.12" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/all_coviid_satatstical_layout.xml" value="0.1" />
@@ -11,8 +12,11 @@
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_all_treatment.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_clinical_treatment.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_countries.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_countries_details.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_f_d_a_approved_treatment.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_phase_four.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_register.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_a_u__data_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_africa_data_fagment.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_all_vaccine.xml" value="0.1" />
@@ -30,6 +34,7 @@
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_phase_three.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_phase_two.xml" value="0.25" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_show_s__u_s_a__data.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_user_profile.xml" value="0.12" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_africa_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_all_clinical_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_all_covid_satatstical_layout.xml" value="0.1" />
