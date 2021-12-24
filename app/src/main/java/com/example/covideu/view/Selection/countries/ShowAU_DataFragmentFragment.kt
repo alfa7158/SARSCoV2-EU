@@ -37,7 +37,7 @@ class ShowAU_DataFragmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showAuAdapter = showAuDataRecyclerView(countriesDataListAu)
+        showAuAdapter = showAuDataRecyclerView(countriesDataListAu,covidDViewModel)
 
         binding.auRecyclerView.adapter =showAuAdapter
 

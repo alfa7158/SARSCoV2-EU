@@ -31,7 +31,7 @@ class ShowCountriesDataFagment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showAfricaDatAapter = showAfricaDataRecyclerView(countriesDataListAfrica)
+        showAfricaDatAapter = showAfricaDataRecyclerView(countriesDataListAfrica,covidDViewModel)
 
         binding.africaDataRecyclerView.adapter =showAfricaDatAapter
 

@@ -36,7 +36,7 @@ class ShowAsiaDataFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showAsiaAdapter = showAsiaDataRecyclerView(countriesDataListAsia)
+        showAsiaAdapter = showAsiaDataRecyclerView(countriesDataListAsia,covidDViewModel)
 
         binding.aisaRecyclerVIew.adapter =showAsiaAdapter
 

@@ -5,9 +5,11 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/tttColor"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/africanCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

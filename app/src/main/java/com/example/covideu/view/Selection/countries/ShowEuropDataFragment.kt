@@ -39,7 +39,7 @@ class ShowEuropDataFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showEuropAdapter = showEuropDataRecyclerView(countriesDataListEurop)
+        showEuropAdapter = showEuropDataRecyclerView(countriesDataListEurop,covidDViewModel)
 
         binding.europRecyclerView.adapter =showEuropAdapter
 

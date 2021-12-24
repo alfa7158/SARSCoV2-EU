@@ -31,7 +31,7 @@ class ShowN_USA_DataFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showN_UsaDatAapter = show_n_usa_dataReyclerView(countriesDataListN_usa)
+        showN_UsaDatAapter = show_n_usa_dataReyclerView(countriesDataListN_usa,covidDViewModel)
 
         binding.NUsaRecyclerView.adapter =showN_UsaDatAapter
 
