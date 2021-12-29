@@ -55,11 +55,11 @@ class ApiRepositoryCovidData {
 
     /**below are the functions for the covid and public health news*/
 
-    suspend fun getAllCovid19News(pageC:String) = retrofitApi.getAllCovid19News(pageC )
+    suspend fun getAllCovid19News(pageC: Int) = retrofitApi.getAllCovid19News(pageC)
 
-    suspend fun getAllHealthNews(pageH:String) = retrofitApi.getAllHealthNews(pageH)
+    suspend fun getAllHealthNews(pageH:Int) = retrofitApi.getAllHealthNews(pageH)
 
-    suspend fun getAllVaccineNews(pageV:String) = retrofitApi.getAllVaccineNews(pageV)
+    suspend fun getAllVaccineNews(pageV:Int) = retrofitApi.getAllVaccineNews(pageV)
 
 
     companion object{

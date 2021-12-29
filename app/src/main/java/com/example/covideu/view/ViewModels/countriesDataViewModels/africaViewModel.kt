@@ -12,7 +12,9 @@ import java.lang.Exception
 private const val TAG = "africaViewModel"
 class africaViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
-    val covid19AfricaLiveData = MutableLiveData<List<getAllAfricanCountriesModel>>()
+    var covid19AfricaLiveData = MutableLiveData<List<getAllAfricanCountriesModel>>()
+    val covid19AfricaLiveDataDetails = MutableLiveData<getAllAfricanCountriesModel>()
+
     val CovidLiveDataError = MutableLiveData<String?>()
 
     fun callCovidDataForAfrica(){
@@ -27,6 +29,7 @@ class africaViewModel:ViewModel() {
 
                         covid19AfricaLiveData.postValue(this)
 
+                        Log.d("HELLOWORLD",covid19AfricaLiveData.postValue(this).toString())
                     }
 
 

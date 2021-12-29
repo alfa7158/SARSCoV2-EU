@@ -43,7 +43,7 @@ class show_s_usa_DataRecyclerView(private val list: List<getAllSouthernAmericanC
         holder.cardView .setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showS_USA_DataFragment_to_fragment_s_usa_details2)
-            viewModel.covid19SouthAmericaLiveData.postValue(listOf(item))
+            viewModel.covid19SouthAmericaLiveDataDetails.postValue(item)
 
         }
     }

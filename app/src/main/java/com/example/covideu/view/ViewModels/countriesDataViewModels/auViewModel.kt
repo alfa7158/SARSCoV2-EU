@@ -22,6 +22,7 @@ class auViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
 
     val covid19AustralianAndOceaniaLiveData = MutableLiveData<List<getAllAustralianAndOceanianCountriesModel>>()
+    val covid19AustralianAndOceaniaLiveDataDetails = MutableLiveData<getAllAustralianAndOceanianCountriesModel>()
 
     val CovidLiveDataError = MutableLiveData<String?>()
     fun callCovidDataForAustralianAndOcean(){

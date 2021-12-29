@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
 import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
 import kotlinx.coroutines.Dispatchers
@@ -17,15 +16,17 @@ class allHealthNewsViewModel:ViewModel() {
 
     private val apiRepo = ApiRepositoryCovidData.get()
     val covidAllHeathLiveData = MutableLiveData<List<AllHeathNewsModel>>()
+    val covidAllHeathLiveDataDetails = MutableLiveData<AllHeathNewsModel>()
 
     val CovidLiveDataError = MutableLiveData<String?>()
 
 
 
-    fun callAllHealthNews(page: String){
+    fun callAllHealthNews(page: Int){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getAllHealthNews(page)
+            val response = page.let { apiRepo.getAllHealthNews(it) }
+
             try {
                 if(response.isSuccessful){
 

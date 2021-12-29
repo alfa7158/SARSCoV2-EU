@@ -41,7 +41,7 @@ class showEuropDataRecyclerView(private val list: List<getAllEuropeanCountriesMo
         holder.cardView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showEuropDataFragment_to_fragment_europe_details)
-            viewModel.covid19EuropeLiveData.postValue(listOf(item))
+            viewModel.covid19EuropeLiveDataDetails.postValue(item)
 
         }
 

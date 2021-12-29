@@ -18,7 +18,7 @@ class ShowCountriesDataFagment : Fragment() {
     private val covidDViewModel:africaViewModel  by activityViewModels()
     private lateinit var binding:FragmentShowAfricaDataFagmentBinding
     private lateinit var showAfricaDatAapter: showAfricaDataRecyclerView
-    private val countriesDataListAfrica = mutableListOf<getAllAfricanCountriesModel>()
+    private val countriesDataListAfricaList = mutableListOf<getAllAfricanCountriesModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +31,7 @@ class ShowCountriesDataFagment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showAfricaDatAapter = showAfricaDataRecyclerView(countriesDataListAfrica,covidDViewModel)
+        showAfricaDatAapter = showAfricaDataRecyclerView(countriesDataListAfricaList,covidDViewModel)
 
         binding.africaDataRecyclerView.adapter =showAfricaDatAapter
 
@@ -50,10 +50,19 @@ class ShowCountriesDataFagment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observeAfricanData(){
         covidDViewModel.covid19AfricaLiveData.observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            countriesDataListAfrica.addAll(it)
 
-            showAfricaDatAapter.notifyDataSetChanged()
+            it?.let {
+                countriesDataListAfricaList.clear()
+                countriesDataListAfricaList.addAll(it)
+
+                showAfricaDatAapter.notifyDataSetChanged()
+
+                covidDViewModel.covid19AfricaLiveData .postValue(null)
+
+            }
+
+
+
 
 
         })

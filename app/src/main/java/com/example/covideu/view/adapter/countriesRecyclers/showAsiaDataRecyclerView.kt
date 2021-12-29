@@ -38,7 +38,7 @@ class showAsiaDataRecyclerView(private val list: List<getAll_AsianCountriesModel
         holder.cardView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showAsiaDataFragment_to_asian_detailsFragment)
-            viewModel.covid19AsiaLiveData.postValue(listOf(item))
+            viewModel.covid19AsiaLiveDataDetails.postValue(item)
 
         }
     }

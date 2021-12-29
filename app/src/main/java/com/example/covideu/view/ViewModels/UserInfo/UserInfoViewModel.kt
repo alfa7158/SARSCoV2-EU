@@ -2,15 +2,12 @@ package com.example.covideu.view.ViewModels.UserInfo
 
 import android.net.Uri
 import android.os.Build
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.covideu.database.UserData
 import com.example.covideu.repostries.userInfoRepository_Firebase
 import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
-import java.text.SimpleDateFormat
 import java.util.*
 
 class UserInfoViewModel: ViewModel() {
@@ -86,12 +83,7 @@ class UserInfoViewModel: ViewModel() {
 
      fun uploadImage(imageUri:Uri) {
 
-//        val theFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
-//
-//        val now = Date()
-//        val fileName = theFormat.format(now)
 
-      //  val storageReference = FirebaseStorage.getInstance().getReference("image/$fileName")
 
         repository.uploadImage().putFile(imageUri).addOnSuccessListener {
             userLiveDataSuccessful.postValue("Successful uploaded")
@@ -100,6 +92,10 @@ class UserInfoViewModel: ViewModel() {
             userLiveDataError.postValue(it.message)
         }
     }
+
+
+
+
 
 
 

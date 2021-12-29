@@ -47,11 +47,22 @@ class ShowN_USA_DataFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observe_N_USA(){
-        covidDViewModel.covid19NorthAmericaLiveData.observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            countriesDataListN_usa.addAll(it)
 
-            showN_UsaDatAapter.notifyDataSetChanged()
+
+        covidDViewModel.covid19NorthAmericaLiveData.observe(viewLifecycleOwner,{
+            it?.let {
+                Log.d("here I am",it.toString())
+                countriesDataListN_usa.clear()
+
+                countriesDataListN_usa.addAll(it)
+
+                showN_UsaDatAapter.notifyDataSetChanged()
+
+                covidDViewModel.covid19NorthAmericaLiveData.postValue(null)
+
+            }
+
+
 
 
         })

@@ -1,92 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/appBackGroundColor"
-        tools:context=".view.profile.UpdateProfileFragment">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackGroundColor"
+    tools:context=".view.profile.UpdateProfileFragment">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
 
         <TextView
-            android:id="@+id/tvFirstName"
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/abel"
+            android:gravity="center"
+            android:text="@string/Update_profile"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/UpdateProfileImageView"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center|center_horizontal"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_baseline_supervised_user_circle_24" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:text="First Name"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/abel"
+            android:text="@string/FirstName"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/firstNameUpdate"
+            android:id="@+id/firstNameUpdate_"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
+            android:layout_gravity="center"
+            android:layout_margin="6dp"
+            android:background="@drawable/shape"
+            android:backgroundTint="@color/cardBackGroundColor"
+            android:ems="10"
+            android:foregroundGravity="center_vertical"
+            android:hint="@string/FirstName"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvLastName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="99dp" />
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/abel"
+            android:text="@string/lastName"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/lastNameUpdate"
+            android:id="@+id/lastNameEditTextUpdate_"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
+            android:layout_gravity="center"
+            android:layout_margin="6dp"
+            android:background="@drawable/shape"
+            android:backgroundTint="@color/cardBackGroundColor"
+            android:ems="10"
+            android:foregroundGravity="center_vertical"
+            android:hint="@string/lastName"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/tvBio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameUpdate" />
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/abel"
+            android:text="@string/lastName"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/BioUpdate"
+            android:id="@+id/ageEditTextUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvBio" />
+            android:layout_gravity="center"
+            android:layout_margin="6dp"
+            android:background="@drawable/shape"
+            android:backgroundTint="@color/cardBackGroundColor"
+            android:ems="10"
+            android:foregroundGravity="center_vertical"
+            android:hint="@string/your_age"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/genderUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/abel"
+            android:text="@string/Gender"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/genderRadioGroupUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/maleRadioButtonUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:foregroundGravity="left"
+                android:text="@string/Male" />
+
+            <RadioButton
+                android:id="@+id/femaleRadioButtonUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/Female" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/abel"
+            android:text="@string/Occupation"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/occupationEditTextUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="6dp"
+            android:background="@drawable/shape"
+            android:backgroundTint="@color/cardBackGroundColor"
+            android:ems="10"
+            android:foregroundGravity="center_vertical"
+            android:hint="@string/Occupation"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textSize="16sp" />
 
         <Button
-            android:id="@+id/updateButton"
+            android:id="@+id/updateButton_"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="80dp"
-            android:layout_marginTop="16dp"
-            android:textSize="26sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BioUpdate" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:backgroundTint="@color/input2tColor"
+            android:text="@string/Save"
+            android:textSize="24sp"
+            app:cornerRadius="25dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abel"
+            android:gravity="center_horizontal"
+            android:text="@string/Register"
+            android:textColor="#000000"
+            android:textSize="40sp" />
+
+    </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

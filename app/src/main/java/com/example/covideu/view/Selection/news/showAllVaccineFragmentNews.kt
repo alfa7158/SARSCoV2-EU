@@ -8,9 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowAllVaccineNewsBinding
-import com.example.covideu.databinding.FragmentShowCovidNewsBinding
 import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
 import com.example.covideu.view.ViewModels.newsViewModels.allVaccineNewsViewModel
 import com.example.covideu.view.adapter.newsRecyclers.allVaccineNewsRecyclerView
@@ -18,11 +16,11 @@ import com.example.covideu.view.adapter.newsRecyclers.allVaccineNewsRecyclerView
 
 class showAllVaccineFragment : Fragment() {
     private lateinit var binding: FragmentShowAllVaccineNewsBinding
-    private lateinit var showCovidNewsAdapter: allVaccineNewsRecyclerView
-    private val VaccineNewsList = mutableListOf<allVaccineNews>()
+    private lateinit var showVaccineNewsAdapter: allVaccineNewsRecyclerView
+    private var vaccineNewsList = listOf<allVaccineNews>()
     private val covidNewsViewModel: allVaccineNewsViewModel by activityViewModels()
 
-
+    var thePager =0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,12 +33,13 @@ class showAllVaccineFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showCovidNewsAdapter = allVaccineNewsRecyclerView(VaccineNewsList)
-        binding.allViccineNewsRecyclerView .adapter =showCovidNewsAdapter
+        showVaccineNewsAdapter = allVaccineNewsRecyclerView(covidNewsViewModel,requireContext())
+        binding.allViccineNewsRecyclerView .adapter =showVaccineNewsAdapter
+        binding.progressBarVaccinenNews.animate().alpha(0f).setDuration(1000)
 
-
+        covidNewsViewModel.callAllVaccineNews(thePager)
         observeCovidNews()
-        covidNewsViewModel.callAllVaccineNews("1")
+        binding.progressBarVaccinenNews.animate().alpha(1f)
 
 
 
@@ -54,9 +53,9 @@ class showAllVaccineFragment : Fragment() {
         covidNewsViewModel.covid19VaccineLiveData.observe(viewLifecycleOwner,{
 
             Log.d("covidNews",it.toString())
-            VaccineNewsList.addAll(it)
-
-            showCovidNewsAdapter.notifyDataSetChanged()
+            showVaccineNewsAdapter.submitList(it)
+            vaccineNewsList = it
+            showVaccineNewsAdapter.notifyDataSetChanged()
         })
     }
 

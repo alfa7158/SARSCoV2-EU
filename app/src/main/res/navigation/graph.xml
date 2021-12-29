@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graph"
-    app:startDestination="@id/countriesFragment2">
+    app:startDestination="@id/updateProfileFragment2">
 
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.covideu.view.identity.RegisterFragment"
         android:label="RegisterFragment" >
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment2"
-            app:destination="@id/loginFragment2" />
+            android:id="@+id/action_registerFragment_to_userInformationFragment"
+            app:destination="@id/userInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment2"
@@ -21,26 +21,42 @@
         <action
             android:id="@+id/action_loginFragment2_to_mainSelectFragment"
             app:destination="@id/mainSelectFragment" />
+        <action
+            android:id="@+id/action_loginFragment2_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainSelectFragment"
         android:name="com.example.covideu.view.Selection.mainSelect.mainSelectFragment"
         android:label="fragment_main_select"
-        tools:layout="@layout/fragment_main_select" />
+        tools:layout="@layout/fragment_main_select" >
+        <action
+            android:id="@+id/action_mainSelectFragment_to_countriesFragment2"
+            app:destination="@id/countriesFragment2" />
+        <action
+            android:id="@+id/action_mainSelectFragment_to_newsMainSelectFragment"
+            app:destination="@id/newsMainSelectFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userInformationFragment"
         android:name="com.example.covideu.view.profile.UserInformationFragment"
-        android:label="UserInformationFragment" />
-    <fragment
-        android:id="@+id/updateProfileFragment"
-        android:name="com.example.covideu.view.profile.UpdateProfileFragment"
-        android:label="fragment_update_profile"
-        tools:layout="@layout/fragment_update_profile" />
+        android:label="UserInformationFragment" >
+        <action
+            android:id="@+id/action_userInformationFragment_to_mainSelectFragment"
+            app:destination="@id/mainSelectFragment" />
+        <action
+            android:id="@+id/action_userInformationFragment_to_uploadImageFragment"
+            app:destination="@id/uploadImageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/uploadImageFragment"
         android:name="com.example.covideu.view.profile.uploadImageFragment"
         android:label="fragment_upload_image"
-        tools:layout="@layout/fragment_upload_image" />
+        tools:layout="@layout/fragment_upload_image" >
+        <action
+            android:id="@+id/action_uploadImageFragment_to_userInformationFragment2"
+            app:destination="@id/userInformationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/countries_detailsFragment"
         android:name="com.example.covideu.view.Selection.countries.african_detailsFragment"
@@ -144,4 +160,67 @@
         android:id="@+id/fragment_s_usa_details2"
         android:name="com.example.covideu.view.Selection.countries.fragment_s_usa_details"
         android:label="fragment_s_usa_details" />
+    <fragment
+        android:id="@+id/showCovidNewsFragment2"
+        android:name="com.example.covideu.view.Selection.news.showCovidNewsFragment"
+        android:label="fragment_show_covid_news"
+        tools:layout="@layout/fragment_show_covid_news" >
+        <action
+            android:id="@+id/action_showCovidNewsFragment2_to_covidNewsDetailsFragment"
+            app:destination="@id/covidNewsDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsMainSelectFragment"
+        android:name="com.example.covideu.view.Selection.mainSelect.news.newsMainSelectFragment"
+        android:label="fragment_news_main_select"
+        tools:layout="@layout/fragment_news_main_select" >
+
+
+        <action
+            android:id="@+id/action_newsMainSelectFragment_to_showCovidNewsFragment2"
+            app:destination="@id/showCovidNewsFragment2" />
+        <action
+            android:id="@+id/action_newsMainSelectFragment_to_allHealthFragment"
+            app:destination="@id/allHealthFragment" />
+        <action
+            android:id="@+id/action_newsMainSelectFragment_to_showAllVaccineFragment"
+            app:destination="@id/showAllVaccineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/covidNewsDetailsFragment"
+        android:name="com.example.covideu.view.Selection.news.covidNewsDetailsFragment"
+        android:label="fragment_covid_news_details"
+        tools:layout="@layout/fragment_covid_news_details" />
+    <fragment
+        android:id="@+id/healthNewsDetailsFragment"
+        android:name="com.example.covideu.view.Selection.news.healthNewsDetailsFragment"
+        android:label="fragment_health_news_details"
+        tools:layout="@layout/fragment_health_news_details" />
+    <fragment
+        android:id="@+id/allHealthFragment"
+        android:name="com.example.covideu.view.Selection.news.AllHealthFragment"
+        android:label="AllHealthFragment" >
+        <action
+            android:id="@+id/action_allHealthFragment_to_healthNewsDetailsFragment"
+            app:destination="@id/healthNewsDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vaccineNewsFragmentDetails"
+        android:name="com.example.covideu.view.Selection.news.vaccineNewsFragmentDetails"
+        android:label="fragment_vaccine_news"
+        tools:layout="@layout/fragment_vaccine_news" />
+    <fragment
+        android:id="@+id/showAllVaccineFragment"
+        android:name="com.example.covideu.view.Selection.news.showAllVaccineFragment"
+        android:label="fragment_show_all_vaccine_news"
+        tools:layout="@layout/fragment_show_all_vaccine_news" >
+        <action
+            android:id="@+id/action_showAllVaccineFragment_to_vaccineNewsFragmentDetails"
+            app:destination="@id/vaccineNewsFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateProfileFragment2"
+        android:name="com.example.covideu.view.profile.UpdateProfileFragment"
+        android:label="fragment_update_profile"
+        tools:layout="@layout/fragment_update_profile" />
 </navigation>

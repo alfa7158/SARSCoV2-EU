@@ -43,7 +43,7 @@ class show_n_usa_dataReyclerView(private val list: List<getAllNorthernAmericanCo
         holder.cardView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showN_USA_DataFragment_to_fragment_n_usa_details)
-            viewModel.covid19NorthAmericaLiveData.postValue(listOf(item))
+            viewModel.covid19NorthAmericaLiveDataDetails.postValue(item)
 
         }
 

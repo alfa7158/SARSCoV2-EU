@@ -40,7 +40,7 @@ class showAfricaDataRecyclerView(private val list: MutableList<getAllAfricanCoun
         holder.cardView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showCountriesDataFagment_to_countries_detailsFragment)
-            viewModel.covid19AfricaLiveData.postValue(listOf(item))
+            viewModel.covid19AfricaLiveDataDetails.postValue(item)
 
         }
 

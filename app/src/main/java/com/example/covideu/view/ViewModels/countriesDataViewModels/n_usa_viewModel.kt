@@ -22,6 +22,7 @@ class n_usa_viewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
 
     val covid19NorthAmericaLiveData = MutableLiveData<List<getAllNorthernAmericanCountriesModel>>()
+    val covid19NorthAmericaLiveDataDetails = MutableLiveData<getAllNorthernAmericanCountriesModel>()
 
 
     val CovidLiveDataError = MutableLiveData<String?>()

@@ -45,7 +45,7 @@ class RegisterFragment : Fragment() {
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener() {
                         if (it.isSuccessful) {
-                            //findNavController().navigate(R.id.action_registerFragment_to_searchPreferenceFragment)
+                            findNavController().navigate(R.id.action_registerFragment_to_userInformationFragment)
 
 
                         } else {

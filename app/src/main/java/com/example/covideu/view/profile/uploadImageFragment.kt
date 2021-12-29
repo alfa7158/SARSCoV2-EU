@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.liveData
 import com.example.covideu.R
@@ -43,17 +44,24 @@ class uploadImageFragment : Fragment() {
 
 
 
+
         binding.chooseAnImageButton.setOnClickListener{
 
             selectImage()
+
         }
 
         binding.uploadAnImageButton.setOnClickListener {
             imageUri?.let {
 
                 UploadUserImage_ViewMode.uploadImage(it)
+//                val bundle = Bundle()
+//
+//                bundle.putString("theImage", imageUri?.toString()?.toUri().toString())
+
 
             }
+
 
         }
 
@@ -70,6 +78,7 @@ class uploadImageFragment : Fragment() {
             imageUri = data?.data!!
             Log.d(TAG,"theImage${imageUri}")
             binding.uploadImageView.setImageURI(imageUri)
+
 
         }
     }

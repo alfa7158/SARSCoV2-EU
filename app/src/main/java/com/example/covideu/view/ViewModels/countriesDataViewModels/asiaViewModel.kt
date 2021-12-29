@@ -15,6 +15,7 @@ class asiaViewModel:ViewModel() {
 
     private val apiRepo = ApiRepositoryCovidData.get()
     val covid19AsiaLiveData = MutableLiveData<List<getAll_AsianCountriesModel>>()
+    val covid19AsiaLiveDataDetails = MutableLiveData<getAll_AsianCountriesModel>()
     val CovidLiveDataError = MutableLiveData<String?>()
 
     fun callCovidDataForAsia(){

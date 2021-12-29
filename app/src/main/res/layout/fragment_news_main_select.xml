@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackGroundColor"
+    android:paddingBottom="15dp"
+    tools:context=".view.Selection.mainSelect.news.newsMainSelectFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/covidNewsMainSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/covidnewsicone" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="169dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:text="@string/covidNews"
+                android:textSize="24dp" />
+
+            <ImageView
+                android:id="@+id/vaccineNewsMainSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/newsvaccine" />
+
+            <TextView
+                android:id="@+id/auPopulationInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:text="@string/vaccineNews"
+                android:textSize="24dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:foregroundGravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/healthNewsMainSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/heathnewsdoc" />
+
+            <TextView
+                android:id="@+id/auCountryInfo"
+                android:layout_width="226dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:text="@string/healthNews"
+                android:textSize="24dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

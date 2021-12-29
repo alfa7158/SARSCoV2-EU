@@ -38,16 +38,19 @@ class fragment_n_usa_details : Fragment() {
 
 
 
-        covidDViewModel.covid19NorthAmericaLiveData.observe(viewLifecycleOwner,{
+        covidDViewModel.covid19NorthAmericaLiveDataDetails.observe(viewLifecycleOwner,{
+        it?.let {
+            infoRank.text = "Rank: ${it.rank}"
+            infCountry.text = "country name: ${it.country}"
+            infoDeath.text = "Total death: ${it.totalDeaths}"
+            infoTotalCases.text = "Total cases: ${it.totalCases}"
+            populationInfo.text = "Population: ${it.population}"
+            continentInfo.text = "continent: ${it.continent}"
+            totalTest.text = "Tests Total: ${it.totalTests}"
+            activeCasesInfo.text = "Active cases: ${it.activeCases}"
 
-            infoRank.text = "Rank: ${it[0].rank}"
-            infCountry.text = "country name: ${it[0].country}"
-            infoDeath.text = "Total death: ${it[0].totalDeaths}"
-            infoTotalCases.text = "Total cases: ${it[0].totalCases}"
-            populationInfo.text = "Population: ${it[0].population}"
-            continentInfo.text = "continent: ${it[0].continent}"
-            totalTest.text = "Tests Total: ${it[0].totalTests}"
-            activeCasesInfo.text = "Active cases: ${it[0].activeCases}"
+        }
+
 
 
 

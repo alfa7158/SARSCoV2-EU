@@ -54,11 +54,14 @@ class ShowAU_DataFragmentFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observeAuData(){
         covidDViewModel.covid19AustralianAndOceaniaLiveData.observe(viewLifecycleOwner,{
+        it?.let {
             Log.d("here I am",it.toString())
+            countriesDataListAu.clear()
             countriesDataListAu.addAll(it)
 
             showAuAdapter.notifyDataSetChanged()
-
+            covidDViewModel.covid19AustralianAndOceaniaLiveData.postValue(null)
+        }
 
         })
     }

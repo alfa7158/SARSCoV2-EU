@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import com.example.covideu.R
+import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.africaViewModel
 
 
@@ -37,17 +39,20 @@ class african_detailsFragment : Fragment() {
         val totalTest:TextView = view.findViewById(R.id.africaTest_Total_Info)
         val activeCasesInfo:TextView = view.findViewById(R.id.africaActiveCasesInfo)
 
-        covidDViewModel.covid19AfricaLiveData.observe(viewLifecycleOwner,{
+        covidDViewModel.covid19AfricaLiveDataDetails.observe(viewLifecycleOwner,{
 
-            infoRank.text = "Rank: ${it[0].rank}"
-            infCountry.text = "country name: ${it[0].country}"
-            infoDeath.text = "Total death: ${it[0].totalDeaths}"
-            totalCases.text = "Total cases: ${it[0].totalCases}"
-            populationInfo.text = "Population: ${it[0].population}"
-            continentInfo.text = "continent: ${it[0].continent}"
-            totalTest.text = "Tests Total: ${it[0].totalTests}"
-            activeCasesInfo.text = "Active cases: ${it[0].activeCases}"
+            it?.let {
+                infoRank.text = "Rank: ${it.rank}"
+                infCountry.text = "country name: ${it.country}"
+                infoDeath.text = "Total death: ${it.totalDeaths}"
+                totalCases.text = "Total cases: ${it.totalCases}"
+                populationInfo.text = "Population: ${it.population}"
+                continentInfo.text = "continent: ${it.continent}"
+                totalTest.text = "Tests Total: ${it.totalTests}"
+                activeCasesInfo.text = "Active cases: ${it.activeCases}"
 
+
+            }
 
 
 

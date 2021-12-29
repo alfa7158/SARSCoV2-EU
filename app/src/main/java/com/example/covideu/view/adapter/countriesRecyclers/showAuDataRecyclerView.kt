@@ -40,7 +40,7 @@ class showAuDataRecyclerView(private val list: List<getAllAustralianAndOceanianC
         holder.cardView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showAU_DataFragmentFragment_to_fragment_au_details)
-            viewModel.covid19AustralianAndOceaniaLiveData.postValue(listOf(item))
+            viewModel.covid19AustralianAndOceaniaLiveDataDetails.postValue(item)
 
         }
     }

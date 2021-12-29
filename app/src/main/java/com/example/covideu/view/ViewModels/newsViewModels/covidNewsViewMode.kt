@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
-import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
 import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,33 +17,36 @@ class covidNewsViewMode:ViewModel() {
 
     private val apiRepo = ApiRepositoryCovidData.get()
     val covidAllNewsLiveData = MutableLiveData<List<newsModel>>()
+    val covidAllNewsLiveDataDetails = MutableLiveData<newsModel>()
+
 
 
     val CovidLiveDataError = MutableLiveData<String?>()
 
 
 
-    fun callAllCovidNews(page:String){
+    fun callAllCovidNews(page: Int?){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = apiRepo.getAllCovid19News(page)
+            val response = page?.let { apiRepo.getAllCovid19News(it) }
             try {
-                if(response.isSuccessful){
+                if (response != null) {
+                    if(response.isSuccessful){
 
-                    response.body()?.run{
-                        Log.d(TAG,this.toString())
-                        Log.d(TAG,"${this.news}")
-                        covidAllNewsLiveData.postValue(this.news)
+                        response.body()?.run{
+                            Log.d(TAG,this.toString())
+                            Log.d(TAG,"${this.news}")
+                            covidAllNewsLiveData.postValue(this.news)
 
+
+                        }
+
+
+                    }else{
+                        CovidLiveDataError.postValue(response.message())
 
 
                     }
-
-
-                }else{
-                    CovidLiveDataError.postValue(response.message())
-
-
                 }
 
             }catch (e: Exception){

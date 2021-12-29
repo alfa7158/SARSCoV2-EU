@@ -23,6 +23,7 @@ class europViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
 
     val covid19EuropeLiveData = MutableLiveData<List<getAllEuropeanCountriesModel>>()
+    val covid19EuropeLiveDataDetails = MutableLiveData<getAllEuropeanCountriesModel>()
 
 
     val CovidLiveDataError = MutableLiveData<String?>()

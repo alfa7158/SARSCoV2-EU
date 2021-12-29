@@ -56,10 +56,19 @@ class ShowEuropDataFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observeEurop(){
         covidDViewModel.covid19EuropeLiveData.observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            countriesDataListEurop.addAll(it)
 
-            showEuropAdapter.notifyDataSetChanged()
+            it?.let {
+                Log.d("here I am",it.toString())
+                countriesDataListEurop.clear()
+
+                countriesDataListEurop.addAll(it)
+
+                showEuropAdapter.notifyDataSetChanged()
+
+                covidDViewModel.covid19EuropeLiveData.postValue(null)
+
+            }
+
 
 
         })

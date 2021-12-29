@@ -14,9 +14,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/abel"
+        android:gravity="center"
         android:text="@string/Login"
         android:textColor="#000000"
-        android:textSize="64sp"
+        android:textSize="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,9 +48,10 @@
         android:background="@drawable/shape"
         android:backgroundTint="@color/cardBackGroundColor"
         android:ems="10"
+        android:gravity="center|start|left"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:textSize="45dp"
+        android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,16 +77,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="9dp"
         android:background="@drawable/shape"
         android:backgroundTint="@color/cardBackGroundColor"
         android:ems="10"
         android:hint="@string/Password"
         android:inputType="textPassword"
-        android:textSize="45dp"
+        android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
@@ -93,7 +95,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="25dp"
         android:backgroundTint="@color/input2tColor"
         android:text="@string/Login"
@@ -109,7 +111,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="137dp"
         android:backgroundTint="@color/input2tColor"
@@ -120,7 +122,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,10 +53,18 @@ class ShowAsiaDataFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observeAsianData(){
         covidDViewModel.covid19AsiaLiveData.observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            countriesDataListAsia.addAll(it)
 
-            showAsiaAdapter.notifyDataSetChanged()
+            it?.let {
+                Log.d("here I am",it.toString())
+                countriesDataListAsia.clear()
+                countriesDataListAsia.addAll(it)
+
+                showAsiaAdapter.notifyDataSetChanged()
+
+                covidDViewModel.covid19AsiaLiveData .postValue(null)
+            }
+
+
 
 
         })
