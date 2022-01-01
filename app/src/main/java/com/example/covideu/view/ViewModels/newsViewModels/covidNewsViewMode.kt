@@ -18,37 +18,40 @@ class covidNewsViewMode:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
     val covidAllNewsLiveData = MutableLiveData<List<newsModel>>()
     val covidAllNewsLiveDataDetails = MutableLiveData<newsModel>()
-
-
+    var page:Int = 0
+    var pages:Int = 1000
 
     val CovidLiveDataError = MutableLiveData<String?>()
 
 
 
-    fun callAllCovidNews(page: Int?){
+    fun callAllCovidNews(){
 
         viewModelScope.launch(Dispatchers.IO){
-            val response = page?.let { apiRepo.getAllCovid19News(it) }
+            val response = apiRepo.getAllCovid19News(page)
             try {
-                if (response != null) {
-                    if(response.isSuccessful){
+                if(page<pages) {
+                    Log.d("here is the page",page.toString())
 
-                        response.body()?.run{
-                            Log.d(TAG,this.toString())
-                            Log.d(TAG,"${this.news}")
+                    if (response.isSuccessful) {
+
+                        response.body()?.run {
+                            Log.d(TAG, this.toString())
+                            Log.d(TAG, "${this.news}")
                             covidAllNewsLiveData.postValue(this.news)
 
 
+
                         }
+                        page++
 
 
-                    }else{
+                    } else {
                         CovidLiveDataError.postValue(response.message())
 
 
                     }
                 }
-
             }catch (e: Exception){
                 CovidLiveDataError.postValue(e.toString())
 

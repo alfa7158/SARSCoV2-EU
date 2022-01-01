@@ -79,7 +79,7 @@ class UserInformationFragment : Fragment() {
                 Toast.makeText(context, "Failed to add", Toast.LENGTH_SHORT).show()
             }
 
-
+            findNavController().navigate(R.id.action_userInformationFragment_to_mainSelectFragment)
         }
 
 

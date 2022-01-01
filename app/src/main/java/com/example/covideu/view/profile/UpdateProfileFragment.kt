@@ -10,7 +10,9 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.covideu.R
 import com.example.covideu.database.UserData
 import com.example.covideu.databinding.FragmentUpdateProfileBinding
@@ -43,9 +45,14 @@ class UpdateProfileFragment : Fragment() {
     @SuppressLint("CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.UpdateProfileImageView.setOnClickListener {
 
+            findNavController().navigate(R.id.action_updateProfileFragment2_to_uploadImageFragment)
+        }
         Glide.with(requireContext())
             .load("https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/${FirebaseAuth.getInstance().uid.toString()}?alt=media&token=59881b60-98db-4dd8-a446-b20837e9a576")
+            .diskCacheStrategy(DiskCacheStrategy.NONE )
+            .skipMemoryCache(true)
             .into(binding.UpdateProfileImageView)
 
 

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -34,6 +35,9 @@ class LoginFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+
         super.onViewCreated(view, savedInstanceState)
 
         val loginEmail: EditText = view.findViewById(R.id.loginEmailEditText)
@@ -41,7 +45,11 @@ class LoginFragment : Fragment() {
         val loginButton: Button = view.findViewById(R.id.loginButton)
         val loginRegisterButton: Button = view.findViewById(R.id.registerLoginButton)
 
-
+        val status = sharedPref.getBoolean("status", false)
+        if(status)
+        {
+            findNavController().navigate(R.id.action_loginFragment2_to_mainSelectFragment)
+        }
 
         loginRegisterButton.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment2_to_registerFragment)
@@ -90,4 +98,7 @@ class LoginFragment : Fragment() {
 
 
     }
+
+
+
 }

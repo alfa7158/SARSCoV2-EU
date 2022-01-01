@@ -37,7 +37,7 @@ class FDA_approved_treatmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fdaApproved_treatment_Adapter = getFDA_approvedTreatment_RecyclerView(fdaApproved_treatment_DataList)
+        fdaApproved_treatment_Adapter = getFDA_approvedTreatment_RecyclerView(fdaApproved_treatment_DataList,covidDViewModel)
 
         binding.approvedTreatmentfdaRecyclerView.adapter =fdaApproved_treatment_Adapter
 
@@ -50,10 +50,17 @@ class FDA_approved_treatmentFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observeAllTreatment(){
         covidDViewModel.covid19ApprovedTreatmentsLiveData .observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            fdaApproved_treatment_DataList.addAll(it)
+            it?.let {
+                Log.d("here I am",it.toString())
+                fdaApproved_treatment_DataList.clear()
 
-            fdaApproved_treatment_Adapter.notifyDataSetChanged()
+                fdaApproved_treatment_DataList.addAll(it)
+
+                fdaApproved_treatment_Adapter.notifyDataSetChanged()
+                covidDViewModel.covid19ApprovedTreatmentsLiveData.postValue(null)
+
+            }
+
 
 
         })

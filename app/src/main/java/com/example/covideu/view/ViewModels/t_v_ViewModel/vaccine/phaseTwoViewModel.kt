@@ -19,6 +19,7 @@ class phaseTwoViewModel:ViewModel() {
 
 
     val covid19PhaseTwoLiveData  = MutableLiveData<List<getPhase_two_vaccines>>()
+    val covid19PhaseTwoLiveDataDetails = MutableLiveData<getPhase_two_vaccines>()
 
 
 

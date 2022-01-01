@@ -39,7 +39,7 @@ class showPhaseThreeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        phaseThreeAdapter = phaseThreeRecyclerView(phaseThreeDataList)
+        phaseThreeAdapter = phaseThreeRecyclerView(phaseThreeDataList,covidDViewModel)
 
         binding.phaseThreeRecyclerView.adapter =phaseThreeAdapter
 
@@ -52,10 +52,15 @@ class showPhaseThreeFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observePhaseThree(){
         covidDViewModel.covid19PhaseThreeLiveData.observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            phaseThreeDataList.addAll(it)
+            it?.let {
 
-            phaseThreeAdapter.notifyDataSetChanged()
+                Log.d("here I am",it.toString())
+                phaseThreeDataList.clear()
+                phaseThreeDataList.addAll(it)
+                phaseThreeAdapter.notifyDataSetChanged()
+                covidDViewModel.covid19PhaseThreeLiveData.postValue(null)
+            }
+
 
 
         })

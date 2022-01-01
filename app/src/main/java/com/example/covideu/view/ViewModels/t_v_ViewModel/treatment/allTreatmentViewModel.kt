@@ -17,6 +17,7 @@ class allTreatmentViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
     val CovidLiveDataError = MutableLiveData<String?>()
     val covidAllTreatmentsLiveData = MutableLiveData<List<getAllTreatmentsData>>()
+    val covidAllTreatmentsLiveDataDetails = MutableLiveData<getAllTreatmentsData>()
 
 
 

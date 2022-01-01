@@ -35,7 +35,7 @@ class PhaseFourFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        phaseFourAdapter = phaseFourRecyclerView(phaseFourDataList)
+        phaseFourAdapter = phaseFourRecyclerView(phaseFourDataList,covidDViewModel)
 
         binding.phaseFourRecyclerView.adapter =phaseFourAdapter
 
@@ -48,10 +48,18 @@ class PhaseFourFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observePhaseFour(){
         covidDViewModel.covid19PhaseFourLiveData .observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            phaseFourDataList.addAll(it)
 
-            phaseFourAdapter.notifyDataSetChanged()
+            it?.let {
+                Log.d("here I am",it.toString())
+
+                phaseFourDataList.clear()
+
+                phaseFourDataList.addAll(it)
+
+                phaseFourAdapter.notifyDataSetChanged()
+                covidDViewModel.covid19PhaseFourLiveData.postValue(null)
+            }
+
 
 
         })

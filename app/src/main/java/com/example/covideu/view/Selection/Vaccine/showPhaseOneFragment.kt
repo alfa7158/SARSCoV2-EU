@@ -41,7 +41,7 @@ class showPhaseOneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        phaseOneAdapter = phaseOneRecyclerView(phaseOneDataList)
+        phaseOneAdapter = phaseOneRecyclerView(phaseOneDataList,covidDViewModel)
 
         binding.phaseOneRecyclerView.adapter =phaseOneAdapter
 
@@ -54,10 +54,16 @@ class showPhaseOneFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observePhaseOne(){
         covidDViewModel.covid19PhaseOneLiveData .observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            phaseOneDataList.addAll(it)
+            it?.let {
+                Log.d("here I am",it.toString())
+                phaseOneDataList.clear()
 
-            phaseOneAdapter.notifyDataSetChanged()
+                phaseOneDataList.addAll(it)
+
+                phaseOneAdapter.notifyDataSetChanged()
+                covidDViewModel.covid19PhaseOneLiveData.postValue(null)
+            }
+
 
 
         })

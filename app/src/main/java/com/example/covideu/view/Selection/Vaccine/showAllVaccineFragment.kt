@@ -37,7 +37,7 @@ class showAllVaccineFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-     all_vaccin_Adapter = getAllVaccineDataRecyclerView(AllVaccine_DataList)
+     all_vaccin_Adapter = getAllVaccineDataRecyclerView(AllVaccine_DataList,covidDViewModel)
 
         binding.allVaccineRecyclerView.adapter =all_vaccin_Adapter
 
@@ -50,10 +50,18 @@ class showAllVaccineFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observeFDA_approved_v(){
         covidDViewModel.covidAllVaccinesLiveData.observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            AllVaccine_DataList.addAll(it)
 
-            all_vaccin_Adapter.notifyDataSetChanged()
+            it?.let {
+                Log.d("here I am",it.toString())
+
+                AllVaccine_DataList.clear()
+
+                AllVaccine_DataList.addAll(it)
+
+                all_vaccin_Adapter.notifyDataSetChanged()
+
+                covidDViewModel.covidAllVaccinesLiveData.postValue(null)
+            }
 
 
         })

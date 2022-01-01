@@ -20,6 +20,7 @@ class allClinicalViewModel:ViewModel() {
 
 
     val covid19ClinicalLiveData = MutableLiveData<List<getClinicalTreatments>>()
+    val covid19ClinicalLiveDataDetails = MutableLiveData<getClinicalTreatments>()
 
 
 

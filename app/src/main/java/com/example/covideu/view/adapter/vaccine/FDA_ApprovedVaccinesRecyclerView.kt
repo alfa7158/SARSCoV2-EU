@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
+import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.fdaApprovedVaccineViewModel
 
-class FDA_ApprovedVaccinesRecyclerView(private val list: List<getFDA_ApprovedVaccines>) :
+class FDA_ApprovedVaccinesRecyclerView(private val list: List<getFDA_ApprovedVaccines>,val viewModel: fdaApprovedVaccineViewModel) :
     RecyclerView.Adapter<FDA_ApprovedVaccinesRecyclerView.FDA_ApprovedVaccinesViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -30,6 +33,11 @@ class FDA_ApprovedVaccinesRecyclerView(private val list: List<getFDA_ApprovedVac
         val item = list[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
+
+        holder.fdaApprovedVaccineCardView.setOnClickListener {
+            it.findNavController().navigate(R.id.action_showFDA_approved_vaccineFragment_to_fdaApprovedVaccineFragmentDetails)
+            viewModel.covid19FDAApprovedVaccineLiveDataDetails.postValue(item)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -42,6 +50,8 @@ class FDA_ApprovedVaccinesRecyclerView(private val list: List<getFDA_ApprovedVac
 
         val developer: TextView = itemView.findViewById(R.id.developer_researcherAllFdaApproveVaccine)
         val theCategory: TextView = itemView.findViewById(R.id.categoryAllFdaApproveVaccine)
+        val fdaApprovedVaccineCardView: CardView = itemView.findViewById(R.id.fdaApproveCardView)
+
     }
 
 }

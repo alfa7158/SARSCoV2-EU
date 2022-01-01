@@ -19,6 +19,7 @@ class phaseThreeViewModel:ViewModel() {
     val CovidLiveDataError = MutableLiveData<String?>()
 
     val covid19PhaseThreeLiveData  = MutableLiveData<List<getPhase_three_vaccines>>()
+    val covid19PhaseThreeLiveDataDetails = MutableLiveData<getPhase_three_vaccines>()
 
 
 

@@ -31,14 +31,14 @@
                 android:layout_gravity="center"
 
 
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 app:cardBackgroundColor="@color/mainSelectColor"
                 app:cardCornerRadius="30dp">
 
                 <ImageView
-                    android:layout_width="103dp"
-                    android:layout_height="115dp"
+                    android:layout_width="87dp"
+                    android:layout_height="103dp"
                     android:src="@drawable/newsicone" />
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:gravity="center|right"
                     android:text="@string/news"
                     android:textColor="#FFFFFF"
-                    android:textSize="36sp"
+                    android:textSize="25sp"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="58dp"
                     tools:layout_editor_absoluteX="30dp"
@@ -71,8 +71,8 @@
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="112dp"
+                    android:layout_width="79dp"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/vaccine" />
 
                 <TextView
@@ -83,7 +83,7 @@
                     android:gravity="center|right"
                     android:text="@string/VaccineAndtreatments"
                     android:textColor="#FFFFFF"
-                    android:textSize="36dp"
+                    android:textSize="25sp"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="58dp"
                     tools:layout_editor_absoluteX="30dp"
@@ -105,20 +105,22 @@
 
                 <ImageView
                     android:id="@+id/imageView11"
-                    android:layout_width="131dp"
+                    android:layout_width="87dp"
                     android:layout_height="126dp"
                     android:layout_gravity="top|left"
                     android:src="@drawable/worldupdateicone" />
 
                 <TextView
-                    android:layout_width="339dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="20dp"
                     android:fontFamily="@font/abel"
-                    android:gravity="bottom|center|right"
+                    android:foregroundGravity="center"
+                    android:gravity="right"
                     android:text="@string/worldUpdate"
                     android:textColor="#FFFFFF"
-                    android:textSize="36dp"
+                    android:textSize="25sp"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="58dp"
                     tools:layout_editor_absoluteX="30dp"
@@ -149,11 +151,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|right"
+                    android:layout_marginRight="15dp"
                     android:fontFamily="@font/abel"
-                    android:gravity="center|left"
+                    android:gravity="center|right"
                     android:text="@string/covid_book"
                     android:textColor="#FFFFFF"
-                    android:textSize="45dp"
+                    android:textSize="25sp"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="58dp"
                     tools:layout_editor_absoluteX="30dp"
@@ -188,7 +191,7 @@
                     android:gravity="center|left"
                     android:text="@string/checkIfYouHaveCovid"
                     android:textColor="#FFFFFF"
-                    android:textSize="36dp"
+                    android:textSize="25sp"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="58dp"
                     tools:layout_editor_absoluteX="30dp"
@@ -209,8 +212,8 @@
 
                 <ImageView
                     android:id="@+id/imageView17"
-                    android:layout_width="103dp"
-                    android:layout_height="178dp"
+                    android:layout_width="99dp"
+                    android:layout_height="138dp"
                     android:foregroundGravity="left|center"
                     android:src="@drawable/graphs" />
 
@@ -222,7 +225,41 @@
                     android:gravity="center|left"
                     android:text="@string/graph"
                     android:textColor="#FFFFFF"
-                    android:textSize="36dp"
+                    android:textSize="25sp"
+                    tools:layout_conversion_absoluteHeight="19dp"
+                    tools:layout_conversion_absoluteWidth="58dp"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="5dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/setting"
+                android:layout_width="350dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+
+
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/mainSelectColor"
+                app:cardCornerRadius="30dp">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="74dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/setting" />
+
+                <TextView
+                    android:layout_width="241dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/abel"
+                    android:gravity="center"
+                    android:text="@string/Settings"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
                     tools:layout_conversion_absoluteHeight="19dp"
                     tools:layout_conversion_absoluteWidth="58dp"
                     tools:layout_editor_absoluteX="30dp"

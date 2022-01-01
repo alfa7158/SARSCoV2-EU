@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_three_vaccines
+import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseThreeViewModel
 
-class phaseThreeRecyclerView(private val list: List<getPhase_three_vaccines>) :
+class phaseThreeRecyclerView(private val list: List<getPhase_three_vaccines>,val viewModel: phaseThreeViewModel) :
     RecyclerView.Adapter<phaseThreeRecyclerView.phaseThreeViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -30,6 +33,11 @@ class phaseThreeRecyclerView(private val list: List<getPhase_three_vaccines>) :
         val item = list[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
+
+        holder.phaseThreeCardView.setOnClickListener {
+            it.findNavController().navigate(R.id.action_showPhaseThreeFragment_to_phaseThreeFragmentDetails)
+            viewModel.covid19PhaseThreeLiveDataDetails.postValue(item)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -41,6 +49,9 @@ class phaseThreeRecyclerView(private val list: List<getPhase_three_vaccines>) :
 
         val developer: TextView = itemView.findViewById(R.id.developer_researcherPhaseThree)
         val theCategory: TextView = itemView.findViewById(R.id.categoryPhaseThree)
+
+        val phaseThreeCardView: CardView = itemView.findViewById(R.id.phaseThreeCardView)
+
     }
 
 }

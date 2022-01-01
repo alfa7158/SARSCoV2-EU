@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
+import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allClinicalViewModel
+import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allTreatmentViewModel
 
-class showAllClinicalTreatmentRecyclerView(private val list: List<getClinicalTreatments>) :
+class showAllClinicalTreatmentRecyclerView(private val list: List<getClinicalTreatments>,val viewModel: allClinicalViewModel) :
     RecyclerView.Adapter<showAllClinicalTreatmentRecyclerView.showAllClinicalTreatmentViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -31,6 +35,12 @@ class showAllClinicalTreatmentRecyclerView(private val list: List<getClinicalTre
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
 
+        holder.allClinicalTreatmentCardView.setOnClickListener {
+
+            it.findNavController().navigate(R.id.action_clinicalTreatmentFragment_to_allClinicalTreatmentFragmentDetails)
+            viewModel.covid19ClinicalLiveDataDetails.postValue(item)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -43,6 +53,8 @@ class showAllClinicalTreatmentRecyclerView(private val list: List<getClinicalTre
 
         val developer: TextView = itemView.findViewById(R.id.developer_researcherClinicalTreatment)
         val theCategory: TextView = itemView.findViewById(R.id.categoryClinicalTreatment)
+        val allClinicalTreatmentCardView: CardView = itemView.findViewById(R.id.allClinicalCardView)
+
     }
 
 }

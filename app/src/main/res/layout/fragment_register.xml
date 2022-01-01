@@ -11,7 +11,7 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
             android:fontFamily="@font/abel"
             android:text="@string/email"
             android:textColor="#000000"
-            android:textSize="30dp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/emialRegister"
@@ -51,7 +51,7 @@
             android:foregroundGravity="center_vertical"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textSize="36dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView6"
@@ -75,7 +75,7 @@
             android:foregroundGravity="center_vertical"
             android:hint="@string/Password"
             android:inputType="textEmailAddress"
-            android:textSize="36dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -85,7 +85,7 @@
             android:fontFamily="@font/abel"
             android:text="@string/ConfirmPassword"
             android:textColor="#000000"
-            android:textSize="30dp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/confirmPasswordRegister"
@@ -99,7 +99,7 @@
             android:foregroundGravity="center_vertical"
             android:hint="@string/ConfirmPassword"
             android:inputType="textEmailAddress"
-            android:textSize="36dp" />
+            android:textSize="20sp" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:orientation="horizontal"/>
+                android:orientation="horizontal" />
 
         </RadioGroup>
 
@@ -117,13 +117,20 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="25dp"
+            android:layout_marginBottom="137dp"
             android:backgroundTint="@color/input2tColor"
             android:text="@string/Register"
-            android:textSize="35dp"
-            app:cornerRadius="25dp" />
+            android:textSize="20sp"
+            app:cornerRadius="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+
+            />
 
     </LinearLayout>
 

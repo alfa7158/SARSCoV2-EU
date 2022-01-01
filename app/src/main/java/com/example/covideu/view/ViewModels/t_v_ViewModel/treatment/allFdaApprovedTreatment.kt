@@ -19,6 +19,7 @@ class allFdaApprovedTreatment:ViewModel() {
 
 
     val covid19ApprovedTreatmentsLiveData = MutableLiveData<List<getFDA_Approvedtreatments>>()
+    val covid19ApprovedTreatmentsLiveDataDetails= MutableLiveData<getFDA_Approvedtreatments>()
 
     fun callApprovedTreatmentsLiveData(){
 

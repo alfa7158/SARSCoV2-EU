@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">covidEU</string>
+    <string name="app_name">Covid-19-Bible</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Login">Login</string>
@@ -76,4 +78,13 @@
     <string name="Update_profile">Update profile</string>
     <string name="view_in_your_web">view in your web</string>
     <string name="For_daily_cases">For daily cases</string>
+    <string name="allTreatment">All-Treatment</string>
+    <string name="FDA_APPROVED_Treatment">fdaApproveTreatment</string>
+    <string name="fad_approv_treatment">FDA-Approved-Treatment</string>
+    <string name="Pre_Clinical_Treatment">Pre-Cllinical-Treatment</string>
+    <string name="All_Clinical_Treatment">All-Clinical-Treatment</string>
+    <string name="preClinical">Pre-Clinical-Treatment</string>
+    <string name="Settings">Settings</string>
+    <string name="Description">Description:</string>
+    <string name="Research">Researcher:</string>
 </resources>

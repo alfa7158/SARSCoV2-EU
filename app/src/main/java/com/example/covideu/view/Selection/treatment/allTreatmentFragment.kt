@@ -38,7 +38,7 @@ class allTreatmentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        all_treatment_Adapter = allTreatmentRecyclerView(all_treatment_DataList)
+        all_treatment_Adapter = allTreatmentRecyclerView(all_treatment_DataList,covidDViewModel)
 
         binding.allTreatmentRecyclerView.adapter =all_treatment_Adapter
 
@@ -51,10 +51,19 @@ class allTreatmentFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observeAllTreatment(){
         covidDViewModel.covidAllTreatmentsLiveData .observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            all_treatment_DataList.addAll(it)
 
-            all_treatment_Adapter.notifyDataSetChanged()
+            it?.let {
+                Log.d("here I am",it.toString())
+
+                all_treatment_DataList.clear()
+
+                all_treatment_DataList.addAll(it)
+
+                all_treatment_Adapter.notifyDataSetChanged()
+                covidDViewModel.covidAllTreatmentsLiveData.postValue(null)
+
+            }
+
 
 
         })

@@ -18,6 +18,7 @@ import com.example.covideu.R
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.view.ViewModels.newsViewModels.covidNewsViewMode
 import com.squareup.picasso.Picasso
+import okhttp3.internal.delimiterOffset
 
 class showCovidnewsRecyclerView( val newsViewModel:covidNewsViewMode,var fileContext: Context) :
     RecyclerView.Adapter<showCovidnewsRecyclerView.showCovidNewsViewHolder>() {
@@ -43,7 +44,7 @@ class showCovidnewsRecyclerView( val newsViewModel:covidNewsViewMode,var fileCon
         }
 
         override fun areContentsTheSame(oldItem: newsModel, newItem: newsModel): Boolean {
-            return  oldItem == newItem
+            return  oldItem.newsId == newItem.newsId
         }
     }
 
@@ -53,20 +54,22 @@ class showCovidnewsRecyclerView( val newsViewModel:covidNewsViewMode,var fileCon
     override fun onBindViewHolder(holder: showCovidNewsViewHolder, position: Int) {
 
         val item = differ.currentList[position]
-        val x = position==(itemCount-1)
-        Log.d("xVal",x.toString())
+       // val x = position==(itemCount-1)
+        //Log.d("xVal",x.toString())
 
 
-        if(x){
 
-            thePage++
-            newsViewModel.callAllCovidNews(thePage)
-
-            Log.d("thePage",thePage.toString())
-
-            Log.d("please",newsViewModel.callAllCovidNews(thePage).toString())
-
-        }
+//        if(x){
+//
+//            thePage++
+//
+//            newsViewModel.callAllCovidNews(thePage)
+//
+//            Log.d("thePage",thePage.toString())
+//
+//            Log.d("please",newsViewModel.callAllCovidNews(thePage).toString())
+//
+//        }
 //            Picasso.get().load(item.urlToImage).into(holder.covidNewsImageView)
         Glide.with(fileContext)
             .load(item.urlToImage)
@@ -89,8 +92,10 @@ class showCovidnewsRecyclerView( val newsViewModel:covidNewsViewMode,var fileCon
 
     }
 
-    fun submitList(list: List<newsModel>) {
+    fun submitList(list: MutableList<newsModel>) {
+
         differ.submitList(list)
+
     }
 
 

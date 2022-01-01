@@ -4,9 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatmentsData
-import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
-import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,7 +16,8 @@ class fdaApprovedVaccineViewModel:ViewModel() {
     val CovidLiveDataError = MutableLiveData<String?>()
 
 
-    val covid19ApprovedVaccineLiveData = MutableLiveData<List<getFDA_ApprovedVaccines>>()
+    val covid19FDAApprovedVaccineLiveData = MutableLiveData<List<getFDA_ApprovedVaccines>>()
+    val covid19FDAApprovedVaccineLiveDataDetails = MutableLiveData<getFDA_ApprovedVaccines>()
 
 
 
@@ -33,7 +31,7 @@ class fdaApprovedVaccineViewModel:ViewModel() {
                     response.body()?.run{
                         Log.d(TAG,this.toString())
 
-                        covid19ApprovedVaccineLiveData.postValue(this)
+                        covid19FDAApprovedVaccineLiveData.postValue(this)
 
                     }
 

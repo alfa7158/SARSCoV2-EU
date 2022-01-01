@@ -20,7 +20,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView28"
+                    android:id="@+id/TreatmentMainSelectButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/treatmentdoc3" />
@@ -37,7 +37,7 @@
                     android:textSize="24dp" />
 
                 <ImageView
-                    android:id="@+id/imageView23"
+                    android:id="@+id/clinicalMainSelectButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/clinicaldoc2" />
@@ -63,7 +63,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView27"
+                    android:id="@+id/VaccineMainSelectButton"
                     android:layout_width="match_parent"
                     android:layout_height="127dp"
                     android:src="@drawable/doc3" />

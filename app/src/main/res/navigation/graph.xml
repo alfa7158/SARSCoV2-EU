@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graph"
-    app:startDestination="@id/updateProfileFragment2">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/registerFragment"
@@ -20,10 +20,18 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment2_to_mainSelectFragment"
-            app:destination="@id/mainSelectFragment" />
+            app:destination="@id/mainSelectFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/loginFragment2"
+            />
         <action
             android:id="@+id/action_loginFragment2_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/loginFragment2"
+
+
+            />
     </fragment>
     <fragment
         android:id="@+id/mainSelectFragment"
@@ -36,6 +44,18 @@
         <action
             android:id="@+id/action_mainSelectFragment_to_newsMainSelectFragment"
             app:destination="@id/newsMainSelectFragment" />
+        <action
+            android:id="@+id/action_mainSelectFragment_to_secVaccineAndTreatmentFragment"
+            app:destination="@id/secVaccineAndTreatmentFragment" />
+        <action
+            android:id="@+id/action_mainSelectFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2"
+            app:popUpTo="@id/mainSelectFragment"
+            app:popUpToInclusive="true"
+            />
+        <action
+            android:id="@+id/action_mainSelectFragment_to_updateProfileFragment2"
+            app:destination="@id/updateProfileFragment2" />
     </fragment>
     <fragment
         android:id="@+id/userInformationFragment"
@@ -222,5 +242,199 @@
         android:id="@+id/updateProfileFragment2"
         android:name="com.example.covideu.view.profile.UpdateProfileFragment"
         android:label="fragment_update_profile"
-        tools:layout="@layout/fragment_update_profile" />
+        tools:layout="@layout/fragment_update_profile" >
+        <action
+            android:id="@+id/action_updateProfileFragment2_to_uploadImageFragment"
+            app:destination="@id/uploadImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secVaccineAndTreatmentFragment"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.SecVaccineAndTreatmentFragment"
+        android:label="SecVaccineAndTreatmentFragment" >
+        <action
+            android:id="@+id/action_secVaccineAndTreatmentFragment_to_vaccineMainSelectFragment"
+            app:destination="@id/vaccineMainSelectFragment" />
+        <action
+            android:id="@+id/action_secVaccineAndTreatmentFragment_to_treatmentMainSelectFragment"
+            app:destination="@id/treatmentMainSelectFragment" />
+        <action
+            android:id="@+id/action_secVaccineAndTreatmentFragment_to_clinicalMainSelectFragment"
+            app:destination="@id/clinicalMainSelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vaccineMainSelectFragment"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.vaccine.VaccineMainSelectFragment"
+        android:label="VaccineMainSelectFragment" >
+        <action
+            android:id="@+id/action_vaccineMainSelectFragment_to_showPhaseOneFragment"
+            app:destination="@id/showPhaseOneFragment" />
+        <action
+            android:id="@+id/action_vaccineMainSelectFragment_to_showPhaseTwoFragment"
+            app:destination="@id/showPhaseTwoFragment" />
+        <action
+            android:id="@+id/action_vaccineMainSelectFragment_to_showPhaseThreeFragment"
+            app:destination="@id/showPhaseThreeFragment" />
+        <action
+            android:id="@+id/action_vaccineMainSelectFragment_to_phaseFourFragment"
+            app:destination="@id/phaseFourFragment" />
+        <action
+            android:id="@+id/action_vaccineMainSelectFragment_to_showFDA_approved_vaccineFragment"
+            app:destination="@id/showFDA_approved_vaccineFragment" />
+        <action
+            android:id="@+id/action_vaccineMainSelectFragment_to_showAllVaccineFragment2"
+            app:destination="@id/showAllVaccineFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/treatmentMainSelectFragment"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.TreatmentMainSelectFragment"
+        android:label="fragment_treatment_main_select"
+        tools:layout="@layout/fragment_treatment_main_select" >
+        <action
+            android:id="@+id/action_treatmentMainSelectFragment_to_FDA_approved_treatmentFragment"
+            app:destination="@id/FDA_approved_treatmentFragment" />
+        <action
+            android:id="@+id/action_treatmentMainSelectFragment_to_allTreatmentFragment"
+            app:destination="@id/allTreatmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showPhaseOneFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showPhaseOneFragment"
+        android:label="fragment_show_phase_one"
+        tools:layout="@layout/fragment_show_phase_one" >
+        <action
+            android:id="@+id/action_showPhaseOneFragment_to_phaseOneFragmentDetails"
+            app:destination="@id/phaseOneFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/showPhaseTwoFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showPhaseTwoFragment"
+        android:label="fragment_show_phase_two"
+        tools:layout="@layout/fragment_show_phase_two" >
+        <action
+            android:id="@+id/action_showPhaseTwoFragment_to_phasetTwoFragmentDetails"
+            app:destination="@id/phasetTwoFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/showPhaseThreeFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showPhaseThreeFragment"
+        android:label="fragment_show_phase_three"
+        tools:layout="@layout/fragment_show_phase_three" >
+        <action
+            android:id="@+id/action_showPhaseThreeFragment_to_phaseThreeFragmentDetails"
+            app:destination="@id/phaseThreeFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/phaseFourFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.PhaseFourFragment"
+        android:label="fragment_phase_four"
+        tools:layout="@layout/fragment_phase_four" >
+        <action
+            android:id="@+id/action_phaseFourFragment_to_phaseFourFragmentDetails"
+            app:destination="@id/phaseFourFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/showFDA_approved_vaccineFragment"
+        android:name="com.example.covideu.view.Selection.Vaccine.showFDA_approved_vaccineFragment"
+        android:label="fragment_show_f_d_a_approved_vaccine"
+        tools:layout="@layout/fragment_show_f_d_a_approved_vaccine" >
+        <action
+            android:id="@+id/action_showFDA_approved_vaccineFragment_to_fdaApprovedVaccineFragmentDetails"
+            app:destination="@id/fdaApprovedVaccineFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/FDA_approved_treatmentFragment"
+        android:name="com.example.covideu.view.Selection.treatment.FDA_approved_treatmentFragment"
+        android:label="fragment_f_d_a_approved_treatment"
+        tools:layout="@layout/fragment_f_d_a_approved_treatment" >
+        <action
+            android:id="@+id/action_FDA_approved_treatmentFragment_to_allFdaApprovedTreatmentFragmentDetails"
+            app:destination="@id/allFdaApprovedTreatmentFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/clinicalMainSelectFragment"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.ClinicalMainSelectFragment"
+        android:label="fragment_clinical_main_select"
+        tools:layout="@layout/fragment_clinical_main_select" >
+        <action
+            android:id="@+id/action_clinicalMainSelectFragment_to_clinicalTreatmentFragment"
+            app:destination="@id/clinicalTreatmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allTreatmentFragment"
+        android:name="com.example.covideu.view.Selection.treatment.allTreatmentFragment"
+        android:label="fragment_all_health_news"
+        tools:layout="@layout/fragment_all_health_news" >
+        <action
+            android:id="@+id/action_allTreatmentFragment_to_allTreatmentFragmentDetails"
+            app:destination="@id/allTreatmentFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/clinicalTreatmentFragment"
+        android:name="com.example.covideu.view.Selection.treatment.ClinicalTreatmentFragment"
+        android:label="fragment_clinical_treatment"
+        tools:layout="@layout/fragment_clinical_treatment" >
+        <action
+            android:id="@+id/action_clinicalTreatmentFragment_to_allClinicalTreatmentFragmentDetails"
+            app:destination="@id/allClinicalTreatmentFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.covideu.view.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment23"
+            app:destination="@id/loginFragment2"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+
+            />
+        <action
+            android:id="@+id/action_splashFragment_to_mainSelectFragment"
+            app:destination="@id/mainSelectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showAllVaccineFragment2"
+        android:name="com.example.covideu.view.Selection.Vaccine.showAllVaccineFragment"
+        android:label="showAllVaccineFragment" >
+        <action
+            android:id="@+id/action_showAllVaccineFragment2_to_allVaccineFragmentDetails"
+            app:destination="@id/allVaccineFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/phaseOneFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.vaccine.PhaseOneFragmentDetails"
+        android:label="PhaseOneFragmentDetails" />
+    <fragment
+        android:id="@+id/allVaccineFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.vaccine.AllVaccineFragmentDetails"
+        android:label="AllVaccineFragmentDetails" />
+    <fragment
+        android:id="@+id/phasetTwoFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.vaccine.PhasetTwoFragmentDetails"
+        android:label="PhasetTwoFragmentDetails" />
+    <fragment
+        android:id="@+id/phaseThreeFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.vaccine.PhaseThreeFragmentDetails"
+        android:label="PhaseThreeFragmentDetails" />
+    <fragment
+        android:id="@+id/phaseFourFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.vaccine.PhaseFourFragmentDetails"
+        android:label="PhaseFourFragmentDetails" />
+    <fragment
+        android:id="@+id/fdaApprovedVaccineFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.vaccine.fdaApprovedVaccineFragmentDetails"
+        android:label="fdaApprovedVaccineFragmentDetails" />
+    <fragment
+        android:id="@+id/allTreatmentFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.treatment.AllTreatmentFragmentDetails"
+        android:label="AllTreatmentFragmentDetails" />
+    <fragment
+        android:id="@+id/allFdaApprovedTreatmentFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.treatment.AllFdaApprovedTreatmentFragmentDetails"
+        android:label="AllFdaApprovedTreatmentFragmentDetails" />
+    <fragment
+        android:id="@+id/allClinicalTreatmentFragmentDetails"
+        android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.treatment.AllClinicalTreatmentFragmentDetails"
+        android:label="AllClinicalTreatmentFragmentDetails" />
 </navigation>

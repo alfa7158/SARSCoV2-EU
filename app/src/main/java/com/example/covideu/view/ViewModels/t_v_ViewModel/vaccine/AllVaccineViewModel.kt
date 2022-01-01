@@ -8,6 +8,7 @@ import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatments
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.*
+import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -19,6 +20,7 @@ class AllVaccineViewModel:ViewModel() {
     val CovidLiveDataError = MutableLiveData<String?>()
 
     val covidAllVaccinesLiveData = MutableLiveData<List<getAllVaccinesDataItem>>()
+    val covidAllVaccinesLiveDataDetails = MutableLiveData<getAllVaccinesDataItem>()
 
 
     fun callAllVaccinesTreatment(){

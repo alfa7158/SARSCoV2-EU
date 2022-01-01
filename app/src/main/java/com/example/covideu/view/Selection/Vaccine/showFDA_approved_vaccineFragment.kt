@@ -8,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.covideu.R
-import com.example.covideu.databinding.FragmentPhaseFourBinding
 import com.example.covideu.databinding.FragmentShowFDAApprovedVaccineBinding
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.fdaApprovedVaccineViewModel
@@ -33,7 +31,7 @@ class showFDA_approved_vaccineFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        FDA_approved_vaccin_Adapter = FDA_ApprovedVaccinesRecyclerView(FDA_approved_vaccine_DataList)
+        FDA_approved_vaccin_Adapter = FDA_ApprovedVaccinesRecyclerView(FDA_approved_vaccine_DataList,covidDViewModel)
 
         binding.allFDAApprovedVaccineRecyclerView.adapter =FDA_approved_vaccin_Adapter
 
@@ -45,11 +43,19 @@ class showFDA_approved_vaccineFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeFDA_approved(){
-        covidDViewModel.covid19ApprovedVaccineLiveData.observe(viewLifecycleOwner,{
-            Log.d("here I am",it.toString())
-            FDA_approved_vaccine_DataList.addAll(it)
+        covidDViewModel.covid19FDAApprovedVaccineLiveData.observe(viewLifecycleOwner,{
+            it?.let {
 
-            FDA_approved_vaccin_Adapter.notifyDataSetChanged()
+                Log.d("here I am",it.toString())
+
+                FDA_approved_vaccine_DataList.clear()
+
+                FDA_approved_vaccine_DataList.addAll(it)
+
+                FDA_approved_vaccin_Adapter.notifyDataSetChanged()
+
+                covidDViewModel.covid19FDAApprovedVaccineLiveData.postValue(null)
+            }
 
 
         })
