@@ -21,4 +21,5 @@ class userInfoRepository_Firebase {
     fun deleteUser(userName:String) =  database.child("Users").orderByChild("lastName").equalTo(userName)
     fun UpdateUser(uid:String) = databaseReference.child(uid)
     fun uploadImage() = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().uid.toString())
+
 }

@@ -31,7 +31,7 @@ class covidNewsViewMode:ViewModel() {
             val response = apiRepo.getAllCovid19News(page)
             try {
                 if(page<pages) {
-                    Log.d("here is the page",page.toString())
+                    Log.d(TAG,"thepageishere ${page.toString()}")
 
                     if (response.isSuccessful) {
 

@@ -1,5 +1,6 @@
 package com.example.covideu.view.adapter.newsRecyclers
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -15,12 +16,16 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.covideu.R
+import com.example.covideu.model.covidNews.allCovidNews.getAllCoronaVirusNews
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
+import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
+import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
 import com.example.covideu.view.ViewModels.newsViewModels.covidNewsViewMode
 import com.squareup.picasso.Picasso
 import okhttp3.internal.delimiterOffset
 
-class showCovidnewsRecyclerView( val newsViewModel:covidNewsViewMode,var fileContext: Context) :
+private const val TAG = "ShowCovidnewsRecyclerVi"
+class showCovidnewsRecyclerView(val list: MutableList<newsModel>, val newsViewModel:covidNewsViewMode, var fileContext: Context) :
     RecyclerView.Adapter<showCovidnewsRecyclerView.showCovidNewsViewHolder>() {
     var thePage=0
     override fun onCreateViewHolder(
@@ -44,33 +49,20 @@ class showCovidnewsRecyclerView( val newsViewModel:covidNewsViewMode,var fileCon
         }
 
         override fun areContentsTheSame(oldItem: newsModel, newItem: newsModel): Boolean {
-            return  oldItem.newsId == newItem.newsId
+            return  oldItem == newItem
         }
     }
 
     private val differ = AsyncListDiffer(this,DIFF_CALLBACK)
 
 
+
+
+
     override fun onBindViewHolder(holder: showCovidNewsViewHolder, position: Int) {
 
-        val item = differ.currentList[position]
-       // val x = position==(itemCount-1)
-        //Log.d("xVal",x.toString())
+        val item = list[position]
 
-
-
-//        if(x){
-//
-//            thePage++
-//
-//            newsViewModel.callAllCovidNews(thePage)
-//
-//            Log.d("thePage",thePage.toString())
-//
-//            Log.d("please",newsViewModel.callAllCovidNews(thePage).toString())
-//
-//        }
-//            Picasso.get().load(item.urlToImage).into(holder.covidNewsImageView)
         Glide.with(fileContext)
             .load(item.urlToImage)
             .into(holder.covidNewsImageView)
@@ -84,19 +76,17 @@ class showCovidnewsRecyclerView( val newsViewModel:covidNewsViewMode,var fileCon
 
         }
 
-//       holder.covidNewsContent.text = item.content
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
-
     }
 
     fun submitList(list: MutableList<newsModel>) {
-
         differ.submitList(list)
-
     }
+
+
 
 
     class showCovidNewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

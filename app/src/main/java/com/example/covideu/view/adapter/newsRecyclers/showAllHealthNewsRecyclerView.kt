@@ -15,11 +15,11 @@ import com.bumptech.glide.Glide
 import com.example.covideu.R
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
+import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
 import com.example.covideu.view.ViewModels.newsViewModels.allHealthNewsViewModel
 
 class showAllHealthNewsRecyclerView(val newsViewModel:allHealthNewsViewModel,var fileContext: Context) :
     RecyclerView.Adapter<showAllHealthNewsRecyclerView.showAllHealthNewsVIewHolder>() {
-    var thePage =0
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,6 +34,8 @@ class showAllHealthNewsRecyclerView(val newsViewModel:allHealthNewsViewModel,var
             )
         )
     }
+
+
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AllHeathNewsModel>() {
         override fun areItemsTheSame(oldItem: AllHeathNewsModel, newItem: AllHeathNewsModel): Boolean {
             return oldItem.newsId == newItem.newsId
@@ -51,23 +53,11 @@ class showAllHealthNewsRecyclerView(val newsViewModel:allHealthNewsViewModel,var
 
     override fun onBindViewHolder(holder: showAllHealthNewsVIewHolder, position: Int) {
 
-
         val item = differ.currentList[position]
-        val x = position==(itemCount-1)
-        Log.d("xVal",x.toString())
 
 
-        if(x){
 
-            thePage++
-            newsViewModel.callAllHealthNews(thePage)
 
-            Log.d("thePage",thePage.toString())
-
-            Log.d("please",newsViewModel.callAllHealthNews(thePage).toString())
-
-        }
-//            Picasso.get().load(item.urlToImage).into(holder.covidNewsImageView)
         Glide.with(fileContext)
             .load(item.urlToImage)
             .into(holder.allHealthNewsImageView)
@@ -86,7 +76,7 @@ class showAllHealthNewsRecyclerView(val newsViewModel:allHealthNewsViewModel,var
         return differ.currentList.size
     }
 
-    fun submitList(list: List<AllHeathNewsModel>) {
+    fun submitList(list: MutableList<AllHeathNewsModel>) {
         differ.submitList(list)
     }
 

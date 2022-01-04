@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:backgroundTint="@color/cardBackGroundColor">
+
+        <ImageView
+            android:id="@+id/imageViewBookOfCovid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/deleteImageView"
+            android:layout_width="53dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:foregroundGravity="right"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

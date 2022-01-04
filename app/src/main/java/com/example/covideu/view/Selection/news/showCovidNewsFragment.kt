@@ -57,7 +57,7 @@ class showCovidNewsFragment : Fragment() {
 
         layoutManger = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         binding.covidNewsRecyclerView.layoutManager = layoutManger
-        showCovidNewsAdapter = showCovidnewsRecyclerView(covidNewsViewModel, requireContext())
+        showCovidNewsAdapter = showCovidnewsRecyclerView(covidNewsList,covidNewsViewModel, requireContext())
         binding.covidNewsRecyclerView.adapter = showCovidNewsAdapter
         observeCovidNews()
         covidNewsViewModel.callAllCovidNews()
@@ -67,22 +67,25 @@ class showCovidNewsFragment : Fragment() {
 
     }
 
+
     @SuppressLint("NotifyDataSetChanged")
     fun observeCovidNews() {
         covidNewsViewModel.covidAllNewsLiveData.observe(viewLifecycleOwner, {
             it?.let {
-
-                Log.d("covidNews", it.toString())
-                binding.covidNewsProgress.animate().alpha(0f).duration = 1000
                 covidNewsList.addAll(it)
-
                 showCovidNewsAdapter.submitList(covidNewsList)
+
                 loading = false
 
-                binding.covidNewsRecyclerView.animate().alpha(1f)
+
             }
+            binding.covidNewsProgress.visibility = View.GONE
+            Thread.sleep(3000)
+
         })
     }
+
+
 
 
 //    private fun checkPager() {
@@ -98,28 +101,21 @@ class showCovidNewsFragment : Fragment() {
         var visibleItemCount: Int
         var totalItemCount: Int
 
+
         binding.covidNewsRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0) { //check for scroll down
-                    visibleItemCount = binding.covidNewsRecyclerView.getChildCount()
-                    totalItemCount = binding.covidNewsRecyclerView.layoutManager!!.itemCount
-                    pastVisibleItems = layoutManger.findFirstCompletelyVisibleItemPosition()
-                    if (!loading) {
-                        Log.d("loading1",loading.toString())
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!loading) {
+                    if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        loading = true
+                        binding.covidNewsProgress.visibility = View.VISIBLE
 
-                        if (visibleItemCount + pastVisibleItems >= totalItemCount) {
-                            Log.d("loading2",loading.toString())
-
-                            Log.d("...", "Last Item Wow !")
-                            binding.covidNewsProgress.visibility = View.VISIBLE
-                            covidNewsViewModel.callAllCovidNews()
-                            loading = true
-                            Log.d("loading3",loading.toString())
-                            // Do pagination.. i.e. fetch new data
-                        }
+                        covidNewsViewModel.callAllCovidNews()
+                        Log.d(TAG, "end")
                     }
                 }
             }
         })
+
     }
 }

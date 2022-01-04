@@ -13,7 +13,8 @@ import java.lang.Exception
 private const val TAG = "allHealthNews"
 class allHealthNewsViewModel:ViewModel() {
 
-
+    var page: Int = 0
+    var pages: Int = 1000
     private val apiRepo = ApiRepositoryCovidData.get()
     val covidAllHeathLiveData = MutableLiveData<List<AllHeathNewsModel>>()
     val covidAllHeathLiveDataDetails = MutableLiveData<AllHeathNewsModel>()
@@ -21,36 +22,38 @@ class allHealthNewsViewModel:ViewModel() {
     val CovidLiveDataError = MutableLiveData<String?>()
 
 
+    fun callAllHealthNews() {
 
-    fun callAllHealthNews(page: Int){
-
-        viewModelScope.launch(Dispatchers.IO){
-            val response = page.let { apiRepo.getAllHealthNews(it) }
-
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = apiRepo.getAllHealthNews(page)
             try {
-                if(response.isSuccessful){
+                if (page < pages) {
+                    Log.d(TAG, "thepageishere ${page.toString()}")
 
-                    response.body()?.run{
-                        Log.d(TAG,this.toString())
+                    if (response.isSuccessful) {
 
-                        covidAllHeathLiveData.postValue(this.news)
+                        response.body()?.run {
+                            Log.d(TAG, this.toString())
+                            Log.d(TAG, "${this.news}")
+                            covidAllHeathLiveData.postValue(this.news)
+
+
+                        }
+                        page++
+
+
+                    } else {
+                        CovidLiveDataError.postValue(response.message())
+
 
                     }
-
-
-                }else{
-                    CovidLiveDataError.postValue(response.message())
-
-
                 }
-
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 CovidLiveDataError.postValue(e.toString())
-
 
 
             }
         }
-    }
 
+    }
 }

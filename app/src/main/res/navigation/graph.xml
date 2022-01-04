@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_mainSelectFragment_to_updateProfileFragment2"
             app:destination="@id/updateProfileFragment2" />
+        <action
+            android:id="@+id/action_mainSelectFragment_to_bookOfCovidMainSelectFragment"
+            app:destination="@id/bookOfCovidMainSelectFragment" />
     </fragment>
     <fragment
         android:id="@+id/userInformationFragment"
@@ -437,4 +440,39 @@
         android:id="@+id/allClinicalTreatmentFragmentDetails"
         android:name="com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.treatment.AllClinicalTreatmentFragmentDetails"
         android:label="AllClinicalTreatmentFragmentDetails" />
+    <fragment
+        android:id="@+id/uploadVideosFragment"
+        android:name="com.example.covideu.view.bookOfCovid.UploadVideosFragment"
+        android:label="fragment_upload_videos"
+        tools:layout="@layout/fragment_upload_videos" />
+    <fragment
+        android:id="@+id/fetchContentFragment"
+        android:name="com.example.covideu.view.bookOfCovid.FetchContentFragment"
+        android:label="fragment_fetch_content"
+        tools:layout="@layout/fragment_fetch_content" />
+    <fragment
+        android:id="@+id/deletePhotosFragment"
+        android:name="com.example.covideu.view.bookOfCovid.DeletePhotosFragment"
+        android:label="fragment_delete_photos"
+        tools:layout="@layout/fragment_delete_photos" />
+    <fragment
+        android:id="@+id/bookOfCovidMainSelectFragment"
+        android:name="com.example.covideu.view.bookOfCovid.bookOfCovidMainSelectFragment"
+        android:label="fragment_book_of_covid_main_select"
+        tools:layout="@layout/fragment_book_of_covid_main_select" >
+        <action
+            android:id="@+id/action_bookOfCovidMainSelectFragment_to_fetchContentFragment"
+            app:destination="@id/fetchContentFragment" />
+        <action
+            android:id="@+id/action_bookOfCovidMainSelectFragment_to_fetchVideosFragment"
+            app:destination="@id/fetchVideosFragment" />
+        <action
+            android:id="@+id/action_bookOfCovidMainSelectFragment_to_uploadVideosFragment"
+            app:destination="@id/uploadVideosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fetchVideosFragment"
+        android:name="com.example.covideu.view.bookOfCovid.FetchVideosFragment"
+        android:label="fragment_fetch_videos"
+        tools:layout="@layout/fragment_fetch_videos" />
 </navigation>

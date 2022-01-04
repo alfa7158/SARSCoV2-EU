@@ -53,17 +53,6 @@ class allVaccineNewsRecyclerView(val newsViewModel: allVaccineNewsViewModel, var
         Log.d("xVal",x.toString())
 
 
-        if(x){
-
-            theCount++
-            newsViewModel.callAllVaccineNews(theCount)
-
-            Log.d("thePage",theCount.toString())
-
-            Log.d("please",newsViewModel.callAllVaccineNews(theCount).toString())
-
-        }
-//            Picasso.get().load(item.urlToImage).into(holder.covidNewsImageView)
         Glide.with(fileContext)
             .load(item.urlToImage)
             .into(holder.covidNewsImageView)

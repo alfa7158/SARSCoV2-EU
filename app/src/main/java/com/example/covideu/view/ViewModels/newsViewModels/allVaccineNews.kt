@@ -12,34 +12,41 @@ import java.lang.Exception
 private const val TAG = "allVaccineNews"
 class allVaccineNewsViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
-
+    var page:Int = 0
+    var pages:Int = 1000
     val covid19VaccineLiveData = MutableLiveData<List<allVaccineNews>>()
     val covid19VaccineLiveDatDetails = MutableLiveData<allVaccineNews>()
 
 
     val CovidLiveDataError = MutableLiveData<String?>()
 
-    fun callAllVaccineNews(page: Int){
+    fun callAllVaccineNews(){
 
         viewModelScope.launch(Dispatchers.IO){
             val response = apiRepo.getAllVaccineNews(page)
             try {
-                if(response.isSuccessful){
+                if(page<pages) {
+                    Log.d(TAG,"thepageishere ${page.toString()}")
 
-                    response.body()?.run{
-                        Log.d(TAG,this.toString())
+                    if (response.isSuccessful) {
 
-                        covid19VaccineLiveData.postValue(this.news)
+                        response.body()?.run {
+                            Log.d(TAG, this.toString())
+                            Log.d(TAG, "${this.news}")
+                            covid19VaccineLiveData.postValue(this.news)
+
+
+
+                        }
+                        page++
+
+
+                    } else {
+                        CovidLiveDataError.postValue(response.message())
+
 
                     }
-
-
-                }else{
-                    CovidLiveDataError.postValue(response.message())
-
-
                 }
-
             }catch (e: Exception){
                 CovidLiveDataError.postValue(e.toString())
 

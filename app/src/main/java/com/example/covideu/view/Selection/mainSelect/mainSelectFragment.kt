@@ -55,6 +55,12 @@ class mainSelectFragment : Fragment() {
             findNavController().navigate(R.id.action_mainSelectFragment_to_secVaccineAndTreatmentFragment)
         }
 
+        binding.mainSelectCovidEducation.setOnClickListener {
+            findNavController().navigate(R.id.action_mainSelectFragment_to_bookOfCovidMainSelectFragment)
+
+
+        }
+
 
 
 

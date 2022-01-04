@@ -53,6 +53,8 @@ class UserInformationFragment : Fragment() {
         }
 
         binding.saveProfile.setOnClickListener{
+
+
             val firstName = binding.firstNameProfile.text.toString()
             val lastName = binding.ProfilelastName.text.toString()
             val age = binding.ageProfile.text.toString()
@@ -61,11 +63,8 @@ class UserInformationFragment : Fragment() {
             gender = selectedGenderRadioButton.text.toString()
 
 
-
-
-
-
             val occupation = binding.occupationEditText.text.toString()
+
             val user = UserData(firstName,lastName,age,gender,occupation)
 
             if(uid !=null ){

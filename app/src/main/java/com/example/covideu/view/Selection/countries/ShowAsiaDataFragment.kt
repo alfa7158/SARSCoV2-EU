@@ -62,6 +62,8 @@ class ShowAsiaDataFragment : Fragment() {
                 showAsiaAdapter.notifyDataSetChanged()
 
                 covidDViewModel.covid19AsiaLiveData .postValue(null)
+
+
             }
 
 

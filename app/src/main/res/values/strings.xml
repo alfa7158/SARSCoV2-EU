@@ -87,4 +87,9 @@
     <string name="Settings">Settings</string>
     <string name="Description">Description:</string>
     <string name="Research">Researcher:</string>
+    <string name="Videos">Videos</string>
+    <string name="Music">Music</string>
+    <string name="pictures">Pictures</string>
+    <string name="PDF">PDF</string>
+    <string name="Docx">Docx</string>
 </resources>
