@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatmentsData
+import com.example.covideu.model.getAllEuropeanCountries.getAllEuropeanCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.s_usa_ViewModel
 import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allTreatmentViewModel
 
-class allTreatmentRecyclerView(private val list: List<getAllTreatmentsData>,val viewModel: allTreatmentViewModel) :
+class allTreatmentRecyclerView(val viewModel: allTreatmentViewModel) :
     RecyclerView.Adapter<allTreatmentRecyclerView.allTreatmentViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -28,10 +31,23 @@ class allTreatmentRecyclerView(private val list: List<getAllTreatmentsData>,val 
             )
         )
     }
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getAllTreatmentsData>(){
+        override fun areItemsTheSame(oldItem: getAllTreatmentsData, newItem: getAllTreatmentsData): Boolean {
+            return oldItem==newItem
+        }
+
+        override fun areContentsTheSame(oldItem: getAllTreatmentsData, newItem: getAllTreatmentsData): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+
+
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
 
     override fun onBindViewHolder(holder: allTreatmentViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
         holder.allTreatmentCardView.setOnClickListener {
@@ -44,7 +60,11 @@ class allTreatmentRecyclerView(private val list: List<getAllTreatmentsData>,val 
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return differ.currentList.size
+    }
+    fun submitList(list:List<getAllTreatmentsData>){
+        differ.submitList(list)
+
     }
 
 

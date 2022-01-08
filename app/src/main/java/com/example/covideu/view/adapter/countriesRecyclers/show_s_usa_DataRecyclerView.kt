@@ -8,13 +8,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.get.all.covid.Countries.Statistical.getAllCovid19CountriesStatisticalDataItemModel
+import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
+import com.example.covideu.model.getAllEuropeanCountries.getAllEuropeanCountriesModel
 import com.example.covideu.model.getAllSouthernAmericanCountries.getAllSouthernAmericanCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.n_usa_viewModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.s_usa_ViewModel
 
-class show_s_usa_DataRecyclerView(private val list: List<getAllSouthernAmericanCountriesModel>,val viewModel: s_usa_ViewModel) :
+class show_s_usa_DataRecyclerView(val viewModel: s_usa_ViewModel) :
     RecyclerView.Adapter<show_s_usa_DataRecyclerView.showCountriesDataViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -31,10 +35,22 @@ class show_s_usa_DataRecyclerView(private val list: List<getAllSouthernAmericanC
         )
     }
 
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getAllSouthernAmericanCountriesModel>(){
+        override fun areItemsTheSame(oldItem: getAllSouthernAmericanCountriesModel, newItem: getAllSouthernAmericanCountriesModel): Boolean {
+            return oldItem.id==newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: getAllSouthernAmericanCountriesModel, newItem: getAllSouthernAmericanCountriesModel): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
+
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: showCountriesDataViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.rankOfCases.text = "Rank:${item.rank}"
         holder.countries.text = "Country: ${item.country}"
         holder.totalCases.text = "Total cases:${item.totalCases}"
@@ -49,8 +65,13 @@ class show_s_usa_DataRecyclerView(private val list: List<getAllSouthernAmericanC
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return differ.currentList.size
     }
+    fun submitList(list:List<getAllSouthernAmericanCountriesModel>){
+        differ.submitList(list)
+
+    }
+
 
 
     class showCountriesDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

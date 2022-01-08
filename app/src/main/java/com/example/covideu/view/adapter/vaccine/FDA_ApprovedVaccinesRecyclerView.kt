@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
+import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.fdaApprovedVaccineViewModel
 
-class FDA_ApprovedVaccinesRecyclerView(private val list: List<getFDA_ApprovedVaccines>,val viewModel: fdaApprovedVaccineViewModel) :
+class FDA_ApprovedVaccinesRecyclerView(val viewModel: fdaApprovedVaccineViewModel) :
     RecyclerView.Adapter<FDA_ApprovedVaccinesRecyclerView.FDA_ApprovedVaccinesViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -30,7 +33,7 @@ class FDA_ApprovedVaccinesRecyclerView(private val list: List<getFDA_ApprovedVac
 
     override fun onBindViewHolder(holder: FDA_ApprovedVaccinesViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
 
@@ -40,10 +43,28 @@ class FDA_ApprovedVaccinesRecyclerView(private val list: List<getFDA_ApprovedVac
         }
     }
 
-    override fun getItemCount(): Int {
-        return list.size
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getFDA_ApprovedVaccines>(){
+        override fun areItemsTheSame(oldItem: getFDA_ApprovedVaccines, newItem: getFDA_ApprovedVaccines): Boolean {
+            return oldItem==newItem
+        }
+
+        override fun areContentsTheSame(oldItem: getFDA_ApprovedVaccines, newItem: getFDA_ApprovedVaccines): Boolean {
+            return oldItem==newItem
+        }
+
     }
 
+
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+
+    fun submitList(list:List<getFDA_ApprovedVaccines>){
+        differ.submitList(list)
+
+    }
 
     class FDA_ApprovedVaccinesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

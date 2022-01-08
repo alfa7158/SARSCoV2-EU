@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowAsiaDataBinding
@@ -30,6 +31,8 @@ class showCountriesWithCovidStatisticalFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         // Inflate the layout for this fragment
         binding = FragmentShowCountriesWithCovidStatisticalBinding.inflate(inflater,container,false)
         return binding.root

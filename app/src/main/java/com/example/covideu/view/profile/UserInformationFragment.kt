@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -25,11 +27,15 @@ class UserInformationFragment : Fragment() {
     private lateinit var binding: FragmentUserInformationBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var gender:String
+    private lateinit var uid:String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         binding = FragmentUserInformationBinding.inflate(inflater,container,false)
         return binding.root
 
@@ -38,11 +44,11 @@ class UserInformationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        val uid = auth.currentUser?.uid
+         uid = auth.currentUser?.uid.toString()
 
 
         Glide.with(requireContext())
-            .load("https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/${FirebaseAuth.getInstance().uid.toString()}?alt=media&token=59881b60-98db-4dd8-a446-b20837e9a576")
+            .load("https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/profile%2f${FirebaseAuth.getInstance().uid.toString()}?alt=media&token=59881b60-98db-4dd8-a446-b20837e9a576")
             .diskCacheStrategy(DiskCacheStrategy.NONE )
             .skipMemoryCache(true)
             .into(binding.MainProfileImagwView)
@@ -56,29 +62,52 @@ class UserInformationFragment : Fragment() {
 
 
             val firstName = binding.firstNameProfile.text.toString()
+
             val lastName = binding.ProfilelastName.text.toString()
             val age = binding.ageProfile.text.toString()
             val genderRadioGroup = binding.genderRadioGroupInfo
-            val selectedGenderRadioButton:RadioButton = view.findViewById(genderRadioGroup.checkedRadioButtonId)
-            gender = selectedGenderRadioButton.text.toString()
-
 
             val occupation = binding.occupationEditText.text.toString()
+            val male = binding.maleRadioButton
+            val female = binding.femaleRadioButton
+           // val user = UserData(firstName,lastName,age,gender,occupation)
 
-            val user = UserData(firstName,lastName,age,gender,occupation)
 
-            if(uid !=null ){
 
-                userInfo_ViewMode.addUserInfo(uid,user)
-                checkForSuccessful()
-                Toast.makeText(context, "added successfully", Toast.LENGTH_SHORT).show()
+                if(firstName.isNotBlank()&&firstName.isNotEmpty()
+                    &&lastName.isNotBlank()&&lastName.isNotEmpty()
+                    &&occupation.isNotBlank()&&occupation.isNotEmpty()
+                    &&(male.isChecked||female.isChecked)){
+                    val selectedGenderRadioButton:RadioButton = view.findViewById(genderRadioGroup.checkedRadioButtonId)
+                    gender = selectedGenderRadioButton.text.toString()
+                    val user = UserData(firstName,lastName,age,gender,occupation)
+                    if(uid !=null){
 
-            }else{
-                checkForError()
-                Toast.makeText(context, "Failed to add", Toast.LENGTH_SHORT).show()
-            }
+                        userInfo_ViewMode.addUserInfo(uid,user)
 
-            findNavController().navigate(R.id.action_userInformationFragment_to_mainSelectFragment)
+
+                        checkForSuccessful()
+                        Toast.makeText(context, "added successfully", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_userInformationFragment_to_mainSelectFragment)
+
+                    }else{
+                        checkForError()
+
+                        Toast.makeText(context, "Failed to add", Toast.LENGTH_SHORT).show()
+                    }
+
+                }else{
+                        Toast.makeText(context, "fill the values", Toast.LENGTH_SHORT).show()
+
+
+                    Toast.makeText(context, "Please complete all your information", Toast.LENGTH_SHORT).show()
+
+                }
+
+
+
+
+
         }
 
 
@@ -91,7 +120,7 @@ class UserInformationFragment : Fragment() {
     fun checkForSuccessful(){
         userInfo_ViewMode.userLiveDataSuccessful.observe(viewLifecycleOwner,{
 
-            Toast.makeText(context, "deletion was Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, " Successful", Toast.LENGTH_SHORT).show()
 
         })
 
@@ -105,6 +134,12 @@ class UserInformationFragment : Fragment() {
             Toast.makeText(context, "Failed to delete", Toast.LENGTH_SHORT).show()
 
         })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        userInfo_ViewMode.addUserInfo(uid,UserData("","","","",""))
+
     }
 
 }

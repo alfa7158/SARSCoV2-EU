@@ -3,10 +3,9 @@ package com.example.covideu.view.Selection.Vaccine
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowPhaseOneBinding
@@ -23,7 +22,13 @@ class showPhaseTwoFragment : Fragment() {
     private val covidDViewModel: phaseTwoViewModel by activityViewModels()
     private lateinit var binding: FragmentShowPhaseTwoBinding
     private lateinit var phaseTwoAdapter: phaseTwoRecyclerView
-    private val phaseTwoDataList = mutableListOf<getPhase_two_vaccines>()
+    private var phaseTwoDataList = listOf<getPhase_two_vaccines>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +44,7 @@ class showPhaseTwoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        phaseTwoAdapter = phaseTwoRecyclerView(phaseTwoDataList,covidDViewModel)
+        phaseTwoAdapter = phaseTwoRecyclerView(covidDViewModel)
 
         binding.phaseTwoRecyclerView.adapter =phaseTwoAdapter
 
@@ -54,14 +59,11 @@ class showPhaseTwoFragment : Fragment() {
 
         covidDViewModel.covid19PhaseTwoLiveData.observe(viewLifecycleOwner,{
             it?.let {
-                Log.d("here I am",it.toString())
-                phaseTwoDataList.clear()
+                binding.progressBarPhaseTwo .visibility = View.VISIBLE
 
-                phaseTwoDataList.addAll(it)
-
-                phaseTwoAdapter.notifyDataSetChanged()
-
-                covidDViewModel.covid19PhaseTwoLiveData .postValue(null)
+                phaseTwoAdapter.submitList(it)
+                phaseTwoDataList = it
+                binding.progressBarPhaseTwo .visibility = View.VISIBLE
 
             }
 
@@ -69,6 +71,45 @@ class showPhaseTwoFragment : Fragment() {
         })
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
+        val searchView = menu.findItem(R.id.searchAction)
+
+
+        val item_searchView = searchView.actionView as SearchView
+
+        item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                phaseTwoAdapter.submitList(phaseTwoDataList.filter {
+                    it.trimedName.lowercase().contains(query!!.lowercase())||
+                            it.trimedCategory.lowercase().contains(query!!.lowercase())
+                })
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+
+
+        })
+        searchView.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                phaseTwoAdapter.submitList(phaseTwoDataList)
+                return true
+            }
+
+
+        })
+
+
+    }
 
 
 

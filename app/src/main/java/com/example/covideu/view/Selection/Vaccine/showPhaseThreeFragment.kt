@@ -3,10 +3,9 @@ package com.example.covideu.view.Selection.Vaccine
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowPhaseOneBinding
@@ -23,7 +22,12 @@ class showPhaseThreeFragment : Fragment() {
     private val covidDViewModel: phaseThreeViewModel by activityViewModels()
     private lateinit var binding: FragmentShowPhaseThreeBinding
     private lateinit var phaseThreeAdapter: phaseThreeRecyclerView
-    private val phaseThreeDataList = mutableListOf<getPhase_three_vaccines>()
+    private var phaseThreeDataList = listOf<getPhase_three_vaccines>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +43,7 @@ class showPhaseThreeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        phaseThreeAdapter = phaseThreeRecyclerView(phaseThreeDataList,covidDViewModel)
+        phaseThreeAdapter = phaseThreeRecyclerView(covidDViewModel)
 
         binding.phaseThreeRecyclerView.adapter =phaseThreeAdapter
 
@@ -53,18 +57,56 @@ class showPhaseThreeFragment : Fragment() {
     fun observePhaseThree(){
         covidDViewModel.covid19PhaseThreeLiveData.observe(viewLifecycleOwner,{
             it?.let {
+                binding.progressBarPhaseThree .visibility = View.VISIBLE
 
                 Log.d("here I am",it.toString())
-                phaseThreeDataList.clear()
-                phaseThreeDataList.addAll(it)
-                phaseThreeAdapter.notifyDataSetChanged()
-                covidDViewModel.covid19PhaseThreeLiveData.postValue(null)
+                phaseThreeAdapter.submitList(it)
+                phaseThreeDataList = it
+                binding.progressBarPhaseThree .visibility = View.GONE
+
             }
 
 
 
         })
     }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
+        val searchView = menu.findItem(R.id.searchAction)
 
+
+        val item_searchView = searchView.actionView as SearchView
+
+        item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                phaseThreeAdapter.submitList(phaseThreeDataList.filter {
+                    it.trimedName.lowercase().contains(query!!.lowercase())||
+                            it.trimedCategory.lowercase().contains(query!!.lowercase())
+                })
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+
+
+        })
+        searchView.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                phaseThreeAdapter.submitList(phaseThreeDataList)
+                return true
+            }
+
+
+        })
+
+
+    }
 
 }

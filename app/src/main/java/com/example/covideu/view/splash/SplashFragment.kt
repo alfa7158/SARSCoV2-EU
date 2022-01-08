@@ -32,13 +32,14 @@ class SplashFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_splash, container, false)
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        sharedPref = requireContext().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
-//        val status = sharedPref.getBoolean("status", false)
 
         // Timer for splash
         object : CountDownTimer(2000,1000){

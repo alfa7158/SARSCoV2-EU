@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -31,6 +32,8 @@ class mainSelectFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         binding = FragmentMainSelectBinding.inflate(inflater,container,false)
         setHasOptionsMenu(true)
         return binding.root
@@ -60,7 +63,10 @@ class mainSelectFragment : Fragment() {
 
 
         }
+        binding.setting.setOnClickListener {
 
+            findNavController().navigate(R.id.action_mainSelectFragment_to_settingFragment)
+        }
 
 
 

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.newsViewModels.allHealthNewsViewModel
@@ -21,6 +22,8 @@ private val covidNewsViewModel: allHealthNewsViewModel by activityViewModels()
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_health_news_details, container, false)
     }

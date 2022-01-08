@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
+import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
+import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_four_vaccines
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_one_vaccines
 import com.example.covideu.view.ViewModels.countriesDataViewModels.n_usa_viewModel
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseOneViewModel
 
-class phaseOneRecyclerView(private val list: List<getPhase_one_vaccines>,val viewModel: phaseOneViewModel) :
+class phaseOneRecyclerView(val viewModel: phaseOneViewModel) :
     RecyclerView.Adapter<phaseOneRecyclerView.phaseOneViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -28,10 +32,22 @@ class phaseOneRecyclerView(private val list: List<getPhase_one_vaccines>,val vie
             )
         )
     }
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getPhase_one_vaccines>(){
+        override fun areItemsTheSame(oldItem: getPhase_one_vaccines, newItem: getPhase_one_vaccines): Boolean {
+            return oldItem==newItem
+        }
 
+        override fun areContentsTheSame(oldItem: getPhase_one_vaccines, newItem: getPhase_one_vaccines): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+
+
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
     override fun onBindViewHolder(holder: phaseOneViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
 
@@ -44,9 +60,13 @@ class phaseOneRecyclerView(private val list: List<getPhase_one_vaccines>,val vie
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return differ.currentList.size
     }
 
+    fun submitList(list:List<getPhase_one_vaccines>){
+        differ.submitList(list)
+
+    }
 
     class phaseOneViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val developer: TextView = itemView.findViewById(R.id.developer_researcherPhaseOne)

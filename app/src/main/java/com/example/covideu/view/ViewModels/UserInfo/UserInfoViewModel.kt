@@ -24,12 +24,14 @@ class UserInfoViewModel: ViewModel() {
 
 
     fun UpdateUserInfo(uid:String){
+
         repository.UpdateUser(uid).addValueEventListener(object : ValueEventListener {
             @RequiresApi(Build.VERSION_CODES.P)
             override fun onDataChange(snapshot: DataSnapshot) {
                 user = snapshot.getValue(UserData::class.java)!!
 
                 userLiveData.postValue(user)
+
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -7,37 +7,52 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/mySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainSelectColor"
+            android:backgroundTintMode="screen"
+            android:minHeight="32dp"
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/uploadVideoButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="video" />
+            android:text="video"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/uplaodAudioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Audio" />
+            android:text="Audio"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/upload_pdfutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PDF" />
+            android:text="PDF"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/UploadDocxButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="docx" />
+            android:text="docx"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/uploadAPicBookOfCovid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="picture" />
+            android:text="picture"
+            android:visibility="invisible" />
+
     </LinearLayout>
 </FrameLayout>

@@ -1,95 +1,121 @@
 <resources>
-    <string name="app_name">Covid-19-Bible</string>
+    <string name="app_name" translatable="false">Covid-19-Bible</string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Login">Login</string>
-    <string name="email">Email</string>
-    <string name="Password">Password</string>
-    <string name="ConfirmPassword">Confirm password</string>
-    <string name="MoreInformation">"More information "</string>
-    <string name="MoreInfo">More information</string>
-    <string name="rank">Rank</string>
-    <string name="profile">profile</string>
-    <string name="FirstName">First name</string>
-    <string name="lastName">Last name</string>
-    <string name="Register">Register</string>
-    <string name="Profile" />
-    <string name="profile_p">Profile</string>
-    <string name="first_name">First name</string>
-    <string name="last_name">Last name</string>
-    <string name="firstNameHint">first name</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="Login" translatable="false">Login</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="Password" translatable="false">Password</string>
+    <string name="ConfirmPassword" translatable="false">Confirm password</string>
+    <string name="MoreInformation" translatable="false">"More information "</string>
+    <string name="MoreInfo" translatable="false">More information</string>
+    <string name="rank" translatable="false">Rank</string>
+    <string name="profile" translatable="false">profile</string>
+    <string name="FirstName" translatable="false">First name</string>
+    <string name="lastName" translatable="false">Last name</string>
+    <string name="Register" translatable="false">Register</string>
+    <string name="Profile" translatable="false" />
+    <string name="profile_p" translatable="false">Profile</string>
+    <string name="first_name" translatable="false">First name</string>
+    <string name="last_name" translatable="false">Last name</string>
+    <string name="firstNameHint" translatable="false">first name</string>
     <string name="lastNameHint" />
-    <string name="last_name_hint">last name</string>
-    <string name="BiographyHint">"Biography "</string>
-    <string name="Biography">"Biography "</string>
-    <string name="choose_an_image">Choose an Image</string>
-    <string name="upload_an_image">Upload an image</string>
-    <string name="news">News</string>
-    <string name="VaccineAndTreatments">"Vaccine and Treatments "</string>
-    <string name="VaccineAndtreatments">Vaccine and Treatment</string>
-    <string name="Vaccine">Vaccine</string>
-    <string name="worldUpdate">World update</string>
-    <string name="covid_book">Covid-19 Book</string>
-    <string name="Check_for_covid_19" />
-    <string name="checkIfYouHaveCovid">Check for covid-19</string>
-    <string name="graph">Graphs</string>
-    <string name="Phase_I_vaccines">Phase-I vaccines</string>
-    <string name="Phase_II_vaccines">Phase-II vaccines</string>
-    <string name="Phase_IV_vaccines">Phase-IV vaccines</string>
-    <string name="Phase_III_vaccines">Phase-III vaccines</string>
-    <string name="FDA_approved_vaccines">FDA-approved-vaccines</string>
-    <string name="Vaccines">Vaccines</string>
-    <string name="clinical_treatment">Clinical treatment</string>
-    <string name="All_treatment">All-treatment</string>
-    <string name="FDA_approved_treatment">FDA-approved-treatment</string>
-    <string name="Phase_I">"Phase-I "</string>
-    <string name="PhaseI">Phase-I</string>
-    <string name="phaseTwo">Phase-II</string>
-    <string name="Phase_III">Phase-III</string>
-    <string name="Phase_IV">Phase-IV</string>
-    <string name="FDA_APPROVED">FDA-approved</string>
-    <string name="Treatment">Treatment</string>
-    <string name="Clinical_treatment">Clinical treatment</string>
-    <string name="All_health_news">all_health_news</string>
-    <string name="covidNews">Covid-19-News</string>
-    <string name="All_vaccineNews">All-Vaccine-News</string>
-    <string name="healthNews">Health-News</string>
-    <string name="vaccineNews">Vaccine-News</string>
-    <string name="Asia">Asia</string>
-    <string name="Africa">Africa</string>
-    <string name="Europ">Europ</string>
-    <string name="North_USA">North-USA</string>
-    <string name="South_USA">South-USA</string>
-    <string name="australia">Australia</string>
-    <string name="occupation">"Occupation "</string>
-    <string name="Occupation">Occupation</string>
-    <string name="Age">Age</string>
-    <string name="age">age</string>
-    <string name="enter_yo_age">enter you age</string>
-    <string name="your_occupation">Your occupation</string>
-    <string name="your_occupationHint">your occupation</string>
-    <string name="Male">Male</string>
-    <string name="Female">Female</string>
-    <string name="your_age">your age</string>
-    <string name="Gender">Gender</string>
-    <string name="Save">Save</string>
-    <string name="Update_profile">Update profile</string>
-    <string name="view_in_your_web">view in your web</string>
-    <string name="For_daily_cases">For daily cases</string>
-    <string name="allTreatment">All-Treatment</string>
-    <string name="FDA_APPROVED_Treatment">fdaApproveTreatment</string>
-    <string name="fad_approv_treatment">FDA-Approved-Treatment</string>
-    <string name="Pre_Clinical_Treatment">Pre-Cllinical-Treatment</string>
-    <string name="All_Clinical_Treatment">All-Clinical-Treatment</string>
-    <string name="preClinical">Pre-Clinical-Treatment</string>
-    <string name="Settings">Settings</string>
-    <string name="Description">Description:</string>
-    <string name="Research">Researcher:</string>
-    <string name="Videos">Videos</string>
-    <string name="Music">Music</string>
-    <string name="pictures">Pictures</string>
-    <string name="PDF">PDF</string>
-    <string name="Docx">Docx</string>
+    <string name="last_name_hint" translatable="false">last name</string>
+    <string name="BiographyHint" translatable="false">"Biography "</string>
+    <string name="Biography" translatable="false">"Biography "</string>
+    <string name="choose_an_image" translatable="false">Choose an Image</string>
+    <string name="upload_an_image" translatable="false">Upload an image</string>
+    <string name="news" translatable="false">News</string>
+    <string name="VaccineAndTreatments" translatable="false">"Vaccine and Treatments "</string>
+    <string name="VaccineAndtreatments" translatable="false">Vaccine and Treatment</string>
+    <string name="Vaccine" translatable="false">Vaccine</string>
+    <string name="worldUpdate" translatable="false">World update</string>
+    <string name="covid_book" translatable="false">Covid-19 Book</string>
+    <string name="Check_for_covid_19" translatable="false" />
+    <string name="checkIfYouHaveCovid" translatable="false">Check for covid-19</string>
+    <string name="graph" translatable="false">Graphs</string>
+    <string name="Phase_I_vaccines" translatable="false">Phase-I vaccines</string>
+    <string name="Phase_II_vaccines" translatable="false">Phase-II vaccines</string>
+    <string name="Phase_IV_vaccines" translatable="false">Phase-IV vaccines</string>
+    <string name="Phase_III_vaccines" translatable="false">Phase-III vaccines</string>
+    <string name="FDA_approved_vaccines" translatable="false">FDA-approved-vaccines</string>
+    <string name="Vaccines" translatable="false">Vaccines</string>
+    <string name="clinical_treatment" translatable="false">Clinical treatment</string>
+    <string name="All_treatment" translatable="false">All-treatment</string>
+    <string name="FDA_approved_treatment" translatable="false">FDA-approved-treatment</string>
+    <string name="Phase_I" translatable="false">"Phase-I "</string>
+    <string name="PhaseI" translatable="false">Phase-I</string>
+    <string name="phaseTwo" translatable="false">Phase-II</string>
+    <string name="Phase_III" translatable="false">Phase-III</string>
+    <string name="Phase_IV" translatable="false">Phase-IV</string>
+    <string name="FDA_APPROVED" translatable="false">FDA-approved</string>
+    <string name="Treatment" translatable="false">Treatment</string>
+    <string name="Clinical_treatment" translatable="false">Clinical treatment</string>
+    <string name="All_health_news" translatable="false">all_health_news</string>
+    <string name="covidNews" translatable="false">Covid-19-News</string>
+    <string name="All_vaccineNews" translatable="false">All-Vaccine-News</string>
+    <string name="healthNews" translatable="false">Health-News</string>
+    <string name="vaccineNews" translatable="false">Vaccine-News</string>
+    <string name="Asia" translatable="false">Asia</string>
+    <string name="Africa" translatable="false">Africa</string>
+    <string name="Europ" translatable="false">Europ</string>
+    <string name="North_USA" translatable="false">North-USA</string>
+    <string name="South_USA" translatable="false">South-USA</string>
+    <string name="australia" translatable="false">Australia</string>
+    <string name="occupation" translatable="false">"Occupation "</string>
+    <string name="Occupation" translatable="false">Occupation</string>
+    <string name="Age" translatable="false">Age</string>
+    <string name="age" translatable="false">age</string>
+    <string name="enter_yo_age" translatable="false">enter you age</string>
+    <string name="your_occupation" translatable="false">Your occupation</string>
+    <string name="your_occupationHint" translatable="false">your occupation</string>
+    <string name="Male" translatable="false">Male</string>
+    <string name="Female" translatable="false">Female</string>
+    <string name="your_age" translatable="false">your age</string>
+    <string name="Gender" translatable="false">Gender</string>
+    <string name="Save" translatable="false">Save</string>
+    <string name="Update_profile" translatable="false">Update profile</string>
+    <string name="view_in_your_web" translatable="false">view in your web</string>
+    <string name="For_daily_cases" translatable="false">For daily cases</string>
+    <string name="allTreatment" translatable="false">All-Treatment</string>
+    <string name="FDA_APPROVED_Treatment" translatable="false">fdaApproveTreatment</string>
+    <string name="fad_approv_treatment" translatable="false">FDA-Approved-Treatment</string>
+    <string name="Pre_Clinical_Treatment" translatable="false">Pre-Cllinical-Treatment</string>
+    <string name="All_Clinical_Treatment" translatable="false">All-Clinical-Treatment</string>
+    <string name="preClinical" translatable="false">Pre-Clinical-Treatment</string>
+    <string name="Settings" translatable="false">Settings</string>
+    <string name="Description" translatable="false">Description:</string>
+    <string name="Research" translatable="false">Researcher:</string>
+    <string name="Videos" translatable="false">Videos</string>
+    <string name="Music" translatable="false">Music</string>
+    <string name="pictures" translatable="false">Pictures</string>
+    <string name="PDF" translatable="false">PDF</string>
+    <string name="Docx" translatable="false">Docx</string>
+    <string name="get_back_to_login_page" translatable="false">get back to login page</string>
+    <string name="GETBACK" translatable="false">Get back to login</string>
+    <string name="Delete" translatable="false">Delete</string>
+    <string name="your_language" translatable="false">Your Language</string>
+    <string name="English" translatable="false">English</string>
+    <string name="Arabic" translatable="false">Arabic</string>
+    <string name="q1" translatable="false">Q1.Have you been tested for the coronavirus (awaiting results)? If yes, stay  home until results are received</string>
+    <string name="YES" translatable="false">YES</string>
+    <string name="NO" translatable="false">NO</string>
+    <string name="q2" translatable="false">Q2.Have you tested POSITIVE for the coronavirus? If yes, stay home for 14  days after symptoms are gone.</string>
+    <string name="Q3" translatable="false">Q3. Have you had prolonged close contact with someone who tested  positive for the coronavirus? If Yes, stay home for 14 days and return  to work if no symptoms.</string>
+    <string name="q4" translatable="false">Q4. Has a member of your household been tested for the coronavirus  (awaiting results)? If Yes, stay home until results are received.</string>
+    <string name="q5" translatable="false">Q5. Has a member of your household been asked by a medical professional  to isolate for potential coronavirus? If Yes, stay home pending results.</string>
+    <string name="q6" translatable="false">Q6. Has a household member had prolonged close contact with someone  who tested positive for the coronavirus? If Yes, stay home for 14 days and  return to work if there are NO symptoms.</string>
+    <string name="q7" translatable="false">Q7. Have you traveled out of the country within the last 14 days? If Yes, stay  home for 14 days from your arrival back to your country. Return to  work if there are no symptoms.</string>
+    <string name="q8" translatable="false">Q8. Have you taken a cruise within the last 14 days? If Yes, stay home for 14  days from your arrival back to your country. Return to work if there  are no symptoms.</string>
+    <string name="q9" translatable="false">Q9. Cough (not related to allergies)</string>
+    <string name="q10" translatable="false">Q10. Shortness of breath</string>
+    <string name="q11" translatable="false">Q11. Difficulty breathing</string>
+    <string name="q12" translatable="false">Q12. Fever</string>
+    <string name="q13" translatable="false">Q13. Chills</string>
+    <string name="q14" translatable="false">Q14.Repeated shaking with chills</string>
+    <string name="q15" translatable="false">Q15. Muscle pain</string>
+    <string name="q16" translatable="false">Q16.New loss of taste or smell</string>
+    <string name="q17" translatable="false">Q17. Sore throat or headache</string>
+    <string name="COVID_19_Self_Assessment_Questionnaire">COVID-19 Self-Assessment Questionnaire</string>
+    <string name="submit">Submit</string>
 </resources>

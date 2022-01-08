@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,8 @@ class AllHealthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         // Inflate the layout for this fragment
         binding = FragmentAllHealthNewsBinding.inflate(inflater,container,false)
         return binding.root
@@ -65,10 +68,13 @@ class AllHealthFragment : Fragment() {
 
         allHealthViewModelViewModel.covidAllHeathLiveData .observe(viewLifecycleOwner,{
         it?.let {
+            binding.allHealthNewsProgressBar.visibility = View.VISIBLE
+
             Log.d("covidNews",it.toString())
             healthNewsList.addAll(it)
             showAllHealthNewsAdapter.submitList(healthNewsList)
             loading = false
+            binding.allHealthNewsProgressBar.visibility = View.GONE
 
 
         }

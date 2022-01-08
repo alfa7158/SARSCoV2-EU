@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
+import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatmentsData
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
 import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allFdaApprovedTreatment
 
@@ -28,9 +31,23 @@ class getFDA_approvedTreatment_RecyclerView(private val list: List<getFDA_Approv
         )
     }
 
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getFDA_Approvedtreatments>(){
+        override fun areItemsTheSame(oldItem: getFDA_Approvedtreatments, newItem: getFDA_Approvedtreatments): Boolean {
+            return oldItem==newItem
+        }
+
+        override fun areContentsTheSame(oldItem: getFDA_Approvedtreatments, newItem: getFDA_Approvedtreatments): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+
+
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
+
     override fun onBindViewHolder(holder: getFDA_approvedTreatment_viewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
 
@@ -43,7 +60,12 @@ class getFDA_approvedTreatment_RecyclerView(private val list: List<getFDA_Approv
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return differ.currentList.size
+    }
+
+    fun submitList(list:List<getFDA_Approvedtreatments>){
+        differ.submitList(list)
+
     }
 
 

@@ -3,10 +3,9 @@ package com.example.covideu.view.Selection.Vaccine
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentPhaseFourBinding
@@ -23,7 +22,12 @@ class PhaseFourFragment : Fragment() {
     private val covidDViewModel: phaseFourViewModel by activityViewModels()
     private lateinit var binding: FragmentPhaseFourBinding
     private lateinit var phaseFourAdapter: phaseFourRecyclerView
-    private val phaseFourDataList = mutableListOf<getPhase_four_vaccines>()
+    private var phaseFourDataList = listOf<getPhase_four_vaccines>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +39,7 @@ class PhaseFourFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        phaseFourAdapter = phaseFourRecyclerView(phaseFourDataList,covidDViewModel)
+        phaseFourAdapter = phaseFourRecyclerView(covidDViewModel)
 
         binding.phaseFourRecyclerView.adapter =phaseFourAdapter
 
@@ -51,18 +55,55 @@ class PhaseFourFragment : Fragment() {
 
             it?.let {
                 Log.d("here I am",it.toString())
+                binding.progressBarPhaseFour .visibility = View.VISIBLE
+                phaseFourAdapter.submitList(it)
+                phaseFourDataList = it
+                binding.progressBarPhaseFour .visibility = View.GONE
 
-                phaseFourDataList.clear()
-
-                phaseFourDataList.addAll(it)
-
-                phaseFourAdapter.notifyDataSetChanged()
-                covidDViewModel.covid19PhaseFourLiveData.postValue(null)
             }
 
 
 
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
+        val searchView = menu.findItem(R.id.searchAction)
+
+
+        val item_searchView = searchView.actionView as SearchView
+
+        item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                phaseFourAdapter.submitList(phaseFourDataList.filter {
+                    it.trimedName.lowercase().contains(query!!.lowercase())||
+                            it.trimedCategory.lowercase().contains(query!!.lowercase())
+                })
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+
+
+        })
+        searchView.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                phaseFourAdapter.submitList(phaseFourDataList)
+                return true
+            }
+
+
+        })
+
+
     }
 
 }

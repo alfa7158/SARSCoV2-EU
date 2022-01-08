@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@drawable/ic_play_circle_outline_white_48dp" />
-    <foreground android:drawable="@drawable/covidback" />
+    <background android:drawable="@drawable/covidbookicon" />
+    <foreground android:drawable="@drawable/covidbookicon"
+      android:width="20dp"
+        android:height="20dp"
+        />
 </adaptive-icon>

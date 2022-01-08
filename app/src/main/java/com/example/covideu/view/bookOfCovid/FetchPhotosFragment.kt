@@ -1,6 +1,8 @@
 package com.example.covideu.view.bookOfCovid
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,13 +12,17 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.database.bookOfCovidDataClassPhotos
 import com.example.covideu.databinding.FragmentFetchContentBinding
-import com.example.covideu.view.ViewModels.bookOfCovid.bookOfCoivdViewModel
+import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
+import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidPhotosViewModel
 import com.example.covideu.view.adapter.bookOfCovid.bookOfCovidImageViewRecyclerView
+import com.example.covideu.view.identity.SHARED_PREF_FILE
 
 
-class FetchContentFragment : Fragment() {
+class FetchPhotosFragment : Fragment() {
+    private lateinit var  sharedPref: SharedPreferences
     private lateinit var imageRecyclerViewAdapter: bookOfCovidImageViewRecyclerView
-    private val fetchPhotosViewModel: bookOfCoivdViewModel by activityViewModels()
+    private val fetchPhotosViewModelViewModel: getBookOfCovidPhotosViewModel by activityViewModels()
+    private val DeletePhotosViewModelViewModel: deleteBookOfCovidViewModel by activityViewModels()
    // val imageList:ArrayList<bookOfCovidDataClass> = ArrayList()
         var theList = mutableListOf<bookOfCovidDataClassPhotos>()
     lateinit var binding: FragmentFetchContentBinding
@@ -32,8 +38,9 @@ class FetchContentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fetchPhotosViewModel.getBookOfCovidPhotos()
-        imageRecyclerViewAdapter = bookOfCovidImageViewRecyclerView(requireContext(),fetchPhotosViewModel)
+        sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
+        fetchPhotosViewModelViewModel.getBookOfCovidPhotos(sharedPref.getString("uid","")!!)
+        imageRecyclerViewAdapter = bookOfCovidImageViewRecyclerView(requireContext(),fetchPhotosViewModelViewModel,DeletePhotosViewModelViewModel)
         binding.bookOfCovidRecyclerView.adapter =imageRecyclerViewAdapter
         observeUri()
 
@@ -41,7 +48,7 @@ class FetchContentFragment : Fragment() {
     }
 
     fun checkForSuccessful(){
-        fetchPhotosViewModel.userLiveDataSuccessful.observe(viewLifecycleOwner,{
+        fetchPhotosViewModelViewModel.userLiveDataSuccessful.observe(viewLifecycleOwner,{
 
             Toast.makeText(context, "Successful uploaded", Toast.LENGTH_SHORT).show()
 
@@ -52,7 +59,7 @@ class FetchContentFragment : Fragment() {
     }
     fun checkForError(){
 
-        fetchPhotosViewModel.userLiveDataError.observe(viewLifecycleOwner,{
+        fetchPhotosViewModelViewModel.userLiveDataError.observe(viewLifecycleOwner,{
 
             Toast.makeText(context, "Failed to upload image", Toast.LENGTH_SHORT).show()
 
@@ -61,15 +68,15 @@ class FetchContentFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeUri(){
-        fetchPhotosViewModel.uriLiveDataForPhotos .observe(viewLifecycleOwner,{
+        fetchPhotosViewModelViewModel.uriLiveDataForPhotos.observe(viewLifecycleOwner,{
 
             it?.let {
                 theList.addAll(listOf(it))
                 imageRecyclerViewAdapter.submitList(theList)
-
+                fetchPhotosViewModelViewModel.uriLiveDataForPhotos.postValue(null)
 
             }
-
+            checkForError()
         })
 
 

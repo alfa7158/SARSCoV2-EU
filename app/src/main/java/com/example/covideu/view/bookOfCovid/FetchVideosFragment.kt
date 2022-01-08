@@ -1,6 +1,8 @@
 package com.example.covideu.view.bookOfCovid
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,13 +14,20 @@ import androidx.fragment.app.activityViewModels
 import com.example.covideu.database.bookOfCovidDataClassVideos
 import com.example.covideu.databinding.FragmentFetchVideosBinding
 import com.example.covideu.view.ViewModels.bookOfCovid.bookOfCoivdViewModel
+import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
+import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidVideosViewModel
 import com.example.covideu.view.adapter.bookOfCoivdVideosRecyclerview
 import com.example.covideu.view.adapter.bookOfCovid.bookOfCovidImageViewRecyclerView
+import com.example.covideu.view.identity.SHARED_PREF_FILE
 
 
 class FetchVideosFragment : Fragment() {
+    private lateinit var  sharedPref: SharedPreferences
+
     private lateinit var videoRecyclerViewAdapter: bookOfCoivdVideosRecyclerview
-    private val fetchVideoViewModel: bookOfCoivdViewModel by activityViewModels()
+    private val fetchVideoViewModel: getBookOfCovidVideosViewModel by activityViewModels()
+    private val DeletePhotosViewModelViewModel: deleteBookOfCovidViewModel by activityViewModels()
+
     // val imageList:ArrayList<bookOfCovidDataClass> = ArrayList()
     var theList = mutableListOf<bookOfCovidDataClassVideos>()
     lateinit var binding: FragmentFetchVideosBinding
@@ -35,12 +44,13 @@ class FetchVideosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 
-        fetchVideoViewModel.getBookOfCovidVideos()
-        videoRecyclerViewAdapter = bookOfCoivdVideosRecyclerview(theList,requireContext())
+        fetchVideoViewModel.getBookOfCovidVideos(sharedPref.getString("uid","")!!)
+        videoRecyclerViewAdapter = bookOfCoivdVideosRecyclerview(theList,requireContext(),DeletePhotosViewModelViewModel)
         binding.videoRecyclerview.adapter =videoRecyclerViewAdapter
         observeUri()
-
+        checkForSuccessful()
 
     }
 

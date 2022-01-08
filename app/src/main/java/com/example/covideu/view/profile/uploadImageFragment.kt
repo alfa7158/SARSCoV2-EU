@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.liveData
@@ -34,6 +35,8 @@ class uploadImageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         // Inflate the layout for this fragment
         binding = FragmentUploadImageBinding.inflate(inflater, container, false)
         return binding.root
@@ -80,6 +83,9 @@ class uploadImageFragment : Fragment() {
             binding.uploadImageView.setImageURI(imageUri)
 
 
+        }else{
+
+            checkForError()
         }
     }
 

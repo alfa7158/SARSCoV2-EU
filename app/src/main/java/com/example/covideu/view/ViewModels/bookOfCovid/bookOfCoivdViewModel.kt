@@ -22,8 +22,19 @@ class bookOfCoivdViewModel:ViewModel() {
 //    val uriLiveDataForDocx = MutableLiveData<bookOfCovidDataClassPhotos>()
     val uriLiveDataForPhotos = MutableLiveData<bookOfCovidDataClassPhotos>()
 
-    fun uploadContentBookOfCovid(uri:Uri){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadBookOfCovidContent().child(it) }
+//    fun uploadContentBookOfCovid(uri:Uri){
+//      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadBookOfCovidContent().child(it) }
+//         reference?.putFile(uri)?.addOnCanceledListener {
+//             userLiveDataSuccessful.postValue("Successfully uploaded")
+//         }?.addOnFailureListener{
+//             userLiveDataError.postValue("Failed to upload file")
+//
+//
+//         }
+//    }
+
+    fun uploadVideos(uri: Uri, uid: String){
+      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadVideos(uid).child(it) }
          reference?.putFile(uri)?.addOnCanceledListener {
              userLiveDataSuccessful.postValue("Successfully uploaded")
          }?.addOnFailureListener{
@@ -33,8 +44,8 @@ class bookOfCoivdViewModel:ViewModel() {
          }
     }
 
-    fun uploadVideos(uri:Uri){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadVideos().child(it) }
+    fun uploadAudio(uri: Uri, uid: String){
+      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadAudio(uid).child(it) }
          reference?.putFile(uri)?.addOnCanceledListener {
              userLiveDataSuccessful.postValue("Successfully uploaded")
          }?.addOnFailureListener{
@@ -44,8 +55,8 @@ class bookOfCoivdViewModel:ViewModel() {
          }
     }
 
-    fun uploadAudio(uri:Uri){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadAudio().child(it) }
+    fun uploadPdf(uri: Uri, uid: String){
+      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPdf(uid).child(it) }
          reference?.putFile(uri)?.addOnCanceledListener {
              userLiveDataSuccessful.postValue("Successfully uploaded")
          }?.addOnFailureListener{
@@ -55,8 +66,8 @@ class bookOfCoivdViewModel:ViewModel() {
          }
     }
 
-    fun uploadPdf(uri:Uri){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPdf().child(it) }
+    fun uploadDocx(uri: Uri, uid: String){
+      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadDocx(uid).child(it) }
          reference?.putFile(uri)?.addOnCanceledListener {
              userLiveDataSuccessful.postValue("Successfully uploaded")
          }?.addOnFailureListener{
@@ -66,8 +77,8 @@ class bookOfCoivdViewModel:ViewModel() {
          }
     }
 
-    fun uploadDocx(uri:Uri){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadDocx().child(it) }
+    fun uploadPicture(uri: Uri, uid: String){
+      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPictures(uid).child(it) }
          reference?.putFile(uri)?.addOnCanceledListener {
              userLiveDataSuccessful.postValue("Successfully uploaded")
          }?.addOnFailureListener{
@@ -77,85 +88,76 @@ class bookOfCoivdViewModel:ViewModel() {
          }
     }
 
-    fun uploadPicture(uri:Uri){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPictures().child(it) }
-         reference?.putFile(uri)?.addOnCanceledListener {
-             userLiveDataSuccessful.postValue("Successfully uploaded")
-         }?.addOnFailureListener{
-             userLiveDataError.postValue("Failed to upload file")
+//    fun deleteAnImage(ImageUri:String){
+//        try {
+//            bookOfCoivdRepository.deleteImage(ImageUri).delete()
+//            userLiveDataSuccessful.postValue("Successfully deleted")
+//
+//        }catch (e:Exception){
+//            userLiveDataError.postValue("Failed to delete file")
+//
+//        }
+//
+//    }
 
 
-         }
-    }
+//    fun getBookOfCovidPhotos(uid: String){
+//
+////        val storageRef = storage.reference.child("bookOfCoivdImages")
+////        val imageList:MutableLiveData<bookOfCovidDataClass> = MutableLiveData<bookOfCovidDataClass>()
+//
+//        val listAllTask: Task<ListResult> = bookOfCoivdRepository.getPhotosBookOfCovid(uid).listAll().addOnCompleteListener { result ->
+//            val item:List<StorageReference> = result.result!!.items
+//
+//            item.forEachIndexed { index, storageReference ->
+//                storageReference.downloadUrl.addOnSuccessListener {
+//                    Log.d("bookOfCovidDataClass","$it")
+//                    uriLiveDataForPhotos.postValue(bookOfCovidDataClassPhotos(it.toString()))
+//                }.addOnCompleteListener{
+//                    userLiveDataSuccessful.postValue("Successfully loaded")
+//
+//                }.addOnFailureListener{
+//                    userLiveDataError.postValue("failed to load")
+//
+//
+//                }
+//
+//            }
+//        }
+//
+//    }
+//    fun getBookOfCovidVideos(uid: String){
+//
+////        val storageRef = storage.reference.child("bookOfCoivdImages")
+////        val imageList:MutableLiveData<bookOfCovidDataClass> = MutableLiveData<bookOfCovidDataClass>()
+//
+//        val listAllTask: Task<ListResult> = bookOfCoivdRepository.getVideosBookOfCovid(uid).listAll().addOnCompleteListener { result ->
+//            val item:List<StorageReference> = result.result!!.items
+//
+//            item.forEachIndexed { index, storageReference ->
+//                storageReference.downloadUrl.addOnSuccessListener {
+//                    Log.d("bookOfCovidDataClass","$it")
+//                    uriLiveDataForVideos.postValue(bookOfCovidDataClassVideos(it.toString()))
+//                }.addOnCompleteListener{
+//                    userLiveDataSuccessful.postValue("Successfully loaded")
+//
+//                }.addOnFailureListener{
+//                    userLiveDataError.postValue("failed to load")
+//
+//
+//                }
+//
+//            }
+//        }
+//
+//    }
 
-    fun deleteAnImage(ImageUri:String){
-        try {
-            bookOfCoivdRepository.deleteImage(ImageUri).delete()
-            userLiveDataSuccessful.postValue("Successfully deleted")
-
-        }catch (e:Exception){
-            userLiveDataError.postValue("Failed to delete file")
-
-        }
-
-    }
-
-
-    fun getBookOfCovidPhotos(){
+    fun getBookOfCovidAudio(uid: String){
 
 //        val storageRef = storage.reference.child("bookOfCoivdImages")
 //        val imageList:MutableLiveData<bookOfCovidDataClass> = MutableLiveData<bookOfCovidDataClass>()
 
-        val listAllTask: Task<ListResult> = bookOfCoivdRepository.getPhotosBookOfCovid().listAll().addOnCompleteListener { result ->
-            val item:List<StorageReference> = result.result!!.items
-
-            item.forEachIndexed { index, storageReference ->
-                storageReference.downloadUrl.addOnSuccessListener {
-                    Log.d("bookOfCovidDataClass","$it")
-                    uriLiveDataForPhotos.postValue(bookOfCovidDataClassPhotos(it.toString()))
-                }.addOnCompleteListener{
-                    userLiveDataSuccessful.postValue("Successfully loaded")
-
-                }.addOnFailureListener{
-                    userLiveDataError.postValue("failed to load")
-
-
-                }
-
-            }
-        }
-
-    }
-    fun getBookOfCovidVideos(){
-
-//        val storageRef = storage.reference.child("bookOfCoivdImages")
-//        val imageList:MutableLiveData<bookOfCovidDataClass> = MutableLiveData<bookOfCovidDataClass>()
-
-        val listAllTask: Task<ListResult> = bookOfCoivdRepository.getVideosBookOfCovid().listAll().addOnCompleteListener { result ->
-            val item:List<StorageReference> = result.result!!.items
-
-            item.forEachIndexed { index, storageReference ->
-                storageReference.downloadUrl.addOnSuccessListener {
-                    Log.d("bookOfCovidDataClass","$it")
-                    uriLiveDataForVideos.postValue(bookOfCovidDataClassVideos(it.toString()))
-                }.addOnCompleteListener{
-                    userLiveDataSuccessful.postValue("Successfully loaded")
-
-                }.addOnFailureListener{
-                    userLiveDataError.postValue("failed to load")
-
-
-                }
-
-            }
-        }
-
-    }    fun getBookOfCovidAudio(){
-
-//        val storageRef = storage.reference.child("bookOfCoivdImages")
-//        val imageList:MutableLiveData<bookOfCovidDataClass> = MutableLiveData<bookOfCovidDataClass>()
-
-        val listAllTask: Task<ListResult> = bookOfCoivdRepository.getAudioBookOfCovid().listAll().addOnCompleteListener { result ->
+        val listAllTask: Task<ListResult> = bookOfCoivdRepository.getAudioBookOfCovid(uid).listAll().addOnCompleteListener { result ->
             val item:List<StorageReference> = result.result!!.items
 
             item.forEachIndexed { index, storageReference ->

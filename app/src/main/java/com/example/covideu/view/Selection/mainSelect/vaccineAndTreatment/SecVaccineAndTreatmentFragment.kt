@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.covideu.R
 
@@ -18,6 +19,8 @@ class SecVaccineAndTreatmentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         return inflater.inflate(R.layout.fragment_vaccine_and_treatment, container, false)
     }
 

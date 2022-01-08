@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">معجم كورونا</string>
+    <string name="your_language" translatable="false">لغتك</string>
+    <string name="Login" translatable="false">تسجيل دخول</string>
+    <string name="email" translatable="false">الايميل</string>
+    <string name="Password" translatable="false">كلمة السر</string>
+    <string name="ConfirmPassword" translatable="false">"الرقم السري "</string>
+    <string name="MoreInformation" translatable="false">الرقم السري  مره اخرى</string>
+    <string name="rank" translatable="false">الترتيب</string>
+    <string name="profile" translatable="false">الملف الشخصي</string>
+    <string name="FirstName" translatable="false">الاسم الاول</string>
+    <string name="lastName" translatable="false">اسم العائلة</string>
+    <string name="Register" translatable="false">التسجيل</string>
+    <string name="first_name" translatable="false">الاسم الاول</string>
+    <string name="last_name" translatable="false">اسم العائلة</string>
+    <string name="firstNameHint" translatable="false">الاسم الاول</string>
+    <string name="lastNameHint">الاسم الاول</string>
+    <string name="last_name_hint" translatable="false">اسم العائلة</string>
+    <string name="Phase_I" translatable="false">المرحلة الاولى</string>
+    <string name="English" translatable="false">النجليزية</string>
+    <string name="Arabic" translatable="false">العربي</string>
+    <string name="news" translatable="false">الاخبار</string>
+    <string name="VaccineAndTreatments" translatable="false">اللقاح والعلاج</string>
+    <string name="VaccineAndtreatments" translatable="false">اللقاح والعلاج</string>
+    <string name="worldUpdate" translatable="false">تحديث العالم</string>
+    <string name="checkIfYouHaveCovid" translatable="false">تحقق مما إذا كان لديك كوفيد -19</string>
+    <string name="Phase_I_vaccines" translatable="false">المرحلة الاولى</string>
+    <string name="Phase_II_vaccines" translatable="false">المرحلة الثانيه</string>
+    <string name="Phase_III_vaccines" translatable="false">المرحلة الثالثة</string>
+    <string name="Phase_IV_vaccines" translatable="false">المرحلة الرابعة</string>
+    <string name="covid_book" translatable="false">كتاب كورونا</string>
+    <string name="pictures" translatable="false">صور</string>
+    <string name="Videos" translatable="false">فديو</string>
+    <string name="Music" translatable="false">موسيقى</string>
+    <string name="Docx" translatable="false">" ملفات Docx"</string>
+    <string name="Settings" translatable="false">الأعدادات</string>
+    <string name="graph" translatable="false">الرسوم البيانية</string>
+</resources>

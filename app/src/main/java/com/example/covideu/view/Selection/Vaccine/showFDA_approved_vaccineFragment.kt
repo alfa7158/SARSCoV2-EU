@@ -3,11 +3,11 @@ package com.example.covideu.view.Selection.Vaccine
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowFDAApprovedVaccineBinding
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.fdaApprovedVaccineViewModel
@@ -18,7 +18,12 @@ class showFDA_approved_vaccineFragment : Fragment() {
     private val covidDViewModel: fdaApprovedVaccineViewModel by activityViewModels()
     private lateinit var binding: FragmentShowFDAApprovedVaccineBinding
     private lateinit var FDA_approved_vaccin_Adapter: FDA_ApprovedVaccinesRecyclerView
-    private val FDA_approved_vaccine_DataList = mutableListOf<getFDA_ApprovedVaccines>()
+    private var FDA_approved_vaccine_DataList = listOf<getFDA_ApprovedVaccines>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +36,7 @@ class showFDA_approved_vaccineFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        FDA_approved_vaccin_Adapter = FDA_ApprovedVaccinesRecyclerView(FDA_approved_vaccine_DataList,covidDViewModel)
+        FDA_approved_vaccin_Adapter = FDA_ApprovedVaccinesRecyclerView(covidDViewModel)
 
         binding.allFDAApprovedVaccineRecyclerView.adapter =FDA_approved_vaccin_Adapter
 
@@ -45,20 +50,56 @@ class showFDA_approved_vaccineFragment : Fragment() {
     fun observeFDA_approved(){
         covidDViewModel.covid19FDAApprovedVaccineLiveData.observe(viewLifecycleOwner,{
             it?.let {
+                binding.fdaApprovedVaccineProgressBar .visibility = View.VISIBLE
 
-                Log.d("here I am",it.toString())
+                FDA_approved_vaccin_Adapter.submitList(it)
+                FDA_approved_vaccine_DataList = it
 
-                FDA_approved_vaccine_DataList.clear()
+                binding.fdaApprovedVaccineProgressBar.visibility = View.GONE
 
-                FDA_approved_vaccine_DataList.addAll(it)
-
-                FDA_approved_vaccin_Adapter.notifyDataSetChanged()
-
-                covidDViewModel.covid19FDAApprovedVaccineLiveData.postValue(null)
             }
 
 
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
+        val searchView = menu.findItem(R.id.searchAction)
+
+
+        val item_searchView = searchView.actionView as SearchView
+
+        item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                FDA_approved_vaccin_Adapter.submitList(FDA_approved_vaccine_DataList.filter {
+                    it.trimedName.lowercase().contains(query!!.lowercase())||
+                            it.trimedCategory.lowercase().contains(query!!.lowercase())
+                })
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+
+
+        })
+        searchView.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                FDA_approved_vaccin_Adapter.submitList(FDA_approved_vaccine_DataList)
+                return true
+            }
+
+
+        })
+
+
     }
 
 }

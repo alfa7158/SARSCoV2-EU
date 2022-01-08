@@ -1,3 +1,3 @@
 package com.example.covideu.database
 
-data class bookOfCovidDataClassAudio(var imageUri:String)
+data class bookOfCovidDataClassAudio(var audioUri:String)

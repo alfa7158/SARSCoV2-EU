@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
+import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_one_vaccines
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_three_vaccines
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseThreeViewModel
 
-class phaseThreeRecyclerView(private val list: List<getPhase_three_vaccines>,val viewModel: phaseThreeViewModel) :
+class phaseThreeRecyclerView(val viewModel: phaseThreeViewModel) :
     RecyclerView.Adapter<phaseThreeRecyclerView.phaseThreeViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -27,10 +30,23 @@ class phaseThreeRecyclerView(private val list: List<getPhase_three_vaccines>,val
             )
         )
     }
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getPhase_three_vaccines>(){
+        override fun areItemsTheSame(oldItem: getPhase_three_vaccines, newItem: getPhase_three_vaccines): Boolean {
+            return oldItem==newItem
+        }
+
+        override fun areContentsTheSame(oldItem: getPhase_three_vaccines, newItem: getPhase_three_vaccines): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+
+
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
 
     override fun onBindViewHolder(holder: phaseThreeViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
 
@@ -41,7 +57,11 @@ class phaseThreeRecyclerView(private val list: List<getPhase_three_vaccines>,val
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return differ.currentList.size
+    }
+    fun submitList(list:List<getPhase_three_vaccines>){
+        differ.submitList(list)
+
     }
 
 

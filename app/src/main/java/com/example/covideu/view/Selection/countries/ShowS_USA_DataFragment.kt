@@ -3,10 +3,10 @@ package com.example.covideu.view.Selection.countries
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowNUSADataBinding
@@ -23,21 +23,31 @@ class ShowS_USA_DataFragment : Fragment() {
     private val covidDViewModel: s_usa_ViewModel by activityViewModels()
     private lateinit var binding: FragmentShowSUSADataBinding
     private lateinit var show_S_UsaDatAapter: show_s_usa_DataRecyclerView
-    private val countriesDataList_N_usa = mutableListOf<getAllSouthernAmericanCountriesModel>()
+    private var countriesDataList_N_usa = listOf<getAllSouthernAmericanCountriesModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+        //(activity as AppCompatActivity?)!!.supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
+
         // Inflate the layout for this fragment
         binding = FragmentShowSUSADataBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
 
-        show_S_UsaDatAapter = show_s_usa_DataRecyclerView(countriesDataList_N_usa,covidDViewModel)
+        show_S_UsaDatAapter = show_s_usa_DataRecyclerView(covidDViewModel)
 
         binding.sUSARecyclerViiew.adapter =show_S_UsaDatAapter
 
@@ -57,19 +67,57 @@ class ShowS_USA_DataFragment : Fragment() {
         covidDViewModel.covid19SouthAmericaLiveData .observe(viewLifecycleOwner,{
             it?.let {
                 Log.d("here I am",it.toString())
-                countriesDataList_N_usa.clear()
+                binding.SUsaProgressBar.visibility = View.VISIBLE
 
-                countriesDataList_N_usa.addAll(it)
+                show_S_UsaDatAapter.submitList(it)
+                countriesDataList_N_usa = it
+                binding.SUsaProgressBar.visibility = View.GONE
 
-                show_S_UsaDatAapter.notifyDataSetChanged()
-
-                covidDViewModel.covid19SouthAmericaLiveDataDetails.postValue(null)
             }
 
 
 
 
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
+        val searchView = menu.findItem(R.id.searchAction)
+
+
+        val item_searchView = searchView.actionView as SearchView
+
+        item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                show_S_UsaDatAapter.submitList(countriesDataList_N_usa.filter {
+                    it.country.lowercase().contains(query!!.lowercase())||
+                            it.continent.lowercase().contains(query!!.lowercase())
+                })
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+
+
+        })
+        searchView.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                show_S_UsaDatAapter.submitList(countriesDataList_N_usa)
+                return true
+            }
+
+
+        })
+
+
     }
 
 }

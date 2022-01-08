@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.covideu.R
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
@@ -56,11 +57,17 @@ class showAllHealthNewsRecyclerView(val newsViewModel:allHealthNewsViewModel,var
         val item = differ.currentList[position]
 
 
-
-
         Glide.with(fileContext)
             .load(item.urlToImage)
+            .apply(
+                RequestOptions()
+                .placeholder(R.drawable.fq)
+            )
             .into(holder.allHealthNewsImageView)
+
+//        Glide.with(fileContext)
+//            .load(item.urlToImage)
+//            .into(holder.allHealthNewsImageView)
         holder.covidNewsTitle.text  = item.title
 
         holder.allHealthNewsImageView.setOnClickListener {

@@ -15,6 +15,10 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.covideu.R
 import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.app.AppCompatActivity
+
+
+
 
 const val SHARED_PREF_FILE = "theUser"
 
@@ -29,13 +33,15 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+
         sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
         sharedPreferencesEditor = sharedPref.edit()
         return inflater.inflate(R.layout.fragment_login, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
 
 
         super.onViewCreated(view, savedInstanceState)
@@ -69,7 +75,10 @@ class LoginFragment : Fragment() {
                         if(it.isSuccessful){
 
 
-                            sharedPreferencesEditor.putBoolean("status",true).commit()
+                            sharedPreferencesEditor.putBoolean("status",true)
+                            sharedPreferencesEditor.putString("uid",FirebaseAuth.getInstance().currentUser?.uid)
+                            sharedPreferencesEditor.commit()
+                            Log.d(TAG,"user id:${sharedPref.getString("uid","")!!}")
                             Log.d(TAG,"${sharedPref.getBoolean("status",false)}")
 
 

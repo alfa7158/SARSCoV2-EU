@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.africaViewModel
 
-class showAfricaDataRecyclerView(private val list: MutableList<getAllAfricanCountriesModel>,val viewModel:africaViewModel) :
+class showAfricaDataRecyclerView(val viewModel:africaViewModel) :
     RecyclerView.Adapter<showAfricaDataRecyclerView.showCountriesDataViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -29,10 +31,21 @@ class showAfricaDataRecyclerView(private val list: MutableList<getAllAfricanCoun
         )
     }
 
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getAllAfricanCountriesModel>(){
+        override fun areItemsTheSame(oldItem: getAllAfricanCountriesModel, newItem: getAllAfricanCountriesModel): Boolean {
+            return oldItem.id==newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: getAllAfricanCountriesModel, newItem: getAllAfricanCountriesModel): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: showCountriesDataViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.rankOfCases.text = "Rank:${item.rank}"
         holder.countries.text = "Country: ${item.country}"
         holder.totalCases.text = "Total cases:${item.totalCases}"
@@ -48,7 +61,12 @@ class showAfricaDataRecyclerView(private val list: MutableList<getAllAfricanCoun
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return differ.currentList.size
+    }
+
+    fun submitList(list:List<getAllAfricanCountriesModel>){
+        differ.submitList(list)
+
     }
 
 

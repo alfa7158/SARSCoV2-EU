@@ -51,6 +51,7 @@
             android:foregroundGravity="center_vertical"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:minHeight="48dp"
             android:textSize="20sp" />
 
         <TextView
@@ -74,7 +75,8 @@
             android:ems="10"
             android:foregroundGravity="center_vertical"
             android:hint="@string/Password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
             android:textSize="20sp" />
 
         <TextView
@@ -98,7 +100,8 @@
             android:ems="10"
             android:foregroundGravity="center_vertical"
             android:hint="@string/ConfirmPassword"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
             android:textSize="20sp" />
 
         <RadioGroup
@@ -131,6 +134,19 @@
             app:layout_constraintStart_toStartOf="parent"
 
             />
+
+        <TextView
+            android:id="@+id/getBackButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center"
+            android:shadowColor="@color/categoriesSelectionColor"
+            android:text="@string/GETBACK"
+            android:textColor="@android:color/holo_red_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 

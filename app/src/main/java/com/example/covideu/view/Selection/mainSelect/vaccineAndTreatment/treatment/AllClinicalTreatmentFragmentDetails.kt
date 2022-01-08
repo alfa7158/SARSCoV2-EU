@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allClinicalViewModel
@@ -21,6 +22,8 @@ class AllClinicalTreatmentFragmentDetails : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         return inflater.inflate(R.layout.fragment_all_clinical_treatment_details, container, false)
     }
 

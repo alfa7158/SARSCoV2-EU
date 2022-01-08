@@ -33,7 +33,7 @@ class bookOfCovidMainSelectFragment : Fragment() {
         findNavController().navigate(R.id.action_bookOfCovidMainSelectFragment_to_fetchVideosFragment)
         }
 
-        binding.mainSelectBookOfCovidPictures.setOnClickListener {
+        binding.mainSelectBookOfCovidPic.setOnClickListener {
 
             findNavController().navigate(R.id.action_bookOfCovidMainSelectFragment_to_fetchContentFragment)
 
@@ -41,12 +41,12 @@ class bookOfCovidMainSelectFragment : Fragment() {
 
 
         binding.mainSelectBookOfCovidAudio.setOnClickListener {
-           // findNavController().navigate(R.id.)
+            findNavController().navigate(R.id.action_bookOfCovidMainSelectFragment_to_fetchAudioFragment)
 
         }
 
 
-        binding.mainSelectBookOfCovidPdf.setOnClickListener {
+        binding.bookOfCovidMainSelectPdf.setOnClickListener {
 
           //  findNavController().navigate()
 

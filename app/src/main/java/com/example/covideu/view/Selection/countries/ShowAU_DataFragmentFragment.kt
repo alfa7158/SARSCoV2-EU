@@ -3,10 +3,10 @@ package com.example.covideu.view.Selection.countries
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowAUDataFragmentBinding
@@ -24,20 +24,28 @@ class ShowAU_DataFragmentFragment : Fragment() {
     private val covidDViewModel: auViewModel by activityViewModels()
     private lateinit var binding: FragmentShowAUDataFragmentBinding
     private lateinit var showAuAdapter: showAuDataRecyclerView
-    private val countriesDataListAu = mutableListOf<getAllAustralianAndOceanianCountriesModel>()
+    private var countriesDataListAu = listOf<getAllAustralianAndOceanianCountriesModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         // Inflate the layout for this fragment
         binding = FragmentShowAUDataFragmentBinding.inflate(inflater,container,false)
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        showAuAdapter = showAuDataRecyclerView(countriesDataListAu,covidDViewModel)
+        showAuAdapter = showAuDataRecyclerView(covidDViewModel)
 
         binding.auRecyclerView.adapter =showAuAdapter
 
@@ -55,15 +63,56 @@ class ShowAU_DataFragmentFragment : Fragment() {
     fun observeAuData(){
         covidDViewModel.covid19AustralianAndOceaniaLiveData.observe(viewLifecycleOwner,{
         it?.let {
-            Log.d("here I am",it.toString())
-            countriesDataListAu.clear()
-            countriesDataListAu.addAll(it)
+            binding.auUsaProgressBar.visibility = View.VISIBLE
 
-            showAuAdapter.notifyDataSetChanged()
-            covidDViewModel.covid19AustralianAndOceaniaLiveData.postValue(null)
+            Log.d("here I am",it.toString())
+            showAuAdapter.submitList(it)
+            countriesDataListAu = it
+
+            binding.auUsaProgressBar.visibility = View.GONE
+
         }
 
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
+        val searchView = menu.findItem(R.id.searchAction)
+
+
+        val item_searchView = searchView.actionView as SearchView
+
+        item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                showAuAdapter.submitList(countriesDataListAu.filter {
+                    it.country.lowercase().contains(query!!.lowercase())||
+                            it.continent.lowercase().contains(query!!.lowercase())
+                })
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                return true
+            }
+
+
+        })
+        searchView.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                showAuAdapter.submitList(countriesDataListAu)
+                return true
+            }
+
+
+        })
+
+
     }
 
 

@@ -11,7 +11,17 @@
         android:label="RegisterFragment" >
         <action
             android:id="@+id/action_registerFragment_to_userInformationFragment"
-            app:destination="@id/userInformationFragment" />
+            app:destination="@id/userInformationFragment"
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true"
+
+            />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2"
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true"
+            />
     </fragment>
     <fragment
         android:id="@+id/loginFragment2"
@@ -55,10 +65,16 @@
             />
         <action
             android:id="@+id/action_mainSelectFragment_to_updateProfileFragment2"
-            app:destination="@id/updateProfileFragment2" />
+            app:destination="@id/updateProfileFragment2"
+            app:popUpTo="@id/mainSelectFragment"
+            app:popUpToInclusive="true"
+            />
         <action
             android:id="@+id/action_mainSelectFragment_to_bookOfCovidMainSelectFragment"
             app:destination="@id/bookOfCovidMainSelectFragment" />
+        <action
+            android:id="@+id/action_mainSelectFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/userInformationFragment"
@@ -248,7 +264,19 @@
         tools:layout="@layout/fragment_update_profile" >
         <action
             android:id="@+id/action_updateProfileFragment2_to_uploadImageFragment"
-            app:destination="@id/uploadImageFragment" />
+            app:destination="@id/uploadImageFragment"
+
+            />
+        <action
+            android:id="@+id/action_updateProfileFragment2_to_mainSelectFragment2"
+            app:destination="@id/mainSelectFragment"
+            app:popUpToInclusive="true"
+
+            app:popUpTo="@id/updateProfileFragment2"
+            />
+        <action
+            android:id="@+id/action_updateProfileFragment2_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
     </fragment>
     <fragment
         android:id="@+id/secVaccineAndTreatmentFragment"
@@ -447,14 +475,9 @@
         tools:layout="@layout/fragment_upload_videos" />
     <fragment
         android:id="@+id/fetchContentFragment"
-        android:name="com.example.covideu.view.bookOfCovid.FetchContentFragment"
+        android:name="com.example.covideu.view.bookOfCovid.FetchPhotosFragment"
         android:label="fragment_fetch_content"
         tools:layout="@layout/fragment_fetch_content" />
-    <fragment
-        android:id="@+id/deletePhotosFragment"
-        android:name="com.example.covideu.view.bookOfCovid.DeletePhotosFragment"
-        android:label="fragment_delete_photos"
-        tools:layout="@layout/fragment_delete_photos" />
     <fragment
         android:id="@+id/bookOfCovidMainSelectFragment"
         android:name="com.example.covideu.view.bookOfCovid.bookOfCovidMainSelectFragment"
@@ -469,10 +492,36 @@
         <action
             android:id="@+id/action_bookOfCovidMainSelectFragment_to_uploadVideosFragment"
             app:destination="@id/uploadVideosFragment" />
+        <action
+            android:id="@+id/action_bookOfCovidMainSelectFragment_to_fetchAudioFragment"
+            app:destination="@id/fetchAudioFragment" />
     </fragment>
     <fragment
         android:id="@+id/fetchVideosFragment"
         android:name="com.example.covideu.view.bookOfCovid.FetchVideosFragment"
         android:label="fragment_fetch_videos"
         tools:layout="@layout/fragment_fetch_videos" />
+    <fragment
+        android:id="@+id/deleteProfileFragment"
+        android:name="com.example.covideu.view.profile.DeleteProfileFragment"
+        android:label="fragment_delete_profile"
+        tools:layout="@layout/fragment_delete_profile" />
+    <activity
+        android:id="@+id/baseActivity"
+        android:name="com.example.covideu.view.Selection.setting.Translate.BaseActivity"
+        android:label="BaseActivity" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.covideu.view.Selection.setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/check_for_covid_Fragment"
+        android:name="com.example.covideu.view.Covid19Check.Check_for_covid_Fragment"
+        android:label="Check_for_covid_Fragment" />
+    <fragment
+        android:id="@+id/fetchAudioFragment"
+        android:name="com.example.covideu.view.bookOfCovid.FetchAudioFragment"
+        android:label="fragment_fetch_audio"
+        tools:layout="@layout/fragment_fetch_audio" />
 </navigation>

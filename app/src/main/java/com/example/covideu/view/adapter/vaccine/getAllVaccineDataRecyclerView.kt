@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getAllVaccinesDataItem
+import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
+import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_four_vaccines
 import com.example.covideu.view.ViewModels.newsViewModels.allVaccineNewsViewModel
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.AllVaccineViewModel
 
-class getAllVaccineDataRecyclerView(private val list: List<getAllVaccinesDataItem>, val viewModel: AllVaccineViewModel) :
+class getAllVaccineDataRecyclerView( val viewModel: AllVaccineViewModel) :
     RecyclerView.Adapter<getAllVaccineDataRecyclerView.getAllVaccineDataViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -28,10 +32,22 @@ class getAllVaccineDataRecyclerView(private val list: List<getAllVaccinesDataIte
             )
         )
     }
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getAllVaccinesDataItem>(){
+        override fun areItemsTheSame(oldItem: getAllVaccinesDataItem, newItem: getAllVaccinesDataItem): Boolean {
+            return oldItem==newItem
+        }
 
+        override fun areContentsTheSame(oldItem: getAllVaccinesDataItem, newItem: getAllVaccinesDataItem): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+
+
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
     override fun onBindViewHolder(holder: getAllVaccineDataViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
 
@@ -42,9 +58,13 @@ class getAllVaccineDataRecyclerView(private val list: List<getAllVaccinesDataIte
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return differ.currentList.size
     }
 
+    fun submitList(list:List<getAllVaccinesDataItem>){
+        differ.submitList(list)
+
+    }
 
     class getAllVaccineDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

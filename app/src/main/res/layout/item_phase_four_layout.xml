@@ -24,15 +24,40 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/developer_researcherPhaseFour"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/categoryPhaseFour"
+                <ImageView
+                    android:id="@+id/imageView33"
+                    android:layout_width="118dp"
+                    android:layout_height="85dp"
+                    app:srcCompat="@drawable/researcher" />
+
+                <TextView
+                    android:id="@+id/developer_researcherPhaseFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView36"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    app:srcCompat="@drawable/categorey" />
+
+                <TextView
+                    android:id="@+id/categoryPhaseFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
 
         </LinearLayout>

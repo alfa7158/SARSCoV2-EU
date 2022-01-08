@@ -22,7 +22,9 @@
                 <ImageView
                     android:id="@+id/TreatmentMainSelectButton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="117dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/treatmentdoc3" />
 
                 <TextView
@@ -31,15 +33,18 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/abel"
                     android:foregroundGravity="center"
                     android:gravity="center"
                     android:text="@string/Treatment"
-                    android:textSize="24dp" />
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:id="@+id/clinicalMainSelectButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/clinicaldoc2" />
 
                 <TextView
@@ -48,10 +53,11 @@
                     android:layout_height="64dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/abel"
                     android:foregroundGravity="center"
                     android:gravity="center"
                     android:text="@string/Clinical_treatment"
-                    android:textSize="24dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -64,8 +70,10 @@
 
                 <ImageView
                     android:id="@+id/VaccineMainSelectButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="127dp"
+                    android:layout_width="208dp"
+                    android:layout_height="117dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/doc3" />
 
                 <TextView
@@ -74,10 +82,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/abel"
                     android:foregroundGravity="center"
                     android:gravity="center"
                     android:text="@string/Vaccines"
-                    android:textSize="24dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

@@ -18,8 +18,11 @@ class userInfoRepository_Firebase {
     val database = FirebaseDatabase.getInstance().reference
     val databaseReference = FirebaseDatabase.getInstance().getReference("Users")
     fun addUserInfo(uid: String) = databaseReference.child(uid)
+//    fun deleteUser(userName:String) =  database.child("Users").orderByChild("lastName").equalTo(userName)
     fun deleteUser(userName:String) =  database.child("Users").orderByChild("lastName").equalTo(userName)
     fun UpdateUser(uid:String) = databaseReference.child(uid)
-    fun uploadImage() = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().uid.toString())
+    fun uploadImage() = FirebaseStorage.getInstance().getReference("profile/${FirebaseAuth.getInstance().uid.toString()}")
+
+
 
 }

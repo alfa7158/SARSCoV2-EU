@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,8 @@ class showCovidNewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
         binding = FragmentShowCovidNewsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -72,10 +75,13 @@ class showCovidNewsFragment : Fragment() {
     fun observeCovidNews() {
         covidNewsViewModel.covidAllNewsLiveData.observe(viewLifecycleOwner, {
             it?.let {
+                binding.allCovidNewsprogressBar.visibility = View.VISIBLE
+
                 covidNewsList.addAll(it)
                 showCovidNewsAdapter.submitList(covidNewsList)
 
                 loading = false
+                binding.allCovidNewsprogressBar.visibility = View.GONE
 
 
             }

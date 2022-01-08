@@ -1,28 +1,20 @@
 package com.example.covideu.view.adapter.newsRecyclers
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.covideu.R
-import com.example.covideu.model.covidNews.allCovidNews.getAllCoronaVirusNews
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
-import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
-import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
 import com.example.covideu.view.ViewModels.newsViewModels.covidNewsViewMode
-import com.squareup.picasso.Picasso
-import okhttp3.internal.delimiterOffset
 
 private const val TAG = "ShowCovidnewsRecyclerVi"
 class showCovidnewsRecyclerView(val list: MutableList<newsModel>, val newsViewModel:covidNewsViewMode, var fileContext: Context) :
@@ -63,13 +55,21 @@ class showCovidnewsRecyclerView(val list: MutableList<newsModel>, val newsViewMo
 
         val item = list[position]
 
+
         Glide.with(fileContext)
             .load(item.urlToImage)
-            .into(holder.covidNewsImageView)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.fq)
+            )
+            .into(holder.vaccineNewsImageView)
+//        Glide.with(fileContext)
+//            .load(item.urlToImage)
+//            .into(holder.covidNewsImageView)
             holder.covidNewsTitle.text  = item.title
 //            holder.secCovidNewsProgressBar.animate().alpha(1F)
 
-        holder.covidNewsImageView .setOnClickListener {
+        holder.vaccineNewsImageView .setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showCovidNewsFragment2_to_covidNewsDetailsFragment)
             newsViewModel.covidAllNewsLiveDataDetails.postValue(item)
@@ -90,7 +90,7 @@ class showCovidnewsRecyclerView(val list: MutableList<newsModel>, val newsViewMo
 
 
     class showCovidNewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val covidNewsImageView:ImageView = itemView.findViewById(R.id.covidnewsImageView)
+            val vaccineNewsImageView:ImageView = itemView.findViewById(R.id.covidnewsImageView)
             val covidNewsTitle:TextView = itemView.findViewById(R.id.covidNewsTitle)
 //            val secCovidNewsProgressBar:ProgressBar = itemView.findViewById(R.id.covidNewsProgress)
 //            val covidNewsContent:TextView  = itemView.findViewById(R.id.covidNewscontent)

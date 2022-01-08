@@ -12,11 +12,14 @@ import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovidDataClassPhotos
-import com.example.covideu.view.ViewModels.bookOfCovid.bookOfCoivdViewModel
+import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
+import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidPhotosViewModel
+import com.google.firebase.auth.FirebaseAuth
 
-class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel:bookOfCoivdViewModel) :
+class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: getBookOfCovidPhotosViewModel, val viewModelDelete: deleteBookOfCovidViewModel) :
     RecyclerView.Adapter<bookOfCovidImageViewRecyclerView.bookOfCovidImageViewHolder>() {
     var xlist= mutableListOf<bookOfCovidDataClassPhotos>()
+    var auth = FirebaseAuth.getInstance()
 
     // lateinit var uri:String
     override fun onCreateViewHolder(
@@ -51,10 +54,19 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel:bo
         Glide.with(fileContext)
             .load(item.imageUri)
             .into(holder.imageBookOfCovid)
+
+
+
             holder.deleteButton.setOnClickListener {
-                viewModel.deleteAnImage(item.imageUri)
-                xlist.remove(item)
-                notifyDataSetChanged()
+
+
+                    viewModelDelete.deleteAnImage(item.imageUri)
+                    xlist.remove(item)
+                    notifyDataSetChanged()
+
+
+
+
 
             }
 

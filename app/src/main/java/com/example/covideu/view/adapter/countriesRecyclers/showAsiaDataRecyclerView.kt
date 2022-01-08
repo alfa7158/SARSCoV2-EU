@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
+import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.asiaViewModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.s_usa_ViewModel
 
-class showAsiaDataRecyclerView(private val list: List<getAll_AsianCountriesModel>,val viewModel: asiaViewModel) :
+class showAsiaDataRecyclerView(val viewModel: asiaViewModel) :
     RecyclerView.Adapter<showAsiaDataRecyclerView.showCountriesDataViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -31,7 +34,7 @@ class showAsiaDataRecyclerView(private val list: List<getAll_AsianCountriesModel
 
     override fun onBindViewHolder(holder: showCountriesDataViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         holder.rankOfCases.text = "Rank:${item.rank}"
         holder.countries.text = "Country: ${item.country}"
         holder.totalCases.text = "Total cases:${item.totalCases}"
@@ -43,10 +46,26 @@ class showAsiaDataRecyclerView(private val list: List<getAll_AsianCountriesModel
         }
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
 
+    val DIF_CALLBACK = object : DiffUtil.ItemCallback<getAll_AsianCountriesModel>(){
+        override fun areItemsTheSame(oldItem: getAll_AsianCountriesModel, newItem: getAll_AsianCountriesModel): Boolean {
+            return oldItem.id==newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: getAll_AsianCountriesModel, newItem: getAll_AsianCountriesModel): Boolean {
+            return oldItem==newItem
+        }
+
+    }
+    private val differ = AsyncListDiffer(this,DIF_CALLBACK)
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+    fun submitList(list:List<getAll_AsianCountriesModel>){
+        differ.submitList(list)
+
+    }
 
     class showCountriesDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
