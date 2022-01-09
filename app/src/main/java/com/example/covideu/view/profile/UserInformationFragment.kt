@@ -1,10 +1,8 @@
 package com.example.covideu.view.profile
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
@@ -40,6 +38,11 @@ class UserInformationFragment : Fragment() {
         return binding.root
 
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,6 +54,7 @@ class UserInformationFragment : Fragment() {
             .load("https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/profile%2f${FirebaseAuth.getInstance().uid.toString()}?alt=media&token=59881b60-98db-4dd8-a446-b20837e9a576")
             .diskCacheStrategy(DiskCacheStrategy.NONE )
             .skipMemoryCache(true)
+            .placeholder(R.drawable.profimage)
             .into(binding.MainProfileImagwView)
 
         binding.MainProfileImagwView.setOnClickListener {
@@ -141,5 +145,11 @@ class UserInformationFragment : Fragment() {
         userInfo_ViewMode.addUserInfo(uid,UserData("","","","",""))
 
     }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
 
+        val searchItem = menu.findItem(R.id.searchAction)
+
+        searchItem.isVisible = false
+    }
 }

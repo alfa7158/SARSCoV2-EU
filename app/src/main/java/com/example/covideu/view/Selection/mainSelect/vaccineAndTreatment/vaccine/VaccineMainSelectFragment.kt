@@ -1,10 +1,8 @@
 package com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment.vaccine
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentMainSelectBinding
@@ -22,6 +20,11 @@ class VaccineMainSelectFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentVaccineMainSelectBinding.inflate(inflater,container,false)
         return binding.root
+
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
 
     }
 
@@ -53,6 +56,15 @@ class VaccineMainSelectFragment : Fragment() {
             findNavController().navigate(R.id.action_vaccineMainSelectFragment_to_showFDA_approved_vaccineFragment)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val searchItem = menu.findItem(R.id.searchAction)
+
+        searchItem.isVisible = false
+    }
+
 
 
 }

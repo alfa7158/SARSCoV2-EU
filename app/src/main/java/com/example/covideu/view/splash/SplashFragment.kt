@@ -2,6 +2,8 @@ package com.example.covideu.view.splash
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
+import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
@@ -31,6 +33,8 @@ class SplashFragment() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.requestedOrientation = SCREEN_ORIENTATION_PORTRAIT
+
         return inflater.inflate(R.layout.fragment_splash, container, false)
 
 
@@ -38,8 +42,8 @@ class SplashFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         // Timer for splash
         object : CountDownTimer(2000,1000){
@@ -48,6 +52,7 @@ class SplashFragment() : Fragment() {
             }
 
             override fun onFinish() {
+
                 findNavController().navigate(R.id.action_splashFragment_to_loginFragment23)
 
             }

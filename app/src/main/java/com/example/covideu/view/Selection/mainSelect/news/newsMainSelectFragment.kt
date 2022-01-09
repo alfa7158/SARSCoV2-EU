@@ -1,10 +1,8 @@
 package com.example.covideu.view.Selection.mainSelect.news
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
@@ -20,6 +18,12 @@ class newsMainSelectFragment : Fragment() {
 
         return inflater.inflate(R.layout.fragment_news_main_select, container, false)
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,6 +47,13 @@ class newsMainSelectFragment : Fragment() {
         }
 
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val searchItem = menu.findItem(R.id.searchAction)
+
+        searchItem.isVisible = false
     }
 
 

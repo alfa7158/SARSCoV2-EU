@@ -16,9 +16,7 @@
         android:id="@+id/item_profile"
         android:title="profile"
         app:showAsAction="never"/>
-    <item
-        android:id="@+id/delete"
-        android:title="Delete User" />
+
 
 
 

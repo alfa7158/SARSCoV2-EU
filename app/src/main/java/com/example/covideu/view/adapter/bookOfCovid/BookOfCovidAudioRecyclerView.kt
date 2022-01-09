@@ -1,5 +1,6 @@
 package com.example.covideu.view.adapter.bookOfCovid
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,7 @@ import com.example.covideu.R
 import com.example.covideu.database.bookOfCovidDataClassAudio
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
 
-class BookOfCovidAudioRecyclerView(private val list: List<bookOfCovidDataClassAudio>,val fileContext:Context,val DeleteAudioViewModelViewModel: deleteBookOfCovidViewModel) :
+class BookOfCovidAudioRecyclerView(private val list: MutableList<bookOfCovidDataClassAudio>,val fileContext:Context,val DeleteAudioViewModel: deleteBookOfCovidViewModel) :
     RecyclerView.Adapter<BookOfCovidAudioRecyclerView.BookOfCovidAudioViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -32,6 +33,7 @@ class BookOfCovidAudioRecyclerView(private val list: List<bookOfCovidDataClassAu
         )
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: BookOfCovidAudioViewHolder, position: Int) {
 
         val item = list[position]
@@ -44,7 +46,13 @@ class BookOfCovidAudioRecyclerView(private val list: List<bookOfCovidDataClassAu
         holder.audioView.setMediaController(mediaController)
         holder.audioView.setFadingEdgeLength(30)
        // holder.audioView.setAudioFocusRequest(5)
+        holder.deleteButton.setOnClickListener {
 
+            DeleteAudioViewModel.deleteAnImage(item.audioUri)
+            list.remove(item)
+            notifyDataSetChanged()
+
+        }
 
     }
 

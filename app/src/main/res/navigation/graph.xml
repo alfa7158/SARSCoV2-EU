@@ -506,22 +506,18 @@
         android:name="com.example.covideu.view.profile.DeleteProfileFragment"
         android:label="fragment_delete_profile"
         tools:layout="@layout/fragment_delete_profile" />
-    <activity
-        android:id="@+id/baseActivity"
-        android:name="com.example.covideu.view.Selection.setting.Translate.BaseActivity"
-        android:label="BaseActivity" />
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.covideu.view.Selection.setting.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
     <fragment
-        android:id="@+id/check_for_covid_Fragment"
-        android:name="com.example.covideu.view.Covid19Check.Check_for_covid_Fragment"
-        android:label="Check_for_covid_Fragment" />
-    <fragment
         android:id="@+id/fetchAudioFragment"
         android:name="com.example.covideu.view.bookOfCovid.FetchAudioFragment"
         android:label="fragment_fetch_audio"
         tools:layout="@layout/fragment_fetch_audio" />
+    <fragment
+        android:id="@+id/check_for_covid_Fragment"
+        android:name="com.example.covideu.view.Covid19Check.Check_for_covid_Fragment"
+        android:label="Check_for_covid_Fragment" />
 </navigation>

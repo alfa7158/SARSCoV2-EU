@@ -32,6 +32,13 @@ class covidNewsDetailsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_covid_news_details, container, false)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

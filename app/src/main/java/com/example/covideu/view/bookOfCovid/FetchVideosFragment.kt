@@ -5,12 +5,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import com.example.covideu.R
 import com.example.covideu.database.bookOfCovidDataClassVideos
 import com.example.covideu.databinding.FragmentFetchVideosBinding
 import com.example.covideu.view.ViewModels.bookOfCovid.bookOfCoivdViewModel
@@ -39,6 +38,11 @@ class FetchVideosFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentFetchVideosBinding.inflate(inflater, container, false)
         return binding.root
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -78,16 +82,25 @@ class FetchVideosFragment : Fragment() {
         fetchVideoViewModel.uriLiveDataForVideos .observe(viewLifecycleOwner,{
 
             it?.let {
+              //  theList.clear()
                theList.addAll(listOf(it))
                 videoRecyclerViewAdapter.notifyDataSetChanged()
                 Log.d("theVideo",theList.toString())
 //                videoRecyclerViewAdapter.submitList(theList)
+                //fetchVideoViewModel.uriLiveDataForVideos.postValue(null)
 
 
             }
 
         })
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val searchItem = menu.findItem(R.id.searchAction)
+
+        searchItem.isVisible = false
     }
 
 

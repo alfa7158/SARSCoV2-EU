@@ -40,10 +40,10 @@
 
     <EditText
         android:id="@+id/loginEmailEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="9dp"
         android:background="@drawable/shape"
         android:backgroundTint="@color/cardBackGroundColor"
@@ -76,7 +76,7 @@
 
     <EditText
         android:id="@+id/loginPasswordEditeText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
         android:layout_marginTop="48dp"

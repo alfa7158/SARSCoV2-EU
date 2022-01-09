@@ -5,10 +5,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
@@ -42,6 +40,11 @@ class FetchAudioFragment : Fragment() {
         binding = FragmentFetchAudioBinding.inflate(inflater, container, false)
         return binding.root
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,11 +64,12 @@ class FetchAudioFragment : Fragment() {
         fetchAudioViewModelViewModel.uriLiveDataForAudio .observe(viewLifecycleOwner,{
 
             it?.let {
+                //theList.clear()
                 theList.addAll(listOf(it))
                 audioRecyclerViewAdapter.notifyDataSetChanged()
                 Log.d("theVideo",theList.toString())
 //                videoRecyclerViewAdapter.submitList(theList)
-
+                fetchAudioViewModelViewModel.uriLiveDataForAudio.postValue(null)
 
             }
 
@@ -90,6 +94,13 @@ class FetchAudioFragment : Fragment() {
             Toast.makeText(context, "Failed to upload image", Toast.LENGTH_SHORT).show()
 
         })
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val searchItem = menu.findItem(R.id.searchAction)
+
+        searchItem.isVisible = false
     }
 
 

@@ -73,6 +73,8 @@ class FDA_approved_treatmentFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+
         requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
         val searchView = menu.findItem(R.id.searchAction)
 

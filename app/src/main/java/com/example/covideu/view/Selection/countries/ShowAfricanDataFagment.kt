@@ -87,6 +87,7 @@ class ShowCountriesDataFagment : Fragment() {
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
         requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
         val searchItem = menu.findItem(R.id.searchAction)
 
@@ -124,6 +125,7 @@ class ShowCountriesDataFagment : Fragment() {
 
 
     }
+
 
 
 

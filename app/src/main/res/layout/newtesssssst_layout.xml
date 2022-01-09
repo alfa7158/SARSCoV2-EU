@@ -1,116 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FdaVaccineCardView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/tttColor"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="102dp"
-        android:layout_height="91dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="52dp"
-        app:srcCompat="@drawable/researcher" />
-
-    <TextView
-        android:id="@+id/researcherVaccineInfo"
-        android:layout_width="144dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/test1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="174dp"
-        android:layout_marginEnd="237dp"
-        android:text="TextView" />
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/clou3back"
+        android:backgroundTint="@color/cardBackGroundColor"
+        app:cardCornerRadius="20dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="239dp"
-        android:layout_marginEnd="250dp"
-        app:srcCompat="@drawable/categorey" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/categoreyVaccineInfo"
-        android:layout_width="109dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="413dp"
-        android:layout_marginEnd="265dp"
-        android:text="TextView" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="135dp"
-        android:layout_height="129dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="467dp"
-        android:layout_marginEnd="84dp"
-        app:srcCompat="@drawable/nextstep" />
+                <TextView
+                    android:id="@+id/test2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/nextStepVaccineInfo"
-        android:layout_width="120dp"
-        android:layout_height="32dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="89dp"
-        android:layout_marginBottom="76dp"
-        android:text="TextView" />
+            <TextView
+                android:id="@+id/test3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/imageView23"
-        android:layout_width="104dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="240dp"
-        android:layout_marginBottom="573dp"
-        app:srcCompat="@drawable/description" />
+            <TextView
+                android:id="@+id/test4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/descriptionVaccineInfo"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="245dp"
-        android:layout_marginBottom="527dp"
-        android:text="TextView" />
+    </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imageView24"
-        android:layout_width="152dp"
-        android:layout_height="136dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="246dp"
-        android:layout_marginEnd="50dp"
-        app:srcCompat="@drawable/img" />
-
-    <TextView
-        android:id="@+id/fdaApprovedVaccineInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="111dp"
-        android:layout_marginBottom="302dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/lastUpdateVaccineInfo"
-        android:layout_width="114dp"
-        android:layout_height="43dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="99dp"
-        android:layout_marginBottom="16dp"
-        android:text="TextView" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,8 @@
 package com.example.covideu.view.Selection.mainSelect.vaccineAndTreatment
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +23,12 @@ class ClinicalMainSelectFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_clinical_main_select, container, false)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
             val clinicalTreatmentButton:ImageView = view.findViewById(R.id.allCinicalSelectButton)
@@ -35,6 +39,13 @@ class ClinicalMainSelectFragment : Fragment() {
             findNavController().navigate(R.id.action_clinicalMainSelectFragment_to_clinicalTreatmentFragment)
         }
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val searchItem = menu.findItem(R.id.searchAction)
+
+        searchItem.isVisible = false
     }
 
 

@@ -10,6 +10,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovidDataClassPhotos
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
@@ -45,6 +46,8 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
             return  oldItem == newItem
         }
     }
+    private val differ = AsyncListDiffer(this,DIFF_CALLBACK)
+
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: bookOfCovidImageViewHolder, position: Int) {
@@ -53,20 +56,17 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
 
         Glide.with(fileContext)
             .load(item.imageUri)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .skipMemoryCache(true)
             .into(holder.imageBookOfCovid)
 
 
 
             holder.deleteButton.setOnClickListener {
 
-
                     viewModelDelete.deleteAnImage(item.imageUri)
                     xlist.remove(item)
                     notifyDataSetChanged()
-
-
-
-
 
             }
 
@@ -74,7 +74,6 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
 
 
     }
-    private val differ = AsyncListDiffer(this,DIFF_CALLBACK)
 
 
 
