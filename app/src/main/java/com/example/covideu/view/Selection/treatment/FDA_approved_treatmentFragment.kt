@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -18,6 +19,7 @@ import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allFdaApprove
 import com.example.covideu.view.adapter.treatment.allTreatmentRecyclerView
 import com.example.covideu.view.adapter.treatment.getFDA_approvedTreatment_RecyclerView
 import com.example.covideu.view.adapter.treatment.showAllClinicalTreatmentRecyclerView
+import java.lang.Exception
 
 
 class FDA_approved_treatmentFragment : Fragment() {
@@ -56,20 +58,27 @@ class FDA_approved_treatmentFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeAllTreatment(){
-        covidDViewModel.covid19ApprovedTreatmentsLiveData .observe(viewLifecycleOwner,{
-            it?.let {
-                binding.fdaApprovedTreatmentProgressBar.visibility = View.VISIBLE
 
-                Log.d("here I am",it.toString())
-                fdaApproved_treatment_Adapter.submitList(it)
-                fdaApproved_treatment_DataList = it
-                binding.fdaApprovedTreatmentProgressBar.visibility = View.GONE
+        try {
+            covidDViewModel.covid19ApprovedTreatmentsLiveData .observe(viewLifecycleOwner,{
+                it?.let {
+                    binding.fdaApprovedTreatmentProgressBar.visibility = View.VISIBLE
 
-            }
+                    Log.d("here I am",it.toString())
+                    fdaApproved_treatment_Adapter.submitList(it)
+                    fdaApproved_treatment_DataList = it
+                    binding.fdaApprovedTreatmentProgressBar.visibility = View.GONE
+
+                }
 
 
 
-        })
+            })
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -111,6 +120,23 @@ class FDA_approved_treatmentFragment : Fragment() {
         })
 
 
+    }
+
+    fun checkForSuccessful(){
+        covidDViewModel.treatmentLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 

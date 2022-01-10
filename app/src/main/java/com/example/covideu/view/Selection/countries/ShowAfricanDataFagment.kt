@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
@@ -14,6 +15,7 @@ import com.example.covideu.databinding.FragmentShowAfricaDataFagmentBinding
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.africaViewModel
 import com.example.covideu.view.adapter.countriesRecyclers.showAfricaDataRecyclerView
+import java.lang.Exception
 import java.util.*
 
 private const val TAG = "ShowCountriesDataFagmen"
@@ -64,24 +66,33 @@ class ShowCountriesDataFagment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeAfricanData(){
-        covidDViewModel.covid19AfricaLiveData.observe(viewLifecycleOwner,{
+        try{
 
-            it?.let {
-                binding.africaProgressBar.visibility = View.VISIBLE
+            covidDViewModel.covid19AfricaLiveData.observe(viewLifecycleOwner,{
 
-                showAfricaDatAapter.submitList(it)
-                countriesDataListAfricaShowList = it
+                it?.let {
+                    binding.africaProgressBar.visibility = View.VISIBLE
 
-                binding.africaProgressBar.visibility = View.GONE
+                    showAfricaDatAapter.submitList(it)
+                    countriesDataListAfricaShowList = it
 
-
-            }
-
+                    binding.africaProgressBar.visibility = View.GONE
 
 
+                }
 
 
-        })
+
+
+
+            })
+
+        }catch (e:Exception){
+
+
+            checkForError()
+        }
+
     }
 
 
@@ -124,6 +135,25 @@ class ShowCountriesDataFagment : Fragment() {
         })
 
 
+    }
+
+    fun checkForSuccessful(){
+        covidDViewModel.countryLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 

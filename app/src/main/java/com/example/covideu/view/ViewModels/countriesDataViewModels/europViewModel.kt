@@ -25,6 +25,8 @@ class europViewModel:ViewModel() {
     val covid19EuropeLiveData = MutableLiveData<List<getAllEuropeanCountriesModel>>()
     val covid19EuropeLiveDataDetails = MutableLiveData<getAllEuropeanCountriesModel>()
 
+    val countryLiveDataSuccessful = MutableLiveData<String>()
+
 
     val CovidLiveDataError = MutableLiveData<String?>()
 
@@ -40,7 +42,7 @@ class europViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19EuropeLiveData.postValue(this)
-
+                        countryLiveDataSuccessful.postValue("Successful")
                     }
 
 

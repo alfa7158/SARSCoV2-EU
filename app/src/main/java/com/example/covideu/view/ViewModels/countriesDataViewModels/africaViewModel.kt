@@ -14,7 +14,7 @@ class africaViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
     var covid19AfricaLiveData = MutableLiveData<List<getAllAfricanCountriesModel>>()
     val covid19AfricaLiveDataDetails = MutableLiveData<getAllAfricanCountriesModel>()
-
+    val countryLiveDataSuccessful = MutableLiveData<String>()
     val CovidLiveDataError = MutableLiveData<String?>()
 
     fun callCovidDataForAfrica(){
@@ -28,7 +28,7 @@ class africaViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19AfricaLiveData.postValue(this)
-
+                        countryLiveDataSuccessful.postValue("Successful")
                         Log.d("HELLOWORLD",covid19AfricaLiveData.postValue(this).toString())
                     }
 

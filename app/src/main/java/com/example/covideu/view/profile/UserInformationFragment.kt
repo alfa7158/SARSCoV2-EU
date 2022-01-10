@@ -26,7 +26,12 @@ class UserInformationFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var gender:String
     private lateinit var uid:String
-
+    private lateinit var firstName:String
+    private lateinit var lastName:String
+    private lateinit var occupation:String
+    private lateinit var age:String
+    private lateinit var male:RadioButton
+    private lateinit var female:RadioButton
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,15 +70,15 @@ class UserInformationFragment : Fragment() {
         binding.saveProfile.setOnClickListener{
 
 
-            val firstName = binding.firstNameProfile.text.toString()
+            firstName = binding.firstNameProfile.text.toString()
 
-            val lastName = binding.ProfilelastName.text.toString()
-            val age = binding.ageProfile.text.toString()
+            lastName = binding.ProfilelastName.text.toString()
+             age = binding.ageProfile.text.toString()
             val genderRadioGroup = binding.genderRadioGroupInfo
 
             val occupation = binding.occupationEditText.text.toString()
-            val male = binding.maleRadioButton
-            val female = binding.femaleRadioButton
+            male = binding.maleRadioButton
+            female = binding.femaleRadioButton
            // val user = UserData(firstName,lastName,age,gender,occupation)
 
 
@@ -142,8 +147,12 @@ class UserInformationFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
+        if(firstName.isNotBlank()&&firstName.isNotEmpty()
+            &&lastName.isNotBlank()&&lastName.isNotEmpty()
+            &&occupation.isNotBlank()&&occupation.isNotEmpty()
+            &&(male.isChecked||female.isChecked)){
         userInfo_ViewMode.addUserInfo(uid,UserData("","","","",""))
-
+}
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

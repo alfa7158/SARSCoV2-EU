@@ -11,14 +11,18 @@ import android.widget.ImageView
 import android.widget.MediaController
 import android.widget.VideoView
 import androidx.core.net.toUri
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
+import com.example.covideu.database.bookOfCovidDataClassAudio
 import com.example.covideu.database.bookOfCovidDataClassVideos
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
 
-class bookOfCoivdVideosRecyclerview(private val list: MutableList<bookOfCovidDataClassVideos>, val fileContext:android.content.Context,val viewModelDelete: deleteBookOfCovidViewModel) :
+class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val viewModelDelete: deleteBookOfCovidViewModel) :
   RecyclerView.Adapter<bookOfCoivdVideosRecyclerview.bookOfCoivdImageViewHolder>(){
+    var xlist= mutableListOf<bookOfCovidDataClassVideos>()
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): bookOfCoivdVideosRecyclerview.bookOfCoivdImageViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): bookOfCoivdVideosRecyclerview.bookOfCoivdImageViewHolder {
 
       return bookOfCoivdImageViewHolder(
           LayoutInflater.from(parent.context).inflate(
@@ -29,11 +33,22 @@ class bookOfCoivdVideosRecyclerview(private val list: MutableList<bookOfCovidDat
       )
   }
 
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<bookOfCovidDataClassVideos>() {
+        override fun areItemsTheSame(oldItem: bookOfCovidDataClassVideos, newItem: bookOfCovidDataClassVideos): Boolean {
+            return oldItem.videoUri == newItem.videoUri
+        }
+
+        override fun areContentsTheSame(oldItem: bookOfCovidDataClassVideos, newItem: bookOfCovidDataClassVideos): Boolean {
+            return  oldItem == newItem
+        }
+    }
+    private val differ = AsyncListDiffer(this,DIFF_CALLBACK)
+
   @SuppressLint("NotifyDataSetChanged")
   override fun onBindViewHolder(holder: bookOfCoivdImageViewHolder, position: Int) {
 
 
-      val item = list[position]
+      val item = differ.currentList[position]
       val mediaController = MediaController(fileContext)
       mediaController.setAnchorView(holder.videoView)
       holder.videoView.setMediaController(mediaController)
@@ -46,7 +61,7 @@ class bookOfCoivdVideosRecyclerview(private val list: MutableList<bookOfCovidDat
       holder.deleteButton.setOnClickListener {
 
           viewModelDelete.deleteAnImage(item.videoUri)
-          list.remove(item)
+          xlist.remove(item)
           notifyDataSetChanged()
       }
 
@@ -54,9 +69,13 @@ class bookOfCoivdVideosRecyclerview(private val list: MutableList<bookOfCovidDat
   }
 
   override fun getItemCount(): Int {
-      return list.size
+      return differ.currentList.size
   }
-
+    fun submitList(list: MutableList<bookOfCovidDataClassVideos>) {
+        xlist.clear()
+        xlist.addAll(list)
+        differ.submitList(xlist)
+    }
 
   class bookOfCoivdImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
       val videoView = itemView.findViewById<VideoView>(R.id.videoView)

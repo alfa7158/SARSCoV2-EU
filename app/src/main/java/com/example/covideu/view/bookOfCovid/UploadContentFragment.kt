@@ -20,6 +20,9 @@ import com.example.covideu.databinding.FragmentUploadVideosBinding
 import com.example.covideu.view.ViewModels.UserInfo.UserInfoViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.bookOfCoivdViewModel
 import com.example.covideu.view.identity.SHARED_PREF_FILE
+import java.util.*
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 private const val TAG = "UploadVideosFragment"
 class UploadVideosFragment : Fragment() {
@@ -245,8 +248,9 @@ class UploadVideosFragment : Fragment() {
         }else if (requestCode==picRequestCode&&resultCode== Activity.RESULT_OK) {
             uri = data?.data!!
              Log.d(TAG,"user id:${sharedPref.getString("uid","")!!}")
+             var date = Date()
 //            uploadContentViewModel.uploadPicture(uri!!,sharedPref.getString("uid","")!!)
-            uploadContentViewModel.uploadPicture(uri!!,sharedPref.getString("uid","")!!)
+            uploadContentViewModel.uploadPicture(uri!!,sharedPref.getString("uid","")!!,date.seconds.toLong())
             checkForSuccessful()
 
         }else if(requestCode==AudioRequestCode&&resultCode== Activity.RESULT_OK){

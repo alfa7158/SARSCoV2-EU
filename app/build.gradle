@@ -93,6 +93,7 @@ dependencies {
     implementation 'com.zeugmasolutions.localehelper:locale-helper-android:1.5.1'
 
 
-
+    implementation "androidx.room:room-runtime:2.4.0"
+    implementation "androidx.room:room-ktx:2.4.0"
 
 }

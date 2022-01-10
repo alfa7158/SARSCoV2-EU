@@ -16,6 +16,7 @@ class allVaccineNewsViewModel:ViewModel() {
     var pages:Int = 1000
     val covid19VaccineLiveData = MutableLiveData<List<allVaccineNews>>()
     val covid19VaccineLiveDatDetails = MutableLiveData<allVaccineNews>()
+    val newsLiveDataSuccessful = MutableLiveData<String>()
 
 
     val CovidLiveDataError = MutableLiveData<String?>()
@@ -34,7 +35,7 @@ class allVaccineNewsViewModel:ViewModel() {
                             Log.d(TAG, this.toString())
                             Log.d(TAG, "${this.news}")
                             covid19VaccineLiveData.postValue(this.news)
-
+                            newsLiveDataSuccessful.postValue("successful")
 
 
                         }

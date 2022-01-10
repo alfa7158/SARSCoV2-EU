@@ -33,7 +33,7 @@ class SplashFragment() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        activity?.requestedOrientation = SCREEN_ORIENTATION_PORTRAIT
+       // activity?.requestedOrientation = SCREEN_ORIENTATION_PORTRAIT
 
         return inflater.inflate(R.layout.fragment_splash, container, false)
 

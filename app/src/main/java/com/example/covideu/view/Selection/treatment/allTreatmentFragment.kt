@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -16,6 +17,7 @@ import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allTreatmentV
 import com.example.covideu.view.adapter.newsRecyclers.allVaccineNewsRecyclerView
 import com.example.covideu.view.adapter.treatment.allTreatmentRecyclerView
 import com.example.covideu.view.adapter.vaccine.phaseFourRecyclerView
+import java.lang.Exception
 
 
 class allTreatmentFragment : Fragment() {
@@ -55,20 +57,28 @@ class allTreatmentFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeAllTreatment(){
-        covidDViewModel.covidAllTreatmentsLiveData .observe(viewLifecycleOwner,{
 
-            it?.let {
-                Log.d("here I am",it.toString())
-                binding.allTreatmentProgressBar.visibility = View.VISIBLE
-                all_treatment_Adapter.submitList(it)
-                all_treatment_DataList = it
-                binding.allTreatmentProgressBar.visibility = View.GONE
+        try {
+            covidDViewModel.covidAllTreatmentsLiveData .observe(viewLifecycleOwner,{
 
-            }
+                it?.let {
+                    Log.d("here I am",it.toString())
+                    binding.allTreatmentProgressBar.visibility = View.VISIBLE
+                    all_treatment_Adapter.submitList(it)
+                    all_treatment_DataList = it
+                    binding.allTreatmentProgressBar.visibility = View.GONE
+
+                }
 
 
 
-        })
+            })
+
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -110,6 +120,25 @@ class allTreatmentFragment : Fragment() {
         })
 
 
+    }
+
+
+
+    fun checkForSuccessful(){
+        covidDViewModel.treatmentLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 

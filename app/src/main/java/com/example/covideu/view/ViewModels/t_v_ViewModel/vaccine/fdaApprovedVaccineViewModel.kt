@@ -18,6 +18,8 @@ class fdaApprovedVaccineViewModel:ViewModel() {
 
     val covid19FDAApprovedVaccineLiveData = MutableLiveData<List<getFDA_ApprovedVaccines>>()
     val covid19FDAApprovedVaccineLiveDataDetails = MutableLiveData<getFDA_ApprovedVaccines>()
+    val covid19FDAApprovedVaccineLiveDataSuccessful = MutableLiveData<String>()
+    val covid19FDAApprovedVaccineLiveDataError = MutableLiveData<String>()
 
 
 
@@ -32,7 +34,7 @@ class fdaApprovedVaccineViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19FDAApprovedVaccineLiveData.postValue(this)
-
+                        covid19FDAApprovedVaccineLiveDataSuccessful.postValue("successful")
                     }
 
 

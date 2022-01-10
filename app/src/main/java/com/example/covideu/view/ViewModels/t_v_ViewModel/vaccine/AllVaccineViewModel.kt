@@ -21,6 +21,8 @@ class AllVaccineViewModel:ViewModel() {
 
     val covidAllVaccinesLiveData = MutableLiveData<List<getAllVaccinesDataItem>>()
     val covidAllVaccinesLiveDataDetails = MutableLiveData<getAllVaccinesDataItem>()
+    val covidAllVaccinesLiveSuccessful = MutableLiveData<String>()
+    val covidAllVaccinesLiveError = MutableLiveData<String>()
 
 
     fun callAllVaccinesTreatment(){
@@ -40,12 +42,12 @@ class AllVaccineViewModel:ViewModel() {
 
                 }else{
                     CovidLiveDataError.postValue(response.message())
-
+                    covidAllVaccinesLiveError.postValue(response.message())
 
                 }
 
             }catch (e: Exception){
-                CovidLiveDataError.postValue(e.toString())
+                covidAllVaccinesLiveError.postValue(e.toString())
 
 
 

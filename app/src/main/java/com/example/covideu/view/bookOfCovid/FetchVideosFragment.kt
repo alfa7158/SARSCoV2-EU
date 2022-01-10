@@ -16,8 +16,8 @@ import com.example.covideu.view.ViewModels.bookOfCovid.bookOfCoivdViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidVideosViewModel
 import com.example.covideu.view.adapter.bookOfCoivdVideosRecyclerview
-import com.example.covideu.view.adapter.bookOfCovid.bookOfCovidImageViewRecyclerView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
+import java.lang.Exception
 
 
 class FetchVideosFragment : Fragment() {
@@ -47,14 +47,19 @@ class FetchVideosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+    try {
         sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 
         fetchVideoViewModel.getBookOfCovidVideos(sharedPref.getString("uid","")!!)
-        videoRecyclerViewAdapter = bookOfCoivdVideosRecyclerview(theList,requireContext(),DeletePhotosViewModelViewModel)
+        videoRecyclerViewAdapter = bookOfCoivdVideosRecyclerview(requireContext(),DeletePhotosViewModelViewModel)
         binding.videoRecyclerview.adapter =videoRecyclerViewAdapter
         observeUri()
         checkForSuccessful()
+    }catch (e:Exception){
+        Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
+        checkForError()
+    }
+
 
     }
 
@@ -83,8 +88,8 @@ class FetchVideosFragment : Fragment() {
 
             it?.let {
               //  theList.clear()
-               theList.addAll(listOf(it))
-                videoRecyclerViewAdapter.notifyDataSetChanged()
+                theList.addAll(listOf(it))
+                videoRecyclerViewAdapter.submitList(theList)
                 Log.d("theVideo",theList.toString())
 //                videoRecyclerViewAdapter.submitList(theList)
                 //fetchVideoViewModel.uriLiveDataForVideos.postValue(null)

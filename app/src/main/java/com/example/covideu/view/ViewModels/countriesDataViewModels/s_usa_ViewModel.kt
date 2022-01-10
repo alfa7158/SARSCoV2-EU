@@ -24,7 +24,7 @@ class s_usa_ViewModel:ViewModel() {
    
     val covid19SouthAmericaLiveData = MutableLiveData<List<getAllSouthernAmericanCountriesModel>>()
     val covid19SouthAmericaLiveDataDetails = MutableLiveData<getAllSouthernAmericanCountriesModel>()
-
+    val countryLiveDataSuccessful = MutableLiveData<String>()
     val CovidLiveDataError = MutableLiveData<String?>()
 
 
@@ -39,7 +39,7 @@ class s_usa_ViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19SouthAmericaLiveData.postValue(this)
-
+                        countryLiveDataSuccessful.postValue("successful")
                     }
 
 

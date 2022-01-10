@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -15,6 +16,7 @@ import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVa
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.AllVaccineViewModel
 import com.example.covideu.view.adapter.vaccine.FDA_ApprovedVaccinesRecyclerView
 import com.example.covideu.view.adapter.vaccine.getAllVaccineDataRecyclerView
+import java.lang.Exception
 
 
 class showAllVaccineFragment : Fragment() {
@@ -54,19 +56,26 @@ class showAllVaccineFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeFDA_approved_v(){
-        covidDViewModel.covidAllVaccinesLiveData.observe(viewLifecycleOwner,{
 
-            it?.let {
-                Log.d("here I am",it.toString())
-                binding.allVaccineProgressBar.visibility = View.VISIBLE
-                all_vaccin_Adapter.submitList(it)
-                AllVaccine_DataList = it
-                binding.allVaccineProgressBar.visibility = View.GONE
+        try {
+            covidDViewModel.covidAllVaccinesLiveData.observe(viewLifecycleOwner,{
 
-            }
+                it?.let {
+                    Log.d("here I am",it.toString())
+                    binding.allVaccineProgressBar.visibility = View.VISIBLE
+                    all_vaccin_Adapter.submitList(it)
+                    AllVaccine_DataList = it
+                    binding.allVaccineProgressBar.visibility = View.GONE
+
+                }
 
 
-        })
+            })
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -108,6 +117,24 @@ class showAllVaccineFragment : Fragment() {
         })
 
 
+    }
+
+
+    fun checkForSuccessful(){
+        covidDViewModel.covidAllVaccinesLiveSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.covidAllVaccinesLiveError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 

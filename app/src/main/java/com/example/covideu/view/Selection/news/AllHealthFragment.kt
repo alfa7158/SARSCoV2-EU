@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import com.example.covideu.model.covidNews.allHealthNews.AllHeathNewsModel
 import com.example.covideu.view.ViewModels.newsViewModels.allHealthNewsViewModel
 import com.example.covideu.view.adapter.newsRecyclers.allVaccineNewsRecyclerView
 import com.example.covideu.view.adapter.newsRecyclers.showAllHealthNewsRecyclerView
+import java.lang.Exception
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.toDuration
 
@@ -66,25 +68,32 @@ class AllHealthFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observeCovidNews(){
 
-        allHealthViewModelViewModel.covidAllHeathLiveData .observe(viewLifecycleOwner,{
-        it?.let {
-            binding.allHealthNewsProgressBar.visibility = View.VISIBLE
+        try {
+            allHealthViewModelViewModel.covidAllHeathLiveData .observe(viewLifecycleOwner,{
+                it?.let {
+                    binding.allHealthNewsProgressBar.visibility = View.VISIBLE
 
-            Log.d("covidNews",it.toString())
-            healthNewsList.addAll(it)
-            showAllHealthNewsAdapter.submitList(healthNewsList)
-            loading = false
-            binding.allHealthNewsProgressBar.visibility = View.GONE
+                    Log.d("covidNews",it.toString())
+                    healthNewsList.addAll(it)
+                    showAllHealthNewsAdapter.submitList(healthNewsList)
+                    loading = false
+                    binding.allHealthNewsProgressBar.visibility = View.GONE
 
 
+                }
+                Thread.sleep(3000)
+                binding.progressBarAllHealth.visibility = View.GONE
+
+
+
+
+            })
+        }catch (e:Exception){
+
+            checkForError()
         }
-            Thread.sleep(3000)
-            binding.progressBarAllHealth.visibility = View.GONE
 
 
-
-
-        })
     }
 
     fun page(){
@@ -108,6 +117,22 @@ class AllHealthFragment : Fragment() {
             }
         })
 
+    }
+    fun checkForSuccessful(){
+        allHealthViewModelViewModel.newsLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        allHealthViewModelViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 }

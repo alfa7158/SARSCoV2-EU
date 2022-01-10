@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -18,6 +19,7 @@ import com.example.covideu.view.ViewModels.countriesDataViewModels.auViewModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.europViewModel
 import com.example.covideu.view.adapter.countriesRecyclers.showAuDataRecyclerView
 import com.example.covideu.view.adapter.countriesRecyclers.showEuropDataRecyclerView
+import java.lang.Exception
 
 
 class ShowEuropDataFragment : Fragment() {
@@ -62,20 +64,27 @@ class ShowEuropDataFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeEurop(){
-        covidDViewModel.covid19EuropeLiveData.observe(viewLifecycleOwner,{
 
-            it?.let {
-                binding.eurProgressBar.visibility = View.VISIBLE
-                Log.d("here I am",it.toString())
-                showEuropAdapter.submitList(it)
-                countriesDataListEurope = it
-                binding.eurProgressBar.visibility = View.GONE
+        try {
+            covidDViewModel.covid19EuropeLiveData.observe(viewLifecycleOwner,{
 
-            }
+                it?.let {
+                    binding.eurProgressBar.visibility = View.VISIBLE
+                    Log.d("here I am",it.toString())
+                    showEuropAdapter.submitList(it)
+                    countriesDataListEurope = it
+                    binding.eurProgressBar.visibility = View.GONE
+
+                }
+                    checkForSuccessful()
 
 
+            })
+        }catch (e:Exception){
 
-        })
+            checkForError()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -117,6 +126,23 @@ class ShowEuropDataFragment : Fragment() {
         })
 
 
+    }
+
+    fun checkForSuccessful(){
+        covidDViewModel.countryLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 

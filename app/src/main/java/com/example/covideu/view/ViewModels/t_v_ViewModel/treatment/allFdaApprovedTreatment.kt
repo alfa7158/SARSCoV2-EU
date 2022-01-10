@@ -20,6 +20,7 @@ class allFdaApprovedTreatment:ViewModel() {
 
     val covid19ApprovedTreatmentsLiveData = MutableLiveData<List<getFDA_Approvedtreatments>>()
     val covid19ApprovedTreatmentsLiveDataDetails= MutableLiveData<getFDA_Approvedtreatments>()
+    val treatmentLiveDataSuccessful = MutableLiveData<String>()
 
     fun callApprovedTreatmentsLiveData(){
 
@@ -32,7 +33,7 @@ class allFdaApprovedTreatment:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19ApprovedTreatmentsLiveData.postValue(this)
-
+                        treatmentLiveDataSuccessful.postValue("successful")
                     }
 
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -16,6 +17,7 @@ import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_two_vacc
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseTwoViewModel
 import com.example.covideu.view.adapter.vaccine.phaseOneRecyclerView
 import com.example.covideu.view.adapter.vaccine.phaseTwoRecyclerView
+import java.lang.Exception
 
 
 class showPhaseTwoFragment : Fragment() {
@@ -57,18 +59,26 @@ class showPhaseTwoFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observePhaseTwo(){
 
-        covidDViewModel.covid19PhaseTwoLiveData.observe(viewLifecycleOwner,{
-            it?.let {
-                binding.progressBarPhaseTwo .visibility = View.VISIBLE
+        try {
+            covidDViewModel.covid19PhaseTwoLiveData.observe(viewLifecycleOwner,{
+                it?.let {
+                    binding.progressBarPhaseTwo .visibility = View.VISIBLE
 
-                phaseTwoAdapter.submitList(it)
-                phaseTwoDataList = it
-                binding.progressBarPhaseTwo .visibility = View.VISIBLE
+                    phaseTwoAdapter.submitList(it)
+                    phaseTwoDataList = it
+                    binding.progressBarPhaseTwo .visibility = View.VISIBLE
 
-            }
+                }
 
 
-        })
+            })
+
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
+
     }
 
 
@@ -113,6 +123,22 @@ class showPhaseTwoFragment : Fragment() {
 
     }
 
+    fun checkForSuccessful(){
+        covidDViewModel.covid19PhaseTwoLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.covid19PhaseTwoLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+    }
 
 
 

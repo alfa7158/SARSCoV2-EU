@@ -47,6 +47,7 @@ class asian_detailsFragment : Fragment() {
 
 
         covidDViewModel.covid19AsiaLiveDataDetails .observe(viewLifecycleOwner,{
+
             it?.let {
                 infoRank.text = "Rank: ${it.rank}"
                 infCountry.text = "country name: ${it.country}"

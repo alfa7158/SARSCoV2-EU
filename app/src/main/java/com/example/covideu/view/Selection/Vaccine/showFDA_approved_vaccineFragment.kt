@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -12,6 +13,7 @@ import com.example.covideu.databinding.FragmentShowFDAApprovedVaccineBinding
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.fdaApprovedVaccineViewModel
 import com.example.covideu.view.adapter.vaccine.FDA_ApprovedVaccinesRecyclerView
+import java.lang.Exception
 
 
 class showFDA_approved_vaccineFragment : Fragment() {
@@ -48,19 +50,27 @@ class showFDA_approved_vaccineFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeFDA_approved(){
-        covidDViewModel.covid19FDAApprovedVaccineLiveData.observe(viewLifecycleOwner,{
-            it?.let {
-                binding.fdaApprovedVaccineProgressBar .visibility = View.VISIBLE
 
-                FDA_approved_vaccin_Adapter.submitList(it)
-                FDA_approved_vaccine_DataList = it
+        try {
 
-                binding.fdaApprovedVaccineProgressBar.visibility = View.GONE
+            covidDViewModel.covid19FDAApprovedVaccineLiveData.observe(viewLifecycleOwner,{
+                it?.let {
+                    binding.fdaApprovedVaccineProgressBar .visibility = View.VISIBLE
 
-            }
+                    FDA_approved_vaccin_Adapter.submitList(it)
+                    FDA_approved_vaccine_DataList = it
+
+                    binding.fdaApprovedVaccineProgressBar.visibility = View.GONE
+
+                }
 
 
-        })
+            })
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -102,6 +112,23 @@ class showFDA_approved_vaccineFragment : Fragment() {
         })
 
 
+    }
+
+    fun checkForSuccessful(){
+        covidDViewModel.covid19FDAApprovedVaccineLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.covid19FDAApprovedVaccineLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 }

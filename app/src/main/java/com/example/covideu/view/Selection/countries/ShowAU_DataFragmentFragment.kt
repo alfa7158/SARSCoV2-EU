@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -18,6 +19,7 @@ import com.example.covideu.view.ViewModels.countriesDataViewModels.asiaViewModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.auViewModel
 import com.example.covideu.view.adapter.countriesRecyclers.showAsiaDataRecyclerView
 import com.example.covideu.view.adapter.countriesRecyclers.showAuDataRecyclerView
+import java.lang.Exception
 
 
 class ShowAU_DataFragmentFragment : Fragment() {
@@ -61,19 +63,25 @@ class ShowAU_DataFragmentFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeAuData(){
-        covidDViewModel.covid19AustralianAndOceaniaLiveData.observe(viewLifecycleOwner,{
-        it?.let {
-            binding.auUsaProgressBar.visibility = View.VISIBLE
+        try {
+            covidDViewModel.covid19AustralianAndOceaniaLiveData.observe(viewLifecycleOwner,{
+                it?.let {
+                    binding.auUsaProgressBar.visibility = View.VISIBLE
 
-            Log.d("here I am",it.toString())
-            showAuAdapter.submitList(it)
-            countriesDataListAu = it
+                    Log.d("here I am",it.toString())
+                    showAuAdapter.submitList(it)
+                    countriesDataListAu = it
 
-            binding.auUsaProgressBar.visibility = View.GONE
+                    binding.auUsaProgressBar.visibility = View.GONE
 
+                }
+
+            })
+        }catch (e:Exception){
+
+            checkForError()
         }
 
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -115,6 +123,24 @@ class ShowAU_DataFragmentFragment : Fragment() {
         })
 
 
+    }
+
+
+    fun checkForSuccessful(){
+        covidDViewModel.countryLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.countryLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 

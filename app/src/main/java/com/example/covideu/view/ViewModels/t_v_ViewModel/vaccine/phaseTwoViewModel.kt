@@ -15,11 +15,11 @@ import java.lang.Exception
 private const val TAG = "phaseTwoViewModel"
 class phaseTwoViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
-    val CovidLiveDataError = MutableLiveData<String?>()
-
 
     val covid19PhaseTwoLiveData  = MutableLiveData<List<getPhase_two_vaccines>>()
     val covid19PhaseTwoLiveDataDetails = MutableLiveData<getPhase_two_vaccines>()
+    val covid19PhaseTwoLiveDataSuccessful = MutableLiveData<String>()
+    val covid19PhaseTwoLiveDataError = MutableLiveData<String>()
 
 
 
@@ -34,17 +34,17 @@ class phaseTwoViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19PhaseTwoLiveData.postValue(this)
-
+                        covid19PhaseTwoLiveDataSuccessful.postValue("successful")
                     }
 
 
                 }else{
-                    CovidLiveDataError.postValue(response.message())
+                    covid19PhaseTwoLiveDataError.postValue(response.message())
 
                 }
 
             }catch (e: Exception){
-                CovidLiveDataError.postValue(e.toString())
+                covid19PhaseTwoLiveDataError.postValue(e.toString())
 
 
 

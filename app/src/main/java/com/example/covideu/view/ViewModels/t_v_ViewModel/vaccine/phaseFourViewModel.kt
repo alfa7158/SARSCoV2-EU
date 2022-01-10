@@ -22,6 +22,8 @@ class phaseFourViewModel:ViewModel() {
     val covid19PhaseFourLiveData = MutableLiveData<List<getPhase_four_vaccines>>()
 
     val covid19PhaseFourLiveDataDetails = MutableLiveData<getPhase_four_vaccines>()
+    val covid19PhaseFourLiveDataSuccessful = MutableLiveData<String>()
+    val covid19PhaseFourLiveDataError = MutableLiveData<String>()
 
 
 
@@ -36,13 +38,13 @@ class phaseFourViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19PhaseFourLiveData.postValue(this)
-
+                        covid19PhaseFourLiveDataSuccessful.postValue("successful")
                     }
 
 
                 }else{
                     CovidLiveDataError.postValue(response.message())
-
+                    covid19PhaseFourLiveDataError.postValue(response.message())
                 }
 
             }catch (e: Exception){

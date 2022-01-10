@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -16,6 +17,7 @@ import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_two_vacc
 import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseThreeViewModel
 import com.example.covideu.view.adapter.vaccine.phaseThreeRecyclerView
 import com.example.covideu.view.adapter.vaccine.phaseTwoRecyclerView
+import java.lang.Exception
 
 
 class showPhaseThreeFragment : Fragment() {
@@ -55,20 +57,27 @@ class showPhaseThreeFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observePhaseThree(){
-        covidDViewModel.covid19PhaseThreeLiveData.observe(viewLifecycleOwner,{
-            it?.let {
-                binding.progressBarPhaseThree .visibility = View.VISIBLE
 
-                Log.d("here I am",it.toString())
-                phaseThreeAdapter.submitList(it)
-                phaseThreeDataList = it
-                binding.progressBarPhaseThree .visibility = View.GONE
+        try {
+            covidDViewModel.covid19PhaseThreeLiveData.observe(viewLifecycleOwner,{
+                it?.let {
+                    binding.progressBarPhaseThree .visibility = View.VISIBLE
 
-            }
+                    Log.d("here I am",it.toString())
+                    phaseThreeAdapter.submitList(it)
+                    phaseThreeDataList = it
+                    binding.progressBarPhaseThree .visibility = View.GONE
+
+                }
 
 
 
-        })
+            })
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
@@ -109,6 +118,23 @@ class showPhaseThreeFragment : Fragment() {
         })
 
 
+    }
+
+    fun checkForSuccessful(){
+        covidDViewModel.covid19PhaseThreeLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.covid19PhaseThreeLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 }

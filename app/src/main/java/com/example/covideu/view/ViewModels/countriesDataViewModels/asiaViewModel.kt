@@ -17,6 +17,7 @@ class asiaViewModel:ViewModel() {
     val covid19AsiaLiveData = MutableLiveData<List<getAll_AsianCountriesModel>>()
     val covid19AsiaLiveDataDetails = MutableLiveData<getAll_AsianCountriesModel>()
     val CovidLiveDataError = MutableLiveData<String?>()
+    val countryLiveDataSuccessful = MutableLiveData<String>()
 
     fun callCovidDataForAsia(){
 
@@ -29,7 +30,7 @@ class asiaViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19AsiaLiveData.postValue(this)
-
+                        countryLiveDataSuccessful.postValue("successful")
                     }
 
 

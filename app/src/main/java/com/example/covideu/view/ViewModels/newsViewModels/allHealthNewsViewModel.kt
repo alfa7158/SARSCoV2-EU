@@ -18,6 +18,7 @@ class allHealthNewsViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
     val covidAllHeathLiveData = MutableLiveData<List<AllHeathNewsModel>>()
     val covidAllHeathLiveDataDetails = MutableLiveData<AllHeathNewsModel>()
+    val newsLiveDataSuccessful = MutableLiveData<String>()
 
     val CovidLiveDataError = MutableLiveData<String?>()
 
@@ -36,7 +37,7 @@ class allHealthNewsViewModel:ViewModel() {
                             Log.d(TAG, this.toString())
                             Log.d(TAG, "${this.news}")
                             covidAllHeathLiveData.postValue(this.news)
-
+                            newsLiveDataSuccessful.postValue("successful")
 
                         }
                         page++

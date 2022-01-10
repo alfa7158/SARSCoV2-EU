@@ -1,4 +1,4 @@
-package com.example.covideu.view.adapter.bookOfCovid
+package com.example.covideu.view.adapter.bookO
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -63,7 +63,6 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
 
 
             holder.deleteButton.setOnClickListener {
-
                     viewModelDelete.deleteAnImage(item.imageUri)
                     xlist.remove(item)
                     notifyDataSetChanged()

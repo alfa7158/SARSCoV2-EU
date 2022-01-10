@@ -77,7 +77,7 @@ class bookOfCoivdViewModel:ViewModel() {
          }
     }
 
-    fun uploadPicture(uri: Uri, uid: String){
+    fun uploadPicture(uri: Uri, uid: String,time:Long){
       var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPictures(uid).child(it) }
          reference?.putFile(uri)?.addOnCanceledListener {
              userLiveDataSuccessful.postValue("Successfully uploaded")

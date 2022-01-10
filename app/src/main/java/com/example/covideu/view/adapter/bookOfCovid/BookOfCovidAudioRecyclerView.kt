@@ -12,12 +12,16 @@ import android.widget.MediaController
 import android.widget.VideoView
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovidDataClassAudio
+import com.example.covideu.database.bookOfCovidDataClassPhotos
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
 
-class BookOfCovidAudioRecyclerView(private val list: MutableList<bookOfCovidDataClassAudio>,val fileContext:Context,val DeleteAudioViewModel: deleteBookOfCovidViewModel) :
+class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewModel: deleteBookOfCovidViewModel) :
     RecyclerView.Adapter<BookOfCovidAudioRecyclerView.BookOfCovidAudioViewHolder>() {
+    var xlist= mutableListOf<bookOfCovidDataClassAudio>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,10 +37,21 @@ class BookOfCovidAudioRecyclerView(private val list: MutableList<bookOfCovidData
         )
     }
 
+
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<bookOfCovidDataClassAudio>() {
+        override fun areItemsTheSame(oldItem: bookOfCovidDataClassAudio, newItem: bookOfCovidDataClassAudio): Boolean {
+            return oldItem.audioUri == newItem.audioUri
+        }
+
+        override fun areContentsTheSame(oldItem: bookOfCovidDataClassAudio, newItem: bookOfCovidDataClassAudio): Boolean {
+            return  oldItem == newItem
+        }
+    }
+    private val differ = AsyncListDiffer(this,DIFF_CALLBACK)
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: BookOfCovidAudioViewHolder, position: Int) {
 
-        val item = list[position]
+        val item = differ.currentList[position]
         val mediaController = MediaController(fileContext)
         mediaController.setAnchorView(holder.audioView)
         holder.audioView.setMediaController(mediaController)
@@ -49,7 +64,7 @@ class BookOfCovidAudioRecyclerView(private val list: MutableList<bookOfCovidData
         holder.deleteButton.setOnClickListener {
 
             DeleteAudioViewModel.deleteAnImage(item.audioUri)
-            list.remove(item)
+            xlist.remove(item)
             notifyDataSetChanged()
 
         }
@@ -57,8 +72,15 @@ class BookOfCovidAudioRecyclerView(private val list: MutableList<bookOfCovidData
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return differ.currentList.size
     }
+
+    fun submitList(list: MutableList<bookOfCovidDataClassAudio>) {
+        xlist.clear()
+        xlist.addAll(list)
+        differ.submitList(xlist)
+    }
+
 
 
     class BookOfCovidAudioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

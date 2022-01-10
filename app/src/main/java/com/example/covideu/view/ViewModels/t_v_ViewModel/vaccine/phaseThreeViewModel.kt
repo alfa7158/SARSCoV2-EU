@@ -16,10 +16,11 @@ private const val TAG = "phaseThreeViewModel"
 class phaseThreeViewModel:ViewModel() {
 
     private val apiRepo = ApiRepositoryCovidData.get()
-    val CovidLiveDataError = MutableLiveData<String?>()
 
     val covid19PhaseThreeLiveData  = MutableLiveData<List<getPhase_three_vaccines>>()
     val covid19PhaseThreeLiveDataDetails = MutableLiveData<getPhase_three_vaccines>()
+    val covid19PhaseThreeLiveDataSuccessful = MutableLiveData<String>()
+    val covid19PhaseThreeLiveDataError = MutableLiveData<String>()
 
 
 
@@ -34,17 +35,17 @@ class phaseThreeViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19PhaseThreeLiveData.postValue(this)
-
+                        covid19PhaseThreeLiveDataSuccessful.postValue("Successful")
                     }
 
 
                 }else{
-                    CovidLiveDataError.postValue(response.message())
+                    covid19PhaseThreeLiveDataError.postValue(response.message())
 
                 }
 
             }catch (e: Exception){
-                CovidLiveDataError.postValue(e.toString())
+                covid19PhaseThreeLiveDataError.postValue(e.toString())
 
 
 

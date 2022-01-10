@@ -23,8 +23,8 @@ class auViewModel:ViewModel() {
 
     val covid19AustralianAndOceaniaLiveData = MutableLiveData<List<getAllAustralianAndOceanianCountriesModel>>()
     val covid19AustralianAndOceaniaLiveDataDetails = MutableLiveData<getAllAustralianAndOceanianCountriesModel>()
-
-    val CovidLiveDataError = MutableLiveData<String?>()
+    val countryLiveDataSuccessful = MutableLiveData<String>()
+    val countryLiveDataError = MutableLiveData<String?>()
     fun callCovidDataForAustralianAndOcean(){
 
         viewModelScope.launch(Dispatchers.IO){
@@ -36,18 +36,18 @@ class auViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19AustralianAndOceaniaLiveData.postValue(this)
-
+                        countryLiveDataSuccessful.postValue("successful")
                     }
 
 
                 }else{
-                    CovidLiveDataError.postValue(response.message())
+                    countryLiveDataError.postValue(response.message())
 
 
                 }
 
             }catch (e: Exception){
-                CovidLiveDataError.postValue(e.toString())
+                countryLiveDataError.postValue(e.toString())
 
 
 

@@ -21,6 +21,7 @@ class allClinicalViewModel:ViewModel() {
 
     val covid19ClinicalLiveData = MutableLiveData<List<getClinicalTreatments>>()
     val covid19ClinicalLiveDataDetails = MutableLiveData<getClinicalTreatments>()
+    val treatmentLiveDataSuccessful = MutableLiveData<String>()
 
 
 
@@ -35,7 +36,7 @@ class allClinicalViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covid19ClinicalLiveData.postValue(this)
-
+                        treatmentLiveDataSuccessful.postValue("successful")
                     }
 
 

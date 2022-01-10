@@ -20,6 +20,7 @@ class covidNewsViewMode:ViewModel() {
     val covidAllNewsLiveDataDetails = MutableLiveData<newsModel>()
     var page:Int = 0
     var pages:Int = 1000
+    val newsLiveDataSuccessful = MutableLiveData<String>()
 
     val CovidLiveDataError = MutableLiveData<String?>()
 
@@ -39,6 +40,7 @@ class covidNewsViewMode:ViewModel() {
                             Log.d(TAG, this.toString())
                             Log.d(TAG, "${this.news}")
                             covidAllNewsLiveData.postValue(this.news)
+                            newsLiveDataSuccessful.postValue("successful")
 
 
 

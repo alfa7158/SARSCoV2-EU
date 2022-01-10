@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +17,7 @@ import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
 import com.example.covideu.view.ViewModels.newsViewModels.allVaccineNewsViewModel
 import com.example.covideu.view.adapter.newsRecyclers.allVaccineNewsRecyclerView
 import com.example.covideu.view.adapter.newsRecyclers.showCovidnewsRecyclerView
+import java.lang.Exception
 
 private const val TAG = "showAllVaccineFragmentN"
 class showAllVaccineFragment : Fragment() {
@@ -58,27 +60,33 @@ class showAllVaccineFragment : Fragment() {
     }
     @SuppressLint("NotifyDataSetChanged")
     fun observeCovidNews(){
+        try {
 
-        covidNewsViewModel.covid19VaccineLiveData.observe(viewLifecycleOwner,{
-            it?.let {
+            covidNewsViewModel.covid19VaccineLiveData.observe(viewLifecycleOwner,{
+                it?.let {
 
-                binding.allVaccineProgressBar.visibility = View.VISIBLE
+                    binding.allVaccineProgressBar.visibility = View.VISIBLE
 
-                vaccineNewsList.addAll(it)
-                showVaccineNewsAdapter.submitList(vaccineNewsList)
+                    vaccineNewsList.addAll(it)
+                    showVaccineNewsAdapter.submitList(vaccineNewsList)
 
-                loading = false
-                binding.allVaccineProgressBar.visibility = View.GONE
+                    loading = false
+                    binding.allVaccineProgressBar.visibility = View.GONE
 
 
-            }
-            Thread.sleep(3000)
+                }
+                Thread.sleep(3000)
 
-            binding.progressBarVaccinenNews.visibility = View.GONE
+                binding.progressBarVaccinenNews.visibility = View.GONE
 //            Log.d("covidNews",it.toString())
 
-           // showVaccineNewsAdapter.notifyDataSetChanged()
-        })
+                // showVaccineNewsAdapter.notifyDataSetChanged()
+            })
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
     }
 
     fun page(){
@@ -99,6 +107,24 @@ class showAllVaccineFragment : Fragment() {
             }
         })
 
+    }
+
+
+    fun checkForSuccessful(){
+        covidNewsViewModel.newsLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidNewsViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 }

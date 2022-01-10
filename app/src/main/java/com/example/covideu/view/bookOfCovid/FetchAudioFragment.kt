@@ -20,6 +20,7 @@ import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidPhotosViewM
 import com.example.covideu.view.adapter.bookOfCoivdVideosRecyclerview
 import com.example.covideu.view.adapter.bookOfCovid.BookOfCovidAudioRecyclerView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
+import java.lang.Exception
 
 
 class FetchAudioFragment : Fragment() {
@@ -48,14 +49,23 @@ class FetchAudioFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        try{
 
-        sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
+            sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 
-        fetchAudioViewModelViewModel.getBookOfCovidAudio(sharedPref.getString("uid","")!!)
-        audioRecyclerViewAdapter = BookOfCovidAudioRecyclerView(theList,requireContext(),DeleteAudioViewModelViewModel)
-        binding.audioRecyclerView.adapter =audioRecyclerViewAdapter
-        observeUri()
-        checkForSuccessful()
+            fetchAudioViewModelViewModel.getBookOfCovidAudio(sharedPref.getString("uid","")!!)
+            audioRecyclerViewAdapter = BookOfCovidAudioRecyclerView(requireContext(),DeleteAudioViewModelViewModel)
+            binding.audioRecyclerView.adapter =audioRecyclerViewAdapter
+            observeUri()
+            checkForSuccessful()
+
+        }catch (e:Exception){
+
+            checkForError()
+
+
+        }
+
 
     }
 
@@ -66,10 +76,10 @@ class FetchAudioFragment : Fragment() {
             it?.let {
                 //theList.clear()
                 theList.addAll(listOf(it))
-                audioRecyclerViewAdapter.notifyDataSetChanged()
+                audioRecyclerViewAdapter.submitList(theList)
                 Log.d("theVideo",theList.toString())
 //                videoRecyclerViewAdapter.submitList(theList)
-                fetchAudioViewModelViewModel.uriLiveDataForAudio.postValue(null)
+               // fetchAudioViewModelViewModel.uriLiveDataForAudio.postValue(null)
 
             }
 

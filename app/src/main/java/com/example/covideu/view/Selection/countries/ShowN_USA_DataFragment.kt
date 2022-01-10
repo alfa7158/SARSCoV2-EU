@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -14,6 +15,7 @@ import com.example.covideu.databinding.FragmentShowNUSADataBinding
 import com.example.covideu.model.getAllNorthernAmericanCountries.getAllNorthernAmericanCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.n_usa_viewModel
 import com.example.covideu.view.adapter.countriesRecyclers.show_n_usa_dataReyclerView
+import java.lang.Exception
 
 class ShowN_USA_DataFragment : Fragment() {
     private val covidDViewModel: n_usa_viewModel by activityViewModels()
@@ -58,22 +60,26 @@ class ShowN_USA_DataFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     fun observe_N_USA(){
 
+            try {
+                covidDViewModel.covid19NorthAmericaLiveData.observe(viewLifecycleOwner,{
+                    it?.let {
+                        binding.NUsaProgressBar.visibility = View.VISIBLE
 
-        covidDViewModel.covid19NorthAmericaLiveData.observe(viewLifecycleOwner,{
-            it?.let {
-                binding.NUsaProgressBar.visibility = View.VISIBLE
+                        Log.d("here I am",it.toString())
+                        showN_UsaDatAapter.submitList(it)
+                        countriesDataListN_usa = it
+                        binding.NUsaProgressBar.visibility = View.GONE
 
-                Log.d("here I am",it.toString())
-                showN_UsaDatAapter.submitList(it)
-                countriesDataListN_usa = it
-                binding.NUsaProgressBar.visibility = View.GONE
+                    }
 
+                })
+
+            }catch (e:Exception){
+
+
+                checkForError()
             }
 
-
-
-
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -115,6 +121,24 @@ class ShowN_USA_DataFragment : Fragment() {
         })
 
 
+    }
+
+
+    fun checkForSuccessful(){
+        covidDViewModel.countryLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 
 

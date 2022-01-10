@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.example.covideu.databinding.FragmentShowCovidNewsBinding
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.view.ViewModels.newsViewModels.covidNewsViewMode
 import com.example.covideu.view.adapter.newsRecyclers.showCovidnewsRecyclerView
+import java.lang.Exception
 
 private const val TAG = "showCovidNewsFragment"
 class showCovidNewsFragment : Fragment() {
@@ -73,22 +75,30 @@ class showCovidNewsFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeCovidNews() {
-        covidNewsViewModel.covidAllNewsLiveData.observe(viewLifecycleOwner, {
-            it?.let {
-                binding.allCovidNewsprogressBar.visibility = View.VISIBLE
 
-                covidNewsList.addAll(it)
-                showCovidNewsAdapter.submitList(covidNewsList)
+        try {
+            covidNewsViewModel.covidAllNewsLiveData.observe(viewLifecycleOwner, {
+                it?.let {
+                    binding.allCovidNewsprogressBar.visibility = View.VISIBLE
 
-                loading = false
-                binding.allCovidNewsprogressBar.visibility = View.GONE
+                    covidNewsList.addAll(it)
+                    showCovidNewsAdapter.submitList(covidNewsList)
+
+                    loading = false
+                    binding.allCovidNewsprogressBar.visibility = View.GONE
 
 
-            }
-            binding.covidNewsProgress.visibility = View.GONE
-            Thread.sleep(3000)
+                }
+                binding.covidNewsProgress.visibility = View.GONE
+                Thread.sleep(3000)
 
-        })
+            })
+
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
     }
 
 
@@ -123,5 +133,23 @@ class showCovidNewsFragment : Fragment() {
             }
         })
 
+    }
+
+
+    fun checkForSuccessful(){
+        covidNewsViewModel.newsLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidNewsViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 }

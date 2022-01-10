@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -18,6 +19,7 @@ import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allClinicalVi
 import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allTreatmentViewModel
 import com.example.covideu.view.adapter.treatment.allTreatmentRecyclerView
 import com.example.covideu.view.adapter.treatment.showAllClinicalTreatmentRecyclerView
+import java.lang.Exception
 
 
 class ClinicalTreatmentFragment : Fragment() {
@@ -57,20 +59,28 @@ class ClinicalTreatmentFragment : Fragment() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun observeAllTreatment(){
-        covidDViewModel.covid19ClinicalLiveData .observe(viewLifecycleOwner,{
-            it?.let {
-                binding.clinicalProgressBar.visibility = View.VISIBLE
 
-                Log.d("here I am",it.toString())
-                clinical_treatment_Adapter.submitList(it)
-                clinical_treatment_DataList = it
-                binding.clinicalProgressBar.visibility = View.GONE
+        try {
+            covidDViewModel.covid19ClinicalLiveData .observe(viewLifecycleOwner,{
+                it?.let {
+                    binding.clinicalProgressBar.visibility = View.VISIBLE
 
-            }
+                    Log.d("here I am",it.toString())
+                    clinical_treatment_Adapter.submitList(it)
+                    clinical_treatment_DataList = it
+                    binding.clinicalProgressBar.visibility = View.GONE
+
+                }
 
 
 
-        })
+            })
+
+        }catch (e:Exception){
+
+            checkForError()
+        }
+
     }
 
 
@@ -113,5 +123,23 @@ class ClinicalTreatmentFragment : Fragment() {
         })
 
 
+    }
+
+
+    fun checkForSuccessful(){
+        covidDViewModel.treatmentLiveDataSuccessful.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
+
+    }
+    fun checkForError(){
+
+        covidDViewModel.CovidLiveDataError.observe(viewLifecycleOwner,{
+
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+
+        })
     }
 }

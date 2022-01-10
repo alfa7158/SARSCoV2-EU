@@ -18,7 +18,7 @@ class allTreatmentViewModel:ViewModel() {
     val CovidLiveDataError = MutableLiveData<String?>()
     val covidAllTreatmentsLiveData = MutableLiveData<List<getAllTreatmentsData>>()
     val covidAllTreatmentsLiveDataDetails = MutableLiveData<getAllTreatmentsData>()
-
+    val treatmentLiveDataSuccessful = MutableLiveData<String>()
 
 
     fun callAllCovidTreatment(){
@@ -32,7 +32,7 @@ class allTreatmentViewModel:ViewModel() {
                         Log.d(TAG,this.toString())
 
                         covidAllTreatmentsLiveData.postValue(this)
-
+                        treatmentLiveDataSuccessful.postValue("successful")
                     }
 
 
