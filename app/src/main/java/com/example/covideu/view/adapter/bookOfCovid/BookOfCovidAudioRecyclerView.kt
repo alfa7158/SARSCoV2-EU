@@ -2,22 +2,21 @@ package com.example.covideu.view.adapter.bookOfCovid
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.MediaController
+import android.widget.Toast
 import android.widget.VideoView
-import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
-import com.example.covideu.database.bookOfCovidDataClassAudio
-import com.example.covideu.database.bookOfCovidDataClassPhotos
+import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassAudio
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewModel: deleteBookOfCovidViewModel) :
     RecyclerView.Adapter<BookOfCovidAudioRecyclerView.BookOfCovidAudioViewHolder>() {
@@ -40,7 +39,7 @@ class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewMo
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<bookOfCovidDataClassAudio>() {
         override fun areItemsTheSame(oldItem: bookOfCovidDataClassAudio, newItem: bookOfCovidDataClassAudio): Boolean {
-            return oldItem.audioUri == newItem.audioUri
+            return oldItem.audioName == newItem.audioName
         }
 
         override fun areContentsTheSame(oldItem: bookOfCovidDataClassAudio, newItem: bookOfCovidDataClassAudio): Boolean {
@@ -52,20 +51,28 @@ class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewMo
     override fun onBindViewHolder(holder: BookOfCovidAudioViewHolder, position: Int) {
 
         val item = differ.currentList[position]
+        val audioUri = "https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/${item.audioName}?alt=media&token=6b7034c5-3a56-474a-a500-a5b5dfa94f9e"
+
         val mediaController = MediaController(fileContext)
         mediaController.setAnchorView(holder.audioView)
         holder.audioView.setMediaController(mediaController)
-        holder.audioView.setVideoURI(item.audioUri.toUri())
+        holder.audioView.setVideoURI(audioUri.toUri())
         holder.audioView.requestFocus()
         holder.audioView.resume()
         holder.audioView.setMediaController(mediaController)
         holder.audioView.setFadingEdgeLength(30)
-       // holder.audioView.setAudioFocusRequest(5)
+
         holder.deleteButton.setOnClickListener {
 
-            DeleteAudioViewModel.deleteAnImage(item.audioUri)
-            xlist.remove(item)
-            notifyDataSetChanged()
+            if(item.uid== FirebaseAuth.getInstance().currentUser?.uid){
+                item.audioName?.let { it1 -> DeleteAudioViewModel.deleteAnAudio(item) }
+                xlist.remove(item)
+                notifyDataSetChanged()
+
+            }else{
+                // holder.deleteButton.isVisible = false
+                Toast.makeText(fileContext, "You are not allowed to delete", Toast.LENGTH_SHORT).show()
+            }
 
         }
 

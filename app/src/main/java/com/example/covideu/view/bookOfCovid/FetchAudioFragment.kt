@@ -10,14 +10,10 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.database.bookOfCovidDataClassAudio
-import com.example.covideu.database.bookOfCovidDataClassVideos
+import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassAudio
 import com.example.covideu.databinding.FragmentFetchAudioBinding
-import com.example.covideu.databinding.FragmentFetchVideosBinding
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidAudioViewModel
-import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidPhotosViewModel
-import com.example.covideu.view.adapter.bookOfCoivdVideosRecyclerview
 import com.example.covideu.view.adapter.bookOfCovid.BookOfCovidAudioRecyclerView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 import java.lang.Exception
@@ -53,7 +49,7 @@ class FetchAudioFragment : Fragment() {
 
             sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 
-            fetchAudioViewModelViewModel.getBookOfCovidAudio(sharedPref.getString("uid","")!!)
+            fetchAudioViewModelViewModel.getBookOfCovidAudio()
             audioRecyclerViewAdapter = BookOfCovidAudioRecyclerView(requireContext(),DeleteAudioViewModelViewModel)
             binding.audioRecyclerView.adapter =audioRecyclerViewAdapter
             observeUri()
@@ -75,7 +71,7 @@ class FetchAudioFragment : Fragment() {
 
             it?.let {
                 //theList.clear()
-                theList.addAll(listOf(it))
+                theList.addAll(it)
                 audioRecyclerViewAdapter.submitList(theList)
                 Log.d("theVideo",theList.toString())
 //                videoRecyclerViewAdapter.submitList(theList)

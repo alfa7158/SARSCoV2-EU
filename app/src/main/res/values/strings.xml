@@ -118,4 +118,6 @@
     <string name="q17" translatable="false">Q17. Sore throat or headache</string>
     <string name="COVID_19_Self_Assessment_Questionnaire">COVID-19 Self-Assessment Questionnaire</string>
     <string name="submit">Submit</string>
+    <string name="title">Title</string>
+    <string name="_Description">Description</string>
 </resources>

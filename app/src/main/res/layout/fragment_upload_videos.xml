@@ -10,13 +10,49 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/title"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/addTitleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:foregroundGravity="left"
+            android:gravity="center|left"
+            android:hint="@string/title"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Description" />
+
+        <EditText
+            android:id="@+id/addDescriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/_Description"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp" />
+
         <Spinner
             android:id="@+id/mySpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/mainSelectColor"
             android:backgroundTintMode="screen"
-            android:minHeight="32dp"
+            android:minHeight="48dp"
             android:visibility="visible" />
 
         <Button
@@ -53,6 +89,12 @@
             android:layout_height="wrap_content"
             android:text="picture"
             android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/saveTitle_Decrip_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Save" />
 
     </LinearLayout>
 </FrameLayout>

@@ -7,16 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.covideu.R
-import com.example.covideu.database.bookOfCovidDataClassPhotos
+import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassPhotos
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidPhotosViewModel
 import com.google.firebase.auth.FirebaseAuth
 
+private const val TAG = "bookOfCovidImageViewRec"
 class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: getBookOfCovidPhotosViewModel, val viewModelDelete: deleteBookOfCovidViewModel) :
     RecyclerView.Adapter<bookOfCovidImageViewRecyclerView.bookOfCovidImageViewHolder>() {
     var xlist= mutableListOf<bookOfCovidDataClassPhotos>()
@@ -39,7 +41,7 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
 
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<bookOfCovidDataClassPhotos>() {
         override fun areItemsTheSame(oldItem: bookOfCovidDataClassPhotos, newItem: bookOfCovidDataClassPhotos): Boolean {
-            return oldItem.imageUri == newItem.imageUri
+            return oldItem.imageName == newItem.imageName
         }
 
         override fun areContentsTheSame(oldItem: bookOfCovidDataClassPhotos, newItem: bookOfCovidDataClassPhotos): Boolean {
@@ -55,7 +57,7 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
         val item = differ.currentList[position]
 
         Glide.with(fileContext)
-            .load(item.imageUri)
+            .load("https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/${item.imageName}?alt=media&token=6b7034c5-3a56-474a-a500-a5b5dfa94f9e")
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .skipMemoryCache(true)
             .into(holder.imageBookOfCovid)
@@ -63,9 +65,16 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
 
 
             holder.deleteButton.setOnClickListener {
-                    viewModelDelete.deleteAnImage(item.imageUri)
+                if(item.uid==FirebaseAuth.getInstance().currentUser?.uid){
+                    item.imageName?.let { it1 -> viewModelDelete.deleteAnImage(item) }
                     xlist.remove(item)
                     notifyDataSetChanged()
+
+                }else{
+                   // holder.deleteButton.isVisible = false
+                    Toast.makeText(fileContext, "You are not allowed to delete", Toast.LENGTH_SHORT).show()
+                }
+
 
             }
 

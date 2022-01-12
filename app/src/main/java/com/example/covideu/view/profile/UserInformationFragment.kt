@@ -3,7 +3,6 @@ package com.example.covideu.view.profile
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,11 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.covideu.R
-import com.example.covideu.database.UserData
+import com.example.covideu.database.profile.UserData
 import com.example.covideu.databinding.FragmentUserInformationBinding
 import com.example.covideu.view.ViewModels.UserInfo.UserInfoViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
 
 
 class UserInformationFragment : Fragment() {
@@ -151,7 +149,7 @@ class UserInformationFragment : Fragment() {
             &&lastName.isNotBlank()&&lastName.isNotEmpty()
             &&occupation.isNotBlank()&&occupation.isNotEmpty()
             &&(male.isChecked||female.isChecked)){
-        userInfo_ViewMode.addUserInfo(uid,UserData("","","","",""))
+        userInfo_ViewMode.addUserInfo(uid, UserData("","","","",""))
 }
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

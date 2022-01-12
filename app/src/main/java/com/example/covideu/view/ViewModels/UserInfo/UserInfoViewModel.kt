@@ -5,10 +5,9 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.covideu.database.UserData
+import com.example.covideu.database.profile.UserData
 import com.example.covideu.repostries.userInfoRepository_Firebase
 import com.google.firebase.database.*
-import java.util.*
 
 class UserInfoViewModel: ViewModel() {
 

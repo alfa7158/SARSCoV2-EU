@@ -11,18 +11,15 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.databinding.FragmentUploadImageBinding
 import com.example.covideu.databinding.FragmentUploadVideosBinding
-import com.example.covideu.view.ViewModels.UserInfo.UserInfoViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.bookOfCoivdViewModel
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 import java.util.*
-import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
 
 private const val TAG = "UploadVideosFragment"
 class UploadVideosFragment : Fragment() {
@@ -35,8 +32,6 @@ class UploadVideosFragment : Fragment() {
     var AudioRequestCode:Int = 4
     var VideoRequestCode:Int = 5
     var picRequestCode:Int = 6
-
-
 
 
     var uri: Uri? = null
@@ -62,6 +57,10 @@ class UploadVideosFragment : Fragment() {
         sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
         var uploadType =  arrayOf("Video","Photos","Audio","Docx","PDF")
         val myAdapter = context?.let { ArrayAdapter<String>(it,android.R.layout.simple_spinner_dropdown_item,uploadType) }
+
+
+
+
         binding.mySpinner.adapter = myAdapter
 
         binding.mySpinner.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
@@ -220,50 +219,64 @@ class UploadVideosFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        binding.saveTitleDecripButton.setOnClickListener {
 
-         if (requestCode==PdfRequestCode&&resultCode== Activity.RESULT_OK){
+            if (requestCode==PdfRequestCode&&resultCode== Activity.RESULT_OK){
 
-            uri = data?.data!!
+                uri = data?.data!!
 //            uploadContentViewModel.uploadPdf(uri!!)
-             uploadContentViewModel.uploadPdf(uri!!,sharedPref.getString("uid","")!!)
+                var title = binding.addTitleEditText.text.toString()
+                var description = binding.addDescriptionEditText.text.toString()
+                uploadContentViewModel.uploadPdfFireStore(uri!!,Math.random().toString(),title,description)
 
-             checkForSuccessful()
-        }else if (requestCode==VideoRequestCode&&resultCode== Activity.RESULT_OK){
+                checkForSuccessful()
+            }else if (requestCode==VideoRequestCode&&resultCode== Activity.RESULT_OK){
 
-             uri = data?.data!!
-             //uploadContentViewModel.uploadVideos(uri!!)
-             uploadContentViewModel.uploadVideos(uri!!,sharedPref.getString("uid","")!!)
-             checkForSuccessful()
+                uri = data?.data!!
+                //uploadContentViewModel.uploadVideos(uri!!)
+                var title = binding.addTitleEditText.text.toString()
+                var description = binding.addDescriptionEditText.text.toString()
+                uploadContentViewModel.uploadVideoFireStore(uri!!,Math.random().toString(),title,description)
+                checkForSuccessful()
 
-         }
+            }
 
 
-         else if (requestCode==DocxRequestCode&&resultCode== Activity.RESULT_OK){
-            uri = data?.data!!
+            else if (requestCode==DocxRequestCode&&resultCode== Activity.RESULT_OK){
+                uri = data?.data!!
 //            uploadContentViewModel.uploadDocx(uri!!)
-             uploadContentViewModel.uploadDocx(uri!!,sharedPref.getString("uid","")!!)
+                var title = binding.addTitleEditText.text.toString()
+                var description = binding.addDescriptionEditText.text.toString()
+                uploadContentViewModel.uploadDocxFireStore(uri!!,Math.random().toString(),title,description)
 
-             checkForSuccessful()
+                checkForSuccessful()
 
-        }else if (requestCode==picRequestCode&&resultCode== Activity.RESULT_OK) {
-            uri = data?.data!!
-             Log.d(TAG,"user id:${sharedPref.getString("uid","")!!}")
-             var date = Date()
+            }else if (requestCode==picRequestCode&&resultCode== Activity.RESULT_OK) {
+                uri = data?.data!!
+//             Log.d(TAG,"user id:${sharedPref.getString("uid","")!!}")
+                var date = Date()
 //            uploadContentViewModel.uploadPicture(uri!!,sharedPref.getString("uid","")!!)
-            uploadContentViewModel.uploadPicture(uri!!,sharedPref.getString("uid","")!!,date.seconds.toLong())
-            checkForSuccessful()
+                var title = binding.addTitleEditText.text.toString()
+                var description = binding.addDescriptionEditText.text.toString()
+                uploadContentViewModel.uploadPictureFireStore(uri!!,Math.random().toString(),title,description)
+                //      uploadContentViewModel.uploadPictureStorage(uri!!,sharedPref.getString("uid","")!!)
 
-        }else if(requestCode==AudioRequestCode&&resultCode== Activity.RESULT_OK){
-            uri = data?.data!!
-            checkForSuccessful()
-           //uploadContentViewModel.uploadAudio(uri!!)
-             uploadContentViewModel.uploadAudio(uri!!,sharedPref.getString("uid","")!!)
+            }else if(requestCode==AudioRequestCode&&resultCode== Activity.RESULT_OK){
+                uri = data?.data!!
+                checkForSuccessful()
+                //uploadContentViewModel.uploadAudio(uri!!)
+                var title = binding.addTitleEditText.text.toString()
+                var description = binding.addDescriptionEditText.text.toString()
+                uploadContentViewModel.uploadAudioFireStore(uri!!,Math.random().toString(),title,description)
 
 
-         }else{
+            }else{
 
-            Toast.makeText(context, "Nothing was selected", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Nothing was selected", Toast.LENGTH_SHORT).show()
+            }
+
         }
+
     }
 
     fun checkForSuccessful(){

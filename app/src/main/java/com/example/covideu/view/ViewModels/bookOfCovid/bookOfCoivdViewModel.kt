@@ -1,23 +1,20 @@
 package com.example.covideu.view.ViewModels.bookOfCovid
 
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.covideu.database.bookOfCovidDataClassPhotos
-import com.example.covideu.database.bookOfCovidDataClassVideos
+import com.example.covideu.database.bookOfCovid.*
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
-import com.google.android.gms.tasks.Task
-import com.google.firebase.storage.ListResult
-import com.google.firebase.storage.StorageReference
-import java.lang.Exception
+import com.google.firebase.auth.FirebaseAuth
+import java.sql.SQLTransactionRollbackException
 
 class bookOfCoivdViewModel:ViewModel() {
     private val bookOfCoivdRepository = bookOfCovidFireBaseRepository()
     val userLiveDataError = MutableLiveData<String>()
     val userLiveDataSuccessful = MutableLiveData<String>()
     val uriLiveDataForVideos = MutableLiveData<bookOfCovidDataClassVideos>()
-//    val uriLiveDataForPdf = MutableLiveData<bookOfCovidDataClassPhotos>()
+
+    //    val uriLiveDataForPdf = MutableLiveData<bookOfCovidDataClassPhotos>()
 //    val uriLiveDataForAudio = MutableLiveData<bookOfCovidDataClassPhotos>()
 //    val uriLiveDataForDocx = MutableLiveData<bookOfCovidDataClassPhotos>()
     val uriLiveDataForPhotos = MutableLiveData<bookOfCovidDataClassPhotos>()
@@ -33,60 +30,149 @@ class bookOfCoivdViewModel:ViewModel() {
 //         }
 //    }
 
-    fun uploadVideos(uri: Uri, uid: String){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadVideos(uid).child(it) }
-         reference?.putFile(uri)?.addOnCanceledListener {
-             userLiveDataSuccessful.postValue("Successfully uploaded")
-         }?.addOnFailureListener{
-             userLiveDataError.postValue("Failed to upload file")
+
+    fun uploadPictureStorage(uri: Uri, name: String,title:String,description:String){
+        var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPicturesStorage(name,title,description) }
+        reference?.putFile(uri)?.addOnSuccessListener {
+            userLiveDataSuccessful.postValue("Successfully uploaded")
+        }?.addOnFailureListener{
+            userLiveDataError.postValue("Failed to upload file")
 
 
-         }
+        }
     }
 
-    fun uploadAudio(uri: Uri, uid: String){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadAudio(uid).child(it) }
-         reference?.putFile(uri)?.addOnCanceledListener {
-             userLiveDataSuccessful.postValue("Successfully uploaded")
-         }?.addOnFailureListener{
-             userLiveDataError.postValue("Failed to upload file")
+    fun uploadVideosStorage(uri: Uri, videoName: String,title:String,description:String) {
+        var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadVideosStorage(videoName,title,description) }
+        reference?.putFile(uri)?.addOnCanceledListener {
+            userLiveDataSuccessful.postValue("Successfully uploaded")
+        }?.addOnFailureListener {
+            userLiveDataError.postValue("Failed to upload file")
 
 
-         }
+        }
     }
 
-    fun uploadPdf(uri: Uri, uid: String){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPdf(uid).child(it) }
-         reference?.putFile(uri)?.addOnCanceledListener {
-             userLiveDataSuccessful.postValue("Successfully uploaded")
-         }?.addOnFailureListener{
-             userLiveDataError.postValue("Failed to upload file")
+    fun uploadAudioStorage(uri: Uri, audioName: String,title:String,description:String) {
+        var reference =
+            uri.lastPathSegment?.let { bookOfCoivdRepository.uploadAudioStorage(audioName,title,description) }
+        reference?.putFile(uri)?.addOnCanceledListener {
+            userLiveDataSuccessful.postValue("Successfully uploaded")
+        }?.addOnFailureListener {
+            userLiveDataError.postValue("Failed to upload file")
 
 
-         }
+        }
     }
 
-    fun uploadDocx(uri: Uri, uid: String){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadDocx(uid).child(it) }
-         reference?.putFile(uri)?.addOnCanceledListener {
-             userLiveDataSuccessful.postValue("Successfully uploaded")
-         }?.addOnFailureListener{
-             userLiveDataError.postValue("Failed to upload file")
+    fun uploadPdfStorage(uri: Uri, pdfName: String,title:String,description:String) {
+        var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPdfStorage(pdfName,title,description) }
+        reference?.putFile(uri)?.addOnCanceledListener {
+            userLiveDataSuccessful.postValue("Successfully uploaded")
+        }?.addOnFailureListener {
+            userLiveDataError.postValue("Failed to upload file")
 
 
-         }
+        }
     }
 
-    fun uploadPicture(uri: Uri, uid: String,time:Long){
-      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPictures(uid).child(it) }
-         reference?.putFile(uri)?.addOnCanceledListener {
-             userLiveDataSuccessful.postValue("Successfully uploaded")
-         }?.addOnFailureListener{
-             userLiveDataError.postValue("Failed to upload file")
+    fun uploadDocxStorage(uri: Uri, docxName: String,title:String,description:String) {
+        var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadDocxStorage(docxName,title,description) }
+        reference?.putFile(uri)?.addOnCanceledListener {
+            userLiveDataSuccessful.postValue("Successfully uploaded")
+        }?.addOnFailureListener {
+            userLiveDataError.postValue("Failed to upload file")
 
 
-         }
+        }
     }
+
+
+
+
+    fun uploadPictureFireStore(uri: Uri, imageName: String,title: String,description: String) {
+        uri.lastPathSegment?.let {
+            bookOfCoivdRepository.uploadPicturesFireStore()
+                .add(bookOfCovidDataClassPhotos(imageName,FirebaseAuth.getInstance().uid.toString(),title,description))
+        }
+            ?.addOnSuccessListener {
+                uploadPictureStorage(uri,imageName,title,description)
+                userLiveDataSuccessful.postValue("Successfully uploaded")
+
+
+            }?.addOnFailureListener {
+                userLiveDataError.postValue("Failed to upload file")
+
+
+            }
+    }
+
+    fun uploadVideoFireStore(uri: Uri, videoName: String,title: String,description: String) {
+        uri.lastPathSegment?.let {
+            bookOfCoivdRepository.uploadVideosFireStore()
+                .add(bookOfCovidDataClassVideos(videoName,FirebaseAuth.getInstance().uid.toString(),title,description))
+        }
+            ?.addOnSuccessListener {
+                uploadVideosStorage(uri,videoName,title,description)
+                userLiveDataSuccessful.postValue("Successfully uploaded")
+
+
+            }?.addOnFailureListener {
+                userLiveDataError.postValue("Failed to upload file")
+
+
+            }
+    }
+
+    fun uploadAudioFireStore(uri: Uri, audioName: String,title: String,description: String) {
+        uri.lastPathSegment?.let {
+            bookOfCoivdRepository.uploadAudioFireStore()
+                .add(bookOfCovidDataClassAudio(audioName,FirebaseAuth.getInstance().uid.toString(),title,description))
+        }
+            ?.addOnSuccessListener {
+                uploadAudioStorage(uri,audioName,title,description)
+                userLiveDataSuccessful.postValue("Successfully uploaded")
+
+
+            }?.addOnFailureListener {
+                userLiveDataError.postValue("Failed to upload file")
+
+
+            }
+    }
+
+    fun uploadPdfFireStore(uri: Uri, pdfName: String,title: String,description: String) {
+        uri.lastPathSegment?.let {
+            bookOfCoivdRepository.uploadPdfFireStore()
+                .add(bookOfCovidDataClassPdf(pdfName,FirebaseAuth.getInstance().uid.toString(),title,description))
+        }
+            ?.addOnSuccessListener {
+                uploadPdfStorage(uri,pdfName,title,description)
+                userLiveDataSuccessful.postValue("Successfully uploaded")
+
+
+            }?.addOnFailureListener {
+                userLiveDataError.postValue("Failed to upload file")
+
+
+            }
+    }    fun uploadDocxFireStore(uri: Uri, docxName: String,title: String,description: String) {
+        uri.lastPathSegment?.let {
+            bookOfCoivdRepository.uploadDocxFireStore()
+                .add(bookOfCovidDataClassDocx(docxName,FirebaseAuth.getInstance().uid.toString(),title,description))
+        }
+            ?.addOnSuccessListener {
+                uploadDocxStorage(uri,docxName,title,description)
+                userLiveDataSuccessful.postValue("Successfully uploaded")
+
+
+            }?.addOnFailureListener {
+                userLiveDataError.postValue("Failed to upload file")
+
+
+            }
+    }
+
 
 //    fun deleteAnImage(ImageUri:String){
 //        try {
@@ -152,36 +238,36 @@ class bookOfCoivdViewModel:ViewModel() {
 //
 //    }
 
-    fun getBookOfCovidAudio(uid: String){
+//        fun getBookOfCovidAudio(uid: String) {
+//
+////        val storageRef = storage.reference.child("bookOfCoivdImages")
+////        val imageList:MutableLiveData<bookOfCovidDataClass> = MutableLiveData<bookOfCovidDataClass>()
+//
+//            val listAllTask: Task<ListResult> =
+//                bookOfCoivdRepository.getAudioBookOfCovid(uid).listAll()
+//                    .addOnCompleteListener { result ->
+//                        val item: List<StorageReference> = result.result!!.items
+//
+//                        item.forEachIndexed { index, storageReference ->
+//                            storageReference.downloadUrl.addOnSuccessListener {
+//                                Log.d("bookOfCovidDataClass", "$it")
+//                                uriLiveDataForPhotos.postValue(bookOfCovidDataClassPhotos(it.toString(),uid))
+//                            }.addOnCompleteListener {
+//                                userLiveDataSuccessful.postValue("Successfully loaded")
+//
+//                            }.addOnFailureListener {
+//                                userLiveDataError.postValue("failed to load")
+//
+//
+//                            }
+//
+//                        }
+//                    }
+//
+//        }
 
-//        val storageRef = storage.reference.child("bookOfCoivdImages")
-//        val imageList:MutableLiveData<bookOfCovidDataClass> = MutableLiveData<bookOfCovidDataClass>()
-
-        val listAllTask: Task<ListResult> = bookOfCoivdRepository.getAudioBookOfCovid(uid).listAll().addOnCompleteListener { result ->
-            val item:List<StorageReference> = result.result!!.items
-
-            item.forEachIndexed { index, storageReference ->
-                storageReference.downloadUrl.addOnSuccessListener {
-                    Log.d("bookOfCovidDataClass","$it")
-                    uriLiveDataForPhotos.postValue(bookOfCovidDataClassPhotos(it.toString()))
-                }.addOnCompleteListener{
-                    userLiveDataSuccessful.postValue("Successfully loaded")
-
-                }.addOnFailureListener{
-                    userLiveDataError.postValue("failed to load")
-
-
-                }
-
-            }
-        }
 
     }
-
-
-    }
-
-
 
 
 

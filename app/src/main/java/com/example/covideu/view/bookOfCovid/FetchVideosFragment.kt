@@ -10,9 +10,8 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.database.bookOfCovidDataClassVideos
+import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassVideos
 import com.example.covideu.databinding.FragmentFetchVideosBinding
-import com.example.covideu.view.ViewModels.bookOfCovid.bookOfCoivdViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidVideosViewModel
 import com.example.covideu.view.adapter.bookOfCoivdVideosRecyclerview
@@ -50,7 +49,7 @@ class FetchVideosFragment : Fragment() {
     try {
         sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 
-        fetchVideoViewModel.getBookOfCovidVideos(sharedPref.getString("uid","")!!)
+      fetchVideoViewModel.getBookOfCovidVideos()
         videoRecyclerViewAdapter = bookOfCoivdVideosRecyclerview(requireContext(),DeletePhotosViewModelViewModel)
         binding.videoRecyclerview.adapter =videoRecyclerViewAdapter
         observeUri()
@@ -87,8 +86,8 @@ class FetchVideosFragment : Fragment() {
         fetchVideoViewModel.uriLiveDataForVideos .observe(viewLifecycleOwner,{
 
             it?.let {
-              //  theList.clear()
-                theList.addAll(listOf(it))
+               theList.clear()
+                theList.addAll(it)
                 videoRecyclerViewAdapter.submitList(theList)
                 Log.d("theVideo",theList.toString())
 //                videoRecyclerViewAdapter.submitList(theList)
