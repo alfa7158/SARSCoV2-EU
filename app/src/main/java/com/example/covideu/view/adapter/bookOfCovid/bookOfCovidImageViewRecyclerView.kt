@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -55,6 +57,9 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
     override fun onBindViewHolder(holder: bookOfCovidImageViewHolder, position: Int) {
 
         val item = differ.currentList[position]
+        holder.theTitle.text = item.tit.toString()
+
+        holder.theDescription.setText(item.description.toString())
 
         Glide.with(fileContext)
             .load("https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/${item.imageName}?alt=media&token=6b7034c5-3a56-474a-a500-a5b5dfa94f9e")
@@ -100,6 +105,8 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
 
         var imageBookOfCovid:ImageView = itemView.findViewById(R.id.imageViewBookOfCovid)
         var deleteButton:ImageView = itemView.findViewById(R.id.deleteImageView)
+        var theTitle:TextView = itemView.findViewById(R.id.titleImageBookOfCovid)
+        var theDescription:EditText = itemView.findViewById(R.id.descriptionBookOfCovidImage)
     }
 
 

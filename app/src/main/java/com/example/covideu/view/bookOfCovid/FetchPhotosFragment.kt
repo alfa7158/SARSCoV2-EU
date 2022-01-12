@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassPhotos
@@ -76,10 +78,16 @@ class FetchPhotosFragment : Fragment() {
         fetchPhotosViewModelViewModel.uriLiveDataForPhotos.observe(viewLifecycleOwner,{
 
             it?.let {
+                binding.progressBarPhoto.visibility = View.VISIBLE
+
                 theList.clear()
                 theList.addAll(it)
                 imageRecyclerViewAdapter.submitList(theList)
-               // fetchPhotosViewModelViewModel.uriLiveDataForPhotos.postValue(null)
+                Log.d("thePhoto",theList.toString())
+                binding.progressBarPhoto.visibility = View.GONE
+
+
+                // fetchPhotosViewModelViewModel.uriLiveDataForPhotos.postValue(null)
 
             }
             checkForError()

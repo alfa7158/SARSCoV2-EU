@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassAudio
@@ -48,13 +49,11 @@ class FetchAudioFragment : Fragment() {
         try{
 
             sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
-
             fetchAudioViewModelViewModel.getBookOfCovidAudio()
-            audioRecyclerViewAdapter = BookOfCovidAudioRecyclerView(requireContext(),DeleteAudioViewModelViewModel)
+            audioRecyclerViewAdapter = BookOfCovidAudioRecyclerView(requireContext(),DeleteAudioViewModelViewModel,fetchAudioViewModelViewModel)
             binding.audioRecyclerView.adapter =audioRecyclerViewAdapter
             observeUri()
             checkForSuccessful()
-
         }catch (e:Exception){
 
             checkForError()
@@ -70,10 +69,14 @@ class FetchAudioFragment : Fragment() {
         fetchAudioViewModelViewModel.uriLiveDataForAudio .observe(viewLifecycleOwner,{
 
             it?.let {
-                //theList.clear()
+                binding.progressBarAudio.visibility = View.VISIBLE
+
+                theList.clear()
                 theList.addAll(it)
                 audioRecyclerViewAdapter.submitList(theList)
                 Log.d("theVideo",theList.toString())
+                binding.progressBarAudio.visibility = View.GONE
+
 //                videoRecyclerViewAdapter.submitList(theList)
                // fetchAudioViewModelViewModel.uriLiveDataForAudio.postValue(null)
 

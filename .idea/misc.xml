@@ -25,6 +25,8 @@
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_all_vaccine_details.xml" value="0.11141304347826086" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_asian_details.xml" value="0.22" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_au_details.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_book_of_coivd_audi_details.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_book_of_coivd_video_details.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_book_of_covid_main_select.xml" value="0.24555160142348753" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_check_for_covid_.xml" value="0.5" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_clinical_main_select.xml" value="0.29411764705882354" />
@@ -40,7 +42,7 @@
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_fda_approved_details.xml" value="0.11141304347826086" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_fda_approved_vaccine_details.xml" value="0.11141304347826086" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_fetch_audio.xml" value="0.10643115942028986" />
-        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_fetch_content.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_fetch_content.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_fetch_videos.xml" value="0.10416666666666667" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_health_news_details.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/fragment_login.xml" value="0.3333333333333333" />
@@ -99,8 +101,8 @@
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_au_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_book_of_covid_audio.xml" value="0.10643115942028986" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_book_of_covid_audio_layout.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_book_of_covid_layout.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_book_of_videos_layout.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_book_of_covid_layout.xml" value="0.27391304347826084" />
+        <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_book_of_videos_layout.xml" value="0.2757281553398058" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_countreis__with_covid_data__only_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_covid_data_layout.xml" value="0.25" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/layout/item_europ_layout.xml" value="0.1" />

@@ -14,6 +14,7 @@ class getBookOfCovidVideosViewModel:ViewModel(){
     val userLiveDataError = MutableLiveData<String>()
     val userLiveDataSuccessful = MutableLiveData<String>()
     val uriLiveDataForVideos = MutableLiveData<List<bookOfCovidDataClassVideos>>()
+    val uriLiveDataForVideosDetails = MutableLiveData<bookOfCovidDataClassVideos>()
 
 
     fun getBookOfCovidVideos(){

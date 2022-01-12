@@ -6,19 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.MediaController
-import android.widget.Toast
-import android.widget.VideoView
+import android.widget.*
+import androidx.cardview.widget.CardView
 import androidx.core.net.toUri
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassAudio
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
+import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidAudioViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewModel: deleteBookOfCovidViewModel) :
+class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewModel: deleteBookOfCovidViewModel,val fetchAudioViewModelViewModel: getBookOfCovidAudioViewModel) :
     RecyclerView.Adapter<BookOfCovidAudioRecyclerView.BookOfCovidAudioViewHolder>() {
     var xlist= mutableListOf<bookOfCovidDataClassAudio>()
 
@@ -51,16 +51,18 @@ class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewMo
     override fun onBindViewHolder(holder: BookOfCovidAudioViewHolder, position: Int) {
 
         val item = differ.currentList[position]
+        holder.audioTitle.text = item.title
+        holder.audioDescription.text = item.description
         val audioUri = "https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/${item.audioName}?alt=media&token=6b7034c5-3a56-474a-a500-a5b5dfa94f9e"
 
-        val mediaController = MediaController(fileContext)
-        mediaController.setAnchorView(holder.audioView)
-        holder.audioView.setMediaController(mediaController)
-        holder.audioView.setVideoURI(audioUri.toUri())
-        holder.audioView.requestFocus()
-        holder.audioView.resume()
-        holder.audioView.setMediaController(mediaController)
-        holder.audioView.setFadingEdgeLength(30)
+//        val mediaController = MediaController(fileContext)
+//        mediaController.setAnchorView(holder.audioView)
+//        holder.audioView.setMediaController(mediaController)
+//        holder.audioView.setVideoURI(audioUri.toUri())
+//        holder.audioView.requestFocus()
+//        holder.audioView.resume()
+//        holder.audioView.setMediaController(mediaController)
+//        holder.audioView.setFadingEdgeLength(30)
 
         holder.deleteButton.setOnClickListener {
 
@@ -73,6 +75,12 @@ class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewMo
                 // holder.deleteButton.isVisible = false
                 Toast.makeText(fileContext, "You are not allowed to delete", Toast.LENGTH_SHORT).show()
             }
+
+        }
+
+        holder.audioCardViewButton.setOnClickListener {
+            it.findNavController().navigate(R.id.action_fetchAudioFragment_to_bookOfCoivdAudiFragmentDetails)
+            fetchAudioViewModelViewModel.uriLiveDataForAudioDetails.postValue(item)
 
         }
 
@@ -91,9 +99,11 @@ class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewMo
 
 
     class BookOfCovidAudioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val audioView = itemView.findViewById<VideoView>(R.id.audioView)
+//        val audioView = itemView.findViewById<VideoView>(R.id.audioView)
         var deleteButton: ImageView = itemView.findViewById(R.id.deleteAudioVideoView)
-
+        var audioTitle: TextView = itemView.findViewById(R.id.titleBookOfCovidAudio)
+        var audioDescription: TextView = itemView.findViewById(R.id.descriptionBookOfCoivdaudi)
+        var audioCardViewButton:CardView = itemView.findViewById(R.id.cardViewAudioButton)
     }
 
 }

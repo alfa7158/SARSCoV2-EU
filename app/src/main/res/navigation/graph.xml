@@ -500,7 +500,11 @@
         android:id="@+id/fetchVideosFragment"
         android:name="com.example.covideu.view.bookOfCovid.FetchVideosFragment"
         android:label="fragment_fetch_videos"
-        tools:layout="@layout/fragment_fetch_videos" />
+        tools:layout="@layout/fragment_fetch_videos" >
+        <action
+            android:id="@+id/action_fetchVideosFragment_to_bookOfCoivdVideoFragmentDetails"
+            app:destination="@id/bookOfCoivdVideoFragmentDetails" />
+    </fragment>
     <fragment
         android:id="@+id/deleteProfileFragment"
         android:name="com.example.covideu.view.profile.DeleteProfileFragment"
@@ -515,9 +519,23 @@
         android:id="@+id/fetchAudioFragment"
         android:name="com.example.covideu.view.bookOfCovid.FetchAudioFragment"
         android:label="fragment_fetch_audio"
-        tools:layout="@layout/fragment_fetch_audio" />
+        tools:layout="@layout/fragment_fetch_audio" >
+        <action
+            android:id="@+id/action_fetchAudioFragment_to_bookOfCoivdAudiFragmentDetails"
+            app:destination="@id/bookOfCoivdAudiFragmentDetails" />
+    </fragment>
     <fragment
         android:id="@+id/check_for_covid_Fragment"
         android:name="com.example.covideu.view.Covid19Check.Check_for_covid_Fragment"
         android:label="Check_for_covid_Fragment" />
+    <fragment
+        android:id="@+id/bookOfCoivdVideoFragmentDetails"
+        android:name="com.example.covideu.view.bookOfCovid.bookOfCoivdVideoFragmentDetails"
+        android:label="fragment_book_of_coivd_video_details"
+        tools:layout="@layout/fragment_book_of_coivd_video_details" />
+    <fragment
+        android:id="@+id/bookOfCoivdAudiFragmentDetails"
+        android:name="com.example.covideu.view.bookOfCovid.bookOfCoivdAudiFragmentDetails"
+        android:label="fragment_book_of_coivd_audi_details"
+        tools:layout="@layout/fragment_book_of_coivd_audi_details" />
 </navigation>

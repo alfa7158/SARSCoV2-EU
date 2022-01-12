@@ -4,19 +4,19 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.MediaController
-import android.widget.Toast
-import android.widget.VideoView
+import android.widget.*
+import androidx.cardview.widget.CardView
 import androidx.core.net.toUri
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassVideos
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
+import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidVideosViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val viewModelDelete: deleteBookOfCovidViewModel) :
+class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val viewModelDelete: deleteBookOfCovidViewModel,val fetchVideoViewModel: getBookOfCovidVideosViewModel) :
   RecyclerView.Adapter<bookOfCoivdVideosRecyclerview.bookOfCoivdImageViewHolder>(){
     var xlist= mutableListOf<bookOfCovidDataClassVideos>()
 
@@ -47,17 +47,25 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
 
 
       val item = differ.currentList[position]
+        holder.videoTitle.text = item.tit.toString()
 
-      val videoUri = "https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/${item.videoName}?alt=media&token=6b7034c5-3a56-474a-a500-a5b5dfa94f9e"
-      val mediaController = MediaController(fileContext)
-      mediaController.setAnchorView(holder.videoView)
-      holder.videoView.setMediaController(mediaController)
-      holder.videoView.setVideoURI(videoUri.toUri())
-      holder.videoView.requestFocus()
-      holder.videoView.resume()
-      holder.videoView.setMediaController(mediaController)
-      holder.videoView.setFadingEdgeLength(20)
+      holder.thedescription.setText(item.description.toString())
+//      val videoUri = "https://firebasestorage.googleapis.com/v0/b/covidutd-2ad5a.appspot.com/o/${item.videoName}?alt=media&token=6b7034c5-3a56-474a-a500-a5b5dfa94f9e"
+//      val mediaController = MediaController(fileContext)
+//      mediaController.setAnchorView(holder.videoView)
+//      holder.videoView.setMediaController(mediaController)
+//      holder.videoView.setVideoURI(videoUri.toUri())
+//      holder.videoView.requestFocus()
+//      holder.videoView.resume()
+//      holder.videoView.setMediaController(mediaController)
+//      holder.videoView.setFadingEdgeLength(20)
 
+      holder.videoCardButton.setOnClickListener {
+          it.findNavController().navigate(R.id.action_fetchVideosFragment_to_bookOfCoivdVideoFragmentDetails)
+
+          fetchVideoViewModel.uriLiveDataForVideosDetails.postValue(item)
+
+      }
       holder.deleteButton.setOnClickListener {
 
 
@@ -86,9 +94,11 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
     }
 
   class bookOfCoivdImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-      val videoView = itemView.findViewById<VideoView>(R.id.videoView)
-      var deleteButton: ImageView = itemView.findViewById(R.id.deleteVideoView)
 
+      var deleteButton: ImageView = itemView.findViewById(R.id.deleteVideoView)
+      var videoTitle: TextView = itemView.findViewById(R.id.titleBookOfCoivdVideo)
+      var thedescription:EditText = itemView.findViewById(R.id.descriptionBookVideo)
+      var videoCardButton:CardView = itemView.findViewById(R.id.cardVideoButton)
   }
 
 }

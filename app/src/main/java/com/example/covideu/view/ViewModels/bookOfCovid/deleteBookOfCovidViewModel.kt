@@ -58,7 +58,7 @@ fun deleteAnImage(bookOfCovidDataClassPhotos: bookOfCovidDataClassPhotos){
     var imageSnapShot = bookOfCoivdRepository.deleteVideoFireStore(bookOfCovidDataClassVideos).get()
         .addOnSuccessListener { result ->
             for (document in result) {
-                    bookOfCoivdRepository.picturesCollection.document(document.id).delete()
+                    bookOfCoivdRepository.videoCollection.document(document.id).delete()
             }
 
         }
@@ -70,7 +70,7 @@ fun deleteAnImage(bookOfCovidDataClassPhotos: bookOfCovidDataClassPhotos){
     var imageSnapShot = bookOfCoivdRepository.deleteAudioFireStore(bookOfCovidDataClassAudio).get()
         .addOnSuccessListener { result ->
             for (document in result) {
-                    bookOfCoivdRepository.picturesCollection.document(document.id).delete()
+                    bookOfCoivdRepository.audioCollection.document(document.id).delete()
             }
 
         }
@@ -83,7 +83,7 @@ fun deleteAnImage(bookOfCovidDataClassPhotos: bookOfCovidDataClassPhotos){
     var imageSnapShot = bookOfCoivdRepository.deletePdfFireStore(bookOfCovidDataClassPdf).get()
         .addOnSuccessListener { result ->
             for (document in result) {
-                    bookOfCoivdRepository.picturesCollection.document(document.id).delete()
+                    bookOfCoivdRepository.pdfCollection.document(document.id).delete()
             }
 
         }
@@ -96,7 +96,7 @@ fun deleteAnImage(bookOfCovidDataClassPhotos: bookOfCovidDataClassPhotos){
     var imageSnapShot = bookOfCoivdRepository.deleteDocxFireStore(bookOfCovidDataClassDocx).get()
         .addOnSuccessListener { result ->
             for (document in result) {
-                    bookOfCoivdRepository.picturesCollection.document(document.id).delete()
+                    bookOfCoivdRepository.docxCollection.document(document.id).delete()
             }
 
         }

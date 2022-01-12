@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassVideos
@@ -48,12 +49,12 @@ class FetchVideosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     try {
         sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
-
       fetchVideoViewModel.getBookOfCovidVideos()
-        videoRecyclerViewAdapter = bookOfCoivdVideosRecyclerview(requireContext(),DeletePhotosViewModelViewModel)
+        videoRecyclerViewAdapter = bookOfCoivdVideosRecyclerview(requireContext(),DeletePhotosViewModelViewModel,fetchVideoViewModel)
         binding.videoRecyclerview.adapter =videoRecyclerViewAdapter
         observeUri()
         checkForSuccessful()
+
     }catch (e:Exception){
         Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
         checkForError()
@@ -86,12 +87,16 @@ class FetchVideosFragment : Fragment() {
         fetchVideoViewModel.uriLiveDataForVideos .observe(viewLifecycleOwner,{
 
             it?.let {
-               theList.clear()
+                binding.progressBarVideo.visibility = View.VISIBLE
+
+                theList.clear()
                 theList.addAll(it)
                 videoRecyclerViewAdapter.submitList(theList)
                 Log.d("theVideo",theList.toString())
 //                videoRecyclerViewAdapter.submitList(theList)
-                //fetchVideoViewModel.uriLiveDataForVideos.postValue(null)
+                fetchVideoViewModel.uriLiveDataForVideos.postValue(null)
+                binding.progressBarVideo.visibility = View.GONE
+
 
 
             }
