@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.database.bookOfCovidDataClassPhotos
+import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassPhotos
 import com.example.covideu.databinding.FragmentFetchContentBinding
 import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
 import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidPhotosViewModel
-import com.example.covideu.view.adapter.bookOfCovid.bookOfCovidImageViewRecyclerView
+import com.example.covideu.view.adapter.bookO.bookOfCovidImageViewRecyclerView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 
 
@@ -43,7 +43,8 @@ class FetchPhotosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
-        fetchPhotosViewModelViewModel.getBookOfCovidPhotos(sharedPref.getString("uid","")!!)
+//        fetchPhotosViewModelViewModel.`getBookOfCovidPhotos(sharedPref.getString("uid","")!!)
+        fetchPhotosViewModelViewModel.getBookOfCovidPhotos()
         imageRecyclerViewAdapter = bookOfCovidImageViewRecyclerView(requireContext(),fetchPhotosViewModelViewModel,DeletePhotosViewModelViewModel)
         binding.bookOfCovidRecyclerView.adapter =imageRecyclerViewAdapter
         observeUri()
@@ -54,7 +55,7 @@ class FetchPhotosFragment : Fragment() {
     fun checkForSuccessful(){
         fetchPhotosViewModelViewModel.userLiveDataSuccessful.observe(viewLifecycleOwner,{
 
-            Toast.makeText(context, "Successful uploaded", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
 
         })
 
@@ -65,7 +66,7 @@ class FetchPhotosFragment : Fragment() {
 
         fetchPhotosViewModelViewModel.userLiveDataError.observe(viewLifecycleOwner,{
 
-            Toast.makeText(context, "Failed to upload image", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
 
         })
     }
@@ -75,9 +76,10 @@ class FetchPhotosFragment : Fragment() {
         fetchPhotosViewModelViewModel.uriLiveDataForPhotos.observe(viewLifecycleOwner,{
 
             it?.let {
-                theList.addAll(listOf(it))
+                theList.clear()
+                theList.addAll(it)
                 imageRecyclerViewAdapter.submitList(theList)
-                fetchPhotosViewModelViewModel.uriLiveDataForPhotos.postValue(null)
+               // fetchPhotosViewModelViewModel.uriLiveDataForPhotos.postValue(null)
 
             }
             checkForError()
