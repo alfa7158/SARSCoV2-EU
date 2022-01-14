@@ -10,11 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowAllVaccineBinding
-import com.example.covideu.databinding.FragmentShowFDAApprovedVaccineBinding
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getAllVaccinesDataItem
-import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.AllVaccineViewModel
-import com.example.covideu.view.adapter.vaccine.FDA_ApprovedVaccinesRecyclerView
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.AllVaccineViewModel
 import com.example.covideu.view.adapter.vaccine.getAllVaccineDataRecyclerView
 import java.lang.Exception
 

@@ -11,9 +11,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
-import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_four_vaccines
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseFourViewModel
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.phaseFourViewModel
 
 class phaseFourRecyclerView(val viewModel:phaseFourViewModel) :
     RecyclerView.Adapter<phaseFourRecyclerView.phaaseFourViewHolder>() {

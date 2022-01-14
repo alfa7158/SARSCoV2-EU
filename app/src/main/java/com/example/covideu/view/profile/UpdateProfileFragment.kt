@@ -2,6 +2,7 @@ package com.example.covideu.view.profile
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.RadioButton
@@ -14,7 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.covideu.R
 import com.example.covideu.database.profile.UserData
 import com.example.covideu.databinding.FragmentUpdateProfileBinding
-import com.example.covideu.view.ViewModels.UserInfo.UserInfoViewModel
+import com.example.covideu.view.ViewModels.UserInfoViewModel.UserInfoViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -89,13 +90,14 @@ class UpdateProfileFragment : Fragment() {
                 val age = binding.ageEditTextUpdate.text.toString()
                 val occupation = binding.occupationEditTextUpdate.text.toString()
                 val genderRadioGroup = binding.genderRadioGroupUpdate
-                val selectedGenderRadioButton: RadioButton =
-                    view.findViewById(genderRadioGroup.checkedRadioButtonId)
+                val selectedGenderRadioButton: RadioButton = view.findViewById(genderRadioGroup.checkedRadioButtonId)
                 gender = selectedGenderRadioButton.text.toString()
                 val user = UserData(firstName, lastName, age, gender, occupation)
                 maleSelect = binding.maleRadioButtonUpdate
                 femaleSelect = binding.femaleRadioButtonUpdate
 
+
+                Log.d("TESTiF","out if")
 
                 if (firstName.isNotBlank() && firstName.isNotEmpty()
                     && lastName.isNotBlank() && lastName.isNotEmpty()
@@ -103,11 +105,14 @@ class UpdateProfileFragment : Fragment() {
                     && age.isNotBlank()&&age.isNotEmpty()&&
                     (maleSelect.isChecked|| femaleSelect.isChecked) ) {
 
+                        Log.d("TESTiF","inside if")
+
                     databaseReference.child(uid).setValue(user)
                     findNavController().navigate(R.id.action_updateProfileFragment2_to_mainSelectFragment2)
 
                     checkForSuccessful()
                 }else{
+                    Log.d("TESTiF","inside else")
 
                     checkForError()
                     Toast.makeText(context, "Please complete all your information", Toast.LENGTH_SHORT).show()

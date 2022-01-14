@@ -112,6 +112,20 @@
                 android:editable="false"
                 />
 
+            <Button
+                android:id="@+id/favoriteButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="addFavorite" />
+
+            <Button
+                android:id="@+id/removeFavorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="remove Favorite" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

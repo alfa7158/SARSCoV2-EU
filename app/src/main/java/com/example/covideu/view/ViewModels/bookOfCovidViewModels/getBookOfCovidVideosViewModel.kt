@@ -1,4 +1,4 @@
-package com.example.covideu.view.ViewModels.bookOfCovid
+package com.example.covideu.view.ViewModels.bookOfCovidViewModels
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

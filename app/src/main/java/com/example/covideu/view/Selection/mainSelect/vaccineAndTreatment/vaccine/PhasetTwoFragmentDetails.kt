@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseOneViewModel
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseTwoViewModel
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.phaseTwoViewModel
 
 class PhasetTwoFragmentDetails : Fragment() {
 

@@ -32,6 +32,8 @@
                 android:textColor="#000000" />
 
             <RadioGroup
+
+                android:id="@+id/questionOneRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -59,6 +61,7 @@
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionTwoRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -86,6 +89,7 @@
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionThreeRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -113,6 +117,7 @@
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionFourRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -140,6 +145,7 @@
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionFiveRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -167,6 +173,7 @@
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionSixRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -194,6 +201,7 @@
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionSevenRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -221,6 +229,7 @@
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionEightRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -244,10 +253,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abel"
                 android:shadowColor="#000000"
-                android:text="@string/q10"
+                android:text="@string/q9"
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionNineRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -271,10 +281,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abel"
                 android:shadowColor="#000000"
-                android:text="@string/q11"
+                android:text="@string/q10"
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionTenRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -296,12 +307,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/q13"
-                android:textColor="#000000"
                 android:fontFamily="@font/abel"
-                android:shadowColor="#000000" />
+                android:shadowColor="#000000"
+                android:text="@string/q11"
+                android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionElevenRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -323,12 +335,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/q12"
+                android:textColor="#000000"
                 android:fontFamily="@font/abel"
-                android:shadowColor="#000000"
-                android:text="@string/q14"
-                android:textColor="#000000" />
+                android:shadowColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionTwelfthRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -352,10 +365,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abel"
                 android:shadowColor="#000000"
-                android:text="@string/q15"
+                android:text="@string/q13"
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionThirteenRadioGroup"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -379,10 +394,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abel"
                 android:shadowColor="#000000"
-                android:text="@string/q16"
+                android:text="@string/q14"
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionFourteenRadioGroup"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -406,10 +423,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abel"
                 android:shadowColor="#000000"
-                android:text="@string/q17"
+                android:text="@string/q15"
                 android:textColor="#000000" />
 
             <RadioGroup
+                android:id="@+id/questionFifteenRadioGroup"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -423,6 +442,35 @@
 
                 <RadioButton
                     android:id="@+id/radioButtonNoQ15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/NO" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abel"
+                android:shadowColor="#000000"
+                android:text="@string/q16"
+                android:textColor="#000000" />
+
+            <RadioGroup
+                android:id="@+id/questionSixteenRadioGroup"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonYesQ16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/YES" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonNoQ16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/NO" />

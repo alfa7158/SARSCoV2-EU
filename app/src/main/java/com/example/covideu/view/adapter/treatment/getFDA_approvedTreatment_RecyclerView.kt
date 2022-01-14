@@ -10,9 +10,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
-import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatmentsData
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
-import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allFdaApprovedTreatment
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.treatment.allFdaApprovedTreatment
 
 class getFDA_approvedTreatment_RecyclerView(private val list: List<getFDA_Approvedtreatments>,val viewModel: allFdaApprovedTreatment) :
     RecyclerView.Adapter<getFDA_approvedTreatment_RecyclerView.getFDA_approvedTreatment_viewHolder>() {

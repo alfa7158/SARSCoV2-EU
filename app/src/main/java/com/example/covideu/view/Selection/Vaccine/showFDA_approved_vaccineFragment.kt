@@ -2,7 +2,6 @@ package com.example.covideu.view.Selection.Vaccine
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
@@ -11,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentShowFDAApprovedVaccineBinding
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.fdaApprovedVaccineViewModel
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.fdaApprovedVaccineViewModel
 import com.example.covideu.view.adapter.vaccine.FDA_ApprovedVaccinesRecyclerView
 import java.lang.Exception
 

@@ -1,14 +1,10 @@
-package com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine
+package com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatmentsData
-import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
-import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.*
-import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception

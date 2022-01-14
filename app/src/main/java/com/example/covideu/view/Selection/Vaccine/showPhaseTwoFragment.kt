@@ -2,20 +2,16 @@ package com.example.covideu.view.Selection.Vaccine
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.databinding.FragmentShowPhaseOneBinding
 import com.example.covideu.databinding.FragmentShowPhaseTwoBinding
-import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_one_vaccines
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_two_vaccines
 
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseTwoViewModel
-import com.example.covideu.view.adapter.vaccine.phaseOneRecyclerView
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.phaseTwoViewModel
 import com.example.covideu.view.adapter.vaccine.phaseTwoRecyclerView
 import java.lang.Exception
 

@@ -9,16 +9,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.databinding.FragmentPhaseFourBinding
-import com.example.covideu.databinding.FragmentShowAsiaDataBinding
-import com.example.covideu.databinding.FragmentShowEuropDataBinding
 import com.example.covideu.databinding.FragmentShowPhaseOneBinding
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_one_vaccines
-import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
-import com.example.covideu.view.ViewModels.countriesDataViewModels.asiaViewModel
-import com.example.covideu.view.ViewModels.t_v_ViewModel.CovidT_V_ViewModel
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseOneViewModel
-import com.example.covideu.view.adapter.countriesRecyclers.showAsiaDataRecyclerView
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.phaseOneViewModel
 import com.example.covideu.view.adapter.vaccine.phaseOneRecyclerView
 import java.lang.Exception
 

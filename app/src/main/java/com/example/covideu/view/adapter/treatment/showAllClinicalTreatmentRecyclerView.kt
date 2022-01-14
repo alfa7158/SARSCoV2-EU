@@ -11,9 +11,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
-import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
-import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allClinicalViewModel
-import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allTreatmentViewModel
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.treatment.allClinicalViewModel
 
 class showAllClinicalTreatmentRecyclerView(val viewModel: allClinicalViewModel) :
     RecyclerView.Adapter<showAllClinicalTreatmentRecyclerView.showAllClinicalTreatmentViewHolder>() {

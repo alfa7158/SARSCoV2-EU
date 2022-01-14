@@ -9,19 +9,10 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.liveData
 import com.example.covideu.R
-import com.example.covideu.databinding.FragmentUpdateProfileBinding
 import com.example.covideu.databinding.FragmentUploadImageBinding
-import com.example.covideu.view.ViewModels.UserInfo.UserInfoViewModel
-import com.google.firebase.storage.FirebaseStorage
-import java.net.URI
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.util.*
-import java.util.logging.SimpleFormatter
+import com.example.covideu.view.ViewModels.UserInfoViewModel.UserInfoViewModel
 
 private const val TAG = "uploadImageFragment"
 class uploadImageFragment : Fragment() {

@@ -10,11 +10,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
-import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
-import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_four_vaccines
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_one_vaccines
-import com.example.covideu.view.ViewModels.countriesDataViewModels.n_usa_viewModel
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseOneViewModel
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.phaseOneViewModel
 
 class phaseOneRecyclerView(val viewModel: phaseOneViewModel) :
     RecyclerView.Adapter<phaseOneRecyclerView.phaseOneViewHolder>() {

@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_mainSelectFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_mainSelectFragment_to_check_for_covid_Fragment"
+            app:destination="@id/check_for_covid_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/userInformationFragment"
@@ -530,12 +533,17 @@
         android:label="Check_for_covid_Fragment" />
     <fragment
         android:id="@+id/bookOfCoivdVideoFragmentDetails"
-        android:name="com.example.covideu.view.bookOfCovid.bookOfCoivdVideoFragmentDetails"
+        android:name="com.example.covideu.view.bookOfCovid.detailsFragment.bookOfCoivdVideoFragmentDetails"
         android:label="fragment_book_of_coivd_video_details"
         tools:layout="@layout/fragment_book_of_coivd_video_details" />
     <fragment
         android:id="@+id/bookOfCoivdAudiFragmentDetails"
-        android:name="com.example.covideu.view.bookOfCovid.bookOfCoivdAudiFragmentDetails"
+        android:name="com.example.covideu.view.bookOfCovid.detailsFragment.bookOfCoivdAudiFragmentDetails"
         android:label="fragment_book_of_coivd_audi_details"
         tools:layout="@layout/fragment_book_of_coivd_audi_details" />
+    <fragment
+        android:id="@+id/showCommentsFragment"
+        android:name="com.example.covideu.view.bookOfCovid.ShowCommentsFragment"
+        android:label="fragment_show_comments"
+        tools:layout="@layout/fragment_show_comments" />
 </navigation>

@@ -1,6 +1,5 @@
 package com.example.covideu.view.adapter.vaccine
 
-import android.service.carrier.CarrierService
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +10,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
-import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_one_vaccines
-import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_three_vaccines
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_two_vaccines
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseOneViewModel
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseTwoViewModel
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.phaseTwoViewModel
 
 class phaseTwoRecyclerView(val viewModel: phaseTwoViewModel) :
     RecyclerView.Adapter<phaseTwoRecyclerView.phaseTwoViewHolder>() {

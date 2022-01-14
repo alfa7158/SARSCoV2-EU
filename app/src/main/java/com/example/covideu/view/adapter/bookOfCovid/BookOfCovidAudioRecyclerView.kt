@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
-import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassAudio
-import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
-import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidAudioViewModel
+import com.example.covideu.view.ViewModels.bookOfCovidViewModels.deleteBookOfCovidViewModel
+import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidAudioViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewModel: deleteBookOfCovidViewModel,val fetchAudioViewModelViewModel: getBookOfCovidAudioViewModel) :

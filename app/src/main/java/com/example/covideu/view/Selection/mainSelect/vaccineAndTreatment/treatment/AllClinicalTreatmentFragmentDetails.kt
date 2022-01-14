@@ -7,8 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allClinicalViewModel
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.fdaApprovedVaccineViewModel
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.treatment.allClinicalViewModel
 
 
 class AllClinicalTreatmentFragmentDetails : Fragment() {

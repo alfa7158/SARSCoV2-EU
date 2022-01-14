@@ -13,7 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.covideu.R
 import com.example.covideu.database.profile.UserData
 import com.example.covideu.databinding.FragmentUserInformationBinding
-import com.example.covideu.view.ViewModels.UserInfo.UserInfoViewModel
+import com.example.covideu.view.ViewModels.UserInfoViewModel.UserInfoViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -145,12 +145,9 @@ class UserInformationFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        if(firstName.isNotBlank()&&firstName.isNotEmpty()
-            &&lastName.isNotBlank()&&lastName.isNotEmpty()
-            &&occupation.isNotBlank()&&occupation.isNotEmpty()
-            &&(male.isChecked||female.isChecked)){
-        userInfo_ViewMode.addUserInfo(uid, UserData("","","","",""))
-}
+
+        userInfo_ViewMode.addUserInfo(uid, UserData("No first name","No last name","0","Male","No occupation"))
+
     }
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

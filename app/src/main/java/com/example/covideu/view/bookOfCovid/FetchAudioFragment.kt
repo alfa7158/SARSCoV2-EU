@@ -8,13 +8,12 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassAudio
 import com.example.covideu.databinding.FragmentFetchAudioBinding
-import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
-import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidAudioViewModel
+import com.example.covideu.view.ViewModels.bookOfCovidViewModels.deleteBookOfCovidViewModel
+import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidAudioViewModel
 import com.example.covideu.view.adapter.bookOfCovid.BookOfCovidAudioRecyclerView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 import java.lang.Exception

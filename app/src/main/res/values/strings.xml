@@ -116,8 +116,10 @@
     <string name="q15" translatable="false">Q15. Muscle pain</string>
     <string name="q16" translatable="false">Q16.New loss of taste or smell</string>
     <string name="q17" translatable="false">Q17. Sore throat or headache</string>
-    <string name="COVID_19_Self_Assessment_Questionnaire">COVID-19 Self-Assessment Questionnaire</string>
-    <string name="submit">Submit</string>
-    <string name="title">Title</string>
-    <string name="_Description">Description</string>
+    <string name="COVID_19_Self_Assessment_Questionnaire" translatable="false">COVID-19 Self-Assessment Questionnaire</string>
+    <string name="submit" translatable="false">Submit</string>
+    <string name="title" translatable="false">Title</string>
+    <string name="_Description" translatable="false">Description</string>
+    <string name="comments" translatable="false">comments...</string>
+    <string name="report_covid_cases">Report covid-19 cases</string>
 </resources>

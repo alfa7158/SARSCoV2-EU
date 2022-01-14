@@ -1,4 +1,4 @@
-package com.example.covideu.view.ViewModels.t_v_ViewModel
+package com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -8,15 +8,6 @@ import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatments
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreatments
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedtreatments
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.*
-import com.example.covideu.model.get.all.covid.Countries.Statistical.getAllCovid19CountriesStatisticalDataItemModel
-import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
-import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
-import com.example.covideu.model.getAllAustralianAndOceaniancounties.getAllAustralianAndOceanianCountriesModel
-import com.example.covideu.model.getAllEuropeanCountries.getAllEuropeanCountriesModel
-import com.example.covideu.model.getAllNorthernAmericanCountries.getAllNorthernAmericanCountriesModel
-import com.example.covideu.model.getAllSouthernAmericanCountries.getAllSouthernAmericanCountriesModel
-import com.example.covideu.model.getCountriesCovid.getOnlyCountriesCovid19DataModel
-import com.example.covideu.model.worldCovidCases.worldCovidCaesModelItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception

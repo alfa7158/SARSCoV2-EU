@@ -1,4 +1,4 @@
-package com.example.covideu.view.bookOfCovid
+package com.example.covideu.view.bookOfCovid.detailsFragment
 
 import android.os.Bundle
 import android.view.*
@@ -8,7 +8,7 @@ import android.widget.VideoView
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
-import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidAudioViewModel
+import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidAudioViewModel
 
 
 class bookOfCoivdAudiFragmentDetails : Fragment() {

@@ -8,13 +8,13 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.bookOfCovidDataClassPhotos
 import com.example.covideu.databinding.FragmentFetchContentBinding
-import com.example.covideu.view.ViewModels.bookOfCovid.deleteBookOfCovidViewModel
-import com.example.covideu.view.ViewModels.bookOfCovid.getBookOfCovidPhotosViewModel
+import com.example.covideu.view.ViewModels.bookOfCovidViewModels.bookOfCovidLikesViewMode
+import com.example.covideu.view.ViewModels.bookOfCovidViewModels.deleteBookOfCovidViewModel
+import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidPhotosViewModel
 import com.example.covideu.view.adapter.bookO.bookOfCovidImageViewRecyclerView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 
@@ -24,6 +24,7 @@ class FetchPhotosFragment : Fragment() {
     private lateinit var imageRecyclerViewAdapter: bookOfCovidImageViewRecyclerView
     private val fetchPhotosViewModelViewModel: getBookOfCovidPhotosViewModel by activityViewModels()
     private val DeletePhotosViewModelViewModel: deleteBookOfCovidViewModel by activityViewModels()
+    private val favoriteViewModelViewModel: bookOfCovidLikesViewMode by activityViewModels()
    // val imageList:ArrayList<bookOfCovidDataClass> = ArrayList()
         var theList = mutableListOf<bookOfCovidDataClassPhotos>()
     lateinit var binding: FragmentFetchContentBinding
@@ -47,7 +48,7 @@ class FetchPhotosFragment : Fragment() {
         sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 //        fetchPhotosViewModelViewModel.`getBookOfCovidPhotos(sharedPref.getString("uid","")!!)
         fetchPhotosViewModelViewModel.getBookOfCovidPhotos()
-        imageRecyclerViewAdapter = bookOfCovidImageViewRecyclerView(requireContext(),fetchPhotosViewModelViewModel,DeletePhotosViewModelViewModel)
+        imageRecyclerViewAdapter = bookOfCovidImageViewRecyclerView(requireContext(),fetchPhotosViewModelViewModel,DeletePhotosViewModelViewModel,favoriteViewModelViewModel)
         binding.bookOfCovidRecyclerView.adapter =imageRecyclerViewAdapter
         observeUri()
 

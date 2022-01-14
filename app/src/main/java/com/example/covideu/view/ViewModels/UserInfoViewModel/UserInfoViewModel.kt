@@ -1,4 +1,4 @@
-package com.example.covideu.view.ViewModels.UserInfo
+package com.example.covideu.view.ViewModels.UserInfoViewModel
 
 import android.net.Uri
 import android.os.Build

@@ -1,35 +1,37 @@
-package com.example.covideu.view.ViewModels.bookOfCovid
-
-import androidx.lifecycle.MutableLiveData
-import com.example.covideu.database.bookOfCovid.*
-import com.example.covideu.repostries.bookOfCovidFireBaseRepository
+package com.example.covideu.view.ViewModels.bookOfCovidViewModels
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.covideu.database.bookOfCovid.*
+import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 import com.google.firebase.firestore.ktx.toObject
 
-private const val TAG = "getBookOfCovidDocxViewM"
-class getBookOfCovidDocxViewModel:ViewModel() {
+private const val TAG = "getBookOfCovidPdfViewMo"
+class getBookOfCovidPdfViewModel:ViewModel() {
+
     private val bookOfCoivdRepository = bookOfCovidFireBaseRepository()
     val userLiveDataError = MutableLiveData<String>()
     val userLiveDataSuccessful = MutableLiveData<String>()
-    val uriLiveDataForDocx = MutableLiveData<List<bookOfCovidDataClassDocx>>()
+    val uriLiveDataForPdf = MutableLiveData<List<bookOfCovidDataClassPdf>>()
 
-    fun getBookOfCovidDocx(){
-        var DocxList = mutableListOf<bookOfCovidDataClassDocx>()
-        var imageSnapShot = bookOfCoivdRepository.getDocxBookOfCovid().get()
+
+
+    fun getBookOfCovidPdf(){
+        var pdfList = mutableListOf<bookOfCovidDataClassPdf>()
+        var imageSnapShot = bookOfCoivdRepository.getPdfBookOfCovid().get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    var x = document.toObject<bookOfCovidDataClassDocx>()
+                    var x = document.toObject<bookOfCovidDataClassPdf>()
 
-                    DocxList.add(x)
+                    pdfList.add(x)
 
                     Log.d(TAG, "${document.id} => ${document.data}")
 
 
                 }
 
-                uriLiveDataForDocx.postValue(DocxList)
+                uriLiveDataForPdf.postValue(pdfList)
 
 
             }
@@ -37,4 +39,5 @@ class getBookOfCovidDocxViewModel:ViewModel() {
                 Log.w(TAG, "Error getting documents.", exception)
             }
     }
+
 }

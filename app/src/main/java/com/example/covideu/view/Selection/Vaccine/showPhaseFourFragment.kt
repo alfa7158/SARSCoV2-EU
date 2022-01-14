@@ -10,14 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentPhaseFourBinding
-import com.example.covideu.databinding.FragmentShowPhaseOneBinding
-import com.example.covideu.databinding.FragmentShowPhaseThreeBinding
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_four_vaccines
-import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_one_vaccines
-import com.example.covideu.view.ViewModels.t_v_ViewModel.vaccine.phaseFourViewModel
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.phaseFourViewModel
 import com.example.covideu.view.adapter.vaccine.phaseFourRecyclerView
-import com.example.covideu.view.adapter.vaccine.phaseOneRecyclerView
-import com.example.covideu.view.adapter.vaccine.phaseThreeRecyclerView
 import java.lang.Exception
 
 class PhaseFourFragment : Fragment() {

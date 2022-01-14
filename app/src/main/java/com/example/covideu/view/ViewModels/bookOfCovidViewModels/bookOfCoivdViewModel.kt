@@ -1,4 +1,4 @@
-package com.example.covideu.view.ViewModels.bookOfCovid
+package com.example.covideu.view.ViewModels.bookOfCovidViewModels
 
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.covideu.database.bookOfCovid.*
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 import com.google.firebase.auth.FirebaseAuth
-import java.sql.SQLTransactionRollbackException
 
 class bookOfCoivdViewModel:ViewModel() {
     private val bookOfCoivdRepository = bookOfCovidFireBaseRepository()

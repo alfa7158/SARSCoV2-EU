@@ -11,12 +11,9 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.databinding.FragmentAllTreatmentBinding
-import com.example.covideu.databinding.FragmentShowFDAApprovedVaccineBinding
 import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatmentsData
-import com.example.covideu.view.ViewModels.t_v_ViewModel.treatment.allTreatmentViewModel
-import com.example.covideu.view.adapter.newsRecyclers.allVaccineNewsRecyclerView
+import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.treatment.allTreatmentViewModel
 import com.example.covideu.view.adapter.treatment.allTreatmentRecyclerView
-import com.example.covideu.view.adapter.vaccine.phaseFourRecyclerView
 import java.lang.Exception
 
 
