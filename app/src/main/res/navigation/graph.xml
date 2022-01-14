@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/reportCovidCasesFragment">
 
     <fragment
         android:id="@+id/registerFragment"
@@ -546,4 +546,9 @@
         android:name="com.example.covideu.view.bookOfCovid.ShowCommentsFragment"
         android:label="fragment_show_comments"
         tools:layout="@layout/fragment_show_comments" />
+    <fragment
+        android:id="@+id/reportCovidCasesFragment"
+        android:name="com.example.covideu.view.Selection.reportCovidCases.ReportCovidCasesFragment"
+        android:label="fragment_report_covid_cases"
+        tools:layout="@layout/fragment_report_covid_cases" />
 </navigation>

@@ -122,4 +122,14 @@
     <string name="_Description" translatable="false">Description</string>
     <string name="comments" translatable="false">comments...</string>
     <string name="report_covid_cases">Report covid-19 cases</string>
+    <string name="Reportcovid" />
+    <string name="ReportCovidCases">Report covid-19 cases</string>
+    <string name="nationalidandpassport">"national id/passport "</string>
+    <string name="idandPassport">National id/passport:</string>
+    <string name="numberOfInfectedPeople">Number of infected people</string>
+    <string name="national_passport">National id/passport</string>
+    <string name="numberOfInfectPeople">Number of infected people</string>
+    <string name="Relationship">"Relationship "</string>
+    <string name="Relationship__">Relationship</string>
+    <string name="relationship">relationship</string>
 </resources>
