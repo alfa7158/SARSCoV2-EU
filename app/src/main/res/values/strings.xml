@@ -132,4 +132,11 @@
     <string name="Relationship">"Relationship "</string>
     <string name="Relationship__">Relationship</string>
     <string name="relationship">relationship</string>
+    <string name="Report">Report</string>
+    <string name="ID_Passport">ID/Passport</string>
+    <string name="identificationType">Identification type</string>
+    <string name="identification">identification</string>
+    <string name="NumberOfCases">Number of cases</string>
+    <string name="Relationship_">Relationship</string>
+    <string name="by_checking_acknowledgement">By check this box I acknowledge that I will be held responsible in case of incorrect information</string>
 </resources>

@@ -8,73 +8,80 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ReportCovidCases"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="@string/idandPassport"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:ems="10"
-            android:hint="@string/national_passport"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="#000000"
-            android:textColorHint="#000000" />
-
-        <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/textView26"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/numberOfInfectedPeople"
-            android:textColor="#000000" />
+            android:text="@string/identificationType"
+            android:textColor="@color/black" />
+
+        <Spinner
+            android:id="@+id/spinnerIdType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainSelectColor"
+            android:backgroundTintMode="screen"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
-            android:layout_width="wrap_content"
+            android:id="@+id/identityValueEditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/numberOfInfectPeople"
-            android:inputType="textPersonName"
-            android:textColorHint="#000000" />
+            android:hint="@string/identification"
+            android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Relationship__"
+            android:text="@string/NumberOfCases"
+            android:textColor="@color/black" />
+
+        <Spinner
+            android:id="@+id/spinnerNumberOfCases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/mainSelectColor"
+            android:backgroundTintMode="screen"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Relationship_"
             android:textColor="#000000" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName4"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/spinnerRelationship"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/relationship" />
+            android:backgroundTint="@color/mainSelectColor"
+            android:backgroundTintMode="screen"
+            android:minHeight="48dp" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/by_checking_acknowledgement" />
 
         <Button
             android:id="@+id/saveRport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:baselineAligned="false"
+            android:text="@string/Report" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,11 +3,8 @@ package com.example.covideu.view.ViewModels.reportCasesViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.covideu.database.reoprtCases.ReportCasesDataClass
-import com.example.covideu.databinding.FragmentFDAApprovedTreatmentBinding
-import com.example.covideu.databinding.FragmentReportCovidCasesBinding
 import com.example.covideu.repostries.reportCovidCasesRepo
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.toObject
 
 private const val TAG = "reportCasesViewModel"
 class reportCasesViewModel:ViewModel() {
@@ -43,10 +40,10 @@ class reportCasesViewModel:ViewModel() {
 //    }
 
 
-    fun addCommentsFireStore(uid:String,id: Int,lan:Double,lat:Double,numberOfInfected:Int, relationship:String) {
+    fun addReportFireStore(uid:String, idType:String, id: String, lan:Double, lat:Double, numberOfInfected:Int, relationship:String) {
 
         reportCovidRepository.addReportCases().add(
-            ReportCasesDataClass(FirebaseAuth.getInstance().uid.toString(),id,lan,lat,numberOfInfected,relationship)
+            ReportCasesDataClass(FirebaseAuth.getInstance().uid.toString(),idType,id,lan,lat,numberOfInfected,relationship)
         )
 
             .addOnSuccessListener {
