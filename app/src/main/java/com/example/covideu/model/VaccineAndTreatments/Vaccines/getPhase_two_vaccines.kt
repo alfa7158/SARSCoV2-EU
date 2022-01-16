@@ -2,7 +2,9 @@ package com.example.covideu.model.VaccineAndTreatments.Vaccines
 
 
 import com.google.gson.annotations.SerializedName
-
+/**
+ * This is a model class for all phase 2 vaccines
+ */
 data class getPhase_two_vaccines(
     @SerializedName("category")
     val category: String,

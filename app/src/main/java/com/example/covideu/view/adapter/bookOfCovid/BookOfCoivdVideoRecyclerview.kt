@@ -15,13 +15,19 @@ import com.example.covideu.view.ViewModels.bookOfCovidViewModels.deleteBookOfCov
 import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidVideosViewModel
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * This is the book of covid video adapter which its job is to show videos names with default picture
+ */
 class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val viewModelDelete: deleteBookOfCovidViewModel,val fetchVideoViewModel: getBookOfCovidVideosViewModel) :
-  RecyclerView.Adapter<bookOfCoivdVideosRecyclerview.bookOfCoivdImageViewHolder>(){
+  RecyclerView.Adapter<bookOfCoivdVideosRecyclerview.bookOfCoivdVideViewHolder>(){
     var xlist= mutableListOf<bookOfCovidDataClassVideos>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): bookOfCoivdVideosRecyclerview.bookOfCoivdImageViewHolder {
+    /**
+     * The class below is to create the view
+     */
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): bookOfCoivdVideosRecyclerview.bookOfCoivdVideViewHolder {
 
-      return bookOfCoivdImageViewHolder(
+      return bookOfCoivdVideViewHolder(
           LayoutInflater.from(parent.context).inflate(
               R.layout.item_book_of_videos_layout,
               parent,
@@ -30,6 +36,10 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
       )
   }
 
+    /**
+     * The two functions: fun areItemsTheSame , areContentsTheSame below jobs is to make sure the
+     * the recyclerView does not show or have duplicate items
+     */
     val DIFF_CALLBACK = object : DiffUtil.ItemCallback<bookOfCovidDataClassVideos>() {
         override fun areItemsTheSame(oldItem: bookOfCovidDataClassVideos, newItem: bookOfCovidDataClassVideos): Boolean {
             return oldItem.videoName == newItem.videoName
@@ -39,10 +49,15 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
             return  oldItem == newItem
         }
     }
+
+
     private val differ = AsyncListDiffer(this,DIFF_CALLBACK)
 
+    /**
+     * This the on bindViewHolder which bind the the view
+     */
   @SuppressLint("NotifyDataSetChanged")
-  override fun onBindViewHolder(holder: bookOfCoivdImageViewHolder, position: Int) {
+  override fun onBindViewHolder(holder: bookOfCoivdVideViewHolder, position: Int) {
 
 
       val item = differ.currentList[position]
@@ -59,12 +74,20 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
 //      holder.videoView.setMediaController(mediaController)
 //      holder.videoView.setFadingEdgeLength(20)
 
-      holder.videoCardButton.setOnClickListener {
+        /**
+         * The on click lister below is to navigate from the recycler to the video and post values
+         * to the uriLiveDataVideoDeatial list
+         */
+        holder.videoCardButton.setOnClickListener {
           it.findNavController().navigate(R.id.action_fetchVideosFragment_to_bookOfCoivdVideoFragmentDetails)
 
           fetchVideoViewModel.uriLiveDataForVideosDetails.postValue(item)
 
       }
+        /**
+         * Blew we have the delete function which is used to delete items from the recycler and
+         * firebase
+         */
       holder.deleteButton.setOnClickListener {
 
 
@@ -83,6 +106,9 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
 
   }
 
+    /**
+     * The function below is to get the size of the recyclerview
+     */
   override fun getItemCount(): Int {
       return differ.currentList.size
   }
@@ -92,7 +118,10 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
         differ.submitList(xlist)
     }
 
-  class bookOfCoivdImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    /**
+     * The class below is to hold the view of the recyclerView
+     */
+    class bookOfCoivdVideViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
       var deleteButton: ImageView = itemView.findViewById(R.id.deleteVideoView)
       var videoTitle: TextView = itemView.findViewById(R.id.titleBookOfCoivdVideo)

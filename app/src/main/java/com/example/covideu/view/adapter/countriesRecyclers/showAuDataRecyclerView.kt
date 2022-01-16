@@ -15,7 +15,9 @@ import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
 import com.example.covideu.model.getAllAustralianAndOceaniancounties.getAllAustralianAndOceanianCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.asiaViewModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.auViewModel
-
+/**
+ * This is the Australia and oceania countries adapter which its job to show list of countries in the Australia and oceania
+ */
 class showAuDataRecyclerView(val viewModel: auViewModel) :
     RecyclerView.Adapter<showAuDataRecyclerView.showCountriesDataViewHolder>() {
 
@@ -52,6 +54,11 @@ class showAuDataRecyclerView(val viewModel: auViewModel) :
         holder.rankOfCases.text = "Rank:${item.rank}"
         holder.countries.text = "Country: ${item.country}"
         holder.totalCases.text = "Total cases:${item.totalCases}"
+
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to covid19AustralianAndOceaniaLiveDataDetails live data list
+         */
         holder.cardView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showAU_DataFragmentFragment_to_fragment_au_details)

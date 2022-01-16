@@ -9,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.countriesDataViewModels.n_usa_viewModel
+/**
+ * This the North USA detail fragment and its job is to show the selected item
+ * details from the recyclerview
+ */
 
 class fragment_n_usa_details : Fragment() {
     private val covidDViewModel: n_usa_viewModel by activityViewModels()
@@ -42,7 +46,10 @@ class fragment_n_usa_details : Fragment() {
         val totalTest: TextView = view.findViewById(R.id.nUSATest_Total_Info)
         val activeCasesInfo: TextView = view.findViewById(R.id.nUSAActiveCasesInfo)
 
-
+        /**
+         * below we we observe the details that are posted in the covid19NorthAmericaLiveDataDetails
+         * and set values to the text view
+         */
 
         covidDViewModel.covid19NorthAmericaLiveDataDetails.observe(viewLifecycleOwner,{
         it?.let {

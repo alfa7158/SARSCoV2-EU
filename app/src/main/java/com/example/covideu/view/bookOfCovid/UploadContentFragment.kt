@@ -19,8 +19,12 @@ import com.example.covideu.view.ViewModels.bookOfCovidViewModels.bookOfCoivdView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 import java.util.*
 
+/**
+ * This class contains the method that are responsible for uploading content or adding it to the
+ * firebase
+ */
 private const val TAG = "UploadVideosFragment"
-class UploadVideosFragment : Fragment() {
+class UploadContentFragment : Fragment() {
 
     private val uploadContentViewModel: bookOfCoivdViewModel by activityViewModels()
     private lateinit var  sharedPref:SharedPreferences
@@ -57,10 +61,12 @@ class UploadVideosFragment : Fragment() {
         val myAdapter = context?.let { ArrayAdapter<String>(it,android.R.layout.simple_spinner_dropdown_item,uploadType) }
 
 
-
-
+        /**
+         * below a spinner created for the user to choose the type of content to upload to the
+         * book of covid
+         */
         binding.mySpinner.adapter = myAdapter
-
+    //the two functions below is to control the spinner
         binding.mySpinner.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -68,6 +74,10 @@ class UploadVideosFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
+                /**
+                 * the if conditions below is to check for the spinner position and hides other
+                 * buttons based on what user chooses
+                 */
                if(position==0){
 
                    binding.uploadVideoButton.isVisible = true
@@ -149,7 +159,9 @@ class UploadVideosFragment : Fragment() {
         }
     }
 
-
+    /**
+     * The function below is to select an image from the user phone
+     */
     private fun selectPic() {
 
         val intent = Intent()
@@ -165,7 +177,9 @@ class UploadVideosFragment : Fragment() {
 
 
 
-
+    /**
+     * The function below is to select an video from the user phone
+     */
 
     private fun selectVideo() {
 
@@ -179,6 +193,10 @@ class UploadVideosFragment : Fragment() {
 
     }
 
+    /**
+     * The function below is to select an pdf from the user phone
+     */
+
     private fun selectPdf() {
 
         val intent = Intent()
@@ -190,6 +208,9 @@ class UploadVideosFragment : Fragment() {
 
 
     }
+    /**
+     * The function below is to select an docx from the user phone
+     */
 
     private fun selectDocx() {
 
@@ -202,7 +223,9 @@ class UploadVideosFragment : Fragment() {
 
 
     }
-
+    /**
+     * The function below is to select an audio from the user phone
+     */
     private fun selectAudio() {
 
         val intent = Intent()
@@ -215,6 +238,10 @@ class UploadVideosFragment : Fragment() {
 
     }
 
+    /**
+     * the function below to get the result based of the request code and upload content to the
+     * Firestore
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         binding.saveTitleDecripButton.setOnClickListener {

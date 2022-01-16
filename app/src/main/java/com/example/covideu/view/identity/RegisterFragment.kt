@@ -15,8 +15,12 @@ import com.example.covideu.R
 import com.example.covideu.util.RegisterValidation
 import com.google.firebase.auth.FirebaseAuth
 
-
+/**
+ * This class is responsible for user register
+ */
 class RegisterFragment : Fragment() {
+    ////////////////////////
+
     private val validator = RegisterValidation()
 
     private lateinit var sharedPref: SharedPreferences
@@ -52,6 +56,11 @@ class RegisterFragment : Fragment() {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment2)
         }
         registerButton.setOnClickListener {
+            /**
+             * The condition below is to check if the user meets the requirement of registration
+             * and let them register if the they meet the requirement using the firebase
+             */
+
 
             val email: String = registerEmail.text.toString()
             val password: String = registerPassword.text.toString()

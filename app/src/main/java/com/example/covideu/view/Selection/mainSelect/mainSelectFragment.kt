@@ -67,7 +67,6 @@ class mainSelectFragment : Fragment() {
         binding.mainSelectCovidEducation.setOnClickListener {
             findNavController().navigate(R.id.action_mainSelectFragment_to_bookOfCovidMainSelectFragment)
 
-
         }
         binding.setting.setOnClickListener {
 
@@ -77,6 +76,10 @@ class mainSelectFragment : Fragment() {
         binding.mainSelectCheckYouHaveCovid.setOnClickListener {
 
             findNavController().navigate(R.id.action_mainSelectFragment_to_check_for_covid_Fragment)
+        }
+        binding.ReportCovidCaseMainSelect.setOnClickListener {
+
+            findNavController().navigate(R.id.action_mainSelectFragment_to_reportCovidCasesFragment)
         }
 
 

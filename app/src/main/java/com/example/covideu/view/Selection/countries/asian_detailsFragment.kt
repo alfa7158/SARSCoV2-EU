@@ -10,6 +10,10 @@ import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.countriesDataViewModels.africaViewModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.asiaViewModel
+/**
+ * This the asia detail fragment and its job is to show the selected item
+ * details from the recyclerview
+ */
 
 class asian_detailsFragment : Fragment() {
     private val covidDViewModel: asiaViewModel by activityViewModels()
@@ -43,7 +47,10 @@ class asian_detailsFragment : Fragment() {
         val activeCasesInfo: TextView = view.findViewById(R.id.asiaActiveCasesInfo)
 
 
-
+        /**
+         * below we we observe the details that are posted in the covid19AsiaLiveDataDetails and
+         * set values to the text view
+         */
         covidDViewModel.covid19AsiaLiveDataDetails .observe(viewLifecycleOwner,{
 
             it?.let {

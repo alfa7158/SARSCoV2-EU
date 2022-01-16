@@ -9,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.countriesDataViewModels.auViewModel
-
+/**
+ * This the Australia detail fragment and its job is to show the selected item
+ * details from the recyclerview
+ */
 
 class fragment_au_details : Fragment() {
     private val covidDViewModel: auViewModel by activityViewModels()
@@ -44,7 +47,11 @@ class fragment_au_details : Fragment() {
         val activeCasesInfo: TextView = view.findViewById(R.id.auActiveCasesInfo)
 
 
-
+        /**
+         * below we we observe the details that are posted in the
+         * covid19AustralianAndOceaniaLiveDataDetails and
+         * set values to the text view
+         */
         covidDViewModel.covid19AustralianAndOceaniaLiveDataDetails .observe(viewLifecycleOwner,{
         it?.let {
             infoRank.text = "Rank: ${it.rank}"

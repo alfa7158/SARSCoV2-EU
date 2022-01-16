@@ -17,6 +17,9 @@ import com.example.covideu.view.ViewModels.bookOfCovidViewModels.deleteBookOfCov
 import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidAudioViewModel
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * This is the audio adapter  class which its jobs to show audio names
+ */
 class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewModel: deleteBookOfCovidViewModel,val fetchAudioViewModelViewModel: getBookOfCovidAudioViewModel) :
     RecyclerView.Adapter<BookOfCovidAudioRecyclerView.BookOfCovidAudioViewHolder>() {
     var xlist= mutableListOf<bookOfCovidDataClassAudio>()
@@ -62,7 +65,10 @@ class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewMo
 //        holder.audioView.resume()
 //        holder.audioView.setMediaController(mediaController)
 //        holder.audioView.setFadingEdgeLength(30)
-
+        /**
+         * Blew we have the delete function which is used to delete items from the recycler and
+         * firebase
+         */
         holder.deleteButton.setOnClickListener {
 
             if(item.uid== FirebaseAuth.getInstance().currentUser?.uid){

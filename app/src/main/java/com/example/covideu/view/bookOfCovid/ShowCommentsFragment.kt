@@ -16,7 +16,9 @@ import com.example.covideu.view.ViewModels.bookOfCovidViewModels.deleteBookOfCov
 import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidCommentViewModel
 import com.example.covideu.view.adapter.bookOfCovid.BookOfCovidCommentRecyclerView
 import java.lang.Exception
-
+/**
+ * This class is to fetch comments from firebase
+ */
 
 class ShowCommentsFragment : Fragment() {
     private lateinit var commentRecyclerViewAdapter: BookOfCovidCommentRecyclerView
@@ -60,6 +62,10 @@ class ShowCommentsFragment : Fragment() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
+
+            /**
+             * The function below is to observe comments from firebase
+             */
     fun observeComments(){
         getCommentsViewModelViewModel.commentLiveData .observe(viewLifecycleOwner,{
 

@@ -7,6 +7,11 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
+/**
+ * This is book of covid Repository class which contains all methods that are related to book of
+ * covid 19 feature in the app.  firebase storage and Firestore database are used for the method in
+ * this repository
+ */
 
 class bookOfCovidFireBaseRepository {
     val storage = FirebaseStorage.getInstance()

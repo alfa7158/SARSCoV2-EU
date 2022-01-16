@@ -3,6 +3,9 @@ package com.example.covideu.model.getAllAfricanCountries
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * This model of african countries data
+ */
 data class getAllAfricanCountriesModel(
     @SerializedName("ActiveCases")
     val activeCases: Int,

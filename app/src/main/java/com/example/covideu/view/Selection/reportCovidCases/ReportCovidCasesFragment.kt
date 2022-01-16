@@ -1,15 +1,17 @@
 package com.example.covideu.view.Selection.reportCovidCases
 
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.covideu.R
 import com.example.covideu.databinding.FragmentReportCovidCasesBinding
 import com.example.covideu.view.ViewModels.reportCasesViewModel.reportCasesViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -23,7 +25,11 @@ class ReportCovidCasesFragment : Fragment() {
     var theNumberOfCases = 0
     var theRelationship = ""
     private val reportCovidViewModel: reportCasesViewModel by activityViewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
 
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,15 +46,20 @@ class ReportCovidCasesFragment : Fragment() {
             binding.saveRport.setOnClickListener {
 
                 getLocationPermission()
+
             }
 
+
+        /**
+         * below we defined three spinner for covid-19 cases reporting
+         */
         var identityType =  arrayOf("National ID","Passport","foreign ID")
         val identityAdapter = context?.let { ArrayAdapter(it,android.R.layout.simple_spinner_dropdown_item,identityType)
         }
         var numberOfCases =  arrayOf(1,2,3,4,5,6,7,8,9,10)
         val numberOfCasesAdapter = context?.let { ArrayAdapter(it,android.R.layout.simple_spinner_dropdown_item,numberOfCases)
         }
-        var relationship =  arrayOf("family member","Friend","other")
+        var relationship =  arrayOf("family member","Friend","other","self")
         val relationshipAdapter = context?.let { ArrayAdapter(it,android.R.layout.simple_spinner_dropdown_item,relationship)
         }
 
@@ -57,7 +68,9 @@ class ReportCovidCasesFragment : Fragment() {
         binding.spinnerNumberOfCases.adapter = numberOfCasesAdapter
         binding.spinnerRelationship.adapter = relationshipAdapter
 
-
+        /**
+         * below we used onItemSelectedListen to
+         */
         binding.spinnerIdType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -66,19 +79,11 @@ class ReportCovidCasesFragment : Fragment() {
                 id: Long
             ) {
                 when (position) {
-                    0 -> {
-                        theIdentityType = identityType[0]
+                    0 -> { theIdentityType = identityType[0]}
 
-                    }
-                    1 -> {
+                    1 -> { theIdentityType = identityType[1] }
 
-                        theIdentityType = identityType[1]
-                    }
-                    2 -> {
-                        theIdentityType = identityType[2]
-
-
-                    }
+                    2 -> { theIdentityType = identityType[2] }
                 }
             }
 
@@ -134,19 +139,14 @@ class ReportCovidCasesFragment : Fragment() {
                 id: Long
             ) {
                 when (position) {
-                    0 -> {
-                        theRelationship = relationship[0]
+                    0 -> { theRelationship = relationship[0] }
 
-                    }
-                    1 -> {
+                    1 -> { theRelationship = relationship[1]}
 
-                        theRelationship = relationship[1]
-                    }
-                    2 -> {
-                        theRelationship = relationship[2]
+                    2 -> { theRelationship = relationship[2] }
 
+                    3 -> { theRelationship = relationship[3] }
 
-                    }
                 }
             }
 
@@ -159,6 +159,10 @@ class ReportCovidCasesFragment : Fragment() {
 
 
     }
+
+    /**
+     * The function below is to get the current location of the phone
+     */
 
     private fun getLocationPermission() {
 
@@ -193,23 +197,45 @@ class ReportCovidCasesFragment : Fragment() {
 
 
                 val identityEditText =  binding.identityValueEditText.text.toString()
+                val acknowledgmentCheckBox  = binding.checkBox
 
-
-
-
-
-
-
+                if(identityEditText.isNotEmpty()&&identityEditText.isNotEmpty()&&
+                    acknowledgmentCheckBox.isChecked){
                     reportCovidViewModel.addReportFireStore(
-                    FirebaseAuth.getInstance().uid.toString(),theIdentityType,
+                        FirebaseAuth.getInstance().uid.toString(),theIdentityType,
                         identityEditText,
                         location.longitude,
                         location.latitude,
-                    theNumberOfCases,
-                    theRelationship
-                )
+                        theNumberOfCases,
+                        theRelationship,
+                        getAddress(location.latitude,location.longitude))
+                    Toast.makeText(context, "Tank you for reporting", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_reportCovidCasesFragment_to_mainSelectFragment)                }else{
+
+                    Toast.makeText(context, "Please finish all required fields", Toast.LENGTH_SHORT).show()
+
+                }
+
+
+
             }
         }
 
     }
+    //the function below is to convert the longitude and latitude to readable address
+    private fun getAddress(lat: Double, lng: Double): String {
+        val geocoder = Geocoder(context)
+        val list = geocoder.getFromLocation(lat, lng, 1)
+        return list[0].getAddressLine(0)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        val searchItem = menu.findItem(R.id.searchAction)
+
+        searchItem.isVisible = false
+    }
+
+
 }

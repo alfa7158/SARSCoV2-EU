@@ -17,7 +17,9 @@ import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidV
 import com.example.covideu.view.adapter.bookOfCoivdVideosRecyclerview
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 import java.lang.Exception
-
+/**
+ * This class is to fetch Videos from firebase
+ */
 
 class FetchVideosFragment : Fragment() {
     private lateinit var  sharedPref: SharedPreferences
@@ -82,6 +84,10 @@ class FetchVideosFragment : Fragment() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
+
+            /**
+             * below we we have an observer function to observer the video
+             */
     fun observeUri(){
         fetchVideoViewModel.uriLiveDataForVideos .observe(viewLifecycleOwner,{
 

@@ -40,10 +40,10 @@ class reportCasesViewModel:ViewModel() {
 //    }
 
 
-    fun addReportFireStore(uid:String, idType:String, id: String, lan:Double, lat:Double, numberOfInfected:Int, relationship:String) {
+    fun addReportFireStore(uid:String, idType:String, id: String, lan:Double, lat:Double, numberOfInfected:Int, relationship:String,address:String) {
 
         reportCovidRepository.addReportCases().add(
-            ReportCasesDataClass(FirebaseAuth.getInstance().uid.toString(),idType,id,lan,lat,numberOfInfected,relationship)
+            ReportCasesDataClass(FirebaseAuth.getInstance().uid.toString(),idType,id,lan,lat,numberOfInfected,relationship,address)
         )
 
             .addOnSuccessListener {

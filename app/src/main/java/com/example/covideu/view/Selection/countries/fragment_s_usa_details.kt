@@ -10,7 +10,10 @@ import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.countriesDataViewModels.s_usa_ViewModel
 
-
+/**
+ * This the South USA detail fragment and its job is to show the selected item
+ * details from the recyclerview
+ */
 class fragment_s_usa_details : Fragment() {
 
     private val covidDViewModel: s_usa_ViewModel by activityViewModels()
@@ -44,6 +47,10 @@ class fragment_s_usa_details : Fragment() {
         val activeCasesInfo: TextView = view.findViewById(R.id.s_usa_ActiveCasesInfo)
 
 
+        /**
+         * below we we observe the details that are posted in the covid19SouthAmericaLiveDataDetails
+         * and set values to the text view
+         */
 
         covidDViewModel.covid19SouthAmericaLiveDataDetails.observe(viewLifecycleOwner,{
             it?.let {

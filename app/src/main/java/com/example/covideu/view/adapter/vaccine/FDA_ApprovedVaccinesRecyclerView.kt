@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getFDA_ApprovedVaccines
 import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.fdaApprovedVaccineViewModel
-
+/**
+ * This is the all FDA approved vaccine adapter which its job to show list of all FDA approved
+ * vaccine
+ */
 class FDA_ApprovedVaccinesRecyclerView(val viewModel: fdaApprovedVaccineViewModel) :
     RecyclerView.Adapter<FDA_ApprovedVaccinesRecyclerView.FDA_ApprovedVaccinesViewHolder>() {
 
@@ -36,6 +39,11 @@ class FDA_ApprovedVaccinesRecyclerView(val viewModel: fdaApprovedVaccineViewMode
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
 
+
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to covid19FDAApprovedVaccineLiveDataDetails live data list
+         */
         holder.fdaApprovedVaccineCardView.setOnClickListener {
             it.findNavController().navigate(R.id.action_showFDA_approved_vaccineFragment_to_fdaApprovedVaccineFragmentDetails)
             viewModel.covid19FDAApprovedVaccineLiveDataDetails.postValue(item)

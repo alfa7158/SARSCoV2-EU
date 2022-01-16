@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.africaViewModel
-
+/**
+ * This is the African countries adapter which its job to show list of countries in the African
+ */
 class showAfricaDataRecyclerView(val viewModel:africaViewModel) :
     RecyclerView.Adapter<showAfricaDataRecyclerView.showCountriesDataViewHolder>() {
 
@@ -49,7 +51,10 @@ class showAfricaDataRecyclerView(val viewModel:africaViewModel) :
         holder.rankOfCases.text = "Rank:${item.rank}"
         holder.countries.text = "Country: ${item.country}"
         holder.totalCases.text = "Total cases:${item.totalCases}"
-
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to ovid19AfricaLiveDataDetails live data list
+         */
         holder.cardView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showCountriesDataFagment_to_countries_detailsFragment)

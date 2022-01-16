@@ -18,6 +18,9 @@ import com.example.covideu.view.adapter.bookOfCovid.BookOfCovidAudioRecyclerView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 import java.lang.Exception
 
+/**
+ * This class is to fetch the Audio from firebase
+ */
 
 class FetchAudioFragment : Fragment() {
     private val fetchAudioViewModelViewModel: getBookOfCovidAudioViewModel by activityViewModels()
@@ -46,7 +49,9 @@ class FetchAudioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         try{
-
+            /**
+             * Below we link the recycler to the adapter
+             */
             sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
             fetchAudioViewModelViewModel.getBookOfCovidAudio()
             audioRecyclerViewAdapter = BookOfCovidAudioRecyclerView(requireContext(),DeleteAudioViewModelViewModel,fetchAudioViewModelViewModel)
@@ -64,6 +69,9 @@ class FetchAudioFragment : Fragment() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
+            /**
+             * below we we have an observer function to observer the audio
+             */
     fun observeUri(){
         fetchAudioViewModelViewModel.uriLiveDataForAudio .observe(viewLifecycleOwner,{
 
@@ -85,6 +93,7 @@ class FetchAudioFragment : Fragment() {
 
     }
 
+
     fun checkForSuccessful(){
         fetchAudioViewModelViewModel.userLiveDataSuccessful.observe(viewLifecycleOwner,{
 
@@ -103,6 +112,8 @@ class FetchAudioFragment : Fragment() {
 
         })
     }
+
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
 

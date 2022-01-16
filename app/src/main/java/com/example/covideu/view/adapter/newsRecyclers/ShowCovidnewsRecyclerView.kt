@@ -15,7 +15,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.covideu.R
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.view.ViewModels.newsViewModels.covidNewsViewMode
-
+/**
+ * This is the all covid-19 news adapter which its job to show list of all covid-19 news
+ */
 private const val TAG = "ShowCovidnewsRecyclerVi"
 class showCovidnewsRecyclerView(val list: MutableList<newsModel>, val newsViewModel:covidNewsViewMode, var fileContext: Context) :
     RecyclerView.Adapter<showCovidnewsRecyclerView.showCovidNewsViewHolder>() {
@@ -68,7 +70,10 @@ class showCovidnewsRecyclerView(val list: MutableList<newsModel>, val newsViewMo
 //            .into(holder.covidNewsImageView)
             holder.covidNewsTitle.text  = item.title
 //            holder.secCovidNewsProgressBar.animate().alpha(1F)
-
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to covidAllNewsLiveDataDetails live data list
+         */
         holder.vaccineNewsImageView .setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showCovidNewsFragment2_to_covidNewsDetailsFragment)

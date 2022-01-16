@@ -3,6 +3,9 @@ package com.example.covideu.model.covidNews.allHealthNews
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * This is model class for all health news
+ */
 data class AllHeathNewsModel(
     @SerializedName("content")
     val content: String,

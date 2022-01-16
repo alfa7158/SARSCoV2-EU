@@ -18,6 +18,9 @@ import com.example.covideu.view.adapter.countriesRecyclers.showAfricaDataRecycle
 import java.lang.Exception
 import java.util.*
 
+/**
+ * This class holds the the recyclerview for showing the african countries
+ */
 private const val TAG = "ShowCountriesDataFagmen"
 class ShowCountriesDataFagment : Fragment() {
     private val covidDViewModel:africaViewModel  by activityViewModels()

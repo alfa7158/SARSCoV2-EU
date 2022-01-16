@@ -6,7 +6,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
 import java.util.*
-
+/**
+ * user profile or user information Repository class which contains all methods that are related to
+ * adding user info feature in the app
+ */
 class userInfoRepository_Firebase {
 
     val theFormat = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())

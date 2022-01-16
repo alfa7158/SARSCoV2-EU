@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getAllVaccinesDataItem
 import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.AllVaccineViewModel
-
+/**
+ * This is the all vaccine adapter which its job to show list of all
+ * vaccine
+ */
 class getAllVaccineDataRecyclerView( val viewModel: AllVaccineViewModel) :
     RecyclerView.Adapter<getAllVaccineDataRecyclerView.getAllVaccineDataViewHolder>() {
 
@@ -47,6 +50,12 @@ class getAllVaccineDataRecyclerView( val viewModel: AllVaccineViewModel) :
         val item = differ.currentList[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
+
+
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to covidAllVaccinesLiveDataDetails live data list
+         */
 
         holder.allVaccineCardView.setOnClickListener {
             it.findNavController().navigate(R.id.action_showAllVaccineFragment2_to_allVaccineFragmentDetails)

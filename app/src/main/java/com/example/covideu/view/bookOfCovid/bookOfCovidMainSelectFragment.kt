@@ -8,6 +8,10 @@ import com.example.covideu.R
 import com.example.covideu.databinding.FragmentBookOfCovidMainSelectBinding
 import com.example.covideu.databinding.FragmentFetchContentBinding
 
+/**
+ * This class in the app home main selection fragment where all navigation happen from the main
+ * select
+ */
 
 class bookOfCovidMainSelectFragment : Fragment() {
 

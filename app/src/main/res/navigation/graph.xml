@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/graph"
-    app:startDestination="@id/reportCovidCasesFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/registerFragment"
@@ -78,14 +78,23 @@
         <action
             android:id="@+id/action_mainSelectFragment_to_check_for_covid_Fragment"
             app:destination="@id/check_for_covid_Fragment" />
+        <action
+            android:id="@+id/action_mainSelectFragment_to_reportCovidCasesFragment"
+            app:destination="@id/reportCovidCasesFragment"
+
+            />
     </fragment>
     <fragment
         android:id="@+id/userInformationFragment"
         android:name="com.example.covideu.view.profile.UserInformationFragment"
-        android:label="UserInformationFragment" >
+        android:label="UserInformationFragment"
+        >
         <action
             android:id="@+id/action_userInformationFragment_to_mainSelectFragment"
-            app:destination="@id/mainSelectFragment" />
+            app:destination="@id/mainSelectFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/userInformationFragment"
+            />
         <action
             android:id="@+id/action_userInformationFragment_to_uploadImageFragment"
             app:destination="@id/uploadImageFragment" />
@@ -473,7 +482,7 @@
         android:label="AllClinicalTreatmentFragmentDetails" />
     <fragment
         android:id="@+id/uploadVideosFragment"
-        android:name="com.example.covideu.view.bookOfCovid.UploadVideosFragment"
+        android:name="com.example.covideu.view.bookOfCovid.UploadContentFragment"
         android:label="fragment_upload_videos"
         tools:layout="@layout/fragment_upload_videos" />
     <fragment
@@ -550,5 +559,12 @@
         android:id="@+id/reportCovidCasesFragment"
         android:name="com.example.covideu.view.Selection.reportCovidCases.ReportCovidCasesFragment"
         android:label="fragment_report_covid_cases"
-        tools:layout="@layout/fragment_report_covid_cases" />
+        tools:layout="@layout/fragment_report_covid_cases" >
+        <action
+            android:id="@+id/action_reportCovidCasesFragment_to_mainSelectFragment"
+            app:destination="@id/mainSelectFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/reportCovidCasesFragment"
+            />
+    </fragment>
 </navigation>

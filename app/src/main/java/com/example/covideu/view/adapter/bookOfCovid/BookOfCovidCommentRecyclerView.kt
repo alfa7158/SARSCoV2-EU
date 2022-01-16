@@ -8,6 +8,9 @@ import android.widget.TextView
 import com.example.covideu.R
 import com.example.covideu.database.bookOfCovid.BookOfCovidDataClassComments
 
+/**
+ * This is the comment adapter class which its job is to show the list of comments
+ */
 class BookOfCovidCommentRecyclerView(private val list: List<BookOfCovidDataClassComments>) :
     RecyclerView.Adapter<BookOfCovidCommentRecyclerView.BookOfCovidCommentViewHolder>() {
 

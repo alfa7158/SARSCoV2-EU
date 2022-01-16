@@ -121,22 +121,22 @@
     <string name="title" translatable="false">Title</string>
     <string name="_Description" translatable="false">Description</string>
     <string name="comments" translatable="false">comments...</string>
-    <string name="report_covid_cases">Report covid-19 cases</string>
-    <string name="Reportcovid" />
-    <string name="ReportCovidCases">Report covid-19 cases</string>
-    <string name="nationalidandpassport">"national id/passport "</string>
-    <string name="idandPassport">National id/passport:</string>
-    <string name="numberOfInfectedPeople">Number of infected people</string>
-    <string name="national_passport">National id/passport</string>
-    <string name="numberOfInfectPeople">Number of infected people</string>
-    <string name="Relationship">"Relationship "</string>
-    <string name="Relationship__">Relationship</string>
-    <string name="relationship">relationship</string>
-    <string name="Report">Report</string>
-    <string name="ID_Passport">ID/Passport</string>
-    <string name="identificationType">Identification type</string>
-    <string name="identification">identification</string>
-    <string name="NumberOfCases">Number of cases</string>
-    <string name="Relationship_">Relationship</string>
-    <string name="by_checking_acknowledgement">By check this box I acknowledge that I will be held responsible in case of incorrect information</string>
+    <string name="report_covid_cases" translatable="false">Report covid-19 cases</string>
+    <string name="Reportcovid" translatable="false" />
+    <string name="ReportCovidCases" translatable="false">Report covid-19 cases</string>
+    <string name="nationalidandpassport" translatable="false">"national id/passport "</string>
+    <string name="idandPassport" translatable="false">National id/passport:</string>
+    <string name="numberOfInfectedPeople" translatable="false">Number of infected people</string>
+    <string name="national_passport" translatable="false">National id/passport</string>
+    <string name="numberOfInfectPeople" translatable="false">Number of infected people</string>
+    <string name="Relationship" translatable="false">"Relationship "</string>
+    <string name="Relationship__" translatable="false">Relationship</string>
+    <string name="relationship" translatable="false">relationship</string>
+    <string name="Report" translatable="false">Report</string>
+    <string name="ID_Passport" translatable="false">ID/Passport</string>
+    <string name="identificationType" translatable="false">Identification type</string>
+    <string name="identification" translatable="false">identification</string>
+    <string name="NumberOfCases" translatable="false">Number of cases</string>
+    <string name="Relationship_" translatable="false">Relationship</string>
+    <string name="by_checking_acknowledgement" translatable="false">By check this box I acknowledge that I will be held responsible in case of incorrect information</string>
 </resources>

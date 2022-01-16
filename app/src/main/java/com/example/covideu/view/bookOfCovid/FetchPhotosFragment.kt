@@ -18,6 +18,9 @@ import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidP
 import com.example.covideu.view.adapter.bookO.bookOfCovidImageViewRecyclerView
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 
+/**
+ * This class is to fetch photos from firebase
+ */
 
 class FetchPhotosFragment : Fragment() {
     private lateinit var  sharedPref: SharedPreferences
@@ -74,6 +77,9 @@ class FetchPhotosFragment : Fragment() {
         })
     }
 
+    /**
+     * The function below is to observe photos from firebase
+     */
     @SuppressLint("NotifyDataSetChanged")
     fun observeUri(){
         fetchPhotosViewModelViewModel.uriLiveDataForPhotos.observe(viewLifecycleOwner,{

@@ -2,7 +2,9 @@ package com.example.covideu.model.getCountriesCovid
 
 
 import com.google.gson.annotations.SerializedName
-
+/**
+ * This model of counties with covid-19 cases only which will be used in future features
+ */
 data class getOnlyCountriesCovid19DataModel(
     @SerializedName("ActiveCases")
     val activeCases: Int,

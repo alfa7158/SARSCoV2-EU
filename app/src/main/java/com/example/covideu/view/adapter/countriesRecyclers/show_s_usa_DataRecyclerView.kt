@@ -18,6 +18,9 @@ import com.example.covideu.model.getAllSouthernAmericanCountries.getAllSouthernA
 import com.example.covideu.view.ViewModels.countriesDataViewModels.n_usa_viewModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.s_usa_ViewModel
 
+/**
+ * This is the South USA countries adapter which its job to show list of countries in the S-USA
+ */
 class show_s_usa_DataRecyclerView(val viewModel: s_usa_ViewModel) :
     RecyclerView.Adapter<show_s_usa_DataRecyclerView.showCountriesDataViewHolder>() {
 
@@ -55,7 +58,10 @@ class show_s_usa_DataRecyclerView(val viewModel: s_usa_ViewModel) :
         holder.countries.text = "Country: ${item.country}"
         holder.totalCases.text = "Total cases:${item.totalCases}"
 
-
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to covid19SouthAmericaLiveDataDetails live data list
+         */
         holder.cardView .setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showS_USA_DataFragment_to_fragment_s_usa_details2)

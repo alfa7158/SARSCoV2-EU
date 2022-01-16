@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.covideu.R
 import com.example.covideu.model.VaccineAndTreatments.Vaccines.getPhase_one_vaccines
 import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.vaccine.phaseOneViewModel
-
+/**
+ * This is the all vaccine adapter which its job to show list of all
+ * vaccine that are in phase 1
+ */
 class phaseOneRecyclerView(val viewModel: phaseOneViewModel) :
     RecyclerView.Adapter<phaseOneRecyclerView.phaseOneViewHolder>() {
 
@@ -47,6 +50,11 @@ class phaseOneRecyclerView(val viewModel: phaseOneViewModel) :
         val item = differ.currentList[position]
         holder.developer.text = item.developerResearcher
         holder.theCategory.text = item.category
+
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to covid19PhaseOneLiveDataDetails live data list
+         */
 
         holder.phaseOneCardView.setOnClickListener{
             it.findNavController().navigate(R.id.action_showPhaseOneFragment_to_phaseOneFragmentDetails)

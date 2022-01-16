@@ -2,7 +2,10 @@ package com.example.covideu.model.get.all.covid.Countries.Statistical
 
 
 import com.google.gson.annotations.SerializedName
-
+/**
+ * This model of the countries statistical data which is not currently used in the project, but
+ * will be used for future features
+ */
 data class getAllCovid19CountriesStatisticalDataItemModel(
     @SerializedName("ActiveCases")
     val activeCases: Double,

@@ -14,7 +14,9 @@ import com.example.covideu.R
 import com.google.firebase.auth.FirebaseAuth
 import androidx.appcompat.app.AppCompatActivity
 
-
+/**
+ * This is the login class which is responsible for handling the user login
+ */
 
 
 const val SHARED_PREF_FILE = "theUser"
@@ -68,7 +70,10 @@ class LoginFragment : Fragment() {
             val email:String = loginEmail.text.toString()
             val password:String = loginPassword.text.toString()
 
-
+            /**
+             * The if condition below is to check if user has an account or not and set shared
+             * preference to ture if the user is logged in
+             */
 
             if (email.isNotEmpty()&&password.isNotEmpty()){
 

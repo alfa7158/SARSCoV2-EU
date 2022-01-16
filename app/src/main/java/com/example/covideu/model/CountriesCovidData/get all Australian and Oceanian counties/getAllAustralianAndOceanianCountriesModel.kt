@@ -2,7 +2,9 @@ package com.example.covideu.model.getAllAustralianAndOceaniancounties
 
 
 import com.google.gson.annotations.SerializedName
-
+/**
+ * This model of Australia and Oceanian countries
+ */
 data class getAllAustralianAndOceanianCountriesModel(
     @SerializedName("ActiveCases")
     val activeCases: Int,

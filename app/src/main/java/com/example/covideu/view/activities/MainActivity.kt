@@ -1,4 +1,4 @@
-package com.example.covideu.view
+package com.example.covideu.view.activities
 
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
@@ -26,33 +26,49 @@ import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
 
 
-
-
+/**
+ * This the main activity class which hold the navigation host, the notification , and navigation
+ * for menu bar
+ */
 private const val TAG = "Main_Activity"
 class MainActivity : AppCompatActivity() {
+    /**
+     * The variables below are for notification
+     */
     val CHANNEL_ID = "channelID"
     val CHANNEL_NAME = "channeName"
     val NOTIFICATION_ID = 0
+    ///////////////////////////////////////
+
     private lateinit var navController: NavController
     private lateinit var user: FirebaseAuth
     private lateinit var sharedPref: SharedPreferences
     private lateinit var sharedPreferencesEditor: SharedPreferences.Editor
     @SuppressLint("RestrictedApi")
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         createNotification()
-
+        /**
+         * Below we have a part of the notification implementation, which help in building the
+         * notification and setting its property
+         */
         val notification = NotificationCompat.Builder(this,CHANNEL_ID)
             .setContentTitle("Covid-19-Bible").setContentText("welcome to the covid-19-Bible").
             setSmallIcon(R.drawable.covidbookicon).setPriority(NotificationCompat.PRIORITY_HIGH).build()
 //            setContentIntent(pendingIntent).build()
         val notificationManger = NotificationManagerCompat.from(this)
         notificationManger.notify(NOTIFICATION_ID,notification)
+
+        /////////////////////////////////notification implementation related ends //////////////////////////////////
         requestedOrientation =  (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+
         setContentView(R.layout.activity_main)
         ApiRepositoryCovidData.init()
         navController = (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment).navController
+
 
         sharedPref = getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
         sharedPreferencesEditor =  sharedPref.edit()
@@ -60,6 +76,10 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    /**
+     * The function below is create option menu
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         menuInflater.inflate(R.menu.custom_menu,menu)
@@ -67,6 +87,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * The function below is to help you get access to  the menuItem item's
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
        // Log.d(com.example.covideu.view.Selection.mainSelect.TAG,"Inside the onOptionsItemSelected")
         when(item.itemId){
@@ -93,6 +116,9 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * The function below is to help prevent going back to login fragment and register fragment
+     */
     override fun onBackPressed() {
         if(navController.currentDestination?.label == "fragment_login"){
             finish()
@@ -106,6 +132,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * The function below is for creating the notification
+     */
     fun createNotification(){
         /**The condition line below is to check for the version Software
          * it tell us that the app can be run on android oreo or later

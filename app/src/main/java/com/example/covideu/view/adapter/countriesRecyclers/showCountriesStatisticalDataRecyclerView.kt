@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.example.covideu.R
 import com.example.covideu.model.get.all.covid.Countries.Statistical.getAllCovid19CountriesStatisticalDataItemModel
 
+
 class showCountriesStatisticalDataRecyclerView(private val list: List<getAllCovid19CountriesStatisticalDataItemModel>) :
   RecyclerView.Adapter<showCountriesStatisticalDataRecyclerView.showCountriesDataViewHolder>(){
 

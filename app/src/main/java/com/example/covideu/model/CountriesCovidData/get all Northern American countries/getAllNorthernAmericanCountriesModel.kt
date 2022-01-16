@@ -2,7 +2,9 @@ package com.example.covideu.model.getAllNorthernAmericanCountries
 
 
 import com.google.gson.annotations.SerializedName
-
+/**
+ * This model of All North America countries
+ */
 data class getAllNorthernAmericanCountriesModel(
     @SerializedName("ActiveCases")
     val activeCases: Int,

@@ -16,6 +16,10 @@ import com.example.covideu.model.getAllEuropeanCountries.getAllEuropeanCountries
 import com.example.covideu.view.ViewModels.countriesDataViewModels.auViewModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.europViewModel
 
+
+/**
+ * This is the Europe countries adapter which its job to show list of countries in the Australia and oceania
+ */
 class showEuropDataRecyclerView(val viewModel: europViewModel) :
     RecyclerView.Adapter<showEuropDataRecyclerView.showCountriesDataViewHolder>() {
 
@@ -53,6 +57,11 @@ class showEuropDataRecyclerView(val viewModel: europViewModel) :
         holder.countries.text = "Country: ${item.country}"
         holder.totalCases.text = "Total cases:${item.totalCases}"
 
+
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to covid19EuropeLiveDataDetails live data list
+         */
         holder.cardView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showEuropDataFragment_to_fragment_europe_details)

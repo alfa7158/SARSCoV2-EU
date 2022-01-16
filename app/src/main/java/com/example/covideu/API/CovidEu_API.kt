@@ -22,9 +22,15 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ * This the api interface for covid data which is used in the news, vaccine and treatment,
+ * world update
+ */
 interface CovidEu_API {
 
+
     /**The function below are for countries and world covid Data*/
+
     @Headers("x-rapidapi-host: vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com","x-rapidapi-key: cba0ee63e3msh7d6dd8e84219c71p1713b9jsn45b1358b232c")
     @GET("/api/npm-covid-data/")
     suspend fun getCovid19StatisticalData(): Response<List<getAllCovid19CountriesStatisticalDataItemModel>>

@@ -17,7 +17,9 @@ import com.example.covideu.R
 import com.example.covideu.model.covidNews.allCovidNews.newsModel
 import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
 import com.example.covideu.view.ViewModels.newsViewModels.allVaccineNewsViewModel
-
+/**
+ * This is the all Vaccine news adapter which its job to show list of vaccine news
+ */
 class allVaccineNewsRecyclerView(val newsViewModel: allVaccineNewsViewModel, var fileContext: Context) :
     RecyclerView.Adapter<allVaccineNewsRecyclerView.allVaccineNewsViewHolder>() {
     var theCount =0
@@ -65,6 +67,11 @@ class allVaccineNewsRecyclerView(val newsViewModel: allVaccineNewsViewModel, var
 //            .into(holder.covidNewsImageView)
         holder.covidNewsTitle.text  = item.title
 
+
+        /**
+         * the onClick listen is clicked to navigate from the recycler to the details fragment as
+         * well as posts the value to covid19VaccineLiveDatDetails live data list
+         */
         holder.covidNewsImageView.setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showAllVaccineFragment_to_vaccineNewsFragmentDetails)

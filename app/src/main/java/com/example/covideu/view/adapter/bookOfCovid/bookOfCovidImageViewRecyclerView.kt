@@ -19,6 +19,9 @@ import com.example.covideu.view.ViewModels.bookOfCovidViewModels.deleteBookOfCov
 import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidPhotosViewModel
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * This the book of covid image adapter
+ */
 private const val TAG = "bookOfCovidImageViewRec"
 class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: getBookOfCovidPhotosViewModel, val viewModelDelete: deleteBookOfCovidViewModel,val favoriteViewModel: bookOfCovidLikesViewMode) :
     RecyclerView.Adapter<bookOfCovidImageViewRecyclerView.bookOfCovidImageViewHolder>() {
@@ -67,7 +70,10 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
             .into(holder.imageBookOfCovid)
 
 
-
+        /**
+         * Blew we have the delete function which is used to delete items from the recycler and
+         * firebase
+         */
             holder.deleteButton.setOnClickListener {
                 if(item.uid==FirebaseAuth.getInstance().currentUser?.uid){
                     item.imageName?.let { it1 -> viewModelDelete.deleteAnImage(item) }
@@ -80,6 +86,7 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
                 }
 
             }
+
         holder.favoriteButton.setOnClickListener {
             item.imageName?.let { favoriteViewModel.addFavoriteFireStore(it) }
 

@@ -3,7 +3,13 @@ import com.example.covideu.API.CovidEu_API
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
+/// Below is the base url for the covid data api
 
+
+/**
+ * This is the covid data api which uses retrofit to get the data. The class contains multiple
+ * methods for the world update about covid-19, vaccine and treatment, news
+ */
 private val BASE_URL = "https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com"
 
 class ApiRepositoryCovidData {

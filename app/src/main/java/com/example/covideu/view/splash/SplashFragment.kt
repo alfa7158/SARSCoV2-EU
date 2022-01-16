@@ -13,7 +13,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.covideu.R
-import com.example.covideu.view.MainActivity
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

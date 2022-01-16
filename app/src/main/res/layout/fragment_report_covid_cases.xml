@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,6 +22,7 @@
             android:id="@+id/textView26"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:text="@string/identificationType"
             android:textColor="@color/black" />
 
@@ -28,6 +30,7 @@
             android:id="@+id/spinnerIdType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:backgroundTint="@color/mainSelectColor"
             android:backgroundTintMode="screen"
             android:minHeight="48dp" />
@@ -36,6 +39,7 @@
             android:id="@+id/identityValueEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:ems="10"
             android:hint="@string/identification"
             android:inputType="textPersonName" />
@@ -44,6 +48,7 @@
             android:id="@+id/textView27"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:text="@string/NumberOfCases"
             android:textColor="@color/black" />
 
@@ -66,6 +71,7 @@
             android:id="@+id/spinnerRelationship"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:backgroundTint="@color/mainSelectColor"
             android:backgroundTintMode="screen"
             android:minHeight="48dp" />
@@ -74,14 +80,18 @@
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_marginTop="10dp"
             android:text="@string/by_checking_acknowledgement" />
 
         <Button
             android:id="@+id/saveRport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/categoriesSelectionColor"
             android:baselineAligned="false"
-            android:text="@string/Report" />
+            android:text="@string/Report"
+            app:rippleColor="@color/cardBackGroundColor" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

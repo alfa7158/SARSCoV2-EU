@@ -2,7 +2,10 @@ package com.example.covideu.model.worldCovidCases
 
 
 import com.google.gson.annotations.SerializedName
-
+/**
+ * This is the world covid-19 case  model which is not used currently in the project and will
+ *be used in future features
+ */
 data class worldCovidCaesModelItem(
     @SerializedName("ActiveCases")
     val activeCases: Int,

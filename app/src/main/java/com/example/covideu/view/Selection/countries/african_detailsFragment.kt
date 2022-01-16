@@ -10,6 +10,10 @@ import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.countriesDataViewModels.africaViewModel
 
+/**
+ * This the african detail fragment and its job is to show the selected item
+ * details from the recyclerview
+ */
 
 class african_detailsFragment : Fragment() {
     private val covidDViewModel: africaViewModel by activityViewModels()
@@ -44,6 +48,11 @@ class african_detailsFragment : Fragment() {
         val totalTest:TextView = view.findViewById(R.id.africaTest_Total_Info)
         val activeCasesInfo:TextView = view.findViewById(R.id.africaActiveCasesInfo)
 
+
+        /**
+         * below we we observe the details that are posted in the covid19AfricaLiveDataDetails and
+         * set values to the text view
+         */
         covidDViewModel.covid19AfricaLiveDataDetails.observe(viewLifecycleOwner,{
 
             it?.let {

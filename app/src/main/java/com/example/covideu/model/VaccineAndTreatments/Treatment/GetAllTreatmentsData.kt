@@ -3,6 +3,9 @@ package com.example.covideu.model.VaccineAndTreatments.Treatment
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * This model  for all treatment data
+ */
 data class getAllTreatmentsData(
     @SerializedName("category")
     val category: String,
