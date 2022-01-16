@@ -15,6 +15,9 @@ import com.example.covideu.view.ViewModels.newsViewModels.allHealthNewsViewModel
 import com.example.covideu.view.ViewModels.newsViewModels.allVaccineNewsViewModel
 import java.lang.Exception
 
+/**
+ * This class is responsible for showing details based on the item select on the recyclerview
+ */
 
 class vaccineNewsFragmentDetails : Fragment() {
     private lateinit var theWebVaccine:String
@@ -41,7 +44,11 @@ class vaccineNewsFragmentDetails : Fragment() {
 
         val webView: WebView = view.findViewById(R.id.vaccineNewsWebView)
         val webButton: Button = view.findViewById(R.id.button_web_vaccine)
+        /***
+         * below the web view was used to show the news through implicit  intent
+         */
         try {
+
             allVaccineNewsViewModel.covid19VaccineLiveDatDetails.observe(viewLifecycleOwner,{
 
                 it?.let {

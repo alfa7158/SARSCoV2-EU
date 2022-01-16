@@ -99,6 +99,8 @@ class ShowCountriesDataFagment : Fragment() {
     }
 
 
+//////////////////////////search code starts here/////////////////////////////////////
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
@@ -107,7 +109,10 @@ class ShowCountriesDataFagment : Fragment() {
 
 
         val itemSearchView = searchItem.actionView as androidx.appcompat.widget.SearchView
-
+        /**
+         * The item search view is to allow the user to search in the recyclerview by contains and
+         * country
+         */
         itemSearchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 showAfricaDatAapter.submitList(countriesDataListAfricaShowList.filter {
@@ -139,6 +144,9 @@ class ShowCountriesDataFagment : Fragment() {
 
 
     }
+
+    //////////////////////////search code ends here/////////////////////////////////////
+
 
     fun checkForSuccessful(){
         covidDViewModel.countryLiveDataSuccessful.observe(viewLifecycleOwner,{

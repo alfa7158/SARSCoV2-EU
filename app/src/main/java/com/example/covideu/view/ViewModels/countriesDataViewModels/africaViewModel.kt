@@ -9,6 +9,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
+/**
+ * This african countries data view model which is responsible for calling the african data from
+ * the database
+ */
 private const val TAG = "africaViewModel"
 class africaViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
@@ -17,6 +21,9 @@ class africaViewModel:ViewModel() {
     val countryLiveDataSuccessful = MutableLiveData<String>()
     val CovidLiveDataError = MutableLiveData<String?>()
 
+    /**
+     * The function below is responsible for getting all african countries data from the api
+     */
     fun callCovidDataForAfrica(){
 
         viewModelScope.launch(Dispatchers.IO){

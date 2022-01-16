@@ -18,7 +18,10 @@ import com.example.covideu.view.ViewModels.newsViewModels.allVaccineNewsViewMode
 import com.example.covideu.view.adapter.newsRecyclers.allVaccineNewsRecyclerView
 import com.example.covideu.view.adapter.newsRecyclers.showCovidnewsRecyclerView
 import java.lang.Exception
-
+/**
+ * This class holds the recycler view that is responsible for showing all vaccine news
+ *
+ */
 private const val TAG = "showAllVaccineFragmentN"
 class showAllVaccineFragment : Fragment() {
     private lateinit var binding: FragmentShowAllVaccineNewsBinding
@@ -88,7 +91,9 @@ class showAllVaccineFragment : Fragment() {
         }
 
     }
-
+    /**
+     * The function below job is to help create responsive pager when scrolling
+     */
     fun page(){
         Log.d("page","I am inside")
 

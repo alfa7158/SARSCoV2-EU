@@ -6,6 +6,9 @@ import com.example.covideu.R
 import com.zeugmasolutions.localehelper.LocaleAwareCompatActivity
 import com.zeugmasolutions.localehelper.Locales
 
+/**
+ * This class is responsible for manging languages
+ */
 class BaseActivity : LocaleAwareCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

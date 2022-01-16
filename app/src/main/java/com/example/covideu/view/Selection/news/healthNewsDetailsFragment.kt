@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.newsViewModels.allHealthNewsViewModel
+/**
+ * This class is responsible for showing details based on the item select on the recyclerview
+ */
 
 class healthNewsDetailsFragment : Fragment() {
 private val covidNewsViewModel: allHealthNewsViewModel by activityViewModels()
@@ -37,7 +40,9 @@ private val covidNewsViewModel: allHealthNewsViewModel by activityViewModels()
 
         val webView: WebView = view.findViewById(R.id.healthNewsWebView)
         val webButton: Button = view.findViewById(R.id.button_web_healthNews)
-
+        /***
+         * below the web view was used to show the news through implicit  intent
+         */
         covidNewsViewModel.covidAllHeathLiveDataDetails .observe(viewLifecycleOwner,{
 
             it?.let {

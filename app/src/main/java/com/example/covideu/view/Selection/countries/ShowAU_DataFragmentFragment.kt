@@ -20,7 +20,9 @@ import com.example.covideu.view.ViewModels.countriesDataViewModels.auViewModel
 import com.example.covideu.view.adapter.countriesRecyclers.showAsiaDataRecyclerView
 import com.example.covideu.view.adapter.countriesRecyclers.showAuDataRecyclerView
 import java.lang.Exception
-
+/**
+ * This class holds the the recyclerview for showing the australia and oceania countries
+ */
 
 class ShowAU_DataFragmentFragment : Fragment() {
     private val covidDViewModel: auViewModel by activityViewModels()
@@ -83,6 +85,7 @@ class ShowAU_DataFragmentFragment : Fragment() {
         }
 
     }
+    //////////////////////////search code starts here/////////////////////////////////////
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
@@ -92,7 +95,10 @@ class ShowAU_DataFragmentFragment : Fragment() {
 
 
         val item_searchView = searchView.actionView as SearchView
-
+        /**
+         * The item search view is to allow the user to search in the recyclerview by contains and
+         * country
+         */
         item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 showAuAdapter.submitList(countriesDataListAu.filter {
@@ -125,6 +131,7 @@ class ShowAU_DataFragmentFragment : Fragment() {
 
     }
 
+    //////////////////////////search code end here/////////////////////////////////////
 
     fun checkForSuccessful(){
         covidDViewModel.countryLiveDataSuccessful.observe(viewLifecycleOwner,{

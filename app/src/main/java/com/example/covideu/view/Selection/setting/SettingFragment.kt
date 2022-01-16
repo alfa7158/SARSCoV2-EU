@@ -11,6 +11,9 @@ import androidx.navigation.NavController
 import com.example.covideu.R
 import com.example.covideu.view.Selection.setting.Translate.BaseActivity
 
+/**
+ * this class is to help in changing the language options
+ */
 
 class SettingFragment : Fragment() {
     private lateinit var navController: NavController

@@ -9,6 +9,9 @@ import com.example.covideu.database.profile.UserData
 import com.example.covideu.repostries.userInfoRepository_Firebase
 import com.google.firebase.database.*
 
+/**
+ * This the user profile view model where realtime database is used
+ */
 class UserInfoViewModel: ViewModel() {
 
 
@@ -21,7 +24,9 @@ class UserInfoViewModel: ViewModel() {
     private lateinit var database: DatabaseReference
 
 
-
+    /**
+     * The function below is responsible for updating the user information
+     */
     fun UpdateUserInfo(uid:String){
 
         repository.UpdateUser(uid).addValueEventListener(object : ValueEventListener {
@@ -41,7 +46,9 @@ class UserInfoViewModel: ViewModel() {
         })
 
     }
-
+    /**
+     * The function below is responsible for deleting the user information
+     */
     fun deleteUserInfo(userName: String){
 
         ///val database = FirebaseDatabase.getInstance().reference
@@ -70,7 +77,9 @@ class UserInfoViewModel: ViewModel() {
 
 
     }
-
+    /**
+     * The function below is responsible for adding the user information
+     */
     fun addUserInfo(uid: String,user: UserData){
         repository.addUserInfo(uid).setValue(user).addOnFailureListener {
             userLiveDataSuccessful.postValue("Successful added")
@@ -81,7 +90,9 @@ class UserInfoViewModel: ViewModel() {
         }
 
     }
-
+    /**
+     * The function below is responsible for uploading the user picture
+     */
      fun uploadImage(imageUri:Uri) {
 
 

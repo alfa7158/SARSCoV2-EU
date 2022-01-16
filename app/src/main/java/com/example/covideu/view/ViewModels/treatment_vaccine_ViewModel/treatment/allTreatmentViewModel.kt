@@ -8,7 +8,10 @@ import com.example.covideu.model.VaccineAndTreatments.Treatment.getAllTreatments
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+ * This all  treatment data view model which is responsible for calling  all  treatment data from
+ * the database
+ */
 private const val TAG = "allTreatmentViewModel"
 class allTreatmentViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
@@ -16,6 +19,11 @@ class allTreatmentViewModel:ViewModel() {
     val covidAllTreatmentsLiveData = MutableLiveData<List<getAllTreatmentsData>>()
     val covidAllTreatmentsLiveDataDetails = MutableLiveData<getAllTreatmentsData>()
     val treatmentLiveDataSuccessful = MutableLiveData<String>()
+
+
+    /**
+     * The function below is responsible for getting all  treatment  data from the api
+     */
 
 
     fun callAllCovidTreatment(){

@@ -77,7 +77,7 @@ class allTreatmentFragment : Fragment() {
         }
 
     }
-
+    ////////////////////////////search implementation  starts here//////////////////////////////
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
 
@@ -86,7 +86,10 @@ class allTreatmentFragment : Fragment() {
 
 
         val item_searchView = searchView.actionView as SearchView
-
+        /**
+         * The item search view is to allow the user to search in the recyclerview by trimedName
+         * and trimedCategory
+         */
         item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 all_treatment_Adapter.submitList(all_treatment_DataList.filter {
@@ -118,6 +121,7 @@ class allTreatmentFragment : Fragment() {
 
 
     }
+    ////////////////////////////search implementation  starts ens//////////////////////////////
 
 
 

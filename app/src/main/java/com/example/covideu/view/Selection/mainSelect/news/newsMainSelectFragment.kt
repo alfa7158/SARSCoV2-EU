@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.covideu.R
 
+/**
+ * This class is the main select class which is responsible for holding the navigation for the news
+ * selection including all health news, all vaccine news and all covid-19 news
+ */
 class newsMainSelectFragment : Fragment() {
 
 

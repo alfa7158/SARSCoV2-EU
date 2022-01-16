@@ -21,7 +21,9 @@ class fdaApprovedVaccineViewModel:ViewModel() {
     val covid19FDAApprovedVaccineLiveDataSuccessful = MutableLiveData<String>()
     val covid19FDAApprovedVaccineLiveDataError = MutableLiveData<String>()
 
-
+    /**
+     * The function below is responsible for getting all  approved vaccine  data from the api
+     */
 
     fun callFdaAllVaccinesTreatment(){
 

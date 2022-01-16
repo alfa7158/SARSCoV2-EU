@@ -8,13 +8,18 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.ktx.toObject
 
+/**
+ * This class hold a function for getting the docx
+ */
 private const val TAG = "getBookOfCovidDocxViewM"
 class getBookOfCovidDocxViewModel:ViewModel() {
     private val bookOfCoivdRepository = bookOfCovidFireBaseRepository()
     val userLiveDataError = MutableLiveData<String>()
     val userLiveDataSuccessful = MutableLiveData<String>()
     val uriLiveDataForDocx = MutableLiveData<List<bookOfCovidDataClassDocx>>()
-
+    /**
+     * The function below job is to get the docx from the firebase
+     */
     fun getBookOfCovidDocx(){
         var DocxList = mutableListOf<bookOfCovidDataClassDocx>()
         var imageSnapShot = bookOfCoivdRepository.getDocxBookOfCovid().get()

@@ -78,13 +78,16 @@ class ClinicalTreatmentFragment : Fragment() {
 
     }
 
-
+    //////////////////////search implementation starts here/////////////////////////////////
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
 
         requireActivity().menuInflater.inflate(R.menu.custom_menu, menu)
         val searchView = menu.findItem(R.id.searchAction)
-
+        /**
+         * The item search view is to allow the user to search in the recyclerview by trimedName
+         * and trimedCategory
+         */
 
         val item_searchView = searchView.actionView as SearchView
 
@@ -120,6 +123,7 @@ class ClinicalTreatmentFragment : Fragment() {
 
     }
 
+    //////////////////////search implementation ends here/////////////////////////////////
 
     fun checkForSuccessful(){
         covidDViewModel.treatmentLiveDataSuccessful.observe(viewLifecycleOwner,{

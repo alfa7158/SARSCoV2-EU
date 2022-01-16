@@ -9,7 +9,10 @@ import com.example.covideu.model.covidNews.allVaccineNews.allVaccineNews
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+ * This  all covid news  data view model which is responsible for calling the covid data from
+ * the database
+ */
 private const val TAG = "covidNewsViewMode"
 class covidNewsViewMode:ViewModel() {
 
@@ -24,7 +27,10 @@ class covidNewsViewMode:ViewModel() {
 
     val CovidLiveDataError = MutableLiveData<String?>()
 
-
+    /**
+     * The function below is responsible for getting all covid news data from the api as well as
+     * manging the number of pages we get when calling it
+     */
 
     fun callAllCovidNews(){
 

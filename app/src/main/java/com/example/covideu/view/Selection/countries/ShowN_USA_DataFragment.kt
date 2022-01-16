@@ -17,6 +17,10 @@ import com.example.covideu.view.ViewModels.countriesDataViewModels.n_usa_viewMod
 import com.example.covideu.view.adapter.countriesRecyclers.show_n_usa_dataReyclerView
 import java.lang.Exception
 
+
+/**
+ * This class holds the the recyclerview for showing the North USA countries
+ */
 class ShowN_USA_DataFragment : Fragment() {
     private val covidDViewModel: n_usa_viewModel by activityViewModels()
     private lateinit var binding: FragmentShowNUSADataBinding
@@ -81,6 +85,7 @@ class ShowN_USA_DataFragment : Fragment() {
             }
 
     }
+    //////////////////////////search code starts here/////////////////////////////////////
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
@@ -90,7 +95,10 @@ class ShowN_USA_DataFragment : Fragment() {
 
 
         val item_searchView = searchView.actionView as SearchView
-
+        /**
+         * The item search view is to allow the user to search in the recyclerview by contains and
+         * country
+         */
         item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 showN_UsaDatAapter.submitList(countriesDataListN_usa.filter {
@@ -122,6 +130,7 @@ class ShowN_USA_DataFragment : Fragment() {
 
 
     }
+    //////////////////////////search code ends here/////////////////////////////////////
 
 
     fun checkForSuccessful(){

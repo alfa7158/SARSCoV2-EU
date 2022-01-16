@@ -16,7 +16,10 @@ import com.example.covideu.model.worldCovidCases.worldCovidCaesModelItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+ * This Europe  data view model which is responsible for calling the african data from
+ * the database
+ */
 private const val TAG = "europViewModel"
 class europViewModel:ViewModel() {
 
@@ -29,7 +32,9 @@ class europViewModel:ViewModel() {
 
 
     val CovidLiveDataError = MutableLiveData<String?>()
-
+    /**
+     * The function below is responsible for getting all  Europe countries data from the api
+     */
 
     fun callCovidDataForEurope(){
 

@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.treatment_vaccine_ViewModel.treatment.allTreatmentViewModel
+/**
+ * This class is for all treatment and it is responsible for showing the details of a selected item on a recyclerview
+ */
 
 
 class AllTreatmentFragmentDetails : Fragment() {

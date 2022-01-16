@@ -9,7 +9,10 @@ import com.example.covideu.R
 import com.example.covideu.databinding.FragmentTreatmentMainSelectBinding
 import com.example.covideu.databinding.FragmentVaccineMainSelectBinding
 
-
+/**
+ * This class is responsible for manging the navigation from the main select for
+ * treatments
+ */
 class TreatmentMainSelectFragment : Fragment() {
     private lateinit var binding: FragmentTreatmentMainSelectBinding
 

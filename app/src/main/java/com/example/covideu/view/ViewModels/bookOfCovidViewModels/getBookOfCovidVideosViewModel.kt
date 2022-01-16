@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.example.covideu.database.bookOfCovid.*
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 import com.google.firebase.firestore.ktx.toObject
-
+/**
+ * This class hold a function for getting the video
+ */
 private const val TAG = "getBookOfCovidVideosVie"
 class getBookOfCovidVideosViewModel:ViewModel(){
 
@@ -15,7 +17,9 @@ class getBookOfCovidVideosViewModel:ViewModel(){
     val userLiveDataSuccessful = MutableLiveData<String>()
     val uriLiveDataForVideos = MutableLiveData<List<bookOfCovidDataClassVideos>>()
     val uriLiveDataForVideosDetails = MutableLiveData<bookOfCovidDataClassVideos>()
-
+    /**
+     * The function below job is to get the videos from the firebase
+     */
 
     fun getBookOfCovidVideos(){
         var videoList = mutableListOf<bookOfCovidDataClassVideos>()

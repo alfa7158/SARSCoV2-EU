@@ -8,7 +8,10 @@ import com.example.covideu.model.VaccineAndTreatments.Vaccines.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+ * This all phase 1 data view model which is responsible for calling all phase 1 data from
+ * the database
+ */
 private const val TAG = "phaseOneViewModel"
 class phaseOneViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
@@ -23,7 +26,9 @@ class phaseOneViewModel:ViewModel() {
 
 
 
-
+    /**
+     * The function below is responsible for getting all  phase 1  data from the api
+     */
 
     fun callPhaseOne(){
 

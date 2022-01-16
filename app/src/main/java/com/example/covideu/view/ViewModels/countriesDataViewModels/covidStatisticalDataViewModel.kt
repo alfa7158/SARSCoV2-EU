@@ -10,7 +10,10 @@ import com.example.covideu.model.getCountriesCovid.getOnlyCountriesCovid19DataMo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+ * This Statistical  data view model which is responsible for calling the african data from
+ * the database
+ */
 private const val TAG = "covidStatisticalDataVie"
 class covidStatisticalDataViewModel:ViewModel() {
 
@@ -20,7 +23,9 @@ class covidStatisticalDataViewModel:ViewModel() {
 
 
     val CovidLiveDataError = MutableLiveData<String?>()
-
+    /**
+     * The function below is responsible for getting all  Statistical countries data from the api
+     */
     fun callCovidStatisticalData(){
 
         viewModelScope.launch(Dispatchers.IO){

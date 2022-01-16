@@ -18,6 +18,9 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * This class is responsible  for taking reported cases
+ */
 class ReportCovidCasesFragment : Fragment() {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var binding: FragmentReportCovidCasesBinding
@@ -59,7 +62,7 @@ class ReportCovidCasesFragment : Fragment() {
         var numberOfCases =  arrayOf(1,2,3,4,5,6,7,8,9,10)
         val numberOfCasesAdapter = context?.let { ArrayAdapter(it,android.R.layout.simple_spinner_dropdown_item,numberOfCases)
         }
-        var relationship =  arrayOf("family member","Friend","other","self")
+        var relationship =  arrayOf("self","Friend","other","family member")
         val relationshipAdapter = context?.let { ArrayAdapter(it,android.R.layout.simple_spinner_dropdown_item,relationship)
         }
 
@@ -69,7 +72,7 @@ class ReportCovidCasesFragment : Fragment() {
         binding.spinnerRelationship.adapter = relationshipAdapter
 
         /**
-         * below we used onItemSelectedListen to
+         * below we used onItemSelectedListen to mange the spinners
          */
         binding.spinnerIdType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
@@ -161,7 +164,8 @@ class ReportCovidCasesFragment : Fragment() {
     }
 
     /**
-     * The function below is to get the current location of the phone
+     * The function below is to get the current location of the phone and add information and add it
+     * database
      */
 
     private fun getLocationPermission() {
@@ -222,6 +226,10 @@ class ReportCovidCasesFragment : Fragment() {
         }
 
     }
+
+    /**
+     * The function below job is to take the lon and lat and convert it to a readable a address
+     */
     //the function below is to convert the longitude and latitude to readable address
     private fun getAddress(lat: Double, lng: Double): String {
         val geocoder = Geocoder(context)

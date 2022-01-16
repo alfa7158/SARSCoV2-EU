@@ -21,6 +21,10 @@ import java.lang.Exception
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.toDuration
 
+/**
+ * This class holds the recycler view that is responsible for showing all health news
+ *
+ */
 private const val TAG = "AllHealthFragment"
 class AllHealthFragment : Fragment() {
     private lateinit var binding: FragmentAllHealthNewsBinding
@@ -96,6 +100,9 @@ class AllHealthFragment : Fragment() {
 
     }
 
+    /**
+     * The function below job is to help create responsive pager when scrolling
+     */
     fun page(){
         Log.d("page","I am inside")
         // paging

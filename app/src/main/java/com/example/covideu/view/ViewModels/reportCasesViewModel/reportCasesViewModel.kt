@@ -6,6 +6,10 @@ import com.example.covideu.database.reoprtCases.ReportCasesDataClass
 import com.example.covideu.repostries.reportCovidCasesRepo
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * This the report cases view model class  which contains one functions that is responsible for
+ * adding the report to the Firestore
+ */
 private const val TAG = "reportCasesViewModel"
 class reportCasesViewModel:ViewModel() {
 

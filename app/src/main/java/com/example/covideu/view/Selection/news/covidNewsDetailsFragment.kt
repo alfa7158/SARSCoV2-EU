@@ -18,6 +18,9 @@ import com.example.covideu.R
 import com.example.covideu.view.ViewModels.newsViewModels.covidNewsViewMode
 import com.squareup.picasso.Picasso
 
+/**
+ * This class is responsible for showing details based on the item select on the recyclerview
+ */
 
 class covidNewsDetailsFragment : Fragment() {
 
@@ -47,7 +50,9 @@ class covidNewsDetailsFragment : Fragment() {
 
         val webView: WebView = view.findViewById(R.id.covidNewsWebView)
         val webButton:Button = view.findViewById(R.id.button_web_view)
-
+        /***
+         * below the web view was used to show the news through implicit  intent
+         */
         covidNewsViewModel.covidAllNewsLiveDataDetails.observe(viewLifecycleOwner,{
 
             it?.let {

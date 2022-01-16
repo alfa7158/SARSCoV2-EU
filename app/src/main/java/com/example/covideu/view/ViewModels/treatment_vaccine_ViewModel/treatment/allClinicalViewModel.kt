@@ -8,7 +8,10 @@ import com.example.covideu.model.VaccineAndTreatments.Treatment.getClinicalTreat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+ * This all clinical data view model which is responsible for calling all clinical data from
+ * the database
+ */
 private const val TAG = "allClinicalViewModel"
 class allClinicalViewModel:ViewModel() {
 
@@ -20,7 +23,9 @@ class allClinicalViewModel:ViewModel() {
     val covid19ClinicalLiveDataDetails = MutableLiveData<getClinicalTreatments>()
     val treatmentLiveDataSuccessful = MutableLiveData<String>()
 
-
+    /**
+     * The function below is responsible for getting all  clinical  data from the api
+     */
 
     fun callClinicalLiveData(){
 

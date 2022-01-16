@@ -16,7 +16,10 @@ import com.example.covideu.model.worldCovidCases.worldCovidCaesModelItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+ * This Australia and Oceania countries data view model which is responsible for calling the african data from
+ * the database
+ */
 private const val TAG = "auViewModel"
 class auViewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
@@ -25,6 +28,10 @@ class auViewModel:ViewModel() {
     val covid19AustralianAndOceaniaLiveDataDetails = MutableLiveData<getAllAustralianAndOceanianCountriesModel>()
     val countryLiveDataSuccessful = MutableLiveData<String>()
     val countryLiveDataError = MutableLiveData<String?>()
+
+    /**
+     * The function below is responsible for getting all  Australia and Oceania countries data from the api
+     */
     fun callCovidDataForAustralianAndOcean(){
 
         viewModelScope.launch(Dispatchers.IO){

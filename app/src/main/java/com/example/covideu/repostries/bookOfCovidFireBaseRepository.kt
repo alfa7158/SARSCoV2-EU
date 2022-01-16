@@ -51,7 +51,9 @@ class bookOfCovidFireBaseRepository {
     val pdfCollection = Firebase.firestore.collection("Pdf uploaded")
     val docxCollection = Firebase.firestore.collection("Docx uploaded")
 
-    val likesCollection = Firebase.firestore.collection("Pictures uploaded").document().collection("likes")
+    val likesCollection = Firebase.firestore.collection("Pictures uploaded").document("theLikes").collection("likes")
+    val deleteLikesCollection = Firebase.firestore.collection("Pictures uploaded").document("theLikes").collection("likes").document("imageId").delete()
+
 
     val commentsCollection = Firebase.firestore.collection("Pictures uploaded").document().collection("comments")
 
@@ -83,8 +85,7 @@ class bookOfCovidFireBaseRepository {
     fun deleteDocxFireStore(bookOfCovidDataClassDocx: bookOfCovidDataClassDocx) = docxCollection
         .whereEqualTo("DocxName",bookOfCovidDataClassDocx.DocxName)
 
-    fun deleteFavoriteFireStore(bookOfCovidDataClassFavorite: BookOfCovidDataClassFavorite) = likesCollection
-        .whereEqualTo("ImageId",bookOfCovidDataClassFavorite.ImageId)
+    fun deleteFavoriteFireStore(bookOfCovidDataClassFavorite: BookOfCovidDataClassFavorite) = deleteLikesCollection
 
     fun deleteCommentsFireStore(bookOfCovidDataClassComments: BookOfCovidDataClassComments) = commentsCollection
         .whereEqualTo("ImageId",bookOfCovidDataClassComments.imageId)

@@ -16,7 +16,10 @@ import com.example.covideu.model.worldCovidCases.worldCovidCaesModelItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+* This  North USA  data view model which is responsible for calling the african data from
+* the database
+*/
 private const val TAG = "n_usa_viewModel"
 class n_usa_viewModel:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
@@ -27,6 +30,9 @@ class n_usa_viewModel:ViewModel() {
 
 
     val CovidLiveDataError = MutableLiveData<String?>()
+    /**
+     * The function below is responsible for getting all  North USA countries data from the api
+     */
 
     fun callCovidDataForNorthAmerican(){
 

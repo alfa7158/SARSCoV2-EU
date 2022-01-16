@@ -7,6 +7,9 @@ import com.example.covideu.database.bookOfCovid.*
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * This class holds function that are responsible for upload data to the fire Storage and Firestore
+ */
 class bookOfCoivdViewModel:ViewModel() {
     private val bookOfCoivdRepository = bookOfCovidFireBaseRepository()
     val userLiveDataError = MutableLiveData<String>()
@@ -16,7 +19,7 @@ class bookOfCoivdViewModel:ViewModel() {
     //    val uriLiveDataForPdf = MutableLiveData<bookOfCovidDataClassPhotos>()
 //    val uriLiveDataForAudio = MutableLiveData<bookOfCovidDataClassPhotos>()
 //    val uriLiveDataForDocx = MutableLiveData<bookOfCovidDataClassPhotos>()
-    val uriLiveDataForPhotos = MutableLiveData<bookOfCovidDataClassPhotos>()
+//    val uriLiveDataForPhotos = MutableLiveData<bookOfCovidDataClassPhotos>()
 
 //    fun uploadContentBookOfCovid(uri:Uri){
 //      var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadBookOfCovidContent().child(it) }
@@ -29,7 +32,9 @@ class bookOfCoivdViewModel:ViewModel() {
 //         }
 //    }
 
-
+    /**
+     * The function below jobs os to upload picture to the firebase storage
+     */
     fun uploadPictureStorage(uri: Uri, name: String,title:String,description:String){
         var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPicturesStorage(name,title,description) }
         reference?.putFile(uri)?.addOnSuccessListener {
@@ -40,7 +45,9 @@ class bookOfCoivdViewModel:ViewModel() {
 
         }
     }
-
+    /**
+     * The function below jobs os to upload videos to the firebase storage
+     */
     fun uploadVideosStorage(uri: Uri, videoName: String,title:String,description:String) {
         var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadVideosStorage(videoName,title,description) }
         reference?.putFile(uri)?.addOnCanceledListener {
@@ -51,7 +58,9 @@ class bookOfCoivdViewModel:ViewModel() {
 
         }
     }
-
+    /**
+     * The function below jobs os to upload audio to the firebase storage
+     */
     fun uploadAudioStorage(uri: Uri, audioName: String,title:String,description:String) {
         var reference =
             uri.lastPathSegment?.let { bookOfCoivdRepository.uploadAudioStorage(audioName,title,description) }
@@ -63,7 +72,9 @@ class bookOfCoivdViewModel:ViewModel() {
 
         }
     }
-
+    /**
+     * The function below jobs os to upload pdf to the firebase storage
+     */
     fun uploadPdfStorage(uri: Uri, pdfName: String,title:String,description:String) {
         var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPdfStorage(pdfName,title,description) }
         reference?.putFile(uri)?.addOnCanceledListener {
@@ -74,7 +85,9 @@ class bookOfCoivdViewModel:ViewModel() {
 
         }
     }
-
+    /**
+     * The function below jobs os to upload docx to the firebase storage
+     */
     fun uploadDocxStorage(uri: Uri, docxName: String,title:String,description:String) {
         var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadDocxStorage(docxName,title,description) }
         reference?.putFile(uri)?.addOnCanceledListener {
@@ -87,7 +100,10 @@ class bookOfCoivdViewModel:ViewModel() {
     }
 
 
-
+    /**
+     * The function below jobs os to upload pictures to the firebase Firestore, with a title and
+     * description
+     */
 
     fun uploadPictureFireStore(uri: Uri, imageName: String,title: String,description: String) {
         uri.lastPathSegment?.let {
@@ -105,7 +121,10 @@ class bookOfCoivdViewModel:ViewModel() {
 
             }
     }
-
+    /**
+     * The function below jobs os to upload video to the firebase Firestore, with a title and
+     * description
+     */
     fun uploadVideoFireStore(uri: Uri, videoName: String,title: String,description: String) {
         uri.lastPathSegment?.let {
             bookOfCoivdRepository.uploadVideosFireStore()
@@ -122,7 +141,10 @@ class bookOfCoivdViewModel:ViewModel() {
 
             }
     }
-
+    /**
+     * The function below jobs os to upload audio to the firebase Firestore, with a title and
+     * description
+     */
     fun uploadAudioFireStore(uri: Uri, audioName: String,title: String,description: String) {
         uri.lastPathSegment?.let {
             bookOfCoivdRepository.uploadAudioFireStore()
@@ -139,7 +161,10 @@ class bookOfCoivdViewModel:ViewModel() {
 
             }
     }
-
+    /**
+     * The function below jobs os to upload pdf to the firebase Firestore, with a title and
+     * description
+     */
     fun uploadPdfFireStore(uri: Uri, pdfName: String,title: String,description: String) {
         uri.lastPathSegment?.let {
             bookOfCoivdRepository.uploadPdfFireStore()
@@ -155,7 +180,14 @@ class bookOfCoivdViewModel:ViewModel() {
 
 
             }
-    }    fun uploadDocxFireStore(uri: Uri, docxName: String,title: String,description: String) {
+
+
+    }
+    /**
+     * The function below jobs os to upload docx to the firebase Firestore, with a title and
+     * description
+     */
+    fun uploadDocxFireStore(uri: Uri, docxName: String,title: String,description: String) {
         uri.lastPathSegment?.let {
             bookOfCoivdRepository.uploadDocxFireStore()
                 .add(bookOfCovidDataClassDocx(docxName,FirebaseAuth.getInstance().uid.toString(),title,description))

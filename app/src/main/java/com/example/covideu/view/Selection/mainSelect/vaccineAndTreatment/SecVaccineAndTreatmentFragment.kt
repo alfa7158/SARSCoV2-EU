@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.covideu.R
 
-
+/**
+ * This class is responsible for manging the navigation from the main select for vaccine and
+ * treatments
+ */
 class SecVaccineAndTreatmentFragment : Fragment() {
 
 

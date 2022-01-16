@@ -18,7 +18,9 @@ import kotlin.coroutines.CoroutineContext
 
 const val SHARED_PREF_FILE = "theUser"
 
-
+/**
+ * This the splash class and it is responsible for showing the splash view
+ */
 class SplashFragment() : Fragment() {
 
 //    private lateinit var sharedPref: SharedPreferences

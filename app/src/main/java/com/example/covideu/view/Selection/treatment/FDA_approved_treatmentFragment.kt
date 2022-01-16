@@ -75,6 +75,7 @@ class FDA_approved_treatmentFragment : Fragment() {
         }
 
     }
+    //////////////////////search implementation starts here/////////////////////////////////
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
@@ -84,7 +85,10 @@ class FDA_approved_treatmentFragment : Fragment() {
 
 
         val item_searchView = searchView.actionView as SearchView
-
+        /**
+         * The item search view is to allow the user to search in the recyclerview by trimedName
+         * and trimedCategory
+         */
         item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 fdaApproved_treatment_Adapter.submitList(fdaApproved_treatment_DataList.filter {
@@ -116,6 +120,7 @@ class FDA_approved_treatmentFragment : Fragment() {
 
 
     }
+    //////////////////////search implementation ends here/////////////////////////////////
 
     fun checkForSuccessful(){
         covidDViewModel.treatmentLiveDataSuccessful.observe(viewLifecycleOwner,{

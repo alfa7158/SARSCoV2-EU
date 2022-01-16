@@ -20,7 +20,9 @@ import com.example.covideu.view.ViewModels.countriesDataViewModels.asiaViewModel
 import com.example.covideu.view.adapter.countriesRecyclers.showAfricaDataRecyclerView
 import com.example.covideu.view.adapter.countriesRecyclers.showAsiaDataRecyclerView
 import java.lang.Exception
-
+/**
+ * This class holds the the recyclerview for showing the Asian countries
+ */
 
 class ShowAsiaDataFragment : Fragment() {
     private val covidDViewModel: asiaViewModel by activityViewModels()
@@ -83,6 +85,7 @@ class ShowAsiaDataFragment : Fragment() {
         }
 
     }
+//////////////////////////search code starts here/////////////////////////////////////
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -92,7 +95,10 @@ class ShowAsiaDataFragment : Fragment() {
 
 
         val item_searchView = searchView.actionView as SearchView
-
+        /**
+         * The item search view is to allow the user to search in the recyclerview by contains and
+         * country
+         */
         item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 showAsiaAdapter.submitList(countriesDataListAsia.filter {
@@ -124,6 +130,8 @@ class ShowAsiaDataFragment : Fragment() {
 
 
     }
+    //////////////////////////search code end here/////////////////////////////////////
+
 
     fun checkForSuccessful(){
         covidDViewModel.countryLiveDataSuccessful.observe(viewLifecycleOwner,{

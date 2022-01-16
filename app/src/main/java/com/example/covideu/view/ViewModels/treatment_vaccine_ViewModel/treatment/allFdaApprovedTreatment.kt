@@ -8,7 +8,10 @@ import com.example.covideu.model.VaccineAndTreatments.Treatment.getFDA_Approvedt
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-
+/**
+ * This all fda approved treatment data view model which is responsible for calling  all fda approved treatment data from
+ * the database
+ */
 private const val TAG = "allFdaApprovedTreatment"
 class allFdaApprovedTreatment:ViewModel() {
     private val apiRepo = ApiRepositoryCovidData.get()
@@ -18,6 +21,9 @@ class allFdaApprovedTreatment:ViewModel() {
     val covid19ApprovedTreatmentsLiveData = MutableLiveData<List<getFDA_Approvedtreatments>>()
     val covid19ApprovedTreatmentsLiveDataDetails= MutableLiveData<getFDA_Approvedtreatments>()
     val treatmentLiveDataSuccessful = MutableLiveData<String>()
+    /**
+     * The function below is responsible for getting all  fda approved  data from the api
+     */
 
     fun callApprovedTreatmentsLiveData(){
 

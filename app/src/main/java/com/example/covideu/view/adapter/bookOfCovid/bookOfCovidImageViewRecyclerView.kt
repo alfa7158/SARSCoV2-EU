@@ -94,7 +94,7 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
 
         holder.removeFavoriteButton.setOnClickListener {
 
-            viewModelDelete.deleteFavorite(BookOfCovidDataClassFavorite(item.imageName))
+            viewModelDelete.deleteFavorite(BookOfCovidDataClassFavorite(item.uid))
         }
 
 

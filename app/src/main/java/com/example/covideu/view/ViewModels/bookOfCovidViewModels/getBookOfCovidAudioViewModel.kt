@@ -7,6 +7,9 @@ import com.example.covideu.database.bookOfCovid.*
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 import com.google.firebase.firestore.ktx.toObject
 
+/**
+ * This class job is to get the audio
+ */
 private const val TAG = "getBookOfCovidAudioView"
 class getBookOfCovidAudioViewModel:ViewModel() {
     private val bookOfCoivdRepository = bookOfCovidFireBaseRepository()
@@ -44,7 +47,9 @@ class getBookOfCovidAudioViewModel:ViewModel() {
 ////        }
 //
 //    }
-
+    /**
+     * The function below job is to get the audio from the firebase
+     */
     fun getBookOfCovidAudio(){
         var audioList = mutableListOf<bookOfCovidDataClassAudio>()
         var imageSnapShot = bookOfCoivdRepository.getAudioBookOfCovid().get()

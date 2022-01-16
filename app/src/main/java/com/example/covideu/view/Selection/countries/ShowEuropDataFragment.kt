@@ -21,6 +21,9 @@ import com.example.covideu.view.adapter.countriesRecyclers.showAuDataRecyclerVie
 import com.example.covideu.view.adapter.countriesRecyclers.showEuropDataRecyclerView
 import java.lang.Exception
 
+/**
+ * This class holds the the recyclerview for showing the Europe countries
+ */
 
 class ShowEuropDataFragment : Fragment() {
 
@@ -86,6 +89,7 @@ class ShowEuropDataFragment : Fragment() {
         }
 
     }
+    //////////////////////////search code starts here/////////////////////////////////////
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         menu.clear()
@@ -95,7 +99,10 @@ class ShowEuropDataFragment : Fragment() {
 
 
         val item_searchView = searchView.actionView as SearchView
-
+        /**
+         * The item search view is to allow the user to search in the recyclerview by contains and
+         * country
+         */
         item_searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 showEuropAdapter.submitList(countriesDataListEurope.filter {
@@ -127,6 +134,8 @@ class ShowEuropDataFragment : Fragment() {
 
 
     }
+    //////////////////////////search code ends here/////////////////////////////////////
+
 
     fun checkForSuccessful(){
         covidDViewModel.countryLiveDataSuccessful.observe(viewLifecycleOwner,{

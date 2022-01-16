@@ -7,13 +7,18 @@ import com.example.covideu.database.bookOfCovid.BookOfCovidDataClassComments
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 import com.google.firebase.firestore.ktx.toObject
 
+/**
+ * This class hold a function for getting the comments
+ */
 private const val TAG = "getBookOfCovidCommentVi"
 class getBookOfCovidCommentViewModel:ViewModel() {
     private val bookOfCoivdRepository = bookOfCovidFireBaseRepository()
     val commentLiveDataError = MutableLiveData<String>()
     val commentLiveDataSuccessful = MutableLiveData<String>()
     val commentLiveData = MutableLiveData<List<BookOfCovidDataClassComments>>()
-
+    /**
+     * The function below job is to get the comments from the firebase
+     */
     fun getBookOfCovidComments(){
         var commentList = mutableListOf<BookOfCovidDataClassComments>()
         var imageSnapShot = bookOfCoivdRepository.getCommentsBookOfCovid().get()

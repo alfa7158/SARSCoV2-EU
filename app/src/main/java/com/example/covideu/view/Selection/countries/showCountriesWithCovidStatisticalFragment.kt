@@ -20,6 +20,9 @@ import com.example.covideu.view.ViewModels.countriesDataViewModels.covidStatisti
 import com.example.covideu.view.adapter.countriesRecyclers.showAsiaDataRecyclerView
 import com.example.covideu.view.adapter.countriesRecyclers.showCountriesStatisticalDataRecyclerView
 
+/**
+ * This class will be used for future features
+ */
 
 class showCountriesWithCovidStatisticalFragment : Fragment() {
     private val covidDViewModel: covidStatisticalDataViewModel by activityViewModels()

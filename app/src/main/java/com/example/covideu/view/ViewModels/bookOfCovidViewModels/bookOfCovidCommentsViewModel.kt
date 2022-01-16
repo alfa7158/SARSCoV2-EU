@@ -7,12 +7,18 @@ import com.example.covideu.database.bookOfCovid.BookOfCovidDataClassFavorite
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ * This is the comments class and it hold the add comment function
+ */
 class bookOfCovidCommentsViewModel:ViewModel() {
     private val bookOfCoivdRepository = bookOfCovidFireBaseRepository()
 
     var successfulLiveData = MutableLiveData<String>()
     var errorLiveData = MutableLiveData<String>()
 
+    /**
+     * The function below job is to add comments to the firebase using the image id
+     */
     fun addCommentsFireStore(imageId: String) {
 
         bookOfCoivdRepository.addComments().add(

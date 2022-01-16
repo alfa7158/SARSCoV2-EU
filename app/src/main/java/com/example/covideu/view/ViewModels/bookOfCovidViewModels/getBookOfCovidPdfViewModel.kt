@@ -7,6 +7,9 @@ import com.example.covideu.database.bookOfCovid.*
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 import com.google.firebase.firestore.ktx.toObject
 
+/**
+ * This class hold a function for getting the pdf
+ */
 private const val TAG = "getBookOfCovidPdfViewMo"
 class getBookOfCovidPdfViewModel:ViewModel() {
 
@@ -16,7 +19,9 @@ class getBookOfCovidPdfViewModel:ViewModel() {
     val uriLiveDataForPdf = MutableLiveData<List<bookOfCovidDataClassPdf>>()
 
 
-
+    /**
+     * The function below job is to get the pdf from the firebase
+     */
     fun getBookOfCovidPdf(){
         var pdfList = mutableListOf<bookOfCovidDataClassPdf>()
         var imageSnapShot = bookOfCoivdRepository.getPdfBookOfCovid().get()

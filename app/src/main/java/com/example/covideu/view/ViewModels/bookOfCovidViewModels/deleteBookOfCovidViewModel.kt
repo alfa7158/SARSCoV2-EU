@@ -8,6 +8,9 @@ import androidx.lifecycle.ViewModel
 import com.example.covideu.database.bookOfCovid.*
 import com.example.covideu.repostries.bookOfCovidFireBaseRepository
 
+/**
+ * This class holds the delete function that related to the book of covid
+ */
 private const val TAG = "deleteBookOfCovidViewMo"
 class deleteBookOfCovidViewModel:ViewModel() {
 
@@ -43,6 +46,9 @@ class deleteBookOfCovidViewModel:ViewModel() {
 //        }
 //
 //    }
+    /**
+     * The function below is responsible for deleting an image from Firestore
+     */
     fun deleteAnImage(bookOfCovidDataClassPhotos: bookOfCovidDataClassPhotos) {
         var myList = mutableListOf<bookOfCovidDataClassPhotos>()
         var imageSnapShot =
@@ -57,7 +63,9 @@ class deleteBookOfCovidViewModel:ViewModel() {
                     Log.w(TAG, "Error getting documents.", exception)
                 }
     }
-
+    /**
+     * The function below is responsible for deleting an video from Firestore
+     */
     fun deleteVideo(bookOfCovidDataClassVideos: bookOfCovidDataClassVideos) {
         var myList = mutableListOf<bookOfCovidDataClassVideos>()
         var imageSnapShot =
@@ -72,7 +80,9 @@ class deleteBookOfCovidViewModel:ViewModel() {
                     Log.w(TAG, "Error getting documents.", exception)
                 }
     }
-
+    /**
+     * The function below is responsible for deleting an audio from Firestore
+     */
     fun deleteAnAudio(bookOfCovidDataClassAudio: bookOfCovidDataClassAudio) {
         var myList = mutableListOf<bookOfCovidDataClassAudio>()
         var imageSnapShot =
@@ -87,7 +97,9 @@ class deleteBookOfCovidViewModel:ViewModel() {
                     Log.w(TAG, "Error getting documents.", exception)
                 }
     }
-
+    /**
+     * The function below is responsible for deleting an pdf from Firestore
+     */
     fun deletePdf(bookOfCovidDataClassPdf: bookOfCovidDataClassPdf) {
         var myList = mutableListOf<bookOfCovidDataClassPdf>()
         var imageSnapShot = bookOfCoivdRepository.deletePdfFireStore(bookOfCovidDataClassPdf).get()
@@ -101,7 +113,9 @@ class deleteBookOfCovidViewModel:ViewModel() {
                 Log.w(TAG, "Error getting documents.", exception)
             }
     }
-
+    /**
+     * The function below is responsible for deleting an docx from Firestore
+     */
     fun deleteDocx(bookOfCovidDataClassDocx: bookOfCovidDataClassDocx) {
         var myList = mutableListOf<bookOfCovidDataClassDocx>()
         var imageSnapShot =
@@ -116,25 +130,17 @@ class deleteBookOfCovidViewModel:ViewModel() {
                     Log.w(TAG, "Error getting documents.", exception)
                 }
     }
-
+    /**
+     * The function below is responsible for deleting an favorite from Firestore
+     */
     fun deleteFavorite(bookOfCovidDataClassFavorite: BookOfCovidDataClassFavorite){
-        var myList = mutableListOf<BookOfCovidDataClassFavorite>()
-        var imageSnapShot = bookOfCoivdRepository.deleteFavoriteFireStore(bookOfCovidDataClassFavorite).get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    bookOfCoivdRepository.likesCollection.document(document.id).delete().addOnSuccessListener {
+        var imageSnapShot = bookOfCoivdRepository.deleteFavoriteFireStore(bookOfCovidDataClassFavorite)
 
-                    }.addOnFailureListener{
-
-
-                    }
-                }
-
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents.", exception)
-            }
-    }    fun deleteComment(BookOfCovidDataClassComments: BookOfCovidDataClassComments){
+    }
+    /**
+     * The function below is responsible for deleting an comments from Firestore
+     */
+    fun deleteComment(BookOfCovidDataClassComments: BookOfCovidDataClassComments){
         var myList = mutableListOf<BookOfCovidDataClassFavorite>()
         var imageSnapShot = bookOfCoivdRepository.deleteCommentsFireStore(BookOfCovidDataClassComments).get()
             .addOnSuccessListener { result ->
