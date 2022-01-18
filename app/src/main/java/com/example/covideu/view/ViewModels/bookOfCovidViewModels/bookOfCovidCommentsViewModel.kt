@@ -19,10 +19,10 @@ class bookOfCovidCommentsViewModel:ViewModel() {
     /**
      * The function below job is to add comments to the firebase using the image id
      */
-    fun addCommentsFireStore(imageId: String) {
+    fun addCommentsFireStore(imageId: String, user:String) {
 
-        bookOfCoivdRepository.addComments().add(
-            BookOfCovidDataClassComments(imageId, FirebaseAuth.getInstance().uid.toString())
+        bookOfCoivdRepository.addComments(imageId).set(
+            BookOfCovidDataClassComments(imageId,user)
         )
 
             .addOnSuccessListener {

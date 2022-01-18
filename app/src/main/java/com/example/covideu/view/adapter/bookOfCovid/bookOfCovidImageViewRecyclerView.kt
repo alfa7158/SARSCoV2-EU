@@ -32,7 +32,7 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): bookOfCovidImageViewRecyclerView.bookOfCovidImageViewHolder {
+    ): bookOfCovidImageViewHolder {
 
         return bookOfCovidImageViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -88,13 +88,13 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
             }
 
         holder.favoriteButton.setOnClickListener {
-            item.imageName?.let { favoriteViewModel.addFavoriteFireStore(it) }
+            item.imageName?.let { favoriteViewModel.addFavoriteFireStore(item.elementId!!,FirebaseAuth.getInstance().uid.toString()) }
 
         }
 
         holder.removeFavoriteButton.setOnClickListener {
 
-            viewModelDelete.deleteFavorite(BookOfCovidDataClassFavorite(item.uid))
+            viewModelDelete.deleteFavorite(item.elementId!!,FirebaseAuth.getInstance().uid.toString())
         }
 
 

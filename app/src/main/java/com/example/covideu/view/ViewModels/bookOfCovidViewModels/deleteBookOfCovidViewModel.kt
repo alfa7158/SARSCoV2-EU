@@ -50,7 +50,6 @@ class deleteBookOfCovidViewModel:ViewModel() {
      * The function below is responsible for deleting an image from Firestore
      */
     fun deleteAnImage(bookOfCovidDataClassPhotos: bookOfCovidDataClassPhotos) {
-        var myList = mutableListOf<bookOfCovidDataClassPhotos>()
         var imageSnapShot =
             bookOfCoivdRepository.deletePicturesFireStore(bookOfCovidDataClassPhotos).get()
                 .addOnSuccessListener { result ->
@@ -67,7 +66,6 @@ class deleteBookOfCovidViewModel:ViewModel() {
      * The function below is responsible for deleting an video from Firestore
      */
     fun deleteVideo(bookOfCovidDataClassVideos: bookOfCovidDataClassVideos) {
-        var myList = mutableListOf<bookOfCovidDataClassVideos>()
         var imageSnapShot =
             bookOfCoivdRepository.deleteVideoFireStore(bookOfCovidDataClassVideos).get()
                 .addOnSuccessListener { result ->
@@ -84,7 +82,6 @@ class deleteBookOfCovidViewModel:ViewModel() {
      * The function below is responsible for deleting an audio from Firestore
      */
     fun deleteAnAudio(bookOfCovidDataClassAudio: bookOfCovidDataClassAudio) {
-        var myList = mutableListOf<bookOfCovidDataClassAudio>()
         var imageSnapShot =
             bookOfCoivdRepository.deleteAudioFireStore(bookOfCovidDataClassAudio).get()
                 .addOnSuccessListener { result ->
@@ -101,7 +98,6 @@ class deleteBookOfCovidViewModel:ViewModel() {
      * The function below is responsible for deleting an pdf from Firestore
      */
     fun deletePdf(bookOfCovidDataClassPdf: bookOfCovidDataClassPdf) {
-        var myList = mutableListOf<bookOfCovidDataClassPdf>()
         var imageSnapShot = bookOfCoivdRepository.deletePdfFireStore(bookOfCovidDataClassPdf).get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -114,10 +110,9 @@ class deleteBookOfCovidViewModel:ViewModel() {
             }
     }
     /**
-     * The function below is responsible for deleting an docx from Firestore
+     * The function below is responsible for deleting a docx from Firestore
      */
     fun deleteDocx(bookOfCovidDataClassDocx: bookOfCovidDataClassDocx) {
-        var myList = mutableListOf<bookOfCovidDataClassDocx>()
         var imageSnapShot =
             bookOfCoivdRepository.deleteDocxFireStore(bookOfCovidDataClassDocx).get()
                 .addOnSuccessListener { result ->
@@ -131,33 +126,33 @@ class deleteBookOfCovidViewModel:ViewModel() {
                 }
     }
     /**
-     * The function below is responsible for deleting an favorite from Firestore
+     * The function below is responsible for deleting a favorite from Firestore
      */
-    fun deleteFavorite(bookOfCovidDataClassFavorite: BookOfCovidDataClassFavorite){
-        var imageSnapShot = bookOfCoivdRepository.deleteFavoriteFireStore(bookOfCovidDataClassFavorite)
+    fun deleteFavorite(imageId:String,user:String){
+         bookOfCoivdRepository.deleteFavoriteFireStore(imageId,user)
 
     }
     /**
      * The function below is responsible for deleting an comments from Firestore
      */
-    fun deleteComment(BookOfCovidDataClassComments: BookOfCovidDataClassComments){
-        var myList = mutableListOf<BookOfCovidDataClassFavorite>()
-        var imageSnapShot = bookOfCoivdRepository.deleteCommentsFireStore(BookOfCovidDataClassComments).get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    bookOfCoivdRepository.commentsCollection.document(document.id).delete().addOnSuccessListener {
-                        userLiveDataSuccessful.postValue("Successful")
-                    }.addOnFailureListener{
-                        userLiveDataError.postValue("failed to delete")
-
-                    }
-                }
-
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents.", exception)
-            }
-    }
+//    fun deleteComment(BookOfCovidDataClassComments: BookOfCovidDataClassComments){
+//        var myList = mutableListOf<BookOfCovidDataClassFavorite>()
+//        var imageSnapShot = bookOfCoivdRepository.deleteCommentsFireStore(BookOfCovidDataClassComments).get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    bookOfCoivdRepository.commentsCollection.document(document.id).delete().addOnSuccessListener {
+//                        userLiveDataSuccessful.postValue("Successful")
+//                    }.addOnFailureListener{
+//                        userLiveDataError.postValue("failed to delete")
+//
+//                    }
+//                }
+//
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.w(TAG, "Error getting documents.", exception)
+//            }
+//    }
 //}    fun deleteFavorite(bookOfCovidDataClassFavorite: BookOfCovidDataClassFavorite){
 //    var myList = mutableListOf<bookOfCovidDataClassPhotos>()
 //    var imageSnapShot = bookOfCoivdRepository.deleteFavorite(bookOfCovidDataClassFavorite).get()

@@ -32,7 +32,7 @@ class BookOfCovidCommentRecyclerView(private val list: List<BookOfCovidDataClass
 
         val item = list[position]
 
-        holder.commentTextView.text = item.imageId
+        holder.commentTextView.text = item.ImageId
     }
 
     override fun getItemCount(): Int {

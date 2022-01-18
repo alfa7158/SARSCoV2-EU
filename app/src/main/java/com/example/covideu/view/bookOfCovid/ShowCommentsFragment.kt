@@ -15,6 +15,7 @@ import com.example.covideu.view.ViewModels.bookOfCovidViewModels.bookOfCovidComm
 import com.example.covideu.view.ViewModels.bookOfCovidViewModels.deleteBookOfCovidViewModel
 import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidCommentViewModel
 import com.example.covideu.view.adapter.bookOfCovid.BookOfCovidCommentRecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import java.lang.Exception
 /**
  * This class is to fetch comments from firebase
@@ -53,7 +54,7 @@ class ShowCommentsFragment : Fragment() {
             val commentToBeAdded = binding.addCommentEditTex.text.toString()
 
 
-            addCommentsViewModelViewModel.addCommentsFireStore(commentToBeAdded)
+            addCommentsViewModelViewModel.addCommentsFireStore(commentToBeAdded,FirebaseAuth.getInstance().uid.toString())
 
         }
 

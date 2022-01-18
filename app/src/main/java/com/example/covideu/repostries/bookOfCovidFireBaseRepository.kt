@@ -34,8 +34,8 @@ class bookOfCovidFireBaseRepository {
     fun getPdfBookOfCovid() = FirebaseFirestore.getInstance().collection("Pdf uploaded")
     fun getDocxBookOfCovid() = FirebaseFirestore.getInstance().collection("Docx uploaded")
     fun getLikesBookOfCovid() = FirebaseFirestore.getInstance().collection("Pictures uploaded").document().collection("likes")
-    fun getCommentsBookOfCovid() = FirebaseFirestore.getInstance().collection("Pictures uploaded").document().collection("ImageId")
-
+//    fun getCommentsBookOfCovid() = FirebaseFirestore.getInstance().collection("Pictures uploaded").document().collection("ImageId")
+    fun getCommentsBookOfCovid() =   Firebase.firestore.collection("Pictures uploaded").document().collection("comments")
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -51,11 +51,11 @@ class bookOfCovidFireBaseRepository {
     val pdfCollection = Firebase.firestore.collection("Pdf uploaded")
     val docxCollection = Firebase.firestore.collection("Docx uploaded")
 
-    val likesCollection = Firebase.firestore.collection("Pictures uploaded").document("theLikes").collection("likes")
-    val deleteLikesCollection = Firebase.firestore.collection("Pictures uploaded").document("theLikes").collection("likes").document("imageId").delete()
+//    val likesCollection = Firebase.firestore.collection("Pictures uploaded").document().collection("likes").document(FirebaseAuth.getInstance().uid.toString())
+//    val deleteLikesCollection = Firebase.firestore.collection("Pictures uploaded").document("theLikes").collection("likes").document("imageId").delete()
 
 
-    val commentsCollection = Firebase.firestore.collection("Pictures uploaded").document().collection("comments")
+//    val commentsCollection = Firebase.firestore.collection("Pictures uploaded").document().collection("comments")
 
 
     fun uploadPicturesFireStore() = picturesCollection
@@ -63,8 +63,24 @@ class bookOfCovidFireBaseRepository {
     fun uploadAudioFireStore() = audioCollection
     fun uploadPdfFireStore() = pdfCollection
     fun uploadDocxFireStore() = docxCollection
-    fun addFavorite() = likesCollection
-    fun addComments() = commentsCollection
+
+
+    /**
+     * Function below are for adding favorite
+     */
+    fun addFavorite(imageId: String) =   Firebase.firestore.collection("Pictures uploaded").document(imageId).collection("likes").document(FirebaseAuth.getInstance().uid.toString())
+
+    /**
+     * The function below is to add comment on the picture
+     */
+    fun addComments(imageId: String) = Firebase.firestore.collection("Pictures uploaded").document(imageId).collection("comments").document(FirebaseAuth.getInstance().uid.toString())
+
+    /**
+     * The function below is to delete favorite from picture
+     */
+    fun deleteFavoriteFireStore(imageId:String,user:String) =  Firebase.firestore.collection("Pictures uploaded").document(imageId).collection("likes").document(user).delete()
+    fun deleteCommentsFireStore(imageId:String,user:String) =  Firebase.firestore.collection("Pictures uploaded").document(imageId).collection("comments").document(user).delete()
+
 
 
 
@@ -85,10 +101,10 @@ class bookOfCovidFireBaseRepository {
     fun deleteDocxFireStore(bookOfCovidDataClassDocx: bookOfCovidDataClassDocx) = docxCollection
         .whereEqualTo("DocxName",bookOfCovidDataClassDocx.DocxName)
 
-    fun deleteFavoriteFireStore(bookOfCovidDataClassFavorite: BookOfCovidDataClassFavorite) = deleteLikesCollection
+    //fun deleteFavoriteFireStore(bookOfCovidDataClassFavorite: BookOfCovidDataClassFavorite) = deleteLikesCollection
 
-    fun deleteCommentsFireStore(bookOfCovidDataClassComments: BookOfCovidDataClassComments) = commentsCollection
-        .whereEqualTo("ImageId",bookOfCovidDataClassComments.imageId)
+//    fun deleteCommentsFireStore(bookOfCovidDataClassComments: BookOfCovidDataClassComments) = commentsCollection
+//        .whereEqualTo("ImageId",bookOfCovidDataClassComments.imageId)
 
 
 

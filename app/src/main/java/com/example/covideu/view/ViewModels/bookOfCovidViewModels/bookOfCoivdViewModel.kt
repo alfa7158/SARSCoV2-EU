@@ -36,7 +36,7 @@ class bookOfCoivdViewModel:ViewModel() {
      * The function below jobs os to upload picture to the firebase storage
      */
     fun uploadPictureStorage(uri: Uri, name: String,title:String,description:String){
-        var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPicturesStorage(name,title,description) }
+        val reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPicturesStorage(name,title,description) }
         reference?.putFile(uri)?.addOnSuccessListener {
             userLiveDataSuccessful.postValue("Successfully uploaded")
         }?.addOnFailureListener{
@@ -49,7 +49,7 @@ class bookOfCoivdViewModel:ViewModel() {
      * The function below jobs os to upload videos to the firebase storage
      */
     fun uploadVideosStorage(uri: Uri, videoName: String,title:String,description:String) {
-        var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadVideosStorage(videoName,title,description) }
+        val reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadVideosStorage(videoName,title,description) }
         reference?.putFile(uri)?.addOnCanceledListener {
             userLiveDataSuccessful.postValue("Successfully uploaded")
         }?.addOnFailureListener {
@@ -62,7 +62,7 @@ class bookOfCoivdViewModel:ViewModel() {
      * The function below jobs os to upload audio to the firebase storage
      */
     fun uploadAudioStorage(uri: Uri, audioName: String,title:String,description:String) {
-        var reference =
+        val reference =
             uri.lastPathSegment?.let { bookOfCoivdRepository.uploadAudioStorage(audioName,title,description) }
         reference?.putFile(uri)?.addOnCanceledListener {
             userLiveDataSuccessful.postValue("Successfully uploaded")
@@ -76,7 +76,7 @@ class bookOfCoivdViewModel:ViewModel() {
      * The function below jobs os to upload pdf to the firebase storage
      */
     fun uploadPdfStorage(uri: Uri, pdfName: String,title:String,description:String) {
-        var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPdfStorage(pdfName,title,description) }
+        val reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadPdfStorage(pdfName,title,description) }
         reference?.putFile(uri)?.addOnCanceledListener {
             userLiveDataSuccessful.postValue("Successfully uploaded")
         }?.addOnFailureListener {
@@ -89,7 +89,7 @@ class bookOfCoivdViewModel:ViewModel() {
      * The function below jobs os to upload docx to the firebase storage
      */
     fun uploadDocxStorage(uri: Uri, docxName: String,title:String,description:String) {
-        var reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadDocxStorage(docxName,title,description) }
+        val reference = uri.lastPathSegment?.let { bookOfCoivdRepository.uploadDocxStorage(docxName,title,description) }
         reference?.putFile(uri)?.addOnCanceledListener {
             userLiveDataSuccessful.postValue("Successfully uploaded")
         }?.addOnFailureListener {
@@ -105,10 +105,10 @@ class bookOfCoivdViewModel:ViewModel() {
      * description
      */
 
-    fun uploadPictureFireStore(uri: Uri, imageName: String,title: String,description: String) {
+    fun uploadPictureFireStore(uri: Uri, imageName: String,title: String,description: String,likeId:String) {
         uri.lastPathSegment?.let {
             bookOfCoivdRepository.uploadPicturesFireStore()
-                .add(bookOfCovidDataClassPhotos(imageName,FirebaseAuth.getInstance().uid.toString(),title,description))
+                .add(bookOfCovidDataClassPhotos(imageName,FirebaseAuth.getInstance().uid.toString(),title,description,likeId))
         }
             ?.addOnSuccessListener {
                 uploadPictureStorage(uri,imageName,title,description)

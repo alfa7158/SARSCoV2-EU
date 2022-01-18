@@ -17,6 +17,7 @@ import com.example.covideu.R
 import com.example.covideu.databinding.FragmentUploadVideosBinding
 import com.example.covideu.view.ViewModels.bookOfCovidViewModels.bookOfCoivdViewModel
 import com.example.covideu.view.identity.SHARED_PREF_FILE
+import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 /**
@@ -283,7 +284,7 @@ class UploadContentFragment : Fragment() {
 //            uploadContentViewModel.uploadPicture(uri!!,sharedPref.getString("uid","")!!)
                 var title = binding.addTitleEditText.text.toString()
                 var description = binding.addDescriptionEditText.text.toString()
-                uploadContentViewModel.uploadPictureFireStore(uri!!,Math.random().toString(),title,description)
+                uploadContentViewModel.uploadPictureFireStore(uri!!,Math.random().toString(),title,description,FirebaseAuth.getInstance().uid.toString())
                 //      uploadContentViewModel.uploadPictureStorage(uri!!,sharedPref.getString("uid","")!!)
 
             }else if(requestCode==AudioRequestCode&&resultCode== Activity.RESULT_OK){

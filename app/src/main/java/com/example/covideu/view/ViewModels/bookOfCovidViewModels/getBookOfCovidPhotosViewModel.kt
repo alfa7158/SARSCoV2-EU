@@ -28,7 +28,7 @@ class getBookOfCovidPhotosViewModel:ViewModel() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                    var x = document.toObject<bookOfCovidDataClassPhotos>()
-
+                    x.elementId = document.id
                     photoList.add(x)
 
                     Log.d(TAG, "${document.id} => ${document.data}")
