@@ -1,15 +1,18 @@
 package com.example.covideu.view.adapter.countriesRecyclers
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import com.bumptech.glide.Glide
 import com.example.covideu.R
 import com.example.covideu.model.get.all.covid.Countries.Statistical.getAllCovid19CountriesStatisticalDataItemModel
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
@@ -21,7 +24,7 @@ import com.example.covideu.view.ViewModels.countriesDataViewModels.s_usa_ViewMod
 /**
  * This is the South USA countries adapter which its job to show list of countries in the S-USA
  */
-class show_s_usa_DataRecyclerView(val viewModel: s_usa_ViewModel) :
+class show_s_usa_DataRecyclerView(val viewModel: s_usa_ViewModel,var fileContext:Context) :
     RecyclerView.Adapter<show_s_usa_DataRecyclerView.showCountriesDataViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -54,10 +57,10 @@ class show_s_usa_DataRecyclerView(val viewModel: s_usa_ViewModel) :
     override fun onBindViewHolder(holder: showCountriesDataViewHolder, position: Int) {
 
         val item = differ.currentList[position]
-        holder.rankOfCases.text = "Rank:${item.rank}"
-        holder.countries.text = "Country: ${item.country}"
-        holder.totalCases.text = "Total cases:${item.totalCases}"
-
+        holder.countries.text = item.country
+        Glide.with(fileContext)
+            .load("https://countryflagsapi.com/png/${item.twoLetterSymbol}")
+            .into(holder.flags)
         /**
          * the onClick listen is clicked to navigate from the recycler to the details fragment as
          * well as posts the value to covid19SouthAmericaLiveDataDetails live data list
@@ -82,10 +85,11 @@ class show_s_usa_DataRecyclerView(val viewModel: s_usa_ViewModel) :
 
     class showCountriesDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val rankOfCases: TextView = itemView.findViewById(R.id.rank_s_usa)
+       // val rankOfCases: TextView = itemView.findViewById(R.id.rank_s_usa)
         val countries: TextView = itemView.findViewById(R.id.country_s_usa)
-        val totalCases: TextView = itemView.findViewById(R.id.s_usa_TotalCasesCountries)
+        //val totalCases: TextView = itemView.findViewById(R.id.s_usa_TotalCasesCountries)
         val cardView: CardView = itemView.findViewById(R.id.s_usa_cardView)
+        val flags: ImageView = itemView.findViewById(R.id.flagImageView)
 
 
     }

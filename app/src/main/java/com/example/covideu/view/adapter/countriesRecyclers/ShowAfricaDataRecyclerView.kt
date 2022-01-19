@@ -1,22 +1,25 @@
 package com.example.covideu.view.adapter.countriesRecyclers
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import com.bumptech.glide.Glide
 import com.example.covideu.R
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.view.ViewModels.countriesDataViewModels.africaViewModel
 /**
  * This is the African countries adapter which its job to show list of countries in the African
  */
-class showAfricaDataRecyclerView(val viewModel:africaViewModel) :
+class showAfricaDataRecyclerView(val viewModel:africaViewModel,var fileContext:Context) :
     RecyclerView.Adapter<showAfricaDataRecyclerView.showCountriesDataViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -48,9 +51,10 @@ class showAfricaDataRecyclerView(val viewModel:africaViewModel) :
     override fun onBindViewHolder(holder: showCountriesDataViewHolder, position: Int) {
 
         val item = differ.currentList[position]
-        holder.rankOfCases.text = "Rank:${item.rank}"
-        holder.countries.text = "Country: ${item.country}"
-        holder.totalCases.text = "Total cases:${item.totalCases}"
+        holder.countries.text = item.country
+        Glide.with(fileContext)
+            .load("https://countryflagsapi.com/png/${item.twoLetterSymbol}")
+            .into(holder.flags)
         /**
          * the onClick listen is clicked to navigate from the recycler to the details fragment as
          * well as posts the value to ovid19AfricaLiveDataDetails live data list
@@ -77,10 +81,11 @@ class showAfricaDataRecyclerView(val viewModel:africaViewModel) :
 
     class showCountriesDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val rankOfCases:TextView = itemView.findViewById(R.id.rank_covidCountries)
+      //  val rankOfCases:TextView = itemView.findViewById(R.id.rank_covidCountries)
         val countries:TextView = itemView.findViewById(R.id.country_coivdCountries)
-        val totalCases:TextView = itemView.findViewById(R.id.totalCasesCountries)
+        //val totalCases:TextView = itemView.findViewById(R.id.totalCasesCountries)
         val cardView:CardView = itemView.findViewById(R.id.africanCardView)
+        val flags: ImageView = itemView.findViewById(R.id.africaFlagsImageView)
 
 
     }

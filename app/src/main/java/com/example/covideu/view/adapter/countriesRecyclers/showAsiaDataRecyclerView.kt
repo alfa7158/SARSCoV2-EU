@@ -1,14 +1,17 @@
 package com.example.covideu.view.adapter.countriesRecyclers
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import com.bumptech.glide.Glide
 import com.example.covideu.R
 import com.example.covideu.model.getAllAfricanCountries.getAllAfricanCountriesModel
 import com.example.covideu.model.getAllAsianCountries.getAll_AsianCountriesModel
@@ -17,7 +20,7 @@ import com.example.covideu.view.ViewModels.countriesDataViewModels.s_usa_ViewMod
 /**
  * This is the Asia countries adapter which its job to show list of countries in the Asia
  */
-class showAsiaDataRecyclerView(val viewModel: asiaViewModel) :
+class showAsiaDataRecyclerView(val viewModel: asiaViewModel,var fileContext:Context) :
     RecyclerView.Adapter<showAsiaDataRecyclerView.showCountriesDataViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -37,10 +40,10 @@ class showAsiaDataRecyclerView(val viewModel: asiaViewModel) :
     override fun onBindViewHolder(holder: showCountriesDataViewHolder, position: Int) {
 
         val item = differ.currentList[position]
-        holder.rankOfCases.text = "Rank:${item.rank}"
-        holder.countries.text = "Country: ${item.country}"
-        holder.totalCases.text = "Total cases:${item.totalCases}"
-
+        holder.countries.text = item.country
+        Glide.with(fileContext)
+            .load("https://countryflagsapi.com/png/${item.twoLetterSymbol}")
+            .into(holder.flags)
 
 
         /**
@@ -78,10 +81,11 @@ class showAsiaDataRecyclerView(val viewModel: asiaViewModel) :
 
     class showCountriesDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val rankOfCases: TextView = itemView.findViewById(R.id.rank_aisa)
+       // val rankOfCases: TextView = itemView.findViewById(R.id.rank_aisa)
         val countries: TextView = itemView.findViewById(R.id.country_asia)
-        val totalCases: TextView = itemView.findViewById(R.id.asiaTotalCasesCountries)
+       // val totalCases: TextView = itemView.findViewById(R.id.asiaTotalCasesCountries)
         val cardView: CardView = itemView.findViewById(R.id.cardViewAsia)
+        val flags: ImageView = itemView.findViewById(R.id.aisaFlagsImageView)
 
     }
 

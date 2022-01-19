@@ -26,19 +26,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/rank_s_usa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
                 android:id="@+id/country_s_usa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:gravity="center" />
 
-            <TextView
-                android:id="@+id/s_usa_TotalCasesCountries"
+            <ImageView
+                android:id="@+id/flagImageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

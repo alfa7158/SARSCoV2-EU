@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Abdullah A A/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.22" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_africa_data_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_asia_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_au_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_europ_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_n_usa_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_s_usa_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/drawable/ic_baseline_supervised_user_circle_24.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/drawable/main_button_shape.xml" value="0.1" />

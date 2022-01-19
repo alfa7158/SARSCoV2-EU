@@ -51,7 +51,7 @@ class ShowCountriesDataFagment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        showAfricaDatAapter = showAfricaDataRecyclerView(covidDViewModel)
+        showAfricaDatAapter = showAfricaDataRecyclerView(covidDViewModel,requireContext())
 
         binding.africaDataRecyclerView.adapter =showAfricaDatAapter
 

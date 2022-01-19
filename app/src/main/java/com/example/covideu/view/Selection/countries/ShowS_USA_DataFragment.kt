@@ -51,7 +51,7 @@ class ShowS_USA_DataFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        show_S_UsaDatAapter = show_s_usa_DataRecyclerView(covidDViewModel)
+        show_S_UsaDatAapter = show_s_usa_DataRecyclerView(covidDViewModel,requireContext())
 
         binding.sUSARecyclerViiew.adapter =show_S_UsaDatAapter
 
