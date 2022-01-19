@@ -71,7 +71,7 @@ class showAllHealthNewsRecyclerView(val newsViewModel:allHealthNewsViewModel,var
 //            .load(item.urlToImage)
 //            .into(holder.allHealthNewsImageView)
         holder.covidNewsTitle.text  = item.title
-
+        holder.pubDateBottom.text = item.pubDate
 
         /**
          * the onClick listen is clicked to navigate from the recycler to the details fragment as
@@ -97,7 +97,8 @@ class showAllHealthNewsRecyclerView(val newsViewModel:allHealthNewsViewModel,var
 
     class showAllHealthNewsVIewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val allHealthNewsImageView: ImageView = itemView.findViewById(R.id.allHealthNewsImageView)
-        val covidNewsTitle: TextView = itemView.findViewById(R.id.AllHealthNewsTitle)
+        val covidNewsTitle: TextView = itemView.findViewById(R.id.allHealthNewsTitle)
+        val pubDateBottom: TextView = itemView.findViewById(R.id.dateBottomAllHealth)
 
     }
 

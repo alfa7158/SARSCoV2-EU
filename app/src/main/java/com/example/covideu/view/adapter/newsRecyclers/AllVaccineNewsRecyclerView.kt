@@ -57,16 +57,15 @@ class allVaccineNewsRecyclerView(val newsViewModel: allVaccineNewsViewModel, var
 
         Glide.with(fileContext)
             .load(item.urlToImage)
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.fq)
-            )
+            .apply(RequestOptions().placeholder(R.drawable.fq))
             .into(holder.covidNewsImageView)
 //        Glide.with(fileContext)
 //            .load(item.urlToImage)
 //            .into(holder.covidNewsImageView)
         holder.covidNewsTitle.text  = item.title
-
+       // holder.pubDateTop.text = item.pubDate
+        holder.pubDateBottom.text = item.pubDate
+        //holder.content.text = item.content
 
         /**
          * the onClick listen is clicked to navigate from the recycler to the details fragment as
@@ -92,6 +91,10 @@ class allVaccineNewsRecyclerView(val newsViewModel: allVaccineNewsViewModel, var
     class allVaccineNewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val covidNewsImageView: ImageView = itemView.findViewById(R.id.vaccineNewsImageView)
         val covidNewsTitle: TextView = itemView.findViewById(R.id.vaccineNewsTitle)
+    //    val pubDateTop: TextView = itemView.findViewById(R.id.dateTopAllVaccineNews)
+        val pubDateBottom: TextView = itemView.findViewById(R.id.dateBottomAllVaccine)
+     //   val content: TextView = itemView.findViewById(R.id.vaccineNewsContent)
+
     }
 
 }

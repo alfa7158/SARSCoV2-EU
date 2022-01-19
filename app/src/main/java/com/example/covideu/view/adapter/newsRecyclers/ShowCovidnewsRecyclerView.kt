@@ -64,17 +64,18 @@ class showCovidnewsRecyclerView(val list: MutableList<newsModel>, val newsViewMo
                 RequestOptions()
                     .placeholder(R.drawable.fq)
             )
-            .into(holder.vaccineNewsImageView)
+            .into(holder.covidNewsImageView)
 //        Glide.with(fileContext)
 //            .load(item.urlToImage)
 //            .into(holder.covidNewsImageView)
             holder.covidNewsTitle.text  = item.title
+            holder.pubDateBottom.text = item.pubDate
 //            holder.secCovidNewsProgressBar.animate().alpha(1F)
         /**
          * the onClick listen is clicked to navigate from the recycler to the details fragment as
          * well as posts the value to covidAllNewsLiveDataDetails live data list
          */
-        holder.vaccineNewsImageView .setOnClickListener {
+        holder.covidNewsImageView .setOnClickListener {
 
             it.findNavController().navigate(R.id.action_showCovidNewsFragment2_to_covidNewsDetailsFragment)
             newsViewModel.covidAllNewsLiveDataDetails.postValue(item)
@@ -95,8 +96,10 @@ class showCovidnewsRecyclerView(val list: MutableList<newsModel>, val newsViewMo
 
 
     class showCovidNewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val vaccineNewsImageView:ImageView = itemView.findViewById(R.id.covidnewsImageView)
-            val covidNewsTitle:TextView = itemView.findViewById(R.id.covidNewsTitle)
+            val covidNewsImageView:ImageView = itemView.findViewById(R.id.allCovidNewsImageView)
+            val covidNewsTitle:TextView = itemView.findViewById(R.id.allCovidNewsTitle)
+             val pubDateBottom: TextView = itemView.findViewById(R.id.dateBottomAllCovid)
+
 //            val secCovidNewsProgressBar:ProgressBar = itemView.findViewById(R.id.covidNewsProgress)
 //            val covidNewsContent:TextView  = itemView.findViewById(R.id.covidNewscontent)
 
