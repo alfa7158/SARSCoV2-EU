@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Selection.countries.ShowN_USA_DataFragment" >
+    android:background="@drawable/color_aa"
+    tools:context=".view.Selection.countries.ShowN_USA_DataFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/N_usaRecyclerView"

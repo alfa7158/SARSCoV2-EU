@@ -5,7 +5,8 @@
     android:id="@+id/approvedTreatmentFDA_RecyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Selection.treatment.FDA_approved_treatmentFragment" >
+    android:background="@drawable/color_aa"
+    tools:context=".view.Selection.treatment.FDA_approved_treatmentFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/approvedTreatmentfda_RecyclerView"
