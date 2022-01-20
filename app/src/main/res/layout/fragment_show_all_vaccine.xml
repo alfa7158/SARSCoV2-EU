@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/color_aa"
     tools:context=".view.Selection.news.showAllVaccineFragment">
 
     <androidx.recyclerview.widget.RecyclerView

@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_all_clinical_treatment_details.xml" value="0.22" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_all_fda_approved_treatment_details.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_all_health_news.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_all_treatment.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_all_treatment_details.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_all_vaccine_details.xml" value="0.1" />
@@ -17,9 +18,11 @@
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_clinical_treatment.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_covid_news_details.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_europe_details.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_f_d_a_approved_treatment.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_fda_approved_vaccine_details.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_main_select.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_news_main_select.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_phase_four.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_phase_four_details.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_phase_one_details.xml" value="0.1" />
@@ -27,6 +30,12 @@
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_phaset_two_details.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_register.xml" value="0.22" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_report_covid_cases.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_show_all_vaccine.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_show_all_vaccine_news.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_show_f_d_a_approved_vaccine.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_show_phase_one.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_show_phase_three.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_show_phase_two.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_update_profile.xml" value="0.41317365269461076" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_upload_image.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/fragment_upload_videos.xml" value="0.13333333333333333" />
@@ -49,10 +58,11 @@
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_europ_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_n_usa_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_phase_four_layout.xml" value="0.1" />
-        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_phase_one_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_phase_one_layout.xml" value="0.22" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_phase_three_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_phase_two_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_s_usa_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/item_vaccine_treatment_layout.xml" value="0.1" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/layout/newtesssssst_layout.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Abdullah A A/Desktop/covid-19ProjectFinal/SARSCoV2-EU/app/src/main/res/menu/custom_menu.xml" value="0.1796875" />
         <entry key="..\:/Users/Abdullah A A/covidEU/app/src/main/res/drawable/ic_baseline_supervised_user_circle_24.xml" value="0.1" />

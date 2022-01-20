@@ -62,7 +62,7 @@ class showPhaseTwoFragment : Fragment() {
 
                     phaseTwoAdapter.submitList(it)
                     phaseTwoDataList = it
-                    binding.progressBarPhaseTwo .visibility = View.VISIBLE
+                    binding.progressBarPhaseTwo .visibility = View.INVISIBLE
 
                 }
 
