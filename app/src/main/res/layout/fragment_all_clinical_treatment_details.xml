@@ -46,13 +46,13 @@
 
     <ImageView
         android:id="@+id/imageView24"
-        android:layout_width="152dp"
-        android:layout_height="136dp"
+        android:layout_width="121dp"
+        android:layout_height="102dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="246dp"
-        android:layout_marginEnd="50dp"
-        app:srcCompat="@drawable/img_3" />
+        android:layout_marginEnd="80dp"
+        app:srcCompat="@drawable/fda" />
 
     <TextView
         android:id="@+id/fdaApprovedClinical"
