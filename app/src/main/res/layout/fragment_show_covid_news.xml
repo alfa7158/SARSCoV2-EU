@@ -8,13 +8,11 @@
     tools:context=".view.Selection.news.showCovidNewsFragment" >
 
 
-
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/covidNewsRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/color_aa"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/covidNewsProgress"
         app:layout_constraintEnd_toEndOf="parent"

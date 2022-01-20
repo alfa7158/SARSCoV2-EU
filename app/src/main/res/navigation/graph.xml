@@ -548,7 +548,7 @@
     <fragment
         android:id="@+id/bookOfCoivdAudiFragmentDetails"
         android:name="com.example.covideu.view.bookOfCovid.detailsFragment.bookOfCoivdAudiFragmentDetails"
-        android:label="fragment_book_of_coivd_audi_details"
+        android:label="@string/Music"
         tools:layout="@layout/fragment_book_of_coivd_audi_details" />
     <fragment
         android:id="@+id/showCommentsFragment"

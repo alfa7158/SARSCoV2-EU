@@ -40,7 +40,7 @@ class bookOfCoivdVideoFragmentDetails : Fragment() {
     videoView.setMediaController(mediaController)
       videoView.setVideoURI(videoUri.toUri())
       videoView.requestFocus()
-      videoView.resume()
+      videoView.start()
       videoView.setMediaController(mediaController)
       videoView.setFadingEdgeLength(20)
 

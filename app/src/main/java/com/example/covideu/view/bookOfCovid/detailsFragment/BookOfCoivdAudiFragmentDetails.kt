@@ -1,14 +1,18 @@
 package com.example.covideu.view.bookOfCovid.detailsFragment
 
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.MediaController
 import android.widget.VideoView
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import com.example.covideu.R
 import com.example.covideu.view.ViewModels.bookOfCovidViewModels.getBookOfCovidAudioViewModel
+import com.example.covideu.view.activities.MainActivity
 
 
 class bookOfCoivdAudiFragmentDetails : Fragment() {
@@ -26,9 +30,12 @@ class bookOfCoivdAudiFragmentDetails : Fragment() {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
 
+
     }
 
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val audioView = view.findViewById<VideoView>(R.id.audioView)
@@ -42,9 +49,12 @@ class bookOfCoivdAudiFragmentDetails : Fragment() {
             audioView.setMediaController(mediaController)
             audioView.setVideoURI(audioUri.toUri())
             audioView.requestFocus()
-            audioView.resume()
+            audioView.autofillValue
             audioView.setMediaController(mediaController)
             audioView.setFadingEdgeLength(20)
+
+            audioView.start()
+
 
 
 
@@ -60,6 +70,7 @@ class bookOfCoivdAudiFragmentDetails : Fragment() {
 
         searchItem.isVisible = false
     }
+
 
 
 }

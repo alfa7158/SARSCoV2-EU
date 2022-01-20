@@ -37,7 +37,7 @@
                     android:foregroundGravity="center"
                     android:gravity="center"
                     android:text="@string/Treatment"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/clinicalMainSelectButton"
@@ -57,7 +57,7 @@
                     android:foregroundGravity="center"
                     android:gravity="center"
                     android:text="@string/Clinical_treatment"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -86,7 +86,7 @@
                     android:foregroundGravity="center"
                     android:gravity="center"
                     android:text="@string/Vaccines"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

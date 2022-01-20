@@ -24,6 +24,8 @@ import com.example.covideu.R
 import com.example.covideu.view.identity.SHARED_PREF_FILE
 import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
+import androidx.fragment.app.Fragment
+import androidx.navigation.ui.NavigationUI
 
 
 /**
@@ -51,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         createNotification()
+
         /**
          * Below we have a part of the notification implementation, which help in building the
          * notification and setting its property
@@ -84,6 +87,7 @@ class MainActivity : AppCompatActivity() {
 
         menuInflater.inflate(R.menu.custom_menu,menu)
         return true
+
 
     }
 
@@ -154,5 +158,8 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+    fun Fragment.setTitle(title: String) {
+        (activity as? AppCompatActivity)?.supportActionBar?.title = title
     }
 }
