@@ -12,12 +12,11 @@
     <color name="inputColor">#50B2C5E3</color>
     <color name="input2tColor">#B2C5E3</color>
     <color name="tttColor">#95B2C5E3</color>
-    <color name="mainSelectColor">#3F597E</color>
+    <color name="mainSelectColor">#A2C8C3</color>
     <color name="categoriesSelectionColor">#B2C5E3</color>
     <color name="theRedColor">#70E10600</color>
-
-
-
+    <color name="textMainColor">#B0D5D0</color>
+    <color name="apptry">#1FFFFFFF</color>
 
 
 </resources>

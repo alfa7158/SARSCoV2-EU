@@ -1,5 +1,7 @@
 package com.example.covideu.view.adapter
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.shapes.Shape
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -74,6 +76,8 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
 //      holder.videoView.setMediaController(mediaController)
 //      holder.videoView.setFadingEdgeLength(20)
 
+
+
         /**
          * The on click lister below is to navigate from the recycler to the video and post values
          * to the uriLiveDataVideoDeatial list
@@ -102,6 +106,11 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
           }
       }
 
+//        holder.buttonsCardView.setBackgroundResource(R.drawable.shape_allu)
+//        holder.tAndDCardView.setBackgroundResource(R.drawable.shape_allu)
+
+
+
 
 
   }
@@ -124,9 +133,14 @@ class bookOfCoivdVideosRecyclerview(val fileContext:android.content.Context,val 
     class bookOfCoivdVideViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
       var deleteButton: ImageView = itemView.findViewById(R.id.deleteVideoView)
-      var videoTitle: TextView = itemView.findViewById(R.id.titleBookOfCoivdVideo)
-      var thedescription:EditText = itemView.findViewById(R.id.descriptionBookVideo)
-      var videoCardButton:CardView = itemView.findViewById(R.id.cardVideoButton)
-  }
+      var videoTitle: TextView = itemView.findViewById(R.id.titleBookOfCovidVido)
+      var thedescription:TextView = itemView.findViewById(R.id.descriptionBookOfCoivdVideo)
+      var videoCardButton:ImageView = itemView.findViewById(R.id.cardVideo)
+        var tAndDCardView:CardView = itemView.findViewById(R.id.buttonsCardView)
+        var buttonsCardView:CardView = itemView.findViewById(R.id.cardViewTitleAndDescrip)
+      // @SuppressLint("ResourceType")
+      // var shapeAluu:View = itemView.findViewById(R.drawable.shape_allu)
+
+    }
 
 }

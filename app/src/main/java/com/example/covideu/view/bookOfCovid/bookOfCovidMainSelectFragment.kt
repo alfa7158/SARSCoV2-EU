@@ -34,7 +34,11 @@ class bookOfCovidMainSelectFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.mainSelectBookOfCovidVideo.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectBookOfCovidPic.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectBookOfCovidAudio.setBackgroundResource(R.drawable.shape_allu)
+        binding.bookOfCovidMainSelectPdf.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectBookOfCovidDocx.setBackgroundResource(R.drawable.shape_allu)
         binding.mainSelectBookOfCovidVideo.setOnClickListener {
 
         findNavController().navigate(R.id.action_bookOfCovidMainSelectFragment_to_fetchVideosFragment)
@@ -80,4 +84,6 @@ class bookOfCovidMainSelectFragment : Fragment() {
 
         searchItem.isVisible = false
     }
+
+
 }

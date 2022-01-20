@@ -248,6 +248,7 @@ class UploadContentFragment : Fragment() {
         binding.saveTitleDecripButton.setOnClickListener {
 
             if (requestCode==PdfRequestCode&&resultCode== Activity.RESULT_OK){
+                binding.progressBar2.visibility = View.VISIBLE
 
                 uri = data?.data!!
 //            uploadContentViewModel.uploadPdf(uri!!)
@@ -256,7 +257,9 @@ class UploadContentFragment : Fragment() {
                 uploadContentViewModel.uploadPdfFireStore(uri!!,Math.random().toString(),title,description)
 
                 checkForSuccessful()
+
             }else if (requestCode==VideoRequestCode&&resultCode== Activity.RESULT_OK){
+                binding.progressBar2.visibility = View.VISIBLE
 
                 uri = data?.data!!
                 //uploadContentViewModel.uploadVideos(uri!!)
@@ -265,10 +268,13 @@ class UploadContentFragment : Fragment() {
                 uploadContentViewModel.uploadVideoFireStore(uri!!,Math.random().toString(),title,description)
                 checkForSuccessful()
 
+
             }
 
 
             else if (requestCode==DocxRequestCode&&resultCode== Activity.RESULT_OK){
+                binding.progressBar2.visibility = View.VISIBLE
+
                 uri = data?.data!!
 //            uploadContentViewModel.uploadDocx(uri!!)
                 var title = binding.addTitleEditText.text.toString()
@@ -277,7 +283,10 @@ class UploadContentFragment : Fragment() {
 
                 checkForSuccessful()
 
+
             }else if (requestCode==picRequestCode&&resultCode== Activity.RESULT_OK) {
+                binding.progressBar2.visibility = View.VISIBLE
+
                 uri = data?.data!!
 //             Log.d(TAG,"user id:${sharedPref.getString("uid","")!!}")
                 var date = Date()
@@ -288,6 +297,8 @@ class UploadContentFragment : Fragment() {
                 //      uploadContentViewModel.uploadPictureStorage(uri!!,sharedPref.getString("uid","")!!)
 
             }else if(requestCode==AudioRequestCode&&resultCode== Activity.RESULT_OK){
+                binding.progressBar2.visibility = View.VISIBLE
+
                 uri = data?.data!!
                 checkForSuccessful()
                 //uploadContentViewModel.uploadAudio(uri!!)
@@ -297,6 +308,8 @@ class UploadContentFragment : Fragment() {
 
 
             }else{
+                binding.progressBar2.visibility = View.INVISIBLE
+
 
                 Toast.makeText(context, "Nothing was selected", Toast.LENGTH_SHORT).show()
             }
@@ -309,6 +322,7 @@ class UploadContentFragment : Fragment() {
         uploadContentViewModel.userLiveDataSuccessful.observe(viewLifecycleOwner,{
 
             Toast.makeText(context, "Successful uploaded", Toast.LENGTH_SHORT).show()
+            binding.progressBar2.visibility = View.INVISIBLE
 
         })
 

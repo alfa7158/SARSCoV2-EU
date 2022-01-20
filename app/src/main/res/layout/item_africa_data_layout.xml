@@ -16,7 +16,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/clou3back"
-        android:backgroundTint="@color/cardBackGroundColor"
+        android:backgroundTint="@color/mainSelectColor"
         app:cardCornerRadius="20dp"
         app:cardPreventCornerOverlap="true"
         app:layout_constraintBottom_toBottomOf="parent"

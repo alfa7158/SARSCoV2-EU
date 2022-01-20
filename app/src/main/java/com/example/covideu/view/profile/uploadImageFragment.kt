@@ -50,15 +50,19 @@ class uploadImageFragment : Fragment() {
         }
 
         binding.uploadAnImageButton.setOnClickListener {
+            binding.progressBarUploadPhoto.visibility = View.VISIBLE
+
             imageUri?.let {
 
                 UploadUserImage_ViewMode.uploadImage(it)
+
 //                val bundle = Bundle()
 //
 //                bundle.putString("theImage", imageUri?.toString()?.toUri().toString())
 
 
             }
+
 
 
         }
@@ -121,6 +125,8 @@ class uploadImageFragment : Fragment() {
 
             Toast.makeText(context, "Successful uploaded", Toast.LENGTH_SHORT).show()
                 binding.uploadImageView.setImageURI(null)
+            binding.progressBarUploadPhoto.visibility = View.INVISIBLE
+
 
         })
 

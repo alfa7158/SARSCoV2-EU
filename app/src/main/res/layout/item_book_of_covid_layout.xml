@@ -4,9 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/color_aa"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0" >
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardAudioButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
@@ -15,98 +24,116 @@
         android:layout_marginBottom="25dp"
         android:layout_weight="0"
         android:backgroundTint="@color/cardBackGroundColor"
-        android:padding="20dp"
-        app:cardCornerRadius="30dp">
+        android:padding="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/titleImageBookOfCovid"
+            <ImageView
+                android:id="@+id/imageViewBookOfCovid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:gravity="center"
-                android:textColor="#000000" />
+                tools:srcCompat="@tools:sample/avatars" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-                app:cardBackgroundColor="@color/mainSelectColor"
-                app:cardCornerRadius="30dp">
+                android:id="@+id/cardViewTitleAndDescrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/imageViewBookOfCovid"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:padding="20dp"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/titleImageBookOfCovid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/color_aa"
+                        android:gravity="center"
+                        android:text="Title"
+                        android:textColor="#000000" />
+
+                    <View
+                        android:id="@+id/divider2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+                        android:id="@+id/descriptionBookOfCovidImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/color_aa"
+                        android:text="@string/description" />
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/buttonsCardView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/color_aa">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/appBackGroundColor"
-                    app:cardCornerRadius="30dp">
+                    android:background="@drawable/color_aa"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:id="@+id/favoriteButton"
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/likecountericone" />
+
+                    <ImageView
+                        android:id="@+id/removeFavorite"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="0"
+                        app:srcCompat="@drawable/dislikecountericone" />
+
+                    <ImageView
+                        android:id="@+id/imageView31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|right"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0"
+                        android:foregroundGravity="right"
+                        app:srcCompat="@drawable/ic_baseline_share_24" />
+
+                    <ImageView
+                        android:id="@+id/imageView32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|right"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:foregroundGravity="right"
+                        app:srcCompat="@drawable/ic_baseline_comment_24" />
 
                     <ImageView
                         android:id="@+id/deleteImageView"
-                        android:layout_width="61dp"
-                        android:layout_height="49dp"
-                        android:layout_gravity="right"
-                        android:layout_margin="5dp"
-                        android:foregroundGravity="right"
-                        app:srcCompat="@android:drawable/ic_menu_delete" />
-
-                    <ToggleButton
-                        android:id="@+id/toggleButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ToggleButton" />
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="10dp"
+                        android:foregroundGravity="right"
+                        app:srcCompat="@android:drawable/ic_menu_delete" />
+                </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-            <MultiAutoCompleteTextView
-                android:id="@+id/descriptionBookOfCovidImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:editable="false"
-                />
-
-            <Button
-                android:id="@+id/favoriteButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="addFavorite" />
-
-            <Button
-                android:id="@+id/removeFavorite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="remove Favorite" />
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

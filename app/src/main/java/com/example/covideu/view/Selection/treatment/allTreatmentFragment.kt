@@ -49,6 +49,8 @@ class allTreatmentFragment : Fragment() {
         observeAllTreatment()
         covidDViewModel.callAllCovidTreatment()
 
+        binding.allTreatmentRecyclerView.setBackgroundResource(R.drawable.shape_allu)
+
     }
 
 

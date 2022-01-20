@@ -76,9 +76,9 @@ class FDA_ApprovedVaccinesRecyclerView(val viewModel: fdaApprovedVaccineViewMode
     class FDA_ApprovedVaccinesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-        val developer: TextView = itemView.findViewById(R.id.developer_researcherAllFdaApproveVaccine)
-        val theCategory: TextView = itemView.findViewById(R.id.categoryAllFdaApproveVaccine)
-        val fdaApprovedVaccineCardView: CardView = itemView.findViewById(R.id.fdaApproveCardView)
+        val developer: TextView = itemView.findViewById(R.id.developer_researcherAllFdaVaccine)
+        val theCategory: TextView = itemView.findViewById(R.id.categoryAllFdaVaccine)
+        val fdaApprovedVaccineCardView: CardView = itemView.findViewById(R.id.allApprovedVaccineCardView)
 
     }
 

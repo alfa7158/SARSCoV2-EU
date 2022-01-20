@@ -28,7 +28,6 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
     var xlist= mutableListOf<bookOfCovidDataClassPhotos>()
     var auth = FirebaseAuth.getInstance()
 
-    // lateinit var uri:String
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -95,6 +94,8 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
         holder.removeFavoriteButton.setOnClickListener {
 
             viewModelDelete.deleteFavorite(item.elementId!!,FirebaseAuth.getInstance().uid.toString())
+            holder.favoriteButton.setBackgroundResource(R.color.theRedColor)
+
         }
 
 
@@ -120,9 +121,9 @@ class bookOfCovidImageViewRecyclerView(var fileContext:Context, val viewModel: g
         var imageBookOfCovid:ImageView = itemView.findViewById(R.id.imageViewBookOfCovid)
         var deleteButton:ImageView = itemView.findViewById(R.id.deleteImageView)
         var theTitle:TextView = itemView.findViewById(R.id.titleImageBookOfCovid)
-        var theDescription:EditText = itemView.findViewById(R.id.descriptionBookOfCovidImage)
-        var favoriteButton:Button = itemView.findViewById(R.id.favoriteButton)
-        var removeFavoriteButton:Button = itemView.findViewById(R.id.removeFavorite)
+        var theDescription:TextView = itemView.findViewById(R.id.descriptionBookOfCovidImage)
+        var favoriteButton:ImageView = itemView.findViewById(R.id.favoriteButton)
+        var removeFavoriteButton:ImageView = itemView.findViewById(R.id.removeFavorite)
     }
 
 

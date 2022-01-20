@@ -106,9 +106,9 @@ class BookOfCovidAudioRecyclerView(val fileContext:Context,val DeleteAudioViewMo
     class BookOfCovidAudioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 //        val audioView = itemView.findViewById<VideoView>(R.id.audioView)
         var deleteButton: ImageView = itemView.findViewById(R.id.deleteAudioVideoView)
-        var audioTitle: TextView = itemView.findViewById(R.id.titleBookOfCovidAudio)
-        var audioDescription: TextView = itemView.findViewById(R.id.descriptionBookOfCoivdaudi)
-        var audioCardViewButton:CardView = itemView.findViewById(R.id.cardViewAudioButton)
+        var audioTitle: TextView = itemView.findViewById(R.id.titleBookOfCoivdAudio)
+        var audioDescription: TextView = itemView.findViewById(R.id.descriptionBookAudio)
+        var audioCardViewButton:ImageView = itemView.findViewById(R.id.cardAudio)
     }
 
 }

@@ -79,9 +79,9 @@ class showAllClinicalTreatmentRecyclerView(val viewModel: allClinicalViewModel) 
     class showAllClinicalTreatmentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-        val developer: TextView = itemView.findViewById(R.id.developer_researcherClinicalTreatment)
+        val developer: TextView = itemView.findViewById(R.id.developer_researcherAllClinicalTreatment)
         val theCategory: TextView = itemView.findViewById(R.id.categoryClinicalTreatment)
-        val allClinicalTreatmentCardView: CardView = itemView.findViewById(R.id.allClinicalCardView)
+        val allClinicalTreatmentCardView: CardView = itemView.findViewById(R.id.allClinicalTreatmentCardView)
 
     }
 

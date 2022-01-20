@@ -77,11 +77,19 @@ class mainSelectFragment : Fragment() {
 
             findNavController().navigate(R.id.action_mainSelectFragment_to_check_for_covid_Fragment)
         }
-        binding.ReportCovidCaseMainSelect.setOnClickListener {
+        binding.mainSelectReportCovidCaseMainSelect.setOnClickListener {
 
             findNavController().navigate(R.id.action_mainSelectFragment_to_reportCovidCasesFragment)
         }
 
+        binding.mainSelectNews.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectVccine.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectWorldUpdate.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectCheckYouHaveCovid.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectCovidEducation.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectGraph.setBackgroundResource(R.drawable.shape_allu)
+        binding.mainSelectReportCovidCaseMainSelect.setBackgroundResource(R.drawable.shape_allu)
+        binding.setting.setBackgroundResource(R.drawable.shape_allu)
 
 
 //

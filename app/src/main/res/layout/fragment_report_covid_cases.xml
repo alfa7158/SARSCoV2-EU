@@ -24,11 +24,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="@string/identificationType"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
         <Spinner
             android:id="@+id/spinnerIdType"
-            android:layout_width="match_parent"
+            android:layout_width="388dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:backgroundTint="@color/mainSelectColor"
@@ -42,7 +43,8 @@
             android:layout_margin="4dp"
             android:ems="10"
             android:hint="@string/identification"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView27"
@@ -88,10 +90,9 @@
             android:id="@+id/saveRport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/categoriesSelectionColor"
             android:baselineAligned="false"
             android:text="@string/Report"
-            app:rippleColor="@color/cardBackGroundColor" />
+            app:cornerRadius="20dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

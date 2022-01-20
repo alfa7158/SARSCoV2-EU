@@ -78,8 +78,8 @@ class getFDA_approvedTreatment_RecyclerView(private val list: List<getFDA_Approv
     class getFDA_approvedTreatment_viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-        val developer: TextView = itemView.findViewById(R.id.developer_researcherAlApprovedTreatment)
-        val theCategory: TextView = itemView.findViewById(R.id.categoryAllApprovedTreatment)
+        val developer: TextView = itemView.findViewById(R.id.developer_researcherAllFdaTreatment)
+        val theCategory: TextView = itemView.findViewById(R.id.categoryAllFdaTreatment)
         val allFdaApprovedTreatmentCardView: CardView = itemView.findViewById(R.id.allFdaApprovedTreatmentCardView)
 
 

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">Covid-19-Bible</string>
 
 
@@ -137,6 +137,12 @@
     <string name="identificationType" translatable="false">Identification type</string>
     <string name="identification" translatable="false">identification</string>
     <string name="NumberOfCases" translatable="false">Number of cases</string>
-    <string name="Relationship_" translatable="false">Relationship</string>
+    <string name="Relationship_" translatable="false" tools:ignore="DuplicateDefinition">Relationship</string>
     <string name="by_checking_acknowledgement" translatable="false">By check this box I acknowledge that I will be held responsible in case of incorrect information</string>
+    <string name="Researcher" translatable="false">Researcher</string>
+    <string name="category" translatable="false">Category</string>
+    <string name="description" translatable="false">description</string>
+    <string name="identificationtype" translatable="false">Identificatin type:</string>
+    <string name="NumberofCases" translatable="false">Number of cases:</string>
+    <string name="aRelationship">Relationship:</string>
 </resources>
