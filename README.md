@@ -24,7 +24,7 @@ Storage, and firestore
 ### As user I want to be able to post covid picture that express my feeling or news related 
 ### As user I want to be able to post covid videos that express my feeling or news related 
 ### As user I want to be able to post covid audio stories, song that express my feelings and any news related
-
+### As user I want to be the only one who can delete my post 
 ### As user, I want to have a survey that tells if my symptoms are covid-19 related or not
 
 ### As user, I want to be able to report my self being infected with covid or any member of family or friend 
@@ -50,7 +50,22 @@ I kept testing every functionality after writing it to make sure that I do not f
 Drawing chart is one of the unsolved problems as it was in the original plan of the app, 
 however, due to an issue with jetback graphing libraires, the graphing feature will be
 held for future improvement of the app. 
+
+# Feature
+The app is desgined to keep people up to date with anything that is covid ralted including:
+1- seeing news that are covid realted
+2- seeing updates about world population and how it is affect by covid-19 and public health related
+3 - seeing update about treatment and vaccine around the world 
+4- post photos, audio, videos that covid ralted or express  feelings of the user
+5- report cases of covid to public health administrators
+6 - take a survey to determain if your symptoms are covid-related or not  
 # Describe how some of your favorite functions work
 
 World update is my favorite part that I worked on for in the app due 
 to the fact that number of covid cases are increasing every day
+# Future feature:
+1- improving design 
+2- using expo-player for the audio
+3- adding likes and comments as soon as the design is improved for best user experince
+4- adding the number of daily cases and deaths in each country whihch is almost done.
+
