@@ -51,7 +51,7 @@ Drawing chart is one of the unsolved problems as it was in the original plan of 
 however, due to an issue with jetback graphing libraires, the graphing feature will be
 held for future improvement of the app. 
 
-# Feature
+# Features
 The app is desgined to keep people up to date with anything that is covid ralted including:
 1- seeing news that are covid realted
 2- seeing updates about world population and how it is affect by covid-19 and public health related
@@ -68,4 +68,5 @@ to the fact that number of covid cases are increasing every day
 2- using expo-player for the audio
 3- adding likes and comments as soon as the design is improved for best user experince
 4- adding the number of daily cases and deaths in each country whihch is almost done.
+5- finishing up the features of pdf  and documents 
 
