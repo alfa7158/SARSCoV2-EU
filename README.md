@@ -26,7 +26,7 @@ Storage, and firestore
 ### As user I want to be able to post covid audio stories, song that express my feelings and any news related
 ### As user I want to be the only one who can delete my post 
 ### As user, I want to have a survey that tells if my symptoms are covid-19 related or not
-
+### As user, I want to have a profile that has my information and picture that I upload
 ### As user, I want to be able to report my self being infected with covid or any member of family or friend 
 
 #	Document your planning and tell a story about your development process and problem-solving strategy.
@@ -34,7 +34,7 @@ Storage, and firestore
 This project was started as result of the fact that I enjoy reading and learning about public health
 as well as the fact that it is related to what I have studied in the university. 
 These realities led me think about creating an app that holds everything 
-that is related to covid-19specially with the fact of how the virus is 
+that is related to covid-19 specially with the fact of how the virus is 
 spreading around the world.Besides how the project was started, in creating this
 project, I tookmultiple steps. These steps are deigning the app on figma before
 implementing anything in the android studio, writing lists of features 
@@ -44,6 +44,7 @@ features and finally started writing the app. Through these steps, I depended on
 the organization of the code to catch error as well as creating a recycler view for each model 
 instead of binding class which help me in finding the errors easily. In addition to that, 
 I kept testing every functionality after writing it to make sure that I do not face future issues.
+
 
 # List unsolved problems which would be fixed in future iterations.
 
@@ -59,6 +60,7 @@ The app is desgined to keep people up to date with anything that is covid ralted
 4- post photos, audio, videos that covid ralted or express  feelings of the user
 5- report cases of covid to public health administrators
 6 - take a survey to determain if your symptoms are covid-related or not  
+7- add user profile
 # Describe how some of your favorite functions work
 
 World update is my favorite part that I worked on for in the app due 
