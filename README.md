@@ -2,7 +2,7 @@
 
 #	List technologies used
 
-Firebase storage, fire store database,  real time database, third party api, google maps services, 
+Firebase storage, fire store database,  real time database, third party api, google maps services, mvvm architecture 
 zeugmasolutions to translate the app from English to Arabic, retrofit, firebase including real time database,
 Storage, and firestore
 #	Link to wireframes and user storie
@@ -54,21 +54,22 @@ held for future improvement of the app.
 
 # Features
 The app is desgined to keep people up to date with anything that is covid ralted including:
-1- seeing news that are covid realted
-2- seeing updates about world population and how it is affect by covid-19 and public health related
-3 - seeing update about treatment and vaccine around the world 
-4- post photos, audio, videos that covid ralted or express  feelings of the user
-5- report cases of covid to public health administrators
+1- Seeing news that are covid realted
+2- Seeing updates about world population and how it is affect by covid-19 and public health related
+3 - Seeing update about treatment and vaccine around the world 
+4- Post photos, audio, videos that covid ralted or express  feelings of the user
+5- Report cases of covid to public health administrators
 6 - take a survey to determain if your symptoms are covid-related or not  
-7- add user profile
+7- Login and register
+8- Add user profile
 # Describe how some of your favorite functions work
 
 World update is my favorite part that I worked on for in the app due 
 to the fact that number of covid cases are increasing every day
 # Future feature:
-1- improving design 
-2- using expo-player for the audio
-3- adding likes and comments as soon as the design is improved for best user experince
-4- adding the number of daily cases and deaths in each country whihch is almost done.
-5- finishing up the features of pdf  and documents 
+1- Improving design 
+2- Using expo-player for the audio
+3-  Activation of likes and comments feature to the users as soon as the design is finished for best user experince. 
+4- Adding the number of daily cases and deaths in each country whihch is almost done.
+5- Finishing up the features of pdf  and documents 
 
